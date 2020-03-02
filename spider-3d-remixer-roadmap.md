@@ -1,3 +1,7 @@
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug-tools.github.io/spider-2020/ "View file as a web page." ) </span>
+
+<div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/spider-2020";
+value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 ## Spider 3D Remixer Road Map
 
@@ -6,7 +10,7 @@
 
 * Current dev stream in obscure repo
 
-![image](https://user-images.githubusercontent.com/547626/75589643-2c840100-5a30-11ea-98ae-ad386b27d106.png)
+<img src="https://user-images.githubusercontent.com/547626/75589643-2c840100-5a30-11ea-98ae-ad386b27d106.png" style=max-width:100%; >
 
 
 ### Concept

@@ -11,7 +11,7 @@ Your 2020 3D happy place for online browsing of building data files
 ## [Spider-3D Remixer-roadmap]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer-roadmap.md )
 
 
-## [Spider 3D Remixer]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer/ )
+## [Spider 3D Remixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
 
 * Work-in-progess
 * Many broken things; lousy user experience; no need to comment: And it works

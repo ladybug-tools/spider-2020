@@ -46,6 +46,34 @@ FOZ.getMenu = function () {
 };
 
 
+
+FOZ.xhrRequestFileZip = function( url ) {
+	//console.log( 'url', url );
+
+	FOZ.timeStart = performance.now();
+
+	const xhr = new XMLHttpRequest();
+	xhr.responseType = 'blob';
+	xhr.open( 'GET', url, true );
+	xhr.onerror = function( xhr ) { console.log( 'error:', xhr ); };
+	//xhr.onprogress = function( xhr ) { FOZ.onProgress( xhr.loaded, FOZ.note ); };
+	xhr.onload = FOZ.callbackUrlUtf16;
+	xhr.send( null );
+
+};
+
+
+FOZ.callbackUrlUtf16 = function ( xhr ) {
+
+
+	FO.data = xhr.target.response;
+
+	FOZ.fileOpenZip();
+
+}
+
+
+
 FOZ.onLoadFile = function () {
 
 	if ( FO.url.toLowerCase().endsWith( ".zip" ) === false ) { return; }
@@ -53,6 +81,8 @@ FOZ.onLoadFile = function () {
 	FOZ.timeStart = performance.now();
 
 	FOZ.fileOpenZip( FO.data );
+
+
 
 };
 
@@ -124,7 +154,7 @@ FOZ.fileOpenZip = function () {
 		function success( text ) {
 
 			FOZ.text = text;
-			//console.log( '', FOZ.text );
+			console.log( '', FOZ.text );
 
 			FOZdivOnProgress.innerHTML = `
 <p>
@@ -149,6 +179,7 @@ FOZ.fileOpenZip = function () {
 	);
 
 };
+
 
 
 FOZ.onZipDecompress = function ( event) {

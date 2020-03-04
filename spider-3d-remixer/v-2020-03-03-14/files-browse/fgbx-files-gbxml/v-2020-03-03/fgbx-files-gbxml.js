@@ -319,7 +319,7 @@ FGBX.callbackGitHubMenu = function ( xhr ) {
 
 	}
 
-	const divGallery = FGBXdivGithubFolderFiles.querySelectorAll( "#FGBXdivGallery" + FGBX.index )[ 0 ];
+	const divGallery = FGBXdivFilesGbxml.querySelectorAll( "#FGBXdivGallery" + FGBX.index )[ 0 ];
 	//console.log( 'divGallery', divGallery );
 
 	divGallery.innerHTML = htm;

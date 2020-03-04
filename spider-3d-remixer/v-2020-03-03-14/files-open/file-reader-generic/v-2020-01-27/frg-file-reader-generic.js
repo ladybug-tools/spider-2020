@@ -49,6 +49,7 @@ FRG.getMenu = function () {
 };
 
 
+
 FRG.openFile = function ( files ) {
 
 	FRG.timeStart = performance.now();

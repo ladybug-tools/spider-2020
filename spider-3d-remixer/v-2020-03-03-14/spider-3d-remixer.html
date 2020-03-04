@@ -13,7 +13,7 @@
 	<title>Spider 3D Remixer</title>
 
 
-	<link href="assets/style-2020-02-17.css" rel="stylesheet">
+	<link href="assets/style-2020-03-03.css" rel="stylesheet">
 
 </head>
 
@@ -60,6 +60,10 @@
 
 			<div id=xxxxGFLdivGetFiles></div>
 
+			<div id="FOZdivFileOpenZip"></div>
+
+			<div id=FOHdivFileOpenHash></div>
+
 		</details>
 
 
@@ -67,12 +71,14 @@
 
 			<summary class=sumMenuTitle>Browse files</summary>
 
-			<div id=GFFdivGithubFolderFiles></div>
+			<div id=xxxGFFdivGithubFolderFiles></div>
 
 
-			<div id="FOZdivFileOpenZip"></div>
+			<div id=FGBXdivFilesGbxml ></div>
+			<div id=FJSNdivFilesJson ></div>
+			<div id=FOBJdivFilesObj ></div>
 
-			<div id=FOHdivFileOpenHash></div>
+
 
 			<div id=FOOdivFileOpenObj ></div>
 
@@ -96,7 +102,6 @@
 		<details open>
 
 			<summary class=sumMenuTitle>Settings</summary>
-
 
 			<div id=TSGdivThreeSceneGround></div>
 
@@ -145,12 +150,16 @@
 	<script src="three/thrg-three-ground/v-2020-02-17/thrg-three-ground.js"></script>
 	<script src="three/thrf-three-fog/v-2020-02-20/thrf-three-fog.js"></script>
 
-	<script src="browse-files/foo-file-open-obj/v-2020-02-25/foo-file-open-obj.js"></script>
-	<script src="browse-files/gff-github-folder-files/v-2020-02-27/gff-github-folder-files.js"></script>
-	<script src="browse-files/foh-file-open-hash/v-2020-02-06/foh-file-open-hash.js"></script>
-	<script src="browse-files/file-reader-generic/v-2020-01-27/frg-file-reader-generic.js"></script>
-	<script src="browse-files/file-open-zip/v-2020-01-27/foz-file-open-zip.js"></script>
-	<script src="browse-files/gfoa-github-files-open-all/v-2020-02-27/gfoa-github-files-open-all.js"></script>
+	<script src="files-open/foo-file-open-obj/v-2020-02-25/foo-file-open-obj.js"></script>
+
+	<script src="files-browse/fgbx-files-gbxml/v-2020-03-03/fgbx-files-gbxml.js"></script>
+	<script src="files-browse/fjsn-files-json/v-2020-03-03/fjsn-files-json.js"></script>
+	<script src="files-browse/fobj-files-obj/v-2020-03-03/fobj-files-obj.js"></script>
+
+	<script src="files-open/foh-file-open-hash/v-2020-03-03/foh-file-open-hash.js"></script>
+	<script src="files-open/file-reader-generic/v-2020-01-27/frg-file-reader-generic.js"></script>
+	<script src="files-open/file-open-zip/v-2020-03-03/foz-file-open-zip.js"></script>
+	<script src="files-browse/gfoa-github-files-open-all/v-2020-02-27/gfoa-github-files-open-all.js"></script>
 
 
 
@@ -176,7 +185,7 @@
 
 			//console.log( 'event thr', event );
 
-			GFFdet.open = true;
+			//GFFdet.open = true;
 
 			THRA.addLights();
 

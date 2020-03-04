@@ -6,7 +6,7 @@
 // jshint loopfunc: true
 
 
-aSource.href = "https://github.com/ladybug-tools/spider-2020/spider-3d-remixer/";
+aSource.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-3d-remixer/";
 imgIcon.src = "assets/github-mark-32.png";
 
 sTitle.innerHTML = document.title; // ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );

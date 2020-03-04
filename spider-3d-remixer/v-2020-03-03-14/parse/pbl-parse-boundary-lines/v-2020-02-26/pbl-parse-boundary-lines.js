@@ -17,7 +17,7 @@ PBL.getMenu = function () {
 	const htm = `
 <details>
 
-	<summary class=sumMenuSecondary >
+	<summary class=sumMenuTertiary title="pbl-parse-boundary-lines.js" >
 		Boundary lines details
 
 		<span class="couponcode">??<span class="coupontooltip">

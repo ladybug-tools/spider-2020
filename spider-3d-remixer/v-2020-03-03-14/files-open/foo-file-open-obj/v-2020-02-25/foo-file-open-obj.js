@@ -45,9 +45,9 @@ FOO.getMenu = function () {
 	const htm = `
 <details id=FOOdet >
 
-	<summary class="sumMenuSecondary" >
+	<summary class="sumMenuTertiary" title="foo-file-open-obj.js" >
 
-		File Open OBJ
+		File open OBJ
 
 		<span class="couponcode">??<span class="coupontooltip">aaa bbb ccc 123 456</span></span>
 

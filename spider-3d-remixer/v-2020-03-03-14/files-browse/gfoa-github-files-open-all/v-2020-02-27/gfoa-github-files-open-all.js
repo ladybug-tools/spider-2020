@@ -23,7 +23,7 @@ GFOA.getMenu = function () {
 	const htm = `
 <details>
 
-	<summary class="sumMenuSecondary" >
+	<summary class="sumMenuTertiary" title="gfoa-github-files-open-all.js" >
 
 		GFOA GitHub Files Open All
 

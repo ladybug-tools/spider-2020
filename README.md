@@ -7,16 +7,19 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 Your 2020 3D happy place for online browsing of building data files
 
+## [Spider 3D Re-mixer Road Map]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer-roadmap.md )
 
-## [Spider 3D Remixer-roadmap]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer-roadmap.md )
+
+* A major Spider project for this year
+* A single unified set of files for developing and testing the interaction between dozens of modules
+* Gather all the Spider 3D file viewers into a single cooperative framework
+* Enable new types of reports and presentations
+* Simplify testing and adding features across the range of viewers
+* Create a standard user experience across the range of Spider apps
 
 
-## [Spider 3D Remixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
+## Latest version [Spider 3D Re-mixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
 
-* Work-in-progess
-* Many broken things; lousy user experience; no need to comment: And it works
-
-## Concept
-
-A single unified set of files for devloping and testing the interaction between dozens of modules
+* Work-in-progress
+* Many broken things; lousy user experience; no need to comment: And it just works
 

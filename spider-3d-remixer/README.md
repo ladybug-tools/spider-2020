@@ -5,14 +5,14 @@
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Spider 3D Remixer Read Me]( #README.md )
+# [Spider 3D Re-mixer Read Me]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer/README.md )
 
 <!--
 <iframe src=https://jaanga.github.io/cookbook/examples/xxxxxx/xxxxxx.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _basic-html.html_
 
 -->
-### Full Screen: [Three.js Hamburger]( https://pushme-pullyou.github.io/templates-01/threejs-hamburger/index.html )
+### Full Screen: [Spider 3D Re-ixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
 
 
 <details open >

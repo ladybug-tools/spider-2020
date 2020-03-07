@@ -14,7 +14,7 @@ const version = document.head.querySelector( "[ name=version ]" );
 sVersion.innerHTML = version ? version.content : "";
 divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
 
-var FO = {};
+
 
 THR.init();
 THR.animate();

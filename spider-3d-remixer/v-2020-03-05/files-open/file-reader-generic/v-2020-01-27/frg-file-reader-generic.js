@@ -83,6 +83,7 @@ FRG.openFile = function ( files ) {
 
 			FO.url = files.files[ 0 ].name;
 			//FO.data = files.files[ 0 ];
+			
 			FO.data =  reader.result;
 			//FRG.onLoad();
 

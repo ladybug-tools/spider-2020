@@ -65,7 +65,6 @@ FOZ.xhrRequestFileZip = function( url ) {
 
 FOZ.callbackUrlUtf16 = function ( xhr ) {
 
-
 	FO.data = xhr.target.response;
 
 	FOZ.fileOpenZip();

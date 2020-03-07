@@ -122,7 +122,6 @@ FOO.loadScripts = function () {
 FOO.testForObj = function () {
 
 	if ( location.hash.endsWith( ".obj" ) === false ) { return; }
-
 	//console.log( 'hash', location.hash );
 
 	FOO.url = location.hash.slice( 1 );
@@ -130,9 +129,7 @@ FOO.testForObj = function () {
 	FOO.fileName = location.hash.split( "/" ).pop().slice( 0, -4 );
 	//console.log( 'FOO.fileName', FOO.fileName  );
 
-	//const folder = location.hash.split( "/" )[ 7 ];
-
-	path = location.hash.slice( 1 ).split( "/" )
+	const path = location.hash.slice( 1 ).split( "/" )
 	path.pop();
 	path = path.join( "/" ) + "/";
 	//console.log( 'path', path );
@@ -161,7 +158,6 @@ FOO.loadObj = function ( fName, path, params = {} ) {
 				.setMaterials( materials )
 				.setPath( path )
 				.load( fName + '.obj', function ( obj ) {
-
 
 					object = obj;
 					object.name = fName + ".obj";
@@ -283,7 +279,6 @@ FOO.getObjects = function () {
 		} else if ( line.url.endsWith( ".obj" ) ) {
 
 			FOO.fileName = line.url.slice( 0, -4 );
-
 			//console.log( 'FOO.fileName ', FOO.fileName  );
 
 			FOO.loadObj( FOO.fileName, FOO.path + folder, line );

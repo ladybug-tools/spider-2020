@@ -25,7 +25,7 @@ FOZ.init = function () {
 FOZ.getMenu = function () {
 
 	const htm = `
-<details id=FOZdet >
+<details id=FOZdet hidden>
 
 	<summary class="sumMenuTertiary" >
 		File open ZIP
@@ -55,18 +55,12 @@ FOZ.checkForZip = function () {
 
 	const url = location.hash.slice( 1 );
 
-	// FO.fileName = location.hash.split( "/" ).pop().slice( 0, -4 );
-	// //console.log( 'FOZ.fileName', FOZ.fileName  );
-
-	// let path = location.hash.slice( 1 ).split( "/" )
-	// path.pop();
-	// path = path.join( "/" ) + "/";
-	// //console.log( 'path', path );
-
-	// //FOZ.openZip( FOZ.fileName, path );
-
 	FO.responseType = "blob";
 	FO.requestFile( url, FOZ.onLoadFile );
+
+	FOZdet.hidden = false;
+
+	FOZdet.open = true;
 
 
 };

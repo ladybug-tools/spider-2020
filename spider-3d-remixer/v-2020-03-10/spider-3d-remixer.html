@@ -231,12 +231,12 @@
 
 			THRM.init();
 
+			// dragControls = new THREE.DragControls( OM.selected, THR.camera, THR.renderer.domElement );
+			// dragControls.transformGroup = true;
+			// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+			// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
-		dragControls = new THREE.DragControls( OM.selected, THR.camera, THR.renderer.domElement );
-		dragControls.transformGroup = true;
-		dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-		dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
-
+			location.hash = FOX.urlDefaultFileXml;
 
 		};
 

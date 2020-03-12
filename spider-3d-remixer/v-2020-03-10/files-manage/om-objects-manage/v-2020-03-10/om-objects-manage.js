@@ -1,7 +1,7 @@
 // copyright 2020 Theo Armour. MIT license.
 // See pushme-pullyou/templates-01/modules/template
 // 2020-03-10
-/* globals divContent */
+/* globals OMselObjects, OMdivMessage, OMdivObjectsManage */
 // jshint esversion: 6
 // jshint loopfunc: true
 
@@ -16,14 +16,14 @@ OM.init = function () {
 
 	OM.reset();
 
-
-
 };
+
 
 
 OM.reset = function () {
 
 	OM.objects = [];
+	OM.selected = [];
 	OMselObjects.innerHTML = "";
 
 };
@@ -61,6 +61,7 @@ OM.getMenu = function () {
 };
 
 
+
 OM.selectObject = function () {
 
 	console.log( 'OMselObjects', OMselObjects.value );
@@ -68,13 +69,39 @@ OM.selectObject = function () {
 };
 
 
+
+OM.setDragControls = function ( array ) {
+
+	if ( OM.dragControls ) {
+
+		OM.dragControls.removeEventListener( 'dragstart' );
+		OM.dragControls.removeEventListener( 'dragend' );
+		OM.dragControls.deactivate();
+		OM.dragControls.dispose();
+
+
+	}
+
+		OM.dragControls = new THREE.DragControls( array, THR.camera, THR.renderer.domElement );
+
+	OM.dragControls.transformGroup = true;
+	OM.dragControls.activate();
+		OM.dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+		OM.dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
+	//}
+
+
+	console.log( "", OM.dragControls.getObjects() );
+
+};
+
+
+
 OM.getObjectsData = function () {
 
-	const gbx = THR.group.getObjectByName( "gbx" );
-
 	const objText = OM.objects.map( obj =>
-		`{ "url": "${ obj.userData.url }", "fileName: "${ obj.name }", "px": "${ obj.position.x }", "py": "${ obj.position.y }", "pz": "${ obj.position.z }", "rx": "${ obj.rotation.x }", "ry": "${ obj.rotation.y }", "rz": "${ obj.rotation.z }", "sx": "${ obj.scale.x }", "sy": "${ obj.scale.y }", "sz": "${ obj.scale.z }" }\n` ) .join( "" );
-
+		`{ "url": "${ obj.userData.url }", "fileName: "${ obj.name }", "px": "${ obj.position.x }", "py": "${ obj.position.y }", "pz": "${ obj.position.z }", "rx": "${ obj.rotation.x }", "ry": "${ obj.rotation.y }", "rz": "${ obj.rotation.z }", "sx": "${ obj.scale.x }", "sy": "${ obj.scale.y }", "sz": "${ obj.scale.z }" }\n` ).join( "" );
 
 	const txt = `${ objText }`;
 
@@ -95,7 +122,6 @@ OM.saveFile = function () {
 	a = null;
 
 };
-
 
 
 

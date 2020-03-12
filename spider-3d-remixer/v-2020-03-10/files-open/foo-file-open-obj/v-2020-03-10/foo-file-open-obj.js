@@ -1,7 +1,7 @@
 // copyright 2020 Theo Armour. MIT license.
 // See pushme-pullyou/templates-01/modules/template
 // 2020-02-13
-/* divContent */
+/* globals FOOdivFileOpenObj, THREE, THR, FO, FOOdet, OM */
 // jshint esversion: 6
 // jshint loopfunc: true
 
@@ -47,7 +47,7 @@ FOO.init = function () {
 FOO.getMenu = function () {
 
 	const htm = `
-<details id=FOOdet >
+<details id=FOOdet hidden>
 
 	<summary class="sumMenuTertiary" title="foo-file-open-obj.js" >
 
@@ -134,12 +134,24 @@ FOO.testForObj = function () {
 	FO.fileName = location.hash.split( "/" ).pop().slice( 0, -4 );
 	//console.log( 'FOO.fileName', FOO.fileName  );
 
-	let path = location.hash.slice( 1 ).split( "/" )
+	let path = location.hash.slice( 1 ).split( "/" );
 	path.pop();
 	path = path.join( "/" ) + "/";
 	//console.log( 'path', path );
 
+	//OM.selected = [];
+
 	FOO.loadObj( FO.fileName, path );
+
+	FOOdet.hidden = false;
+
+	FOOdet.open = true;
+
+	// OM.dragControls = new THREE.DragControls( THR.group.children, THR.camera, THR.renderer.domElement );
+	// OM.dragControls.transformGroup = true;
+	// OM.dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	// OM.dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
 
 };
 
@@ -166,8 +178,20 @@ FOO.loadObj = function ( fName, path, params = {} ) {
 				.setPath( path )
 				.load( fName + '.obj', function ( obj ) {
 
-					object = obj;
+					const object = obj;
 					object.name = fName + ".obj";
+
+					OM.selected = [];
+
+					OM.selected.push( object );
+
+					OM.setDragControls( OM.selected )
+
+					// dragControls = new THREE.DragControls( OM.selected, THR.camera, THR.renderer.domElement );
+					// dragControls.transformGroup = true;
+					// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+					// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
 					object.userData.url = FO.url;
 
 					//object.folder =
@@ -184,18 +208,14 @@ FOO.loadObj = function ( fName, path, params = {} ) {
 
 					THR.group.add( object );
 
-					OM.objects.push( object );
+					//OM.setDragControls();
 
-					OM.selected = [];
+					//OM.setDragControls( THR.group.children );
 
-					OM.selected.push( object );
-
-					dragControls = new THREE.DragControls( OM.selected, THR.camera, THR.renderer.domElement );
-					dragControls.transformGroup = true;
-					dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-					dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+					//OM.objects.push( object );
 
 					OMselObjects.innerHTML += `<option>${ fName }</option>`;
+
 
 				} );
 
@@ -205,47 +225,15 @@ FOO.loadObj = function ( fName, path, params = {} ) {
 
 
 
-FOO.ccccccgetObjectsData = function () {
-
-	const gbx = THR.group.getObjectByName( "gbx" );
-
-	const objText = OM.objects.map( obj =>
-		`{ "url": "${ obj.userData.url }", "fileName": "${ obj.name }", "px": "${ obj.position.x }", "py": "${ obj.position.y }", "pz": "${ obj.position.z }", "rx": "${ obj.rotation.x }", "ry": "${ obj.rotation.y }", "rz": "${ obj.rotation.z }", "sx": "${ obj.scale.x }", "sy": "${ obj.scale.y }", "sz": "${ obj.scale.z }" }\n` ) .join( "" );
-
-		//
-	const txt = `
-{ "url": "${ gbx.userData.url }" }
-${ objText }
-`;
-
-	FOOdivMessage.innerText = txt;
-
-};
-
-
-
-FOO.ccccccsaveFile = function () {
-
-	let blob = new Blob( [ FOOdivMessage.innerText ] );
-	let a = document.body.appendChild( document.createElement( 'a' ) );
-	a.href = window.URL.createObjectURL( blob );
-	a.download = 'composition-3d.json';
-	a.click();
-	//delete a;
-	a = null;
-
-};
-
 
 FOO.requestFile = function ( url ) {
 
-	xhr = new XMLHttpRequest();
+	const xhr = new XMLHttpRequest();
 	xhr.open( 'GET', url, true );
 	xhr.onerror = xhr => console.log( 'error:', xhr );
 	xhr.onprogress = xhr => console.log( 'bytes loaded:', xhr.loaded );
 	xhr.onload = xhr => FOO.callback( xhr.target.response );
 	xhr.send( null );
-
 
 };
 
@@ -264,20 +252,20 @@ FOO.callback = function ( text ) {
 
 
 
-FOO.setSelectOptions = function () {
+// FOO.setSelectOptions = function () {
 
-	options = group.children.map( ( child, i ) => `<option>${ child.name } ${ i + 1 }</option>` );
+// 	const options = group.children.map( ( child, i ) => `<option>${ child.name } ${ i + 1 }</option>` );
 
-	FOOselObjects.innerHTML = options;
+// 	FOOselObjects.innerHTML = options;
 
-};
+// };
 
 
 
 
 FOO.getObjects = function () {
 
-	for ( line of FOO.jsonLines ) {
+	for ( let line of FOO.jsonLines ) {
 
 		folder = line.folder || "quaternius/ultimate-nature-pack/";
 
@@ -289,7 +277,7 @@ FOO.getObjects = function () {
 
 			THR.elevationDelta = line.elevationDelta;
 
-			FOH.requestFileText( line.url );
+			FO.requestFile( line.url );
 
 		} else if ( line.url.endsWith( ".obj" ) ) {
 
@@ -302,8 +290,6 @@ FOO.getObjects = function () {
 
 	}
 
-	//const gbx = THR.group.getObjectByName( "gbx" );
-;
 };
 
 
@@ -332,8 +318,10 @@ FOO.summer = [
 
 FOO.addForest = function ( count = 100 ) {
 
-	gbx = THR.group.getObjectByName( "gbx" );
-	bbox = gbx ? new THREE.Box3().setFromObject( gbx ) : new THREE.Box3( 10, 10, 10 );
+	FOradOpenNew.checked = false;
+
+	//const gbx = THR.group.getObjectByName( "gbx" );
+	const bbox = new THREE.Box3().setFromObject( THR.group );
 
 	//THRbbox = new THREE.Box3().setFromObject( THR.gbx );
 
@@ -344,7 +332,7 @@ FOO.addForest = function ( count = 100 ) {
 
 	for ( let i = 0; i < count; i++ ) {
 
-		tree = FOO.summer[ Math.floor( Math.random() * FOO.summer.length ) ];
+		const tree = FOO.summer[ Math.floor( Math.random() * FOO.summer.length ) ];
 
 		if ( i % 10 === 0 ) {
 

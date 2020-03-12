@@ -47,7 +47,7 @@ GBX.getMenu = function () {
 	const htm = `
 <details id=GBXdet hidden>
 
-	<summary>
+	<summary class=sumMenuTertiary >
 
 		gbXML parser
 
@@ -65,24 +65,17 @@ GBX.getMenu = function () {
 
 
 
-//THR.group = new THREE.Group();
-
 GBX.onLoad = function () {
 
-	console.log( "FO", FO );
+	//console.log( "FO", FO );
 
-	//if ( FO.url.toLowerCase().endsWith( ".xml" ) ) {
+	GBX.parseResponse( FO.data );
 
-		GBX.parseResponse( FO.data );
+	GBXdet.hidden = false;
 
-		GBXdet.hidden = false;
-
-		GBXdet.open = true
-
-	//}
+	GBXdet.open = true;
 
 };
-
 
 
 
@@ -112,28 +105,29 @@ GBX.addMeshes = function ( meshes ) {
 
 	FO.getOpenNew();
 
-
 	THR.gbx = new THREE.Group();
-	THR.gbx.add( ...meshes );
-	THR.gbx.name = 'gbx';
+	THR.gbx.add( ... meshes );
+	THR.gbx.name = FO.fileName;
 	THR.gbx.userData.url = FO.url;
 
 	THR.group.add( THR.gbx );
 
-	OM.objects.push( THR.gbx);
+	//OM.objects.push( THR.gbx);
 
 	OMselObjects.innerHTML += `<option>${ FO.fileName }</option>`;
-
 
 	OM.selected = [];
 
 	OM.selected.push( THR.gbx );
 
-	dragControls = new THREE.DragControls( OM.selected, THR.camera, THR.renderer.domElement );
-	dragControls.transformGroup = true;
-	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+	//OM.selected = THR.group.children;
 
+	OM.setDragControls( OM.selected );
+
+	// dragControls = new THREE.DragControls( OM.selected, THR.camera, THR.renderer.domElement );
+	// dragControls.transformGroup = true;
+	// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
 	console.log( '', ( performance.now() - GBX.timeStart ).toLocaleString() );
 
@@ -143,7 +137,9 @@ GBX.addMeshes = function ( meshes ) {
 
 	THR.gbx.position.x = - THR.bbox.min.x;
 	THR.gbx.position.y = - THR.bbox.min.y;
-	THR.gbx.position.z = THR.elevationDelta || 0;
+	THR.gbx.position.z = FOX.elevationDelta || 0;
+
+	FOX.elevationDelta = 0;
 
 	THRV.zoomToFitObject();
 
@@ -161,7 +157,8 @@ time to parse: ${ ( performance.now() - GBX.timeStart ).toLocaleString() }<br>
 GBX.getElements = function () {
 
 	const reElevation = /<Elevation>(.*?)<\/Elevation>/i;
-	GBX.elevation = GBX.string.match( reElevation )[ 1 ];
+	GBX.elevation = GBX.string.match( reElevation )
+	GBX.elevation = GBX.elevation ? GBX.elevation[ 1 ] : 0;
 	//console.log( 'GBX.elevation', GBX.elevation );
 
 	const reSurface = /<Surface(.*?)<\/surface>/gi;

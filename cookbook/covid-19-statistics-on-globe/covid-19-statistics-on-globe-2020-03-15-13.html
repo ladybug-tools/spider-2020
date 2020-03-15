@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
 <meta name=description
-	content="Real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library">
+	content="View the data from John Hopkins University GitHub repository in 3D">
 <meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
 <!-- <meta name=version content="2020-03-03"> -->
 
@@ -73,6 +73,8 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 		</h2>
 
 	</header>
+<!--
+
 
 	<p>
 		<button onclick="addMeshes()">add meshes</button>
@@ -90,6 +92,7 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 	</p>
 
 	<div id="divLog"></div>
+-->
 
 </nav>
 
@@ -100,7 +103,7 @@ url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_
 url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/03-14-2020.csv"
 
 
-aSource.href = "https://github.com/ladybug-tools/spider-2020/cookbook/covid-19-statistics-on-globe/";
+aSource.href = "https://github.com/ladybug-tools/spider-2020/tree/master/cookbook/covid-19-statistics-on-globe/";
 imgIcon.src = "https://pushme-pullyou.github.io/github-mark-32.png";
 
 sTitle.innerHTML= document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );

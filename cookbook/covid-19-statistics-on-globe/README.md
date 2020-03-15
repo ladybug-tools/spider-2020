@@ -6,13 +6,12 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [covid 19 statistics on globe Read Me]( #xxxxxx/README.md )
 
-<!--
-<iframe src=https://ladybug-tools.github.io/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
-_basic-html.html_
+<
+<iframe src=https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+_covid 19 statistics on globe_
 
-### Full Screen: [ZZZZZ]( https://ladybug-tools.github.io/xxxxxx/xxxxxx.html )
+### Full Screen: [covid 19 statistics on globe]( https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ )
 
--->
 
 <details open >
 <summary>Concept</summary>
@@ -54,7 +53,7 @@ _basic-html.html_
 <details open >
 <summary>Change log </summary>
 
-### 123
+### 2020-03-15
 
 * First commit
 

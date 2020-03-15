@@ -310,9 +310,9 @@ if ( intersects.length > 0 ) {
 place: ${ line[ 0 ] }<br>
 country: ${ line[ 1 ] }<br>
 update: ${ line[ 2 ] }<br>
-cases: ${ line[ 3 ] }<br>
-deaths: ${ line[ 4 ] }<br>
-recovered: ${ line[ 5 ] }<br>
+cases: ${ Number( line[ 3 ] ).toLocaleString() }<br>
+deaths: ${ Number( line[ 4 ] ).toLocaleString() }<br>
+recovered: ${ Number( line[ 5 ] ).toLocaleString() }<br>
 `;
 
 	}

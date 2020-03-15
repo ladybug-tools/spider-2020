@@ -10,8 +10,9 @@ value='You are now in a GitHub web page view - Click this button to view this re
 <iframe src=https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _covid 19 statistics on globe_
 
-### Full Screen: [covid 19 statistics on globe]( https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ )
+### Full Screen stable: [covid 19 statistics on globe]( https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ )
 
+### Full Screen latest: [covid 19 statistics on globe]( https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/dev/ )
 
 <details open >
 <summary>Concept</summary>
@@ -22,6 +23,7 @@ _covid 19 statistics on globe_
 <details open >
 <summary>To do and wish list </summary>
 
+* Globe rotates to the lat/lon indicated by your browser location
 
 </details>
 

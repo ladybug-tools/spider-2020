@@ -3,10 +3,10 @@
 <div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/spider-2020";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
-## Spider 3D Remixer Road Map
+## Spider 3D Re-mixer Road Map
 
 
-## Prelims: [Three.js Hamburger]( https://pushme-pullyou.github.io/templates-01/threejs-hamburger/)
+## Work-in-progress: [Spider 3D Re-mixer]( https://ladybug.tools/spider-2020/spider-3d-remixer/ "Architecture is frozen music" )
 
 * Current dev stream in obscure repo
 
@@ -31,9 +31,6 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 ### Management questions
 
-* What are the naming considerations
-* What about a new repo: "Spider-2020"?
-* How to get others involved?
 
 ***
 
@@ -41,16 +38,18 @@ _The following are loose summaries of the objectives for the various modules_
 
 ## Sample files on Github browser
 
-* Concept make it easy to access and view sample files hosted on GitHub
+* Concept make it easy to access and view sample files of 3D model data hosted on GitHub
 * Access and list of names of folders and files in GitHub repositories using GitHub API
 * Sample files of the following types currently supported
 	* gbXML
 	* Honeybee Schema JSON
 	* Dragonfly Schema
 	* OBJ
-
-* To be added: Other 3D in JSON formats, RAD, STL GLTF, FBX and perhaps more
+* To be added: Other 3D in JSON formats, RAD, STL, GLTF, FBX and perhaps more
 * Updates the browser ```window.location hash``` which triggers a standard JavaScript event
+
+### Status
+
 
 
 ### Open and save files
@@ -82,6 +81,9 @@ _The following are loose summaries of the objectives for the various modules_
 * Enable projects to look pretty or to look more physically accurate
 * Access maps, images, terrain data and adjacent building data and add to assemblies
 * Enable toggles between "pretty" views and physically accurate views
+
+
+***
 
 
 ## Solar calculator and weather data visualization

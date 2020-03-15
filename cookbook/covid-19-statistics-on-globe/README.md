@@ -1,4 +1,4 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/README.html "View file as a web page." ) </span>
 
 <div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/cookbook/";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
@@ -6,7 +6,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [covid 19 statistics on globe Read Me]( #xxxxxx/README.md )
 
-<
+
 <iframe src=https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _covid 19 statistics on globe_
 

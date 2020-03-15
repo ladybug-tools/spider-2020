@@ -95,6 +95,11 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 <script>
 
+url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
+
+url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/03-14-2020.csv"
+
+
 aSource.href = "https://github.com/ladybug-tools/spider-2020/cookbook/covid-19-statistics-on-globe/";
 imgIcon.src = "https://pushme-pullyou.github.io/github-mark-32.png";
 
@@ -121,7 +126,6 @@ function init() {
 
 	scene = new THREE.Scene();
 	scene.background = new THREE.Color( 0xcce0ff );
-	//scene.fog = new THREE.Fog( 0xcce0ff, 550, 800 );
 	scene.add( camera )
 
 	renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -129,8 +133,6 @@ function init() {
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
 	renderer.outputEncoding = THREE.sRGBEncoding;
-	renderer.shadowMap.enabled = true;
-	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	controls.maxDistance = 500;
@@ -143,57 +145,15 @@ function init() {
 	window.addEventListener( 'keyup', () => sceneRotation = 0, false );
 	renderer.domElement.addEventListener( 'click', () => sceneRotation = 0, false );
 
-	addLights();
+	//addLights();
 
 	axesHelper = new THREE.AxesHelper( 100 );
 	scene.add( axesHelper );
 
-	url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
-
-	url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/03-14-2020.csv"
 
 	requestFile( url )
 
-	//addGround();
-
 	addGlobe();
-
-	//addLights();
-
-	//addMeshes();
-
-	//zoomObjectBoundingSphere();
-
-
-}
-
-
-
-
-function addLights() {
-
-	//scene.add( new THREE.AmbientLight( 0x404040 ) );
-	scene.add( new THREE.AmbientLight( 0x666666 ) );
-
-	const pointLight = new THREE.PointLight( 0xffffff, 0.1 );
-	pointLight.position.copy( camera.position );
-	camera.add( pointLight );
-
-	lightDirectional = new THREE.DirectionalLight( 0xdffffff, 0.5 );
-	lightDirectional.position.set( -50, -200, 100 );
-	lightDirectional.castShadow = true;
-	lightDirectional.shadow.mapSize.width = 1024;
-	lightDirectional.shadow.mapSize.height = 1024;
-
-	var d = 100;
-	lightDirectional.shadow.camera.left = - d;
-	lightDirectional.shadow.camera.right = d;
-	lightDirectional.shadow.camera.top = d;
-	lightDirectional.shadow.camera.bottom = - d;
-	lightDirectional.shadow.camera.far = 500;
-	scene.add( lightDirectional );
-
-	scene.add( new THREE.CameraHelper( lightDirectional.shadow.camera ) );
 
 }
 
@@ -326,7 +286,6 @@ function animate() {
 	requestAnimationFrame( animate );
 	renderer.render( scene, camera );
 	controls.update();
-	//group.rotation.z += sceneRotation / 1000;
 
 }
 

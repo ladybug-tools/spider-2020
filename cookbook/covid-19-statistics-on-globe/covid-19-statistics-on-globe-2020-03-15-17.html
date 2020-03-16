@@ -138,6 +138,10 @@ function init() {
 	window.addEventListener( 'resize', onWindowResize, false );
 	window.addEventListener( 'orientationchange', onWindowResize, false );
 	window.addEventListener( 'keyup', () => controls.autoRotate = false, false );
+	renderer.domElement.addEventListener( 'wheel', () => controls.autoRotate = false, false );
+	renderer.domElement.addEventListener( 'mousedown', () => controls.autoRotate = false, false );
+	renderer.domElement.addEventListener( 'touchstart', () => controls.autoRotate = false, false );
+
 	renderer.domElement.addEventListener( 'click', () => controls.autoRotate = false, false );
 
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );

@@ -8,7 +8,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 
 <iframe src=https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
-_covid 19 statistics on globe_
+_covid 19 statistics on globe - touch me!_
 
 ### Full Screen stable: [covid 19 statistics on globe]( https://ladybug-tools.github.io/spider-2020/cookbook/covid-19-statistics-on-globe/ )
 
@@ -17,6 +17,10 @@ _covid 19 statistics on globe_
 
 <details open >
 <summary>Concept</summary>
+
+* View the data from John Hopkins University [GitHub repository]( https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data ) in 3D
+* Entry-level code anyboy can play with
+* Displays in seconds on any device
 
 
 </details>

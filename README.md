@@ -7,6 +7,10 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 Your 2020 3D happy place for online browsing of building data files
 
+## [Spider COVID-19 Daily Cases Viewer]( https://www.ladybug.tools/spider-2020/cookbook/covid-19-statistics-on-globe )
+
+* See also [read me]( https://www.ladybug.tools/spider-2020/cookbook/covid-19-statistics-on-globe/readme.html )
+
 ## [Spider 3D Re-mixer Road Map]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer-roadmap.md )
 
 

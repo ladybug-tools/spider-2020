@@ -25,7 +25,7 @@ _covid 19 statistics on globe_
 <summary>To do and wish list </summary>
 
 * Globe rotates to the lat/lon indicated by your browser location
-* Placards over each bar showing country * cases
+* Placards over each bar showing country & cases
 * Map showing countries
 * Indicators divided into cases,deaths & recovered
 

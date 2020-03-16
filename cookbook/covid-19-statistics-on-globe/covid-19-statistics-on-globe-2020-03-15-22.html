@@ -7,7 +7,7 @@
 <meta name=description
 	content="View the data from John Hopkins University GitHub repository in 3D">
 <meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
-<!-- <meta name=version content="2020-03-03"> -->
+<!-- <meta name=version content="2020-03-15"> -->
 
 
 <title></title>
@@ -90,9 +90,6 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 <script>
 
-//url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
-//url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/03-14-2020.csv"
-
 const path = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/"
 
 aSource.href = "https://github.com/ladybug-tools/spider-2020/tree/master/cookbook/covid-19-statistics-on-globe/";
@@ -105,7 +102,8 @@ divDescription.innerHTML = document.head.querySelector( "[ name=description ]" )
 
 let lines;
 let intersected;
-let mesh, group, axesHelper, lightDirectional, cameraHelper;
+let group = new THREE.Group();
+let mesh;
 let renderer, camera, controls, scene;
 
 init();
@@ -147,16 +145,24 @@ function init() {
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 	document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 
-	const date = new Date()
-
-	const mo = ( date.getUTCMonth() + 1 ).toString().padStart( 2, "0" );
-	const da = date.getUTCDate() - 1;
-	const ye = date.getUTCFullYear();
-	const str = mo + "-" + da + "-" + ye + ".csv";
-
-	requestFile( path + str )
-
 	addGlobe();
+
+	const url = "https://api.github.com/repos/CSSEGISandData/COVID-19/contents/csse_covid_19_data/csse_covid_19_daily_reports"
+
+	requestFile( url, callbackDailyReport )
+
+}
+
+
+
+function callbackDailyReport( xhr ) {
+
+	const json = JSON.parse( xhr.target.response )
+
+	const name = json.map( json => json.name )[ json.length - 2 ]
+	//console.log( name );
+
+	requestFile( path + name, onLoad );
 
 }
 
@@ -170,25 +176,21 @@ function addGlobe( size = 50 ) {
 	const url = "maps/earth_atmos_2048.jpg";
 	var texture = new THREE.TextureLoader().load( url );
 
-	const material = new THREE.MeshBasicMaterial( { map: texture } );
+	const material = new THREE.MeshBasicMaterial( { color: 0xcce0ff, map: texture } );
 	mesh = new THREE.Mesh( geometry, material );
-	mesh.receiveShadow = true;
-	mesh.castShadow = true;
 	scene.add( mesh );
-
-	return mesh;
 
 }
 
 
 
-function requestFile( url ) {
+function requestFile( url, callback ) {
 
 	xhr = new XMLHttpRequest();
 	xhr.open( 'GET', url, true );
 	xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
-	xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
-	xhr.onload = onLoad;
+	//xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
+	xhr.onload = callback;
 	xhr.send( null );
 
 }
@@ -212,6 +214,7 @@ function onLoad( xhr ) {
 	lines.forEach( ( line, index ) => addIndicator( line, index ) );
 
 }
+
 
 
 function getStats() {
@@ -324,7 +327,6 @@ function onDocumentMouseMove ( event ) {
 			divMessage.hidden = false;
 			divMessage.style.left = event.clientX  + "px";
 			divMessage.style.top = event.clientY  + "px";
-
 			divMessage.innerHTML = `
 place: ${ line[ 0 ] }<br>
 country: ${ line[ 1 ] }<br>

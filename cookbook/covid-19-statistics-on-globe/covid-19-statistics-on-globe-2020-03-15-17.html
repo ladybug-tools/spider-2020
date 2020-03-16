@@ -87,9 +87,9 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 <script>
 
-url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
+//url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
 
-url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/03-14-2020.csv"
+//url = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/03-14-2020.csv"
 
 const path = "https://cdn.jsdelivr.net/gh/CSSEGISandData/COVID-19@master/csse_covid_19_data/csse_covid_19_daily_reports/"
 
@@ -209,7 +209,7 @@ function onLoad( xhr ) {
 	scene.add( group )
 
 	let response = xhr.target.response;
-	response = response.replace( /Korea,/, "Korea" ).replace( /Islands,/, "Islands");
+	response = response.replace( /Korea,/, "Korea" ).replace( /Virgin Islands,/, "Virgin Islands");
 
 	lines = response.split( "\n" ).map( line => line.split( "," ) ).slice( 1, -1 );
 	//console.log( 'lines', lines );

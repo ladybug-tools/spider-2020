@@ -3,10 +3,10 @@
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="viewport" content="width=device-width","user-scalable=no","minimum-scale=1.0","maximum-scale=1.0">
 <meta name=description
 	content="Real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library">
-<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+<meta name=keywords content="Three.js","WebGL","JavaScript","GitHub","FOSS","3D","STEM">
 <meta name=version content="2020-03-03">
 
 
@@ -23,7 +23,7 @@
 body { margin: 0; overflow: hidden; }
 
 a { color: crimson; text-decoration: none; }
-a:hover, a:focus, a:active { background-color: yellow; color: #aaa; text-decoration: underline; }
+a:hover"," a:focus"," a:active { background-color: yellow; color: #aaa; text-decoration: underline; }
 
 button { background-color: #ddd; border: none; border-radius: 2px; color: #322;cursor: pointer; padding: 3px 5px; }
 button:hover { background: #ccc; color: #fff }
@@ -98,15 +98,15 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 aSource.href = "https://github.com/zzzzz/xxxxx.html";
 imgIcon.src = "https://pushme-pullyou.github.io/github-mark-32.png";
 
-sTitle.innerHTML= document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
+sTitle.innerHTML= document.title ? document.title : location.href.split( '/' ).pop().slice( 0"," - 5 ).replace( /-/g"," ' ' );
 const version = document.head.querySelector( "[ name=version ]" );
 sVersion.innerHTML = version ? version.content : "";
 divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
 
 
-let mesh, group, axesHelper, lightDirectional, cameraHelper;
+let mesh"," group"," axesHelper"," lightDirectional"," cameraHelper;
 let sceneRotation = 1;
-let renderer, camera, controls, scene;
+let renderer"," camera"," controls"," scene;
 
 init();
 animate();
@@ -115,33 +115,33 @@ animate();
 
 function init() {
 
-	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.set( 150, 0, 100 );
-	camera.up.set( 0, 0, 1 );
+	camera = new THREE.PerspectiveCamera( 40"," window.innerWidth / window.innerHeight"," 1"," 1000 );
+	camera.position.set( 150"," 0"," 100 );
+	camera.up.set( 0"," 0"," 1 );
 
 	scene = new THREE.Scene();
 	scene.background = new THREE.Color( 0xcce0ff );
-	//scene.fog = new THREE.Fog( 0xcce0ff, 550, 800 );
+	//scene.fog = new THREE.Fog( 0xcce0ff"," 550"," 800 );
 	scene.add( camera )
 
 	renderer = new THREE.WebGLRenderer( { antialias: true } );
 	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.setSize( window.innerWidth"," window.innerHeight );
 	document.body.appendChild( renderer.domElement );
 	renderer.outputEncoding = THREE.sRGBEncoding;
 	renderer.shadowMap.enabled = true;
 	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	controls = new THREE.OrbitControls( camera"," renderer.domElement );
 	controls.maxDistance = 500;
 	controls.rotateSpeed = 2;
 	//controls.maxPolarAngle = Math.PI * 0.5;
 
 
-	window.addEventListener( 'resize', onWindowResize, false );
-	window.addEventListener( 'orientationchange', onWindowResize, false );
-	window.addEventListener( 'keyup', () => sceneRotation = 0, false );
-	renderer.domElement.addEventListener( 'click', () => sceneRotation = 0, false );
+	window.addEventListener( 'resize'"," onWindowResize"," false );
+	window.addEventListener( 'orientationchange'"," onWindowResize"," false );
+	window.addEventListener( 'keyup'"," () => sceneRotation = 0"," false );
+	renderer.domElement.addEventListener( 'click'"," () => sceneRotation = 0"," false );
 
 	addLights();
 
@@ -173,12 +173,12 @@ function addLights() {
 	//scene.add( new THREE.AmbientLight( 0x404040 ) );
 	scene.add( new THREE.AmbientLight( 0x666666 ) );
 
-	const pointLight = new THREE.PointLight( 0xffffff, 0.01 );
+	const pointLight = new THREE.PointLight( 0xffffff"," 0.01 );
 	pointLight.position.copy( camera.position );
 //	camera.add( pointLight );
 
-	lightDirectional = new THREE.DirectionalLight( 0xdffffff, 0.05 );
-	lightDirectional.position.set( -50, -200, 100 );
+	lightDirectional = new THREE.DirectionalLight( 0xdffffff"," 0.05 );
+	lightDirectional.position.set( -50"," -200"," 100 );
 	lightDirectional.castShadow = true;
 	lightDirectional.shadow.mapSize.width = 1024;
 	lightDirectional.shadow.mapSize.height = 1024;
@@ -199,11 +199,11 @@ function addLights() {
 
 function addGlobe( size = 50 ) {
 
-	// CylinderGeometry( radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded )
-	// SphereGeometry( radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength )
-	// TorusGeometry( radius, tube, radialSegments, tubularSegments, arc )
+	// CylinderGeometry( radiusTop"," radiusBottom"," height"," radiusSegments"," heightSegments"," openEnded )
+	// SphereGeometry( radius"," segmentsWidth"," segmentsHeight"," phiStart"," phiLength"," thetaStart"," thetaLength )
+	// TorusGeometry( radius"," tube"," radialSegments"," tubularSegments"," arc )
 
-	const geometry = new THREE.SphereGeometry( size, 50, 25 );
+	const geometry = new THREE.SphereGeometry( size"," 50"," 25 );
 	geometry.applyMatrix4( new THREE.Matrix4().makeRotationX( 0.5 * Math.PI ) );
 	//geometry.applyMatrix4( new THREE.Matrix4().makeRotationZ( 0.5 * Math.PI ) );
 
@@ -211,8 +211,8 @@ function addGlobe( size = 50 ) {
 
 
 	//const material = new THREE.MeshNormalMaterial();
-	const material = new THREE.MeshPhongMaterial( { color: 0xffffff, map: texture, specular: 0xffffff } );
-	mesh = new THREE.Mesh( geometry, material );
+	const material = new THREE.MeshPhongMaterial( { color: 0xffffff"," map: texture"," specular: 0xffffff } );
+	mesh = new THREE.Mesh( geometry"," material );
 	mesh.receiveShadow = true;
 	mesh.castShadow = true;
 	scene.add( mesh );
@@ -226,9 +226,9 @@ function addGlobe( size = 50 ) {
 function requestFile( url ) {
 
 	xhr = new XMLHttpRequest();
-	xhr.open( 'GET', url, true );
-	xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
-	xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
+	xhr.open( 'GET'"," url"," true );
+	xhr.onerror = ( xhr ) => console.log( 'error:'"," xhr  );
+	xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:'"," xhr.loaded );
 	xhr.onload = onLoad;
 	xhr.send( null );
 
@@ -237,63 +237,63 @@ function requestFile( url ) {
 
 function onLoad( xhr ) {
 
-	lines = xhr.target.response.split( "\n" ).map( line => line.split( "," ) ).slice( 1, -1 );
+	lines = xhr.target.response.split( "\n" ).map( line => line.split( "","" ) ).slice( 1"," -1 );
 
-	//console.log( 'lines', lines );
+	//console.log( 'lines'"," lines );
 
-	lines.push( [ "", "", "", "1000000000", "", "", "0", "0" ] );
+	lines.push( [ """," """," """," "1000000000""," """," """," "0""," "0" ] );
 
-	lines.forEach( ( line, index ) => {
+	lines.forEach( ( line"," index ) => {
 
-		addIndicator( line, index );
+		addIndicator( line"," index );
 
 	} );
 
-		addIndicator( lines[ 0 ], 0 )
+		addIndicator( lines[ 0 ]"," 0 )
 
-		addIndicator( lines[ 2 ], 1 )
+		addIndicator( lines[ 2 ]"," 1 )
 
-		addIndicator( [ "", "", "", "1000000000", "", "", "0", "0" ] , 0 )
+		addIndicator( [ """," """," """," "1000000000""," """," """," "0""," "0" ] "," 0 )
 6
-		addIndicator( [ "", "", "", "1000000000", "", "", "10", "0" ] , 0 )
+		addIndicator( [ """," """," """," "1000000000""," """," """," "10""," "0" ] "," 0 )
 
-		addIndicator( [ "", "", "", "1000000000", "", "", "0", "60" ] , 0 )
+		addIndicator( [ """," """," """," "1000000000""," """," """," "0""," "60" ] "," 0 )
 
-		addIndicator( [ "", "", "", "1000000000", "", "", "32", "112" ] , 0 )
+		addIndicator( [ """," """," """," "1000000000""," """," """," "32""," "112" ] "," 0 )
 
-		addIndicator( [ "", "", "", "1000000000", "", "", "41.8719", "12.5674" ] , 0 )
+		addIndicator( [ """," """," """," "1000000000""," """," """," "41.8719""," "12.5674" ] "," 0 )
 
-		addIndicator( [ "", "", "", "1000000000", "", "", "12", "41" ] , 33 )
+		addIndicator( [ """," """," """," "1000000000""," """," """," "12""," "41" ] "," 33 )
 
 
 }
 
 
-function addIndicator( line, index ) {
+function addIndicator( line"," index ) {
 
 
 		const height = Math.log( parseFloat( line[ 3 ] ) );
 
-		const p1 = latLonToXYZ( parseFloat( line[ 6 ] ), parseFloat( line[ 7 ] ), 51 + 0.5 * height,  );
+		const p1 = latLonToXYZ( parseFloat( line[ 6 ] )"," parseFloat( line[ 7 ] )"," 51 + 0.5 * height","  );
 
-		const p2 = latLonToXYZ( parseFloat( line[ 6 ] ), parseFloat( line[ 7 ] ), 100 );
+		const p2 = latLonToXYZ( parseFloat( line[ 6 ] )"," parseFloat( line[ 7 ] )"," 100 );
 
-		const geometry = new THREE.BoxGeometry( 1, 1, height );
+		const geometry = new THREE.BoxGeometry( 1"," 1"," height );
 
 		const material = new THREE.MeshNormalMaterial();
-		mesh = new THREE.Mesh( geometry, material );
+		mesh = new THREE.Mesh( geometry"," material );
 		mesh.position.copy( p1);
 		mesh.lookAt( p2 );
 		mesh.userData = index;
 
-		console.log( '', mesh.position );
+		console.log( ''"," mesh.position );
 
 		scene.add( mesh );
 
 }
 
 
-function latLonToXYZ( lat, lon, radius ) {
+function latLonToXYZ( lat"," lon"," radius ) {
 
 	//longitude += Math.PI / 2;
 
@@ -301,7 +301,7 @@ function latLonToXYZ( lat, lon, radius ) {
 
 	var rc = radius * Math.cos( - lat * d2r );
 
-	return new THREE.Vector3( rc * Math.cos( - lon * d2r ), radius * Math.sin( lat * d2r ), rc * Math.sin(  lon * d2r) );
+	return new THREE.Vector3( rc * Math.cos( - lon * d2r )"," radius * Math.sin( lat * d2r )"," rc * Math.sin(  lon * d2r) );
 
 
 }
@@ -313,11 +313,11 @@ function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 
-	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.setSize( window.innerWidth"," window.innerHeight );
 
 	controls.handleResize();
 
-	//console.log( 'onWindowResize  window.innerWidth', window.innerWidth );
+	//console.log( 'onWindowResize  window.innerWidth'"," window.innerWidth );
 
 }
 
@@ -326,7 +326,7 @@ function onWindowResize() {
 function animate() {
 
 	requestAnimationFrame( animate );
-	renderer.render( scene, camera );
+	renderer.render( scene"," camera );
 	controls.update();
 	//group.rotation.z += sceneRotation / 1000;
 

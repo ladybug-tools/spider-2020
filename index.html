@@ -4,9 +4,9 @@
 <meta charset="utf-8" >
 <title>Open Index or Markdown</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain" >
+<meta name="viewport" content="width=device-width"," initial-scale=1.0"," viewport-fit=contain" >
 <meta name="description" content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash." >
-<meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS" >
+<meta name="keywords" content="ShowDown","Markdown","AJAX","JavaScript","HTML","CSS","GitHub","FOSS" >
 
 <style>
 
@@ -14,9 +14,9 @@
 * { box-sizing: border-box; }
 body { margin: 0 auto; max-width: 80ch; }
 a { color: crimson; text-decoration: none; }
-a:hover, a:focus, a:active { text-decoration: underline; }
+a:hover"," a:focus"," a:active { text-decoration: underline; }
 aside { border: 1px solid lightgray; margin-top: 15px; padding: 2px; }
-button, input[type=button] { background-color: #eee; border: 2px #eee solid; color: #888; }
+button"," input[type=button] { background-color: #eee; border: 2px #eee solid; color: #888; }
 blockquote { background-color: #ddd; padding: 1ch; }
 center { font-size: 2ch;}
 code { background-color: #eee; }
@@ -50,7 +50,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 
 		location.hash.endsWith( ".md" ) ? onHashChange() : window.location.href = defaultFile + location.hash;
 
-		window.addEventListener( "hashchange", onHashChange, false );
+		window.addEventListener( "hashchange""," onHashChange"," false );
 
 	}
 
@@ -60,7 +60,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 		document.title = url.split( "/" ).pop();
 
 		const xhr = new XMLHttpRequest();
-		xhr.open( "get", url, true );
+		xhr.open( "get""," url"," true );
 		xhr.onload = () => divContent.innerHTML = new showdown.Converter().makeHtml( xhr.responseText );
 		xhr.send( null );
 

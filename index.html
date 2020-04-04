@@ -50,7 +50,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 
 		location.hash.endsWith( ".md" ) ? onHashChange() : window.location.href = defaultFile + location.hash;
 
-		window.addEventListener( "hashchange""," onHashChange"," false );
+		window.addEventListener( "hashchange", onHashChange, false );
 
 	}
 
@@ -60,7 +60,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 		document.title = url.split( "/" ).pop();
 
 		const xhr = new XMLHttpRequest();
-		xhr.open( "get""," url"," true );
+		xhr.open( "get", url, true );
 		xhr.onload = () => divContent.innerHTML = new showdown.Converter().makeHtml( xhr.responseText );
 		xhr.send( null );
 

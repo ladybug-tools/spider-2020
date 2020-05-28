@@ -7,6 +7,8 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 Your 2020 3D happy place for online browsing of building data files
 
+## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/gbxml-viewer/v-2020-05-28/)
+
 ## [Spider COVID-19 Daily Cases Viewer]( https://www.ladybug.tools/spider-2020/cookbook/covid-19-statistics-on-globe )
 
 * See also [read me]( https://www.ladybug.tools/spider-2020/cookbook/covid-19-statistics-on-globe/readme.html )

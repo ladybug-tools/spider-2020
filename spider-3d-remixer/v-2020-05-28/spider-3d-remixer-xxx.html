@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<meta name=description
+		content="View models in 3D in your browser using the WebGL and the Three.js JavaScript library">
+	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+
+	<title>Spider 3D Re-Mixer</title>
+
+
+	<link href="style-2020-05-28.css" rel="stylesheet">
+
+</head>
+
+<body style=margin:0;overflow:hidden;>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r114/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r114/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r114/examples/js/controls/DragControls.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+
+	<script src="three/thr-three/v-2020-02-17/thr-three.js"></script>
+	<script src="three/thra-three-add/v-2020-02-17/thra-three-add.js"></script>
+
+
+	<button id="expandButton" onclick="toggleNavMenu();">☰</button>
+
+	<nav id="navMenu">
+
+		<header id="hdrTitle">
+
+			<h2>
+				<a id=aSource target=_top title="Source code on GitHub">
+					<img id=imgIcon height=18 style=opacity:0.5;>
+				</a>
+
+				<a href="" title="Click to reload this page">
+					<span id=sTitle></span>
+					<span id=sVersion></span>
+				</a>
+
+				<span class="couponcode">??<span id=divDescription class="coupontooltip"></span></span>
+
+			</h2>
+
+		</header>
+
+		<div id=THRVdivThreejsView></div>
+
+		<hr>
+
+		<p>
+			<label>
+				<input type=radio id=FOradOpenNew name=FOradOpenNew checked > Open as new
+			</label>
+
+			<label>
+				<input type=radio name=FOradOpenNew > add to current
+			</label>
+
+		</p>
+
+		<details open>
+
+			<summary class=sumMenuTitle>Browse files</summary>
+
+			<div id=FGBXdivFilesGbxml ></div>
+
+			<div id=FJSNdivFilesJson ></div>
+
+			<div id=FOBJdivFilesObj ></div>
+
+		</details>
+
+
+		<details open>
+
+			<summary class=sumMenuTitle>Open files</summary>
+
+			<div id=FRGdivFileReaderGeneric></div>
+
+			<div id=FOdivFileOpen ></div>
+
+			<div id=OMdivObjectsManage ></div>
+
+			<hr>
+
+			<div id=FOXdivFileOpenXml ></div>
+
+			<div id="FOZdivFileOpenZip"></div>
+
+			<div id=FOJdivFileOpenJson ></div>
+
+			<div id=FOOdivFileOpenObj ></div>
+
+
+
+			<div id=GBXPdivGbxmlParser></div>
+
+			<div id=GFOAdivGithubFilesOpenAll ></div>
+
+			<div id=PBLdivParseBoundaryLines ></div>
+
+			<div id=JTHdivJsonTreeHelper ></div>
+
+			<div id=JTFdivJsonTreeFinder ></div>
+
+			<div id=JTVdivJsonTreeView style=background-color:white; ></div>
+
+			<div id=JTEdivJsonTreeEdit ></div>
+
+		</details>
+
+
+		<details open>
+
+			<summary class=sumMenuTitle>Settings</summary>
+
+			<div id=TSGdivThreeSceneGround></div>
+
+			<div id=THRFdivThreeFog></div>
+
+			<div id=STMdivSettingsThemeMenu></div>
+
+			<div id=STMDdivSettingsThemeMenuDropin></div>
+
+
+		</details>
+
+		<div id="divLog"></div>
+
+		<footer style=position:relative>
+
+			<hr>
+
+			<center title="go to top of menu"><a href=javascript:navMenu.scrollTo(0,0); style=text-decoration:none;>
+					<img src="assets/spider.ico" height=24></a>
+			</center>
+
+		</footer>
+
+	</nav>
+
+	<div id=divMain>
+
+		<main id=main>
+
+			<div id="divContent"></div>
+
+		</main>
+
+	</div>
+
+	<div id=THRMdivMessage style=position:fixed;top:2rem;right:2rem; >hiii</div>
+
+
+
+	<script src="three/thrv-three-view/v-2020-02-17/thrv-three-view.js"></script>
+
+	<script src="three/thrm-three-mouseover-2020-02-11.js"></script>
+	<script src="three/thrc-three-click-2020-02-11.js"></script>
+
+	<script src="three/thrg-three-ground/v-2020-02-17/thrg-three-ground.js"></script>
+	<script src="three/thrf-three-fog/v-2020-02-20/thrf-three-fog.js"></script>
+
+	<script src="files-browse/fgbx-files-gbxml/v-2020-03-03/fgbx-files-gbxml.js"></script>
+	<script src="files-browse/fjsn-files-json/v-2020-03-03/fjsn-files-json.js"></script>
+	<script src="files-browse/fobj-files-obj/v-2020-03-05/fobj-files-obj.js"></script>
+	<script src="files-open/file-reader-generic/v-2020-01-27/frg-file-reader-generic.js"></script>
+
+	<!--
+		<script src="files-browse/gfoa-github-files-open-all/v-2020-02-27/gfoa-github-files-open-all.js"></script>
+	-->
+
+	<script src="files-manage/om-objects-manage/v-2020-03-10/om-objects-manage.js"></script>
+	<script src="files-open/fo-file-open/v-2020-03-10/fo-file-open.js"></script>
+	<script src="files-open/foj-file-open-json/v-2020-03-10/foj-file-open-json.js"></script>
+	<script src="files-open/foo-file-open-obj/v-2020-03-10/foo-file-open-obj.js"></script>
+	<script src="files-open/fox-file-open-xml/v-2020-03-10/fox-file-open-xml.js"></script>
+	<script src="files-open/foz-file-open-zip/v-2020-03-10/foz-file-open-zip.js"></script>
+
+
+	<script src="gbx-gbxml/v-2020-03-10/gbxp-gbxml-parser.js"></script>
+
+	<script src="json-tree-view/v-2020-03-09/jtv-json-tree-view.js"></script>
+	<script src="json-tree-view/v-2020-03-09/jth-json-tree-helper.js"></script>
+	<script src="json-tree-view/v-2020-03-09/jte-json-tree-edit.js"></script>
+	<script src="json-tree-view/v-2020-03-09/jtf-json-tree-finder.js"></script>
+
+	<script src="parse/pjh-parse-json-honeybee/v-2020-03-10/pjh-parse-json-honeybee.js"></script>
+	<script src="parse/pbl-parse-boundary-lines/v-2020-03-10/pbl-parse-boundary-lines.js"></script>
+
+<!--
+<script src="settings/shm-settings-html-testing.js"></script>
+<script src=settings/theme/v-2020-01-17/stm-settings-theme-menu.js></script>
+<script src=settings/theme-dropin/v-2020-01-17/stmd-settings-theme-menu-dropin.js></script>
+-->
+
+	<script>
+
+		THR.onLoad = function ( event ) {
+
+			//console.log( 'event thr', event );
+
+			//GFFdet.open = true;
+
+			THRA.addLights();
+
+
+			THRG.toggleAxesHelper();
+
+			THRG.toggleGroundHelper();
+
+			THRF.toggleFog();
+
+			//THRA.addMeshes();
+
+			//THRV.zoomToFitObject();
+
+			//location.hash = FOH.urlDefaultFile;
+
+			THR.group = new THREE.Group();
+
+			THR.scene.add( THR.group );
+
+			THRM.init();
+
+			// dragControls = new THREE.DragControls( OM.selected, THR.camera, THR.renderer.domElement );
+			// dragControls.transformGroup = true;
+			// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+			// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
+			location.hash = FOX.urlDefaultFileXml;
+
+		};
+
+
+	</script>
+
+	<script src="spider-3d-remixer.js" ></script>
+
+</body>
+
+</html>

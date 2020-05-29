@@ -9,9 +9,14 @@ Your 2020 3D happy place for online browsing of building data files
 
 ## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/gbxml-viewer/v-2020-05-28/)
 
-## [Spider COVID-19 Daily Cases Viewer]( https://www.ladybug.tools/spider-2020/cookbook/covid-19-statistics-on-globe )
 
-* See also [read me]( https://www.ladybug.tools/spider-2020/cookbook/covid-19-statistics-on-globe/readme.html )
+
+
+## Latest version [Spider 3D Re-mixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
+
+* Work-in-progress
+* Many broken things; lousy user experience; no need to comment: And it just works
+
 
 ## [Spider 3D Re-mixer Road Map]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer-roadmap.md )
 
@@ -22,10 +27,3 @@ Your 2020 3D happy place for online browsing of building data files
 * Enable new types of reports and presentations
 * Simplify testing and adding features across the range of viewers
 * Create a standard user experience across the range of Spider apps
-
-
-## Latest version [Spider 3D Re-mixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
-
-* Work-in-progress
-* Many broken things; lousy user experience; no need to comment: And it just works
-

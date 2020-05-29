@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset = "utf-8" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
+<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name=version content="2020-03-06">
+
+<title></title>
+
+<link href="../../../assets/style-2020-03-03.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav id="navMenu" >
+
+	<header id="hdrTitle" >
+
+		<h2>
+			<a id=aSource target=_top title="Source code on GitHub" >
+				<img id=imgIcon height=18 style=opacity:0.5; >
+			</a>
+
+			<a href="" title="Click to reload this page" >
+				<span id=sTitle ></span>
+				<span id=sVersion ></span>
+			</a>
+
+			<span class="couponcode" >??<span id=divDescription class="coupontooltip" ></span></span>
+
+		</h2>
+
+	</header>
+
+	<p>
+		<button id=but onclick=setIt(); >set hash</button>
+		<label><input type=checkbox > checkbox</label>
+		<output id=out >50</output><input type=range  oninput=out.value=this.value >
+	</p>
+
+	<summary class=sumMenuTitle >
+		Summary
+		<span class="couponcode" >??<span id=divDetails class="coupontooltip" >How can I help you?</span></span>
+	</summary>
+
+	<p>aaa bbb ccc 123</p>
+
+	<div id=FOdivFileOpen ></div>
+
+	<div id=FOXdivFileOpenXml ></div>
+
+	<div id=GBXPdivGbxmlParser ></div>
+
+	<details>
+
+			<summary class=sumMenuSecondary >summary secondary </summary>
+
+			<p>abcdefghijklmnopqrstuvwxyz</p>
+
+			<details open >
+
+				<summary class=sumMenuTertiary >summary tertiary </summary>
+
+				<p>abcdefghijklmnopqrstuvwxyz</p>
+
+			</details>
+
+		</details>
+
+	</details>
+
+	<footer>
+
+		<hr>
+
+		<center title="go to top of menu" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >
+			<img src="../../../assets/spider.ico" height=24></a>
+		</center>
+
+	</footer>
+
+</nav>
+
+<main style="margin: 0 auto; max-width:50rem;">
+
+	<details>
+
+		<br>
+
+		<div id="divContent" style=position:relative >
+
+			<span class="couponcode">??? <span class="coupontooltip"> Content 2</span></span>
+
+		</div>
+
+		<span class="couponcode">??? <span class="coupontooltip"> Content 3 abc testing</span></span>
+
+	</details>
+
+	<footer style=position:relative >
+
+		<hr>
+
+		<center title="go to top of page" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >
+			<img src="../../../assets/spider.ico" height=24></a>
+		</center>
+
+	</footer>
+
+</main>
+
+<script src="../../fo-file-open/v-2020-03-09/fo-file-open.js" ></script>
+<script src="../../fox-file-open-xml/v-2020-03-09/fox-file-open-xml.js" ></script>
+
+<script src="../../../gbx-gbxml/v-2020-02-26/gbxp-gbxml-parser.js" ></script>
+
+<script>
+
+
+
+aSource.href = "https://github.com/ladybug-tools/spider-2020/";
+imgIcon.src = "https://pushme-pullyou.github.io/github-mark-32.png";
+sTitle.innerHTML= document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
+const version = document.head.querySelector( "[ name=version ]" );
+sVersion.innerHTML = version ? version.content : "";
+divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
+
+
+init();
+
+function init() {
+
+	divContent.innerHTML += `${ ( new Date ) }<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>`;
+
+	FOdet.open = true;
+	FOXdet.open = true;
+}
+
+
+function setIt() {
+
+	//divContent.innerHTML += `<p>${ ( performance.now() ) } - Howdy! </p>`;
+
+	location.hash = FOX.urlDefaultFileXml;
+
+
+}
+
+</script>
+</body>
+</html>

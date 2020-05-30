@@ -3,22 +3,26 @@
 <div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/spider-2020";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
-# Spider 2020
+# [Spider 2020]( ./index.html )
 
-Your 2020 3D happy place for online browsing of building data files
+Your 2020 3D happy place for online browsing of architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) files
 
 ## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
 
-* https://gbxml.org
+* schema: https://gbxml.org
 
 ## [Spider Pollination Viewer]( https://ladybug.tools/spider-2020/spider-pollination-viewer/)
 
-* https://github.com/ladybug-tools/dragonfly-schema
-* https://github.com/ladybug-tools/honeybee-schema
+* schema: https://github.com/ladybug-tools/dragonfly-schema
+* schema: https://github.com/ladybug-tools/honeybee-schema
+
+## [Spider Radiance Viewer]( https://ladybug.tools/spider-2020/spider-radiance-viewer/)
+
+* schema: https://radiance-online.org/
 
 ## [Spider SAM Viewer]( https://ladybug.tools/spider-2020/spider-sam-viewer/)
 
-* https://github.com/HoareLea/SAM
+* schema: https://github.com/HoareLea/SAM
 
 ## [Spider Template Viewer]( https://ladybug.tools/spider-2020/spider-template-viewer/)
 
@@ -30,7 +34,7 @@ Your 2020 3D happy place for online browsing of building data files
 * Many broken things; lousy user experience; no need to comment: And it just works
 
 
-## [Spider 3D Re-mixer Road Map]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer-roadmap.md )
+## [Road Map]( https://www.ladybug.tools/spider-2020/#spider-3d-remixer-roadmap.md )
 
 
 * A major Spider project for this year

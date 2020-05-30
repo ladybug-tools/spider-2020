@@ -8,7 +8,7 @@
 	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider Template Viewer</title>
+	<title>Spider Radiance Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-05-28.css">
 
@@ -27,7 +27,11 @@
 	<script src="three/hrt-heart-2020-05-27.js"></script>
 	
 	<script src="file-open/fo-file-open-2020-05-29.js"></script>
-	<script src="file-open/foz-file-open-zip.js"></script>
+	<script src="file-open/for-file-open-radiance-2020-05-29.js"></script>
+
+	<script src="radiance/rad-to-three.js"></script>
+	<script src="radiance/rad-converter.js"></script>
+	<script src="radiance/pop-up.js"></script>
 
 	<details id=detNavMenu >
 
@@ -48,7 +52,7 @@
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider Template Viewer
+						Spider Radiance Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -69,11 +73,6 @@
 
 				<div id=divLog ></div>
 
-				<div id=GBXdivStats ></div>
-
-				<div id="FRXdivFileReaderXml"></div>
-
-				<div id="FOZdivFileOpenZip" ></div>
 
 				<div id="divFileData"></div>
 
@@ -81,11 +80,11 @@
 
 			</details>
 
-			<details id=detView ontoggle=GXVdivTypes.innerHTML=GXV.init() >
+			<details id=detView >
 
 				<summary class="sumPrimary gmd-1" title="View selected surfaces" >view menu</summary>
 
-				<div id=GXVdivTypes ></div>
+				
 
 			</details>
 
@@ -97,13 +96,10 @@
 					<p>
 						<i>We need to decide what data should appear here = and how best to format it. Work-in-progress.</i>
 					</p>	
-				<div id=RAYdivMeshData  >
 
-					<p>
-						Selected surface data will appear here when a surface in the 3D model is clicked on or touched.
-					</p>
+				<div id=divPopUpData> </div>
 
-				</div>
+				<div id=RAYdivMeshData  ></div>
 
 				<hr>
 
@@ -146,11 +142,11 @@
 	
 
 
-	<script src="spider-template-viewer.js"></script>
+	<script src="spider-radiance-viewer.js"></script>
 
 	<script>
 
-		init(); // see script-sam-viewer.js
+		init(); // see script-radiance-viewer.js
 
 		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
@@ -158,7 +154,7 @@
 
 		} else {
 
-			detNavMenu.open = true
+			detNavMenu.open = true;
 
 		}
 

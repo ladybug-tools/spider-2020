@@ -23,15 +23,6 @@ function init() {
 
 	aTitle.innerHTML += ` ${version}`;
 
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
-
-		toggleNavMenu();
-
-	} else {
-
-		detNavMenu.open = true
-	}
-
 	THR.init();
 	THR.animate();
 

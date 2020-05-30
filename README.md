@@ -9,15 +9,22 @@ Your 2020 3D happy place for online browsing of building data files
 
 ## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
 
+* https://gbxml.org
+
 ## [Spider Pollination Viewer]( https://ladybug.tools/spider-2020/spider-pollination-viewer/)
+
+* https://github.com/ladybug-tools/dragonfly-schema
+* https://github.com/ladybug-tools/honeybee-schema
 
 ## [Spider SAM Viewer]( https://ladybug.tools/spider-2020/spider-sam-viewer/)
 
+* https://github.com/HoareLea/SAM
+
 ## [Spider Template Viewer]( https://ladybug.tools/spider-2020/spider-template-viewer/)
 
+* A template for building your own viewers
 
-
-## Latest version [Spider 3D Re-mixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
+## [Spider 3D Re-Mixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
 
 * Work-in-progress
 * Many broken things; lousy user experience; no need to comment: And it just works

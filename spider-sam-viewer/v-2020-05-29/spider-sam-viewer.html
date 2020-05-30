@@ -8,7 +8,7 @@
 	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider Template Viewer</title>
+	<title>Spider SAM Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-05-28.css">
 
@@ -48,7 +48,7 @@
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider Template Viewer
+						Spider SAM Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -69,6 +69,8 @@
 
 				<div id=divLog ></div>
 
+				<div id="FRJdivFileReaderJson"></div>
+
 				<div id=GBXdivStats ></div>
 
 				<div id="FRXdivFileReaderXml"></div>
@@ -86,6 +88,19 @@
 				<summary class="sumPrimary gmd-1" title="View selected surfaces" >view menu</summary>
 
 				<div id=GXVdivTypes ></div>
+
+				
+				<p>
+					Select individual panels. Use cursor keys to scroll through the list.<br>
+
+					<select id=selPanel oninput=SAM.showPanel(this.selectedIndex); size=10></select>
+				</p>
+
+				<div id="divTime"></div>
+
+				<div id=divLog> </div>
+
+				<hr>
 
 			</details>
 
@@ -146,7 +161,7 @@
 	
 
 
-	<script src="spider-template-viewer.js"></script>
+	<script src="spider-sam-viewer.js"></script>
 
 	<script>
 
@@ -154,6 +169,15 @@
 
 		//detNavMenu.open = window.innerWidth > 640;
 
+		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+
+			//toggleNavMenu();
+
+		} else {
+
+			detNavMenu.open = true;
+
+		}
 	</script>
 
 </body>

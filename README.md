@@ -7,8 +7,13 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 Your 2020 3D happy place for online browsing of building data files
 
-## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/gbxml-viewer/v-2020-05-28/)
+## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
 
+## [Spider Pollination Viewer]( https://ladybug.tools/spider-2020/spider-pollination-viewer/)
+
+## [Spider SAM Viewer]( https://ladybug.tools/spider-2020/spider-sam-viewer/)
+
+## [Spider Template Viewer]( https://ladybug.tools/spider-2020/spider-template-viewer/)
 
 
 

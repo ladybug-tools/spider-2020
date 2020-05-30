@@ -103,9 +103,9 @@ SAM.onLoadSam = function (xhr) {
 
 	SAM.setSceneNew(panels);
 
-	// JTV.init();
-	// JTH.init();
-	// JTF.init();
+	JTV.init();
+	JTH.init();
+	JTF.init();
 };
 
 
@@ -316,7 +316,7 @@ RAY.showFind = function (index) {
 
 	const details = JTVdivJsonTreeView.querySelectorAll("details");
 
-	details[0].open = true;
+	//details[0].open = true;
 
 	panelsHtml = Array.from(details[0].children).slice(1);
 

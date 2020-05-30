@@ -8,7 +8,7 @@
 	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider Template Viewer</title>
+	<title>Spider Open Studio Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-05-28.css">
 
@@ -48,7 +48,7 @@
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider Template Viewer
+						Spider Open Studio Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -81,7 +81,7 @@
 
 			</details>
 
-			<details id=detView ontoggle=GXVdivTypes.innerHTML=GXV.init() >
+			<details id=detView ontoggle="" >
 
 				<summary class="sumPrimary gmd-1" title="View selected surfaces" >view menu</summary>
 
@@ -94,11 +94,9 @@
 				<summary class="sumPrimary gmd-1" title="Browse the deta in the JSON file" >data menu</summary>
 				
 				<div id=GXDdivData ></div>
-
-				<p>
-					<i>We need to decide what data should appear here = and how best to format it. Work-in-progress.</i>
-				</p>	
-				
+					<p>
+						<i>We need to decide what data should appear here = and how best to format it. Work-in-progress.</i>
+					</p>	
 				<div id=RAYdivMeshData  >
 
 					<p>
@@ -148,11 +146,11 @@
 	
 
 
-	<script src="spider-template-viewer.js"></script>
+	<script src="spider-open-studio-viewer.js"></script>
 
 	<script>
 
-		init(); // see script-template-viewer.js
+		init(); // see script-open-studio-viewer.js
 
 		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 

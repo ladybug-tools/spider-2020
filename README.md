@@ -11,6 +11,11 @@ Your 2020 3D happy place for online browsing of architecture, engineering and co
 
 * schema: https://gbxml.org
 
+## [Spider Open Studio Viewer]( https://ladybug.tools/spider-2020/spider-open-studio-viewer/)
+
+* schema: https://gbxml.org
+* code: Old code - many, issues, needs work
+
 ## [Spider Pollination Viewer]( https://ladybug.tools/spider-2020/spider-pollination-viewer/)
 
 * schema: https://github.com/ladybug-tools/dragonfly-schema

@@ -5,7 +5,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [Spider 2020]( ./index.html )
 
-Your 2020 3D happy place for online browsing of architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) files
+Your 2020 3D happy place for online browsing of many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
 
 ## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
 
@@ -48,3 +48,13 @@ Your 2020 3D happy place for online browsing of architecture, engineering and co
 * Enable new types of reports and presentations
 * Simplify testing and adding features across the range of viewers
 * Create a standard user experience across the range of Spider apps
+
+## Industry Foundation Classes (IFC ) 
+
+* Your 3D happy place for [IFC]( https://en.wikipedia.org/wiki/Industry_Foundation_Classes ) files is over at [xeoLabs]( https://xeolabs.com/ ). Tell Lindsay that Theo sent you.
+
+***
+
+<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" 
+    src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico"> 
+</center>

@@ -48,5 +48,5 @@ _Spider ZZZZZ Viewer _
 
 ***
 
-<center title="hello! Click me to go up to the top" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img width=24 src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" > </a></center>
+<center title="hello! Click me to go up to the top" ><a href=javascript:window.scrollTo(0,0); > <img width=24 src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" > </a></center>
 

@@ -18,13 +18,14 @@ FO.init = function () {
 
 FO.reset = function () {
 
+	//FO.data = undefined;
 	FO.fileName = undefined;
-	FO.url = undefined;
-	FO.text = undefined;
-	FO.data = undefined;
+	FO.hostName = undefined;
+	//FO.objects = undefined;
+	//FO.text = undefined;
 	FO.string = undefined;
 	FO.timeStart = undefined;
-	FO.objects = undefined;
+	FO.url = undefined;
 	FO.xhr = new XMLHttpRequest();
 	FO.responseType = 'text';
 
@@ -42,7 +43,7 @@ FO.requestFile = function ( url, callback = FO.callback ) {
 	FO.xhr.responseType = FO.responseType;
 	FO.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
 	FO.xhr.onprogress = function( xhr ) { FO.onProgress( xhr.loaded, FO.note ); };
-	FO.xhr.onload = function( xhr ) { callback( xhr.target.response ); };
+	FO.xhr.onload = function( xhr ) { FO.string = xhr.target.response; callback( xhr.target.response ); };
 	FO.xhr.send( null );
 
 	FO.url = url;
@@ -75,13 +76,13 @@ FO.onProgress = function( size = 0, note = "" ) {
 
 	FO.fileInfo =
 	`
-	<p>
-		<span class=attributeTitle >File name</span>: <span class=attributeValue >${ FO.fileName }</span></br>
-		<span class=attributeTitle >Host</span>: <span class=attributeValue >${ FO.hostName }</span></br>
-		<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></br>
-		<span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ FO.timeToLoad } ms</span></br>
-		${ note }
-	</p>
+		<p>
+			<span class=attributeTitle >File name</span>: <span class=attributeValue >${ FO.fileName }</span></br>
+			<span class=attributeTitle >Host</span>: <span class=attributeValue >${ FO.hostName }</span></br>
+ 			<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></br>
+			<span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ FO.timeToLoad } ms</span></br>
+			${ note }
+		</p>
 	`;
 
 	divLog.innerHTML = FO.fileInfo;

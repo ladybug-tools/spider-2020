@@ -41,8 +41,8 @@ function init() {
 	//THR.addMeshes();
 	//THR.updateGroup();
 
+	FO.callback = GBX.onLoad;
 	FO.init();
-	FRA.init();
 	FOZ.init();
 
 	GBX.init();

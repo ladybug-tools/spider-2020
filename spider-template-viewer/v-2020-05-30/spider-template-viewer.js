@@ -1,8 +1,8 @@
 
-const version = "v-2020-05-28";
+const version = "v-2020-05-30";
 
 
-aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-3d-remixer/";
+aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/";
 //imgIcon.src = "assets/github-mark-32.png";
 
 //sTitle.innerHTML = document.title; // ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
@@ -12,16 +12,6 @@ aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-
 description = document.head.querySelector( "[ name=description ]" ).content;
 
 
-const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-viewer@master/sample-files/2020-04-17/";
-
-const files = [
-    "My_Mother_In_Laws_House.json",
-    "Lab_Complex.json",
-    "Urban_Model_Dragonfly.json",
-    "Urban_Model_Honeybee.json"
-];
-
-
 
 
 function init() {
@@ -29,15 +19,6 @@ function init() {
 	divDescription.innerHTML = description;
 
 	aTitle.innerHTML += ` ${version}`;
-
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
-
-		toggleNavMenu();
-
-	} else {
-
-		detNavMenu.open = true
-	}
 
 	THR.init();
 	THR.animate();
@@ -52,18 +33,23 @@ THR.onLoad = function ( event ) {
 
 	THR.addGround();
 
-	//THR.group = THR.setSceneNew();
+	THR.group = THR.setSceneNew();
 
-	//THR.addMeshes()
+	THR.addMeshes();
 
-    //THR.updateGroup( THR.group );
+    THR.updateGroup( THR.group );
     
     FO.init();
-	FOP.init();
+
+	FOT.extension = "css"; // for texting
+	FOT.init();
+
 	FOZ.init();
 
 	const target = window.self === window.top ? window : window.parent;
 
-	target.location.hash = path + files[ 1 ];
+	target.location.hash = "style-2020-05-28.css";
+
+	HRT.init();
 	
 };

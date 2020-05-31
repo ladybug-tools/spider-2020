@@ -24,42 +24,24 @@ GBX.surfaceTypes = Object.keys(GBX.colors);
 
 GBX.init = function() {
 
-	document.body.addEventListener("onloadFileXml", GBX.onLoad );
+	//document.body.addEventListener("onloadFileXml", GBX.onLoad );
 
-	window.addEventListener( "onloadFRX", GBX.onLoad, false )
+	//window.addEventListener( "onloadFRX", GBX.onLoad, false )
 };
 
 GBX.onLoad = function () {
 
-	//console.log( "FO", FO );
-
 	GBX.meshGroup = THR.setSceneNew();
 	GBX.meshGroup.name = "GBX.meshGroup";
 
-	GBX.parseResponse( FO.data );
+	GBX.parseResponse();
 
 	THR.updateGroup(GBX.meshGroup); 
-
-	// divFileData.innerHTML = `
-	// <p>
-	// File name: ${ url.split( "/" ).pop() }<br>
-	// File size:  ${ response.length.toLocaleString() }<br>
-	// Time to load: ${(
-	// 	(performance.now() - timeStart) /
-	// 	1000
-	// ).toLocaleString()} seconds<br>
-
-	// </p>`;
 }
 
-	// GBXdet.hidden = false;
-
-	// GBXdet.open = true;
-
-//};
 
 GBX.parseResponse = function (response) {
-	GBX.string = response.replace(/[\t\n\r]/gm, "");
+	GBX.string = FO.string.replace(/[\t\n\r]/gm, "");
 	//console.log( 'GBX.string', GBX.string );
 
 	GBX.getElements();

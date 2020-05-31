@@ -1,4 +1,5 @@
 // copyright 2020 Theo Armour. MIT license.
+
 /* global  */
 // jshint esversion: 6
 // jshint loopfunc: true
@@ -6,13 +7,11 @@
 
 const FO = {};
 
+
+
 FO.init = function () {
 
 	FO.reset();
-
-	if (!window.divLog) {
-		divLog = detFile.body.appendChild(document.createElement("div"));
-	}
 
 };
 
@@ -31,6 +30,8 @@ FO.reset = function () {
 };
 
 
+
+
 FO.requestFile = function ( url, callback = FO.callback ) {
 
 	//console.log( 'url', url );
@@ -42,7 +43,7 @@ FO.requestFile = function ( url, callback = FO.callback ) {
 	FO.xhr.responseType = FO.responseType;
 	FO.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
 	FO.xhr.onprogress = function( xhr ) { FO.onProgress( xhr.loaded, FO.note ); };
-	FO.xhr.onload = function( xhr ) { callback( xhr.target.response ); };
+	FO.xhr.onload = callback; //function( xhr ) { callback( xhr ); };
 	FO.xhr.send( null );
 
 	FO.url = url;
@@ -53,6 +54,7 @@ FO.requestFile = function ( url, callback = FO.callback ) {
 	const a = document.createElement( 'a' );
 	a.href = url;
 	FO.hostName = a.hostname;
+
 
 };
 
@@ -75,16 +77,16 @@ FO.onProgress = function( size = 0, note = "" ) {
 
 	FO.fileInfo =
 	`
-	<p>
-		<span class=attributeTitle >File name</span>: <span class=attributeValue >${ FO.fileName }</span></br>
-		<span class=attributeTitle >Host</span>: <span class=attributeValue >${ FO.hostName }</span></br>
-		<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></br>
-		<span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ FO.timeToLoad } ms</span></br>
-		${ note }
-	</p>
+		<p>
+			<span class=attributeTitle >File name</span>: <span class=attributeValue >${ FO.fileName }</span></br>
+			<span class=attributeTitle >Host</span>: <span class=attributeValue >${ FO.hostName }</span></br>
+ 			<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></br>
+			<span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ FO.timeToLoad } ms</span></br>
+			${ note }
+		</p>
 	`;
 
-	divLog.innerHTML = FO.fileInfo;
+	FOdivInfo.innerHTML = FO.fileInfo;
 
 };
 

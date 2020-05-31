@@ -6,9 +6,13 @@
 
 const FO = {};
 
+FO.extension = "xml";
+
 FO.init = function () {
 
 	FO.reset();
+
+	window.addEventListener("hashchange", FO.onHashChange);
 
 	if (!window.divLog) {
 		divLog = detFile.body.appendChild(document.createElement("div"));
@@ -18,17 +22,33 @@ FO.init = function () {
 
 FO.reset = function () {
 
+	divLog.innerHTML = "";
 	FO.fileName = undefined;
-	FO.url = undefined;
-	FO.text = undefined;
-	FO.data = undefined;
+	FO.hostName = undefined;
+	//FO.objects = undefined;
+	//FO.text = undefined;
 	FO.string = undefined;
 	FO.timeStart = undefined;
-	FO.objects = undefined;
+	FO.url = undefined;
 	FO.xhr = new XMLHttpRequest();
 	FO.responseType = 'text';
 
 };
+
+
+FO.onHashChange = function() {
+
+	if ( location.hash.toLowerCase().endsWith( FO.extension ) === false ) { return; }
+	console.log( 'hash', location.hash );
+	
+	//FO.reset();
+    
+	FO.timeStart = performance.now();
+
+	FO.url = parent.location.hash.slice(1);
+
+	FO.requestFile(FO.url, FO.callback);
+}
 
 
 FO.requestFile = function ( url, callback = FO.callback ) {
@@ -42,7 +62,7 @@ FO.requestFile = function ( url, callback = FO.callback ) {
 	FO.xhr.responseType = FO.responseType;
 	FO.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
 	FO.xhr.onprogress = function( xhr ) { FO.onProgress( xhr.loaded, FO.note ); };
-	FO.xhr.onload = function( xhr ) { callback( xhr.target.response ); };
+	FO.xhr.onload = function( xhr ) { FO.string = xhr.target.response; callback( xhr.target.response ); };
 	FO.xhr.send( null );
 
 	FO.url = url;
@@ -57,15 +77,6 @@ FO.requestFile = function ( url, callback = FO.callback ) {
 };
 
 
-FO.callback = function ( xhr ) {
-
-	console.log( 'xhr', xhr );
-
-	FO.onProgress( xhr.loaded, "Load complete" );
-
-};
-
-
 
 FO.onProgress = function( size = 0, note = "" ) {
 
@@ -75,13 +86,13 @@ FO.onProgress = function( size = 0, note = "" ) {
 
 	FO.fileInfo =
 	`
-	<p>
-		<span class=attributeTitle >File name</span>: <span class=attributeValue >${ FO.fileName }</span></br>
-		<span class=attributeTitle >Host</span>: <span class=attributeValue >${ FO.hostName }</span></br>
-		<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></br>
-		<span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ FO.timeToLoad } ms</span></br>
-		${ note }
-	</p>
+		<p>
+			<span class=attributeTitle >File name</span>: <span class=attributeValue >${ FO.fileName }</span></br>
+			<span class=attributeTitle >Host</span>: <span class=attributeValue >${ FO.hostName }</span></br>
+ 			<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></br>
+			<span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ FO.timeToLoad } ms</span></br>
+			${ note }
+		</p>
 	`;
 
 	divLog.innerHTML = FO.fileInfo;
@@ -90,23 +101,10 @@ FO.onProgress = function( size = 0, note = "" ) {
 
 
 
-FO.getOpenNew = function () {
+FO.callback = function ( xhr ) {
 
-	if ( FOradOpenNew.checked === true ) {
+	console.log( 'xhr', xhr );
 
-		THR.scene.remove( THR.group, THR.lines );
-
-		THR.group = new THREE.Group();
-
-		THR.lines = new THREE.Group();
-
-		THR.scene.add( THR.group, THR.lines );
-
-		OM.reset();
-
-	}
+	FO.onProgress( xhr.loaded, "Load complete" );
 
 };
-
-
-

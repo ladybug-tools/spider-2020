@@ -1,5 +1,5 @@
 
-const version = "v-2020-05-28";
+const version = "v-2020-05-30";
 
 
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-3d-remixer/";
@@ -30,15 +30,6 @@ function init() {
 
 	aTitle.innerHTML += ` ${version}`;
 
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
-
-		toggleNavMenu();
-
-	} else {
-
-		detNavMenu.open = true
-	}
-
 	THR.init();
 	THR.animate();
 
@@ -52,14 +43,11 @@ THR.onLoad = function ( event ) {
 
 	THR.addGround();
 
-	//THR.group = THR.setSceneNew();
-
-	//THR.addMeshes()
-
-    //THR.updateGroup( THR.group );
-    
     FO.init();
-	FOP.init();
+	FO.extension = "json";
+	FO.responseType = "json";
+	FO.callback = PP.onLoadJson;
+    
 	FOZ.init();
 
 	const target = window.self === window.top ? window : window.parent;

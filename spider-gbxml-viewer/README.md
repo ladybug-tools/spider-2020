@@ -46,6 +46,10 @@ Many previous versions. See
 <details open >
 <summary>Change log </summary>
 
+### 2020-05-30 ~ Theo
+
+* File reader updates
+
 ### 2020-05-29
 
 * First commit

@@ -1,9 +1,23 @@
+let size = 1;
+let line = new THREE.Line();
+let tellTale;
+
+function addTellTale( siz = 0.5 / size) { 
+
+	const geometry = new THREE.BoxBufferGeometry( siz, siz, siz );
+	const material = new THREE.MeshNormalMaterial();
+	tellTale = new THREE.Mesh( geometry, material );
+	scene.add( tellTale );
+
+}
 
 const PP = {};
 
 
 
 PP.onLoadJson = function ( json ) {
+
+	addTellTale();
 
 	//json = xhr.target.response
 	console.log( 'json', json);
@@ -71,9 +85,6 @@ PP.onLoadJson = function ( json ) {
 	//grp2.add( line.clone() );
 	//grp3.add( line.clone() );
 
-
-
-
 	const materialShades = new THREE.MeshPhongMaterial({ color: "darkgray", opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false });
 	meshShades = new THREE.Mesh( PHJ.bufferGeometry, materialShades);
 
@@ -114,6 +125,8 @@ PP.onLoadJson = function ( json ) {
 	//console.log( "phj", PHJ.group.children );
 	RAY.intersectObjects = PHJ.group.children;
 
+	RAY.addMouseMove();
+
 	//divLog.innerHTML = `time to load: ${ ( ( performance.now() - timeStart ) / 1000).toLocaleString() } seconds`;
 
 };
@@ -141,6 +154,8 @@ RAY.getHtm = function ( intersected ) {
 	addLine( vertices );
 
 	let thisRoom;
+
+	json = FO.string;
 
 	for ( let room of json.rooms ) {
 
@@ -179,8 +194,6 @@ RAY.getHtm = function ( intersected ) {
 		return "";
 
 	}
-
-
 
 };
 

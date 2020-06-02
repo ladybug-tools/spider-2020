@@ -3,11 +3,6 @@ const version = "v-2020-06-02";
 
 
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-3d-remixer/";
-//imgIcon.src = "assets/github-mark-32.png";
-
-//sTitle.innerHTML = document.title; // ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
-//const version = document.head.querySelector( "[ name=version ]" );
-///sVersion.innerHTML = version ? version.content : "";
 
 description = document.head.querySelector( "[ name=description ]" ).content;
 

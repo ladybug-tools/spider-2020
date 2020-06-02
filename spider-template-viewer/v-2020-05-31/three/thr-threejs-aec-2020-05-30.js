@@ -355,11 +355,11 @@ THR.setStats = function () {
 		divLog = detFile.body.appendChild(document.createElement("div"));
 	}
 	divLog.innerHTML = `
-	<p>
-	Three.js renderer statistics<br>
-	Draw calls: ${render.calls}<br>
-	Triangles: ${render.triangles.toLocaleString()}<br>
-	</p>`;
+<p>
+Three.js renderer statistics<br>
+Draw calls: ${render.calls}<br>
+Triangles: ${render.triangles.toLocaleString()}<br>
+</p>`;
 };
 
 THR.onWindowResize = function () {

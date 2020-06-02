@@ -19,7 +19,11 @@ FRT.readFile = function ( files ) {
 
 		FRT.event = new Event( "onloadFRT", {"bubbles": true, "cancelable": false, detail: true } );
 
-		window.addEventListener( "onloadFRT", FRT.onLoad, false )
+		window.addEventListener( "onloadFRT", FRT.onLoad, false );
+
+		FO.string = JSON.parse( FO.string )
+
+		PP.onLoadJson( FO.string );
 
 		window.dispatchEvent( FRT.event );
 

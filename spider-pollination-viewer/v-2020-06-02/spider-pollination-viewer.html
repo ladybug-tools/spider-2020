@@ -29,6 +29,7 @@
 	<script src="three/thr-threejs-aec-2020-05-30.js"></script>
 	
 	<script src="file-open/fo-file-open-2020-05-30-2150.js"></script>
+	<script src="file-open/frt-file-reader-text-2020-05-30.js"></script>
 	<script src="file-open/foz-file-open-zip.js"></script>
 	
 	
@@ -74,19 +75,11 @@
 
 				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
 
-				<div id=FOdivInfo ></div>
+				<p>
+					<input type=file id=FRTinpFile onchange=FRT.readFile(this); accept = "*" >
+				</p>
 
 				<div id=divLog ></div>
-
-				<div id=GBXdivStats ></div>
-
-				<div id="FRXdivFileReaderXml"></div>
-
-				<div id="FOZdivFileOpenZip" ></div>
-
-				<div id="divFileData"></div>
-
-				<div id="THRdivRenderStats"> </div>
 
 			</details>
 

@@ -41,9 +41,11 @@ THR.onLoad = function ( event ) {
     FO.init();
 	FO.extension = "json";
 	FO.responseType = "json";
-	FO.callback = PP.onLoadJson;
+	FO.callback = PP.onLoadJson; 
+	
+	//window.addEventListener( "onloadFRT", () => PP.onLoadJson( FO.string ) );
     
-	FOZ.init();
+	//FOZ.init();
 
 	const target = window.self === window.top ? window : window.parent;
 

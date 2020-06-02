@@ -6,9 +6,9 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [Spider Pollination Viewer Read Me]( ./readme.html )
 
-<
+
 <iframe src=https://ladybug.tools/spider-2020/spider-pollination-viewer/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
-_basic-html.html_
+_Spider Pollination Viewer _
 
 ### Full Screen: [Spider Pollination Viewer]( https://www.ladybug.tools/spider-2020/spider-pollination-viewer/ )
 
@@ -39,6 +39,12 @@ _basic-html.html_
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-06-02 ~ Theo
+
+* Add open local file capability
+* Add to footer icons
+
 
 ### 2020-05-29
 

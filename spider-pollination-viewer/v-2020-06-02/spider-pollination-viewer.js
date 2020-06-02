@@ -2,7 +2,7 @@
 const version = "v-2020-06-02";
 
 
-aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-3d-remixer/";
+aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-pollination-viewer/";
 
 description = document.head.querySelector( "[ name=description ]" ).content;
 

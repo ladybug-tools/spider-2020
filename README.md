@@ -56,7 +56,7 @@ Your 2020 3D happy place for online browsing of many of the standard architectur
 * Simplify testing and adding features across the range of viewers
 * Create a standard user experience across the range of Spider apps
 
-## Industry Foundation Classes (IFC ) 
+## Industry Foundation Classes (IFC) 
 
 * Your 3D happy place for [IFC]( https://en.wikipedia.org/wiki/Industry_Foundation_Classes ) files is over at [xeoLabs]( https://xeolabs.com/ ). Tell Lindsay that Theo sent you.
 

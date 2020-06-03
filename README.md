@@ -10,28 +10,35 @@ Your 2020 3D happy place for online browsing of many of the standard architectur
 ## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
 
 * schema: https://gbxml.org
+* [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer/)
 
 ## [Spider Open Studio Viewer]( https://ladybug.tools/spider-2020/spider-open-studio-viewer/)
 
 * schema: https://gbxml.org
 * code: Old code - many, issues, needs work
+* [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-open-studio-viewer/)
 
 ## [Spider Pollination Viewer]( https://ladybug.tools/spider-2020/spider-pollination-viewer/)
 
 * schema: https://github.com/ladybug-tools/dragonfly-schema
 * schema: https://github.com/ladybug-tools/honeybee-schema
+* [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-pollinatuion-viewer/)
 
 ## [Spider Radiance Viewer]( https://ladybug.tools/spider-2020/spider-radiance-viewer/)
 
 * schema: https://radiance-online.org/
+* [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-radiance-viewer/)
 
 ## [Spider SAM Viewer]( https://ladybug.tools/spider-2020/spider-sam-viewer/)
 
 * schema: https://github.com/HoareLea/SAM
+* [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-sam-viewer/)
 
 ## [Spider Template Viewer]( https://ladybug.tools/spider-2020/spider-template-viewer/)
 
-* A template for building your own viewers
+* A template for building your own 3D viewers
+* [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/)
+
 
 ## [Spider 3D Re-Mixer]( https://www.ladybug.tools/spider-2020/spider-3d-remixer/ )
 

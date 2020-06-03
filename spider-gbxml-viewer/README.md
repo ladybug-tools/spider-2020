@@ -6,9 +6,10 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [Spider gbXML Viewer Read Me]( ./readme.html )
 
-
+<!--@@@
 <iframe src=https://ladybug.tools/spider-2020/spider-gbxml-viewer/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _Spider gbXML Viewer_
+@@@-->
 
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
 

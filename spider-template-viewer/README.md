@@ -6,9 +6,10 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [Spider ZZZZZ Viewer Read Me]( ./readme.html )
 
-<
+<!--@@@
 <iframe src=https://ladybug.tools/spider-2020/xxxxxx/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _Spider ZZZZZ Viewer _
+@@@-->
 
 ### Full Screen: [Spider ZZZZZ Viewer]( https://www.ladybug.tools/spider-2020/xxxxxx/ )
 

@@ -11,6 +11,8 @@ const GFF = {
 GFF.iconGitHubMark = "https://ladybug.tools/spider-2020/assets/icons/mark-github.svg";
 GFF.iconInfo = `<img src=${GFF.iconGitHubMark} height=11 style=opacity:0.5 >`;
 
+GFF.extension = ".xml";
+
 GFF.items = [
 	{
 		"user": "GreenBuildingXML",
@@ -173,7 +175,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	for ( let file of files ) {
 
-		if ( file.name.toLowerCase().endsWith( '.xml' ) === false &&
+		if ( file.name.toLowerCase().endsWith( GFF.extension ) === false &&
 			file.name.toLowerCase().endsWith( '.zip' ) === false ) { continue; }
 
 		const fileName = encodeURI( file.name );

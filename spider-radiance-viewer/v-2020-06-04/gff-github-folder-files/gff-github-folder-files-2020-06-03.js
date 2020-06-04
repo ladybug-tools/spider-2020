@@ -158,12 +158,14 @@ GFF.requestFile = function ( url, callback, index ) {
 GFF.callbackGitHubMenu = function ( xhr ) {
 
 	const response = xhr.target.response;
+	//console.log( "", xhr.target.response  );
+
 	const files = JSON.parse( response );
 
 	let htm = '';
 
 	const item = GFF.items[ GFF.index ];
-	//console.log( 'item', item );
+	console.log( 'item', item );
 
 	item.urlGitHubSource = 'https://github.com/' + item.user + item.repo + '/blob/master/' + item.pathRepo;
 
@@ -173,7 +175,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	for ( let file of files ) {
 
-		if ( file.name.toLowerCase().endsWith( '.xml' ) === false &&
+		if ( file.name.toLowerCase().endsWith( GFF.extension ) === false &&
 			file.name.toLowerCase().endsWith( '.zip' ) === false ) { continue; }
 
 		const fileName = encodeURI( file.name );

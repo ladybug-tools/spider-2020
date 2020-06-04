@@ -13,13 +13,14 @@ FRT.readFile = function ( files ) {
 	const reader = new FileReader();
 	reader.onload = ( event ) => {
 
-		FO.string = reader.result;
+
+		FO.string = FO.fileType === "text" ? reader.result : JSON.parse( reader.result );
 		
 		FRT.files = files;
 
 		FRT.event = new Event( "onloadFRT", {"bubbles": true, "cancelable": false, detail: true } );
 
-		window.addEventListener( "onloadFRT", FRT.onLoad, false );
+		window.addEventListener( "onloadFRT", FRT.onLoad, false )
 
 		window.dispatchEvent( FRT.event );
 
@@ -32,7 +33,7 @@ FRT.readFile = function ( files ) {
 
 FRT.onLoad = function () {
 
-	const file = FRT.files.files[ 0 ];
+	const file = FRT.files.files[ 0 ]
 
 	divLog.innerHTML = `
 	<p>

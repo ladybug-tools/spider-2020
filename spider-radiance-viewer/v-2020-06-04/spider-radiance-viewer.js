@@ -7,7 +7,52 @@ aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-
 description = document.head.querySelector( "[ name=description ]" ).content;
 
 
+GFF.items = [
 
+	{
+		"user": "ladybug-tools",
+		"repo": "/spider-rad-resources",
+		"pathRepo": "rad-sample-files/mostapha-sample-files/",
+		"title": "RAD sample files",
+		"subTitle":
+			`Ladybug Tools / Spider
+		<a href = "https://www.ladybug.tools/spider/#gbxml-sample-files/" target = "_blank" >sample files</a >
+		on GitHub from a variety of sources`
+	},
+	{
+		"user": "ladybug-tools",
+		"repo": "/spider-rad-resources",
+		"pathRepo": "rad-sample-files/gjward1/",
+		"title": "gjward1 sample files",
+		"subTitle":
+			`Ladybug Tools / Spider
+		<a href = "https://www.ladybug.tools/spider/#gbxml-sample-files/" target = "_blank" >sample files</a >
+		on GitHub from a variety of sources`
+	},
+	{
+		"user": "ladybug-tools",
+		"repo": "/spider-rad-resources",
+		"pathRepo": "rad-sample-files/office/furniture/",
+		"title": "Office sample files",
+		"subTitle":
+			`Office 
+		<a href = "https://www.ladybug.tools/spider/#gbxml-sample-files/" target = "_blank" >sample files</a >
+		on GitHub from a variety of sources`
+	},
+	{
+		"user": "ladybug-tools",
+		"repo": "/spider-rad-resources",
+		"pathRepo": "rad-sample-files/various-sources/",
+		"title": "Various sources sample files",
+		"subTitle":
+			`Ladybug Tools / Spider
+		<a href = "https://www.ladybug.tools/spider/#gbxml-sample-files/" target = "_blank" >sample files</a >
+		on GitHub from a variety of sources`
+	}
+
+];
+
+GFF.extension = ".rad"
 
 
 function init() {
@@ -15,6 +60,8 @@ function init() {
 	divDescription.innerHTML = description;
 
 	aTitle.innerHTML += ` ${version}`;
+
+	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
 
 	THR.init();
 
@@ -30,16 +77,19 @@ THR.onLoad = function ( event ) {
 
 	THR.addGround();
 
+	THR.scene.remove( RAD.meshes, RAD.edges );
+
 	THR.group = THR.setSceneNew();
 
 	//THR.addMeshes()
 
-    //THR.updateGroup( THR.group );
+    
     
 	FO.init();
 	FO.extension = ".rad";
 	FO.callback = onLoadRAD;
 
+	window.addEventListener( "onloadFRT", onLoadRAD, false );
 
 	RAD.json = { 'surfaces': [], 'materials': [], 'other': [] };
 
@@ -51,11 +101,20 @@ THR.onLoad = function ( event ) {
 
 	FO.onHashChange();
 
-	HRT.init();
+	//HRT.init();
 	
 };
 
 function onLoadRAD() {
+
+	THR.scene.remove( RAD.meshes, RAD.edges );
+
+	RAD.json = { 'surfaces': [], 'materials': [], 'other': [] };
+
+	THR.group = THR.setSceneNew();
+
+
+	//THR.updateGroup( THR.group );
 
 	const json = RAD.addDataFile( FO.string );
 	//console.log( 'json', json );

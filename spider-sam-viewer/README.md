@@ -13,6 +13,7 @@ _Spider SAM Viewer_
 ### Full Screen: [Spider SAM Viewer]( https://www.ladybug.tools/spider-2020/spider-sam-viewer/ )
 
 
+
 <details open >
 <summary>Concept</summary>
 
@@ -22,6 +23,7 @@ _Spider SAM Viewer_
 <details open >
 <summary>To do and wish list </summary>
 
+* 2020-06-04 ~ Nor showing new files correctly
 
 </details>
 
@@ -39,6 +41,12 @@ _Spider SAM Viewer_
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-06-04 ~ Theo
+
+* Update to latest footer and style
+* Add GFF
+* Json Tree View Fixes
 
 ### 2020-05-29
 

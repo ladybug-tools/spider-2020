@@ -8,7 +8,7 @@
 	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider Template Viewer</title>
+	<title>Spider SAM Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-06-03.css">
 
@@ -26,12 +26,15 @@
 	<script src="three/ray-raycaster-sam-2020-05-27.js"></script>
 	<script src="three/hrt-heart-2020-05-27.js"></script>
 	
-	<script src="file-open/fo-file-open-2020-06-03.js"></script>
-	<script src="file-open/fot-file-open-text-2020-05-30.js"></script>
-	<script src="file-open/frt-file-reader-text-2020-05-30.js"></script>
-	<script src="file-open/foz-file-open-zip-2020-05-30.js"></script>
+	<script src="file-open/fo-file-open-2020-05-30-2150.js"></script>
+	<script src="file-open/foz-file-open-zip.js"></script>
 
-	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-03.js"></script>
+	<script src="json-tree-view/jtv-json-tree-view-2020-01-24.js"></script>
+	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
+	<script src="json-tree-view/jth-json-tree-helper-2020-01-24.js"></script>
+	<script src="json-tree-view/jtf-json-tree-finder-2020-02-10.js"></script>
+
+	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-04.js"></script>
 
 	<details id=detNavMenu >
 
@@ -42,17 +45,19 @@
 			<header id="hdrTitle">
 
 				<h2>
+<!--
 
-					<a id=aGlitch class=aButton href="" target="_top" title="Source code on Glitch">
-						<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg">
-					</a>
+	<a id=aGlitch class=aButton href="" target="_top" title="Source code on Glitch">
+		<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg">
+	</a>
+-->
 
 					<a id=aGithub href="" target="_top" title="Source code on GitHub">
 						<img src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg?v=1589095846856">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider Template Viewer
+						Spider SAM Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -69,11 +74,21 @@
 
 				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
 
-				<p>
-					<input type=file id=FRTinpFile onchange=FRT.readFile(this); accept = "*" >
-				</p>
+				<div id=FOdivInfo ></div>
 
 				<div id=divLog ></div>
+
+				<div id="FRJdivFileReaderJson"></div>
+
+				<div id=GBXdivStats ></div>
+
+				<div id="FRXdivFileReaderXml"></div>
+
+				<div id="FOZdivFileOpenZip" ></div>
+
+				<div id="divFileData"></div>
+
+				<div id="THRdivRenderStats"> </div>
 
 			</details>
 
@@ -88,30 +103,45 @@
 				<div id=GFFdivFileInfo></div>
 
 			</details>
-			
-			<details id=detView ontoggle="" >
 
-				<summary class="sumPrimary gmd-1" title="View selected items" >view menu</summary>
+			<details id=detView ontoggle=GXVdivTypes.innerHTML=GXV.init() >
 
-				<div id=divView ></div>
+				<summary class="sumPrimary gmd-1" title="View selected surfaces" >view menu</summary>
+
+				<div id=GXVdivTypes ></div>
+
+				
+				<p>
+					Select individual panels. Use cursor keys to scroll through the list.<br>
+
+					<select id=selPanel oninput=SAM.showPanel(this.selectedIndex); size=10></select>
+				</p>
+
+				<div id="divTime"></div>
+
+				<div id=divLog> </div>
+
+				<hr>
 
 			</details>
 
 			<details id=detData  >
 
-				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
+				<summary class="sumPrimary gmd-1" title="Browse the deta in the JSON file" >data menu</summary>
 				
 				<div id=GXDdivData ></div>
-
-				<p>
-					<i>We need to decide what data should appear here = and how best to format it. Work-in-progress.</i>
-				</p>	
-				
+					<p>
+						<i>We need to decide what data should appear here = and how best to format it. Work-in-progress.</i>
+					</p>	
 				<div id=RAYdivMeshData  >
 
-					<p>
-						Selected surface data will appear here when a surface in the 3D model is clicked on or touched.
-					</p>
+					<div id="JTHdivJsonTreeHelper" ></div>
+				
+					<div id="JTFdivJsonTreeFinder" style="margin: 1ch 0;""></div>
+	
+					<div id="vvvJTVdivJsonTreeView" ></div>
+	
+					<div id="JTVdivJsonTree"></div>
 
 				</div>
 
@@ -161,8 +191,8 @@
 				<div> <button class="butSetView" onclick="THR.axesHelper.visible=!THR.axesHelper.visible" >axes</button></div>
 			</div>
 		</div>
-
-		<button onclick="onclick="alert( 'What do you need to see here?' );" title="Show all surfaces" class=ftrButton>&sdotb;</button>
+<!-- note the special -->
+		<button onclick="SAM.setSceneNew(SAM.panels);" title="Show all surfaces" class=ftrButton>&sdotb;</button>
 	
 		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
 
@@ -170,11 +200,13 @@
 	
 
 
-	<script src="spider-template-viewer.js"></script>
+	<script src="spider-sam-viewer.js"></script>
 
 	<script>
 
-		init(); // see script-template-viewer.js
+		init(); // see script-sam-viewer.js
+
+		//detNavMenu.open = window.innerWidth > 640;
 
 		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
@@ -182,10 +214,9 @@
 
 		} else {
 
-			detNavMenu.open = true
+			detNavMenu.open = true;
 
 		}
-
 	</script>
 
 </body>

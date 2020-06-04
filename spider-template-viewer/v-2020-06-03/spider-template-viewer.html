@@ -28,8 +28,8 @@
 	
 	<script src="file-open/fo-file-open-2020-06-03.js"></script>
 	<script src="file-open/fot-file-open-text-2020-05-30.js"></script>
-	<script src="file-open/frt-file-reader-text-2020-05-30.js"></script>
 	<script src="file-open/foz-file-open-zip-2020-05-30.js"></script>
+	<script src="file-open/fr-file-reader-2020-06-04.js"></script>
 
 	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-03.js"></script>
 
@@ -43,9 +43,9 @@
 
 				<h2>
 
-					<a id=aGlitch class=aButton href="" target="_top" title="Source code on Glitch">
+					<!-- <a id=aGlitch class=aButton href="" target="_top" title="Source code on Glitch">
 						<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg">
-					</a>
+					</a> -->
 
 					<a id=aGithub href="" target="_top" title="Source code on GitHub">
 						<img src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg?v=1589095846856">
@@ -132,7 +132,7 @@
 	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
 
 
-	<!-- standard footer for THR ~ 2020-06-03-->
+	<!-- standard footer for THR ~ 2020-06-04-->
 	<footer>
 
 		<div class=divSetView >
@@ -151,7 +151,6 @@
 			<button onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" class=ftrButton>&circlearrowright;</button>
 			<div class="divSetViewButtons" >
 				<!--
-
 					<div> <button class="butSetView" onclick="THR.setCameraPosition(200,0,0);">right</button></div>
 					<div> <button class="butSetView" onclick="THR.setCameraPosition(-200,0,0);">left</button></div>
 					<div> <button class="butSetView" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
@@ -162,7 +161,7 @@
 			</div>
 		</div>
 
-		<button onclick="onclick="alert( 'What do you need to see here?' );" title="Show all surfaces" class=ftrButton>&sdotb;</button>
+		<button onclick="onclick=alert( 'What do you need to see here?' );" title="Show all surfaces" class=ftrButton>&sdotb;</button>
 	
 		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
 

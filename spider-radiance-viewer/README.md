@@ -40,6 +40,11 @@ _basic-html.html_
 <details open >
 <summary>Change log </summary>
 
+### 2020-06-04 ~ Theo
+
+* Update footer and style
+
+
 ### 2020-05-29
 
 * First commit

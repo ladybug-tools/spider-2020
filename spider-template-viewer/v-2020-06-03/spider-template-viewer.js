@@ -38,11 +38,14 @@ THR.onLoad = function ( event ) {
 	FO.extension = ".md";
 	FO.responseType = "text";
 
+	window.addEventListener( "onloadFRT", FO.callback, false );
+	
 	const target = window.self === window.top ? window : window.parent;
 
 	target.location.hash = target.location.hash ? target.location.hash : "README.md";
 
 	FO.onHashChange();
+
 
 	HRT.init();
 	

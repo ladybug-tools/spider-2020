@@ -164,11 +164,12 @@ input[type="range"]::-webkit-slider-thumb {
 	position: absolute;
 }
 
-#divSetView {
+.divSetView {
 	display: inline-block;
 	position: relative;
 }
-#divSetViewButtons {
+
+.divSetViewButtons {
 	display: none;
 	position: absolute;
 	left: 1rem;
@@ -176,8 +177,11 @@ input[type="range"]::-webkit-slider-thumb {
 	width:3rem;
 }
 
+.butSetView {
+	width: 3rem;
+}
 
-#divSetView:hover > #divSetViewButtons {
+.divSetView:hover > .divSetViewButtons {
 	display: block;
 }
 

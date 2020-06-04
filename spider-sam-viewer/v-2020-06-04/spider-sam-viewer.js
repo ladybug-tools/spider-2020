@@ -66,8 +66,6 @@ function init() {
 	THR.animate();
 
 
-
-
 }
 
 
@@ -80,28 +78,20 @@ THR.onLoad = function ( event ) {
 
 	THR.addGround();
 
-	HRT.init();
-
 	FO.init();
 	FO.extension = "json";
 	FO.responseType = "json";
 	FO.callback = SAM.onLoadSam;
 
+	window.addEventListener( "onloadFRT", SAM.onLoadSam, false );
+
 	const target = window.self === window.top ? window : window.parent;
 
-	target.location.hash = urlJsonDefault;
+	target.location.hash = target.location.hash ? target.location.hash : urlJsonDefault;
 
-	// THR.group = THR.setSceneNew();
+	FO.onHashChange();
 
-    // THR.updateGroup( THR.group );
-    
-    // FO.init();
-
-	// FOZ.init();
-
-	// const target = window.self === window.top ? window : window.parent;
-
-	// target.location.hash = "";
+	//HRT.init();
 	
 };
 
@@ -116,6 +106,8 @@ SAM.onLoadSam = function () {
 	SAM.panels = panelsJson.flatMap((panel, index) => SAM.getPanel(index));
 
 	SAM.setSceneNew(SAM.panels);
+
+	
 
 	JTV.init();
 	JTH.init();
@@ -137,6 +129,8 @@ SAM.setSceneNew = function (shapes = []) {
 	RAY.intersectObjects = shapes;
 
 	RAY.addMouseMove();
+
+	FO.onProgress( FO.string.length, "Load complete" );
 };
 
 SAM.getPanel = function (index) {

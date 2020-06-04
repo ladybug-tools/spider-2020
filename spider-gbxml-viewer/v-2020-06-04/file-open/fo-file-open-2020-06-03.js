@@ -39,7 +39,7 @@ FO.reset = function () {
 FO.onHashChange = function() {
 
 	if ( location.hash.toLowerCase().endsWith( FO.extension ) === false ) { return; }
-	console.log( 'hash', location.hash );
+	//console.log( 'hash', location.hash );
 	
 	//FO.reset();
     

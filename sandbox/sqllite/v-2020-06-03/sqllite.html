@@ -248,17 +248,9 @@ function onLoad( response ) {
 
 	}
 				
-	while (tables.step()) {
-		
-		var rowObj = tables.getAsObject();
-		var name = rowObj.name;
-		options += '<option value="' + name + '">' + name + '</option>';
-
-	}
 
 	selTable.innerHTML = options;
 
-		
 	console.log( "tables", tables );
 
 }

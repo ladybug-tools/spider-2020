@@ -6,7 +6,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 # [Spider sqlLite Viewer Read Me]( ./readme.html )
 
 
-### [Spider sqlLite ]( https://ladybug.tools/spider-2020/sandbox/sqllite/ )
+### [Spider sqlLite Viewer]( https://ladybug.tools/spider-2020/sandbox/sqllite/ )
 
 ## Links
 

@@ -14,6 +14,7 @@ Path to use to import to Replit:
 * https://www.sqlitetutorial.net/sqlite-sample-database/
 * http://inloop.github.io/sqlite-viewer/
 * https://github.com/inloop/sqlite-viewer
+* https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs
 
 
 pollination
@@ -21,6 +22,10 @@ pollination
 * https://github.com/ladybug-tools/honeybee-energy/tree/master/tests/result
 * https://github.com/ladybug-tools/honeybee-energy/blob/master/tests/result/eplusout_hourly.sql
 * https://github.com/ladybug-tools/honeybee-schema/issues/123
+
+sql
+
+* https://www.w3schools.com/sql/default.asp
 
 ## Change log
 

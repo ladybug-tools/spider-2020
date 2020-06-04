@@ -6,8 +6,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 # [Spider sqlLite Viewer Read Me]( ./readme.html )
 
 
-
-Path to use to import to Replit:
+### [Spider sqlLite ]( https://ladybug.tools/spider-2020/sandbox/sqllite/ )
 
 ## Links
 

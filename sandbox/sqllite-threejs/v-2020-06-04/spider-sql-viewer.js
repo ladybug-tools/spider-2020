@@ -2,7 +2,7 @@
 const version = "v-2020-06-04";
 const description = document.head.querySelector( "[ name=description ]" ).content;
 
-aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/sqllite/spider-sql-viewer/";
+aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/sqllite-threejs/";
 
 
 GFF.extension = ".sql";

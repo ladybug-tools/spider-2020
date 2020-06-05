@@ -11,8 +11,6 @@ const GFF = {
 GFF.iconGitHubMark = "https://ladybug.tools/spider-2020/assets/icons/mark-github.svg";
 GFF.iconInfo = `<img src=${GFF.iconGitHubMark} height=11 style=opacity:0.5 >`;
 
-GFF.extension = ".xml";
-
 GFF.items = [
 	{
 		"user": "GreenBuildingXML",

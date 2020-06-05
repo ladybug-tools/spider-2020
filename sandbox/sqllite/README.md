@@ -26,6 +26,11 @@ sql
 
 * https://www.w3schools.com/sql/default.asp
 
+Use examples here to find out how to use latest version
+
+* https://sql-js.github.io/sql.js/index.html
+
+
 ## Change log
 
 ### 2020-06-03 ~ Theo

@@ -2,7 +2,7 @@
 const version = "v-2020-06-03";
 const description = document.head.querySelector( "[ name=description ]" ).content;
 
-aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/";
+aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/csv-threejs/";
 
 
 count = 0;

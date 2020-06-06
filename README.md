@@ -31,9 +31,9 @@ Your 2020 3D happy place for online browsing of many of the standard architectur
 
 ## [Spider SAM Viewer]( https://ladybug.tools/spider-2020/spider-sam-viewer/)
 
-* 3D viewer for [Hoare Lee ]( https://hoarelea.com/" ) Sustainable Analytical Model (SAM) JSON files
+* 3D viewer for [Hoare Lea ]( https://hoarelea.com/" ) Sustainable Analytical Model (SAM) JSON files
 * Schema: https://github.com/HoareLea/SAM
-* Hoare Lee fork: https://github.com/HoareLea/sam-viewer
+* Hoare Lea fork: https://github.com/HoareLea/sam-viewer
 * [Spider SAM Viewer Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-sam-viewer/)
 
 ## [Spider Template Viewer]( https://ladybug.tools/spider-2020/spider-template-viewer/)

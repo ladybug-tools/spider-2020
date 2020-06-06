@@ -18,6 +18,10 @@ _Spider SAM Viewer_
 <details open >
 <summary>Concept</summary>
 
+* 3D viewer for [Hoare Lee ]( https://hoarelea.com/" ) Sustainable Analytical Model (SAM) JSON files
+* Schema: https://github.com/HoareLea/SAM
+* Hoare Lee fork: https://github.com/HoareLea/sam-viewer
+* [Spider SAM Viewer Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-sam-viewer/)
 
 </details>
 
@@ -42,6 +46,11 @@ _Spider SAM Viewer_
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-06-06 ~ Theo
+
+* Bring all support files and style sheet up to date
+* Update readme
 
 ### 2020-06-04 ~ Theo
 

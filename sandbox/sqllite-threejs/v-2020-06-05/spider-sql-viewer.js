@@ -110,6 +110,8 @@ SSQL.onLoad = function( response ) {
 
 	console.log( "tables", SSQL.tables );
 
+	SSQL.getDictionary();
+
 };
 
 SSQL.getCount = function( name ) {
@@ -125,8 +127,31 @@ SSQL.getCount = function( name ) {
 
 }
 
-SSQL.getSelect = function( name = "Surfaces" ) {
+SSQL.getDictionary = function() {
 
+	let sel = SSQL.database.prepare( "SELECT * FROM ReportDataDictionary" );
+
+	// console.log( "sel", sel );
+
+	SSQL.dict = [];
+	let count = 0;
+
+	while (sel.step()) {
+
+		const rowObj = sel.getAsObject();
+		//console.log( "rowObj", rowObj );
+		const Name = rowObj.Name;
+		ReportDataDictionaryIndex = rowObj.ReportDataDictionaryIndex;
+		const KeyValue = rowObj.KeyValue;
+
+		SSQL.dict.push( { ReportDataDictionaryIndex, KeyValue,  Name } );
+
+	}
+
+	console.log( "", SSQL.dict );
+}
+
+SSQL.getSelect = function( name = "Surfaces" ) {
 
 	let sel = SSQL.database.prepare( "SELECT * FROM " + name );
 
@@ -154,10 +179,125 @@ SSQL.getSelect = function( name = "Surfaces" ) {
 	
 	if ( name === "Surfaces" ) { SSQL.drawSurfaces(); }
 	if ( name === "Zones" ) { SSQL.drawZones(); }
+	if ( name === "ReportData" ) { SSQL.drawReportData();}
+
 
 
 }
 
+SSQL.drawReportData = function() {
+
+	THR.group = THR.setSceneNew( THR.group );
+
+	THR.scene.fog.far = 5000;
+
+	THR.camera.position.set( 500, 500, 500 )
+
+	const sel = SSQL.database.prepare( "SELECT * FROM ReportData");
+
+	console.log( "sel", sel );
+
+	let htm = "";
+
+	SSQL.reportObjs = [];
+
+	while (sel.step()) {
+
+		const rowObj = sel.getAsObject();
+		//var name = rowObj.name;
+
+		SSQL.reportObjs.push( rowObj );
+
+	}				
+	console.log( "reportObjs", SSQL.reportObjs );
+
+	let reports = [];
+
+	for ( let index = 0; index < 56; index ++ ) {
+
+		const report = [];
+
+		for( let timeIndex = 0; timeIndex < 168; timeIndex ++ ) {
+
+			report.push( SSQL.reportObjs[ 56 * timeIndex + index].Value )
+
+		}
+
+		drawItems( report, index  );
+
+		reports.push( report);
+
+	}
+
+	//console.log( "reports", reports );
+
+	
+	reportNamesIndexes = SSQL.reportObjs.slice( 0, 56 ).map( obj => obj.ReportDataDictionaryIndex );
+
+	SSQL.reportTitles = reportNamesIndexes.map( index => SSQL.dict.find( item => index === item.ReportDataDictionaryIndex ))
+
+	console.log( "reportTitles", SSQL.reportTitles);
+
+	for ( let i = 0; i < SSQL.reportTitles.length; i++ ) {
+		addText( SSQL.reportTitles[ i ].Name , new THREE.Vector3( 80, i * 15 - 200, 20 ) );
+	}
+
+};
+
+
+function addText( text = "Hello world!\n123", position = new THREE.Vector3() ) {
+
+	textMesh = new troika_3d_text.TextMesh();
+
+	THR.scene.add(textMesh);
+
+	// set properties to configure:
+	textMesh.text = text;
+	textMesh.fontSize = 20;
+	textMesh.rotation.x = 0.5 * Math.PI;
+	textMesh.position.copy( position )
+	textMesh.color = 0xffffff * Math.random()
+
+	// be sure to call sync() after all properties are set to update the rendering:
+	//textMesh.sync();
+
+  }
+
+
+function drawItems( items, index  ) {
+
+	//console.log( "items", items );
+	const min = Math.min( ... items );
+
+	const max = Math.max( ... items );
+
+	//console.log( "", min );
+
+	const scale = 1; // index % 2 === 0 ? 2: 0.5;
+
+	const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random(), specular: 0xffffff });
+
+	count = 0;
+
+	meshes = items.slice( 1 ).map( (item, x ) => {
+
+		const geometry = new THREE.BoxGeometry( 1, 10, scale * 40 *  ( item - min ) / ( max - min ));
+
+		//const material = new THREE.MeshNormalMaterial();
+		mesh = new THREE.Mesh(geometry, material);
+		mesh.receiveShadow = true;
+		mesh.castShadow = true;
+		mesh.userData.index = count ++;
+
+		mesh.position.set( x - 100, index * 15 - 200, scale * 20 * ( item - min ) / ( max - min ));
+ 
+		return mesh;
+		
+	} );
+
+	THR.group.add( ... meshes );
+	
+} 
 
 SSQL.drawSurfaces = function() {
 
@@ -231,7 +371,6 @@ SSQL.drawZones = function() {
 		const x = obj.MaximumX - obj.MinimumX;
 		const y = obj.MaximumY - obj.MinimumY;
 		const z = obj.MaximumZ - obj.MinimumZ;
-
 
 		const geometry = new THREE.BoxGeometry( x, y, z);
 		//geometry.applyMatrix4( new THREE.Matrix4().makeScale( obj.Width, obj.Height, 1 ) );

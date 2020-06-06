@@ -170,7 +170,7 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 
 		scene.remove(cameraHelper);
 		cameraHelper = new THREE.CameraHelper(THR.lightDirectional.shadow.camera);
-		scene.add(cameraHelper);
+		//scene.add(cameraHelper);
 	}
 
 	let event = new Event("onresetthree", { bubbles: true, cancelable: false, detail: true });
@@ -282,7 +282,7 @@ THR.addLights = function () {
 	lightDirectional.shadow.camera.far = 500;
 	scene.add(lightDirectional);
 
-	scene.add(new THREE.CameraHelper(lightDirectional.shadow.camera));
+	//scene.add(new THREE.CameraHelper(lightDirectional.shadow.camera));
 
 	THR.lightDirectional = lightDirectional;
 };

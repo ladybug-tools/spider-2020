@@ -131,8 +131,6 @@ function drawItems( items, index  ) {
 	} );
 
 	THR.group.add( ... meshes );
-
-
 } 
 
 function addText( text = "Hello world!\n123", position = new THREE.Vector3() ) {

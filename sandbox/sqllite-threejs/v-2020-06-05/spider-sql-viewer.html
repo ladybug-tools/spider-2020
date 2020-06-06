@@ -21,6 +21,10 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.27.0/dist/textmesh-standalone.umd.min.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
 	
 	<script src="three/thr-threejs-aec-2020-06-03.js"></script>
@@ -102,7 +106,13 @@
 				
 				<p><select id=selTable oninput=SSQL.getSelect(this.value); size=40 style=width:100%; ></select></p>
 
-				<p><button onclick=SSQL.drawZones(selTable.value) >draw zones</button> <span id=spnCount ></span></p>
+				<p>
+					<button onclick=SSQL.drawReportData() >draw report data </button>
+
+					<button onclick=SSQL.drawZones() >draw zones</button>
+				
+					<button onclick=SSQL.drawSurfaces() >draw surfaces</button>
+				</p>
 		
 
 			</details>

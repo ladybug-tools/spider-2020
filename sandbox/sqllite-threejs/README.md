@@ -40,7 +40,12 @@ _basic-html.html_
 <details open >
 <summary>Change log </summary>
 
-### 123
+### 2020-06-05 ~ Theo
+
+* Add drawZones
+* Add draw reportData
+
+### 2020-06-04
 
 * First commit
 

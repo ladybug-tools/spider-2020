@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="en" >
+<html lang=en >
 <head>
 <meta charset="utf-8" >
 <title>Open Index or Markdown</title>
@@ -18,7 +18,7 @@ a:hover, a:focus, a:active { text-decoration: underline; }
 aside { border: 1px solid lightgray; margin-top: 15px; padding: 2px; }
 button, input[type=button] { background-color: #eee; border: 2px #eee solid; color: #888; }
 blockquote { background-color: #ddd; padding: 1ch; }
-center { text-decoration:none; font-size: 2ch;}
+center { font-size: 2ch;}
 code { background-color: #eee; }
 pre { background-color: #eee; padding: 5px; }
 summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
@@ -27,19 +27,20 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 
 </head>
 <body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" ></script>
 
 	<div id=divContent ></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" ></script>
 <script>
 
 // https://github.com/showdownjs/showdown
 // Canonical version: https://github.com/pushme-pullyou/templates-01/tree/master/open-markdown-or-html
 
+	let defaultScript = "readme.html";
+
 	defaultFile = "README.md";
-	
-	//location.hash = "../assets/markdown-help.md"; // test
-	//location.hash = "../assets/style.css"
+
+	let contents;
 
 	init();
 
@@ -49,7 +50,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 
 		if ( ! location.hash ) { location.hash = defaultFile; }
 
-		location.hash.endsWith( ".md" ) ? onHashChange() : window.location.href = location.hash;
+		location.hash.endsWith( ".md" ) ? onHashChange() : window.location.href = defaultScript + location.hash;
 
 		window.addEventListener( "hashchange", onHashChange, false );
 
@@ -59,15 +60,10 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 
 		const url = location.hash.slice( 1 );
 		document.title = url.split( "/" ).pop();
-		const options = { excludeTrailingPunctuationFromURLs: true, ghMention: true, simplifiedAutoLink: true, simpleLineBreaks: true, emoji: true, openLinksInNewWindow: true };
-
 
 		const xhr = new XMLHttpRequest();
 		xhr.open( "get", url, true );
-		xhr.onload = () => {
-			const txt = xhr.responseText.replace( /\<!--@@@/, "").replace( /\@@@-->/, "");
-			divContent.innerHTML = new showdown.Converter( options ).makeHtml( txt );
-		}
+		xhr.onload = () => divContent.innerHTML = new showdown.Converter().makeHtml( xhr.responseText );
 		xhr.send( null );
 
 	}

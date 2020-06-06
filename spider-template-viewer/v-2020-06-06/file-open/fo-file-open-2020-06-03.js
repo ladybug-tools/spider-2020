@@ -6,9 +6,13 @@
 
 const FO = {};
 
+FO.extension = "xml";
+
 FO.init = function () {
 
 	FO.reset();
+
+	window.addEventListener("hashchange", FO.onHashChange);
 
 	if (!window.divLog) {
 		divLog = detFile.body.appendChild(document.createElement("div"));
@@ -18,7 +22,7 @@ FO.init = function () {
 
 FO.reset = function () {
 
-	//FO.data = undefined;
+	divLog.innerHTML = "";
 	FO.fileName = undefined;
 	FO.hostName = undefined;
 	//FO.objects = undefined;
@@ -30,6 +34,21 @@ FO.reset = function () {
 	FO.responseType = 'text';
 
 };
+
+
+FO.onHashChange = function() {
+
+	if ( location.hash.toLowerCase().endsWith( FO.extension ) === false ) { return; }
+	//console.log( 'hash', location.hash );
+	
+	//FO.reset();
+    
+	FO.timeStart = performance.now();
+
+	FO.url = parent.location.hash.slice(1);
+
+	FO.requestFile(FO.url, FO.callback);
+}
 
 
 FO.requestFile = function ( url, callback = FO.callback ) {
@@ -58,15 +77,6 @@ FO.requestFile = function ( url, callback = FO.callback ) {
 };
 
 
-FO.callback = function ( xhr ) {
-
-	console.log( 'xhr', xhr );
-
-	FO.onProgress( xhr.loaded, "Load complete" );
-
-};
-
-
 
 FO.onProgress = function( size = 0, note = "" ) {
 
@@ -91,23 +101,10 @@ FO.onProgress = function( size = 0, note = "" ) {
 
 
 
-FO.getOpenNew = function () {
+FO.callback = function ( xhr ) {
 
-	if ( FOradOpenNew.checked === true ) {
+	console.log( 'xhr', xhr );
 
-		THR.scene.remove( THR.group, THR.lines );
-
-		THR.group = new THREE.Group();
-
-		THR.lines = new THREE.Group();
-
-		THR.scene.add( THR.group, THR.lines );
-
-		OM.reset();
-
-	}
+	FO.onProgress( xhr.loaded, "Load complete" );
 
 };
-
-
-

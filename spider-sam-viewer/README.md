@@ -6,9 +6,10 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [Spider SAM Viewer Read Me]( ./readme.html )
 
-
+<!--@@@
 <iframe src=https://ladybug.tools/spider-2020/spider-sam-viewer/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _Spider SAM Viewer_
+@@@-->
 
 ### Full Screen: [Spider SAM Viewer]( https://www.ladybug.tools/spider-2020/spider-sam-viewer/ )
 

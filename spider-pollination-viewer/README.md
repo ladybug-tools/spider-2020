@@ -44,7 +44,7 @@ _Spider Pollination Viewer _
 
 ### 2020-06-06 ~ Theo
 
-* All "support" files = three.js etc - uptodate
+* All "support" files - three.js etc - up to date
 * Add View menu to select elements by type
 * Add JSON Tree View to left menu
 * Add link from currently selected face to rooms in in Tree View

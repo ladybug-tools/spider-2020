@@ -6,9 +6,11 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # [Spider Pollination Viewer Read Me]( ./readme.html )
 
-
+<!--@@@
 <iframe src=https://ladybug.tools/spider-2020/spider-pollination-viewer/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _Spider Pollination Viewer _
+@@@-->
+
 
 ### Full Screen: [Spider Pollination Viewer]( https://www.ladybug.tools/spider-2020/spider-pollination-viewer/ )
 
@@ -39,6 +41,14 @@ _Spider Pollination Viewer _
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-06-06 ~ Theo
+
+* All "support" files = three.js etc - uptodate
+* Add View menu to select elements by type
+* Add JSON Tree View to left menu
+* Add link from currently selected face to rooms in in Tree View
+
 
 ### 2020-06-02 ~ Theo
 

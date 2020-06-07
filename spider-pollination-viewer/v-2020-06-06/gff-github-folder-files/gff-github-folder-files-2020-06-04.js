@@ -7,6 +7,10 @@ const GFF = {
 	extension: ".xml"
 };
 
+
+GFF.iconGitHubMark = "https://ladybug.tools/spider-2020/assets/icons/mark-github.svg";
+GFF.iconInfo = `<img src=${GFF.iconGitHubMark} height=11 style=opacity:0.5 >`;
+
 GFF.items = [
 	{
 		"user": "GreenBuildingXML",
@@ -64,9 +68,6 @@ GFF.items = [
 ];
 
 
-GFF.iconGitHubMark = "https://ladybug.tools/spider-2020/assets/icons/mark-github.svg";
-GFF.iconInfo = `<img src=${GFF.iconGitHubMark} height=11 style=opacity:0.5 >`;
-
 GFF.getMenuGithubFoldersFiles = function () {
 
 	const htm = GFF.items.map( ( item, index ) =>
@@ -91,6 +92,7 @@ GFF.getGithubFoldersFiles = function ( index ) {
 	const item = GFF.items[ index ];
 
 	item.urlGitHubApiContents = 'https://api.github.com/repos/' + item.user + item.repo + '/contents/' + item.pathRepo;
+
 
 	GFF.index = index;
 

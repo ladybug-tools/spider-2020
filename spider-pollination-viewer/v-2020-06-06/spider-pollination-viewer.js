@@ -7,7 +7,7 @@ aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-
 description = document.head.querySelector( "[ name=description ]" ).content;
 
 
-const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-viewer@master/sample-files/2020-04-17/";
+const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/pollination/2020-05-05-sample-files/";
 
 const files = [
     "My_Mother_In_Laws_House.json",
@@ -17,6 +17,41 @@ const files = [
 ];
 
 
+GFF.extension = ".json";
+
+GFF.items = [
+	{
+		"user": "ladybug-tools",
+		"repo": "/honeybee-schema",
+		"pathRepo": "samples/model/",
+		"title": "Honeybee sample files",
+		"subTitle":
+			`Files from the
+		<a href="https://github.com/ladybug-tools/honeybee-schema" target="_blank">Honeybee sample files</a>
+		repository on GitHub.`
+	},
+	{
+		"user": "ladybug-tools",
+		"repo": "/dragonfly-schema",
+		"pathRepo": "samples/",
+		"title": "Dragonfly sample files",
+		"subTitle":
+			`Files from the
+		<a href="https://github.com/ladybug-tools/dragonfly-schema" target="_blank">Dragonfly sample files</a>
+		repository on GitHub.`
+	},
+	{
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"pathRepo": "pollination/2020-05-05-sample-files//",
+		"title": "3D Models sample files",
+		"subTitle":
+			`Files from the
+		<a href="https://github.com/ladybug-tools/3d-models/" target="_blank">3D models</a>
+		sample files repository on GitHub.`
+	}
+];
+
 
 
 function init() {
@@ -24,6 +59,10 @@ function init() {
 	divDescription.innerHTML = description;
 
 	aTitle.innerHTML += ` ${version}`;
+	
+	FRdivMenuFileReader.innerHTML = FR.getMenuFileReader(); // also adds event listener
+
+	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
 
 	THR.init();
 	THR.animate();
@@ -42,8 +81,8 @@ THR.onLoad = function ( event ) {
 	FO.extension = "json";
 	FO.responseType = "json";
 	FO.callback = PP.onLoadJson; 
-	
-	window.addEventListener( "onloadFRT", () => PP.onLoadJson( FO.string ) );
+
+	FR.onLoad = PP.onLoadJson; 
     
 	//FOZ.init();
 

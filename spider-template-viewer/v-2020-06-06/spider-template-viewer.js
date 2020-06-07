@@ -45,7 +45,6 @@ THR.onLoad = function ( event ) {
 	FO.onHashChange();
 
 	
-	
 	HRT.init();
 	
 };

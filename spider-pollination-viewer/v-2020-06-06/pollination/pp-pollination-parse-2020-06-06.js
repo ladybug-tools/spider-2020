@@ -15,7 +15,9 @@ const PP = {};
 
 
 
-PP.onLoadJson = function ( json ) {
+PP.onLoadJson = function () {
+
+	json = FO.string;
 
 	addTellTale();
 

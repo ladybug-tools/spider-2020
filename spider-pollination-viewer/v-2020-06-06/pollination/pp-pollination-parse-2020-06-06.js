@@ -109,10 +109,10 @@ PP.onLoadJson = function () {
 
 	//PHJ.geometryFaces.vertices = PHJ.vertices;
 
-	PHJ.addMesh( PHJ.Wall, "beige" );
-	PHJ.addMesh( PHJ.Floor, "brown" );
-	PHJ.addMesh( PHJ.RoofCeiling, "red" );
-	PHJ.addMesh( PHJ.AirBoundary, "blue" );
+	PHJ.addMesh( PHJ.Wall, "Wall" );
+	PHJ.addMesh( PHJ.Floor, "Floor" );
+	PHJ.addMesh( PHJ.RoofCeiling, "RoofCeiling" );
+	PHJ.addMesh( PHJ.AirBoundary, "AirBoundary" );
 
 	if ( PDJ.group.children.length > 1 ) {
 

@@ -19,6 +19,10 @@ PP.onLoadJson = function () {
 
 	json = FO.string;
 
+	JTV.json = FO.string;
+	JTV.init();
+	JTH.init();
+	JTF.init();
 	addTellTale();
 
 	//json = xhr.target.response
@@ -55,12 +59,6 @@ PP.onLoadJson = function () {
 	}
 
 	PHJ.processJson(json);
-
-	// geometryLine = new THREE.Geometry();
-	// geometryLine.vertices = PHJ.vertices.flatMap(vertex => vertex);
-	// const materialLine = new THREE.LineBasicMaterial({ color: 0x000000 });
-	// const line = new THREE.Line(geometryLine, materialLine);
-	// PDJ.group.add(line);
 	
 	//console.log( "PHJ.vertices;", PHJ.vertices );
 
@@ -100,9 +98,6 @@ PP.onLoadJson = function () {
 	PHJ.group.add( meshShades );
 	//grp2.add( meshShades.clone() );
 	//grp3.add( meshShades.clone() );
-
-
-
 
 	//const material = new THREE.MeshNormalMaterial( { opacity: 0.7, side: THREE.DoubleSide, transparent: true, wireframe: false } );
 	//const material = new THREE.MeshPhongMaterial( { color: color, opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false } );
@@ -159,7 +154,9 @@ RAY.getHtm = function ( intersected ) {
 
 	json = FO.string;
 
-	for ( let room of json.rooms ) {
+	json.rooms.forEach( ( room, index ) => {
+
+		room.userData = { index };
 
 		for ( let face of room.faces ) {
 
@@ -175,9 +172,9 @@ RAY.getHtm = function ( intersected ) {
 
 			}
 		 }
-	}
+	} );
 
-	//console.log( "thisRoom", thisRoom );
+console.log( "thisRoom", thisRoom );
 
 	// faceIndex: ${ intersected.faceIndex }<br>
 	if ( thisRoom ) {
@@ -188,6 +185,7 @@ RAY.getHtm = function ( intersected ) {
 			construction set: ${ thisRoom.properties.energy.construction_set }<br>
 			hvac: ${ thisRoom.properties.energy.hvac }<br>
 			program type: ${ thisRoom.properties.energy.program_type }<br>
+			<button onclick="RAY.showFind(${ thisRoom.userData.index })" >get room parameters</button>
 		`;
 		return htm;
 
@@ -199,6 +197,25 @@ RAY.getHtm = function ( intersected ) {
 
 };
 
+
+RAY.showFind = function (index) {
+	detNavMenu.open = true;
+	detData.open = true;
+
+	JTH.toggleAll();
+
+	const details = JTVdivJsonTree.querySelectorAll("details");
+
+	details[0].open = true;
+
+	details[1].open = true;
+
+	panelsHtml = Array.from( JTVdetRooms.children).slice(1);
+
+	panelsHtml[index].open = true;
+
+	panelsHtml[index].scrollIntoView();
+};
 
 
 function addLine( vertices ) { // ray-caster only

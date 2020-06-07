@@ -13,9 +13,9 @@ PHJ.colors = {
 	AirBoundary: "blue"
 
 };
+
+
 PHJ.processJson = function ( json ) {
-
-
 
 	PHJ.Wall = new THREE.Geometry();
 	PHJ.Floor = new THREE.Geometry();
@@ -25,7 +25,7 @@ PHJ.processJson = function ( json ) {
 
 	const rooms = json.rooms || [];
 
-	for ( let room of rooms ) {
+	rooms.forEach( ( room, index ) => {
 
 		const faces = room.faces;
 
@@ -47,7 +47,7 @@ PHJ.processJson = function ( json ) {
 
 			const geometries = PHJ[ face.face_type ];
 
-			PHJ.addShape3d( vertices, holes, geometries );
+			PHJ.addShape3d( vertices, holes, geometries, index );
 
 			PHJ.parseShades( face.indoor_shades || [] );
 
@@ -57,7 +57,7 @@ PHJ.processJson = function ( json ) {
 
 		}
 
-	}
+	} );
 
 	PHJ.parseShades( json.orphaned_shades || [] );
 

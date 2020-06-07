@@ -86,6 +86,7 @@ THR.onLoad = function ( event ) {
     
 	//FOZ.init();
 
+
 	const target = window.self === window.top ? window : window.parent;
 
 	target.location.hash = path + files[ 1 ];

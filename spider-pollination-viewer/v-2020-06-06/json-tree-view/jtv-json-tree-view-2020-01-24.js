@@ -18,7 +18,7 @@ JTV.init = function () {
 
 	//JTVdivJsonTreeView.innerHTML = JTV.getMenu();
 
-	JTVdivJsonTree.innerHTML = JTV.parseJson(JTV.root, panelsJson, 0);
+	JTVdivJsonTree.innerHTML = JTV.parseJson(JTV.root, JTV.json, 0);
 
 	setTimeout( JTV.update, 500 )
 
@@ -31,16 +31,16 @@ JTV.update = function() {
 
 	details[0].open = true;
 
-	const panelsHtml = Array.from(details[0].children).slice(1);
+	const panelsHtml = Array.from(JTVdetRooms.children).slice(1);
 
 	//console.log("", panelsHtml);
 
-	panelsHtml.forEach(
-		(panel, idx) =>
-			(panel.innerHTML =
-				`<p><button onclick=console.log(this.value);SAM.showPanel(${idx}) value=${idx} >highlight panel</button></p>
-		` + panel.innerHTML)
-	);
+	// panelsHtml.forEach(
+	// 	(panel, idx) =>
+	// 		(panel.innerHTML =
+	// 			`<p><button onclick=console.log(this.value); value=${idx} >highlight panel</button></p>
+	// 	` + panel.innerHTML)
+	// );
 };
 
 JTV.getMenu = function () {
@@ -88,9 +88,11 @@ JTV.getString = function (key, item, index) {
 JTV.getArray = function (key, array, index) {
 	//console.log( 'Array', key, array );
 
+	const str = key === "rooms" ? "id=JTVdetRooms" : "";
+
 	const htm = array.map((item, index) => JTV.parseJson(key, item, index)).join("");
 
-	return `<details style="margin: 1ch 0 1ch 1ch;" >
+	return `<details ${ str } style="margin: 1ch 0 1ch 1ch;" >
 		<summary>${key} [ ${array.length} ]</summary>${htm}
 	</details>`;
 };

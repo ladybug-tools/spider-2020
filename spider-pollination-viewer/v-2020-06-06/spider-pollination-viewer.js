@@ -89,6 +89,10 @@ THR.onLoad = function ( event ) {
 
 	const target = window.self === window.top ? window : window.parent;
 
-	target.location.hash = path + files[ 1 ];
+	//target.location.hash = path + files[ 1 ];
+
+	target.location.hash = target.location.hash ? target.location.hash : path + files[ 1 ];
+
+	FO.onHashChange();
 	
 };

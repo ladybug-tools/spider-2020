@@ -212,9 +212,14 @@ RAY.showFind = function (index) {
 
 	panelsHtml = Array.from( JTVdetRooms.children).slice(1);
 
+	panelsHtml.forEach( item => item.className = item.className.replace(" active", "") );
+
 	panelsHtml[index].open = true;
 
 	panelsHtml[index].scrollIntoView();
+
+	panelsHtml[index].className += " active";
+
 };
 
 

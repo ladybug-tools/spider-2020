@@ -154,9 +154,12 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 	camera.far = 50 * radius; //2 * camera.position.length();
 	camera.updateProjectionMatrix();
 
+	THR.scene.fog.near = radius * 7;
+	THR.scene.fog.far = radius * 8;
+
 	THR.axesHelper.position.copy(center);
 
-	THR.ground.position.copy(center);
+	THR.ground.position.set(center.x, center.y, center.z - radius);
 
 	if ( window.HRT ) { HRT.heart.position.copy( center ); }
 
@@ -282,13 +285,13 @@ THR.addLights = function () {
 	lightDirectional.shadow.camera.far = 500;
 	scene.add(lightDirectional);
 
-	scene.add(new THREE.CameraHelper(lightDirectional.shadow.camera));
+	//scene.add(new THREE.CameraHelper(lightDirectional.shadow.camera));
 
 	THR.lightDirectional = lightDirectional;
 };
 
 THR.addGround = function (position = new THREE.Vector3(0, 0, -80)) {
-	const geometry = new THREE.PlaneBufferGeometry(2000, 2000);
+	const geometry = new THREE.PlaneBufferGeometry(5000, 5000);
 	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( position.x, position.y, position.z ) );
 	const material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, side: 0 });
 	THR.ground = new THREE.Mesh(geometry, material);

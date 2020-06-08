@@ -23,6 +23,8 @@ The script enables you to open EnergyPlus Input Data Files (IDF) from ypur compu
 
 * You can rotate, zoom and pan the model by clicking or touching
 * Clicking on a surface allow you to display parametric data for the surface
+* Gallery menu allows you to load hundreds of demos
+
 
 ### [EnergyPlus]( https://energyplus.net/ )
 
@@ -45,6 +47,7 @@ The script enables you to open EnergyPlus Input Data Files (IDF) from ypur compu
 <details open >
 <summary>Issues </summary>
 
+* PopUps are broken 
 
 </details>
 

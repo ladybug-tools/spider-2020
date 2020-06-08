@@ -7,7 +7,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 GitHub
 
-* https://ladybug-tools.github.io//spider-2020/sandbox/spider-idf-viewer/index.html
+* https://ladybug-tools.github.io/spider-2020/sandbox/spider-idf-viewer/index.html
 * https://github.com/ladybug-tools/spider-2020/spider-idf-viewer/issues
 
 
@@ -40,11 +40,15 @@ Now we have colors. And an "open all" button that opens and displays all the sam
 
 And we have what are getting to be the usual features:
 
-* Opem files on you r computer
+* Open files on you r computer
 * Open files on the Internet
 * Display surface data parameters when you click on a surface.
 
+2020-06-08
 
+00:10
+
+Added link to all 701 EnergyPlus testfiles. Started testing. None worked at first. Did a bunch of fixes. Now they seem to work mostly
 
 ***
 

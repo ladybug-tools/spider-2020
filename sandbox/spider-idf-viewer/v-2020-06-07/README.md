@@ -1,4 +1,4 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page](https://ladybug-tools.github.io/spider-2020/spider-idf-viewer/readme.html "View file as a web page.") </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page](https://ladybug-tools.github.io/spider-2020/sandbox/spider-idf-viewer/readme.html "View file as a web page.") </span>
 
 <div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/spider-idf-viewer/"
 value="You are now in a GitHub web page view - Click this button to view this read me file as source code" ></div>
@@ -7,7 +7,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 GitHub
 
-* https://ladybug-tools.github.io//spider-2020/spider-idf-viewer/index.html
+* https://ladybug-tools.github.io//spider-2020/sandbox/spider-idf-viewer/index.html
 * https://github.com/ladybug-tools/spider-2020/spider-idf-viewer/issues
 
 
@@ -16,7 +16,7 @@ GitHub
 * First commit
 
 12:27 ~  
-In this GitHub issue, Mostapha mentioned that we could view IDF files. In actual fact, the Spidrr team has a lot of 3D viewers but not one for IDF. So let's make one.
+In this GitHub issue, Mostapha mentioned that we could view IDF files. In actual fact, the Spider team has a lot of 3D viewers but not one for IDF. So let's make one.
 
 The core core are prepared. The Read Me is started.
 
@@ -29,6 +29,21 @@ We have Spider IDF Viewer! In two and a half hours. In 2015 it took me weeks to 
 And now it's like "Pff"
 
 As of now it's lines for walls, door and window borders. Let's get some surfaces in here
+
+16:43 ~  
+
+Now we have meshes - but only in beige. Let's see if we can get some color.
+
+19:19 ~  
+
+Now we have colors. And an "open all" button that opens and displays all the sample files in 3D.
+
+And we have what are getting to be the usual features:
+
+* Opem files on you r computer
+* Open files on the Internet
+* Display surface data parameters when you click on a surface.
+
 
 
 ***

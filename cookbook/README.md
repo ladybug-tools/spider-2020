@@ -4,13 +4,13 @@
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Spider ZZZZZ Viewer Read Me]( ./readme.html )
+# [Spider Cookbook Read Me]( ./readme.html )
 
 <!--
 <iframe src=https://ladybug.tools/spider-2020/xxxxxx/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _basic-html.html_
 
-### Full Screen: [Spider ZZZZZ Viewer]( https://www.ladybug.tools/spider-2020/xxxxxx/ )
+### Full Screen: [Spider Cookbook]( https://www.ladybug.tools/spider-2020/xxxxxx/ )
 -->
 
 <details open >
@@ -40,7 +40,7 @@ _basic-html.html_
 <details open >
 <summary>Change log </summary>
 
-### 123
+### 2020-06-08
 
 * First commit
 

@@ -123,7 +123,7 @@ FO.callback2 = () => {
 
 
 	const walls = IDF.parseType( "Walls", "red");
-	console.log( "walls", walls );
+	//console.log( "walls", walls );
 	THR.campus.add( ... walls.lines, ... walls.meshes );
 
 	THR.campus.position.x = count * 50 - 100;
@@ -176,7 +176,7 @@ IDF.callback = function ( text ) {
 
 	const walls = IDF.parseType( "Walls", "red");
 
-	console.log( "walls", walls );
+	//console.log( "walls", walls );
 
 	//const windows = IDF.parseType();
 
@@ -229,7 +229,7 @@ IDF.parseType = function( type = "WINDOWS & DOORS", color = "blue" ) {
 
 	IDF.surfaceTypes = surfaceTypes.map( line => line.trim().split( ",").shift() );
 
-	console.log( "surfaceTypes", surfaceTypes );
+	//console.log( "surfaceTypes", surfaceTypes );
 	
 	// vertexLines = surfaceTxts.map( txt => 
 	// 	txt.trim().split( /[\r?\n]/g ).filter( txt => txt.endsWith( "{m}" ) ) );

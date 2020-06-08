@@ -17,6 +17,22 @@ _Spider IDF Viewer _
 <details open >
 <summary>Concept</summary>
 
+### Spider IDF Viewer
+
+The script enables you to open EnergyPlus Input Data Files (IDF) from ypur computer or via a URL. Ths script locates all surfaces and windows data and displays them in 3D in your browser.
+
+* You can rotate, zoom and pan the model by clicking or touching
+* Clicking on a surface allow you to display parametric data for the surface
+
+### [EnergyPlus]( https://energyplus.net/ )
+
+> EnergyPlus is a whole building energy simulation program that engineers, architects, and researchers use to model both energy consumption—for heating, cooling, ventilation, lighting and plug and process loads—and water use in buildings. 
+
+### Input Data File (IDF) format
+
+* https://energyplus.net/quickstart
+* https://bigladdersoftware.com/epx/docs/8-2/getting-started/energyplus-file-extensions.html#idf
+    > The input data file (IDF) is an ASCII file containing the data describing the building and HVAC system to be simulated. Many example files are installed as part of the EnergyPlus installation. Additionally, a spreadsheet file “ExampleFiles.xls” contains columnar descriptions of each file’s features.
 
 </details>
 

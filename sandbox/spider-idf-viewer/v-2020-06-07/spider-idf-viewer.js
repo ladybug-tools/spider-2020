@@ -34,12 +34,25 @@ GFF.items = [
 		"user": "ladybug-tools",
 		"repo": "/spider-2020",
 		"pathRepo": "sandbox/spider-idf-viewer/idf-sample-files/",
-		"title": "DOE sample files",
+		"title": "ancient sample files",
 		"subTitle":
 			`Files from the
-		<a href="" target="_blank">DOE Sample Files</a>
+		<a href="" target="_blank">??? Sample Files</a>
+		repository on GitHub.`
+	},
+	{
+		"user": "nrel",
+		"repo": "/EnergyPlus",
+		"pathRepo": "testfiles/",
+		"branch": "develop",
+		"title": "EnergyPlus sample files",
+		"subTitle":
+			`Files from the
+		<a href="" target="_blank">NREL</a>
 		repository on GitHub.`
 	}
+
+
 ];
 
 function init() {
@@ -143,6 +156,7 @@ const IDF = {};
 
 IDF.colors = {
 	Ceiling: 0xff8080,
+	Door: 0x00f0000,
 	Floor: 0x40b4ff,
 	Wall: 0xffb400,
 	Roof: 0x800000,
@@ -162,11 +176,13 @@ IDF.callback = function ( text ) {
 
 	const walls = IDF.parseType( "Walls", "red");
 
-	const windows = IDF.parseType();
+	console.log( "walls", walls );
 
-	THR.group.add( ... walls.lines, ... walls.meshes, ...windows.lines, ... windows.meshes);
+	//const windows = IDF.parseType();
 
-	THR.updateGroup( THR.group );
+	THR.group.add( ... walls.lines, ... walls.meshes );
+
+	//THR.updateGroup( THR.group );
 
 };
 
@@ -175,11 +191,11 @@ IDF.parseType = function( type = "WINDOWS & DOORS", color = "blue" ) {
 
 	//console.log( "string", FO.string);
 
-	const regex = new RegExp( "\\*\\*\\*" + type  + "\\*\\*\\*[^]*?\\*\\*\\*", "gim" );
+	//const regex = new RegExp( "\\*\\*\\*" + type  + "\\*\\*\\*[^]*?\\*\\*\\*", "gim" );
 
-	const typeTxt = FO.string.match( regex );
+	//const typeTxt = FO.string.match( regex );
 
-	if ( ! typeTxt ){ return; }
+	//if ( ! typeTxt ){ return; }
 
 	//console.log( "typeTxt", typeTxt );
 
@@ -194,11 +210,13 @@ IDF.parseType = function( type = "WINDOWS & DOORS", color = "blue" ) {
 	//vertexLines = vertexTxts.map( txt => txt.trim().split( /[\r?\n]/g ).filter( txt => txt.endsWith( "{m}" ) ) );
 
 	
-	IDF.surfaceTxts = typeTxt[ 0 ].match( /Surface:Detailed[^]*?\r\n\r\n/gim );
+	//IDF.surfaceTxts = typeTxt[ 0 ].match( /Surface:Detailed[^]*?\r\n\r\n/gim );
+
+	IDF.surfaceTxts = FO.string.match( /Surface:Detailed[^]*?\r\n\r\n/gim );
 
 	if ( ! IDF.surfaceTxts ) { 
 		
-		IDF.surfaceTxts = typeTxt[ 0 ].match( /Surface:Detailed[^]*?\n\n/gim );
+		IDF.surfaceTxts = FO.string.match( /Surface:Detailed,[^]*?\n\n/gim );
 
 		//console.log( "xxxx typeTxt", typeTxt );
 	}
@@ -211,7 +229,7 @@ IDF.parseType = function( type = "WINDOWS & DOORS", color = "blue" ) {
 
 	IDF.surfaceTypes = surfaceTypes.map( line => line.trim().split( ",").shift() );
 
-	//console.log( "surfaceTypes", surfaceTypes );
+	console.log( "surfaceTypes", surfaceTypes );
 	
 	// vertexLines = surfaceTxts.map( txt => 
 	// 	txt.trim().split( /[\r?\n]/g ).filter( txt => txt.endsWith( "{m}" ) ) );
@@ -229,11 +247,12 @@ IDF.parseType = function( type = "WINDOWS & DOORS", color = "blue" ) {
 		} ) 
 	);
 
-	//console.log( "", vertices );
+	//console.log( "vertices", vertices );
 
 	const lines = vertices.map( ( vertices, index ) => IDF.drawLine( vertices, 0x000000  ) );
 
 	const meshes = vertices.map( ( vertices, index ) => IDF.addShape3d( vertices, index )  );
+	//console.log( "mesh", meshes );
 
 	return { meshes, lines }
 

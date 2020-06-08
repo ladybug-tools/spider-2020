@@ -163,12 +163,15 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 	const item = GFF.items[ GFF.index ];
 	//console.log( 'item', item );
 
+	item.branch = item.branch || "master";
+
 	item.urlGitHubSource = 'https://github.com/' + item.user + item.repo + '/blob/master/' + item.pathRepo;
 
-	item.urlGitHubPage = 'https://cdn.jsdelivr.net/gh/' + item.user + item.repo + '@master/' + item.pathRepo;
+	item.urlGitHubPage = 'https://cdn.jsdelivr.net/gh/' + item.user + item.repo + '@' + item.branch + '/' + item.pathRepo;
 
 	item.threeViewer = "../../spider-gbxml-viewer/index.html";
 
+	let count = 1;
 	for ( let file of files ) {
 
 		if ( file.name.toLowerCase().endsWith( GFF.extension ) === false &&
@@ -182,7 +185,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 			<a href=${ item.urlGitHubSource + fileName} title="Edit me" >${GFF.iconInfo}</a>
 
-			<a href=#${ item.urlGitHubPage + fileName} title="${file.size.toLocaleString()} bytes" >${file.name}</a>
+			${ count ++ } <a href=#${ item.urlGitHubPage + fileName} title="${file.size.toLocaleString()} bytes" >${file.name}</a>
 
 			<a href=${ item.threeViewer }#${item.urlGitHubPage}${fileName} title="Link to just this file" target="_blank" >&#x2750;</a>
 

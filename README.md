@@ -49,11 +49,12 @@ Your 2020 3D happy place for online browsing of many of the standard architectur
 
 ## [Sandbox]( https://www.ladybug.tools/spider-2020/sandbox )
 
-_ Where new Spider projects start_
+_Where new Spider projects start_
 
-* [Spider IDF Viewer]( https://www.ladybug.tools/spider-2020/sandbox/spider-idf-viewer/ )
-* [Spider SQL Viewer]( https://www.ladybug.tools/spider-2020/sandbox/spider-sql-viewer/ )
-* [Spider CSV Viewer]( https://www.ladybug.tools/spider-2020/sandbox/spider-csv-viewer/ )
+* [Sandbox Gellery]( https://ladybug.tools/spider-2020/sandbox/ )
+* [Spider IDF Viewer]( https://ladybug.tools/spider-2020/sandbox/spider-idf-viewer/ )
+* [Spider SQL Viewer]( https://ladybug.tools/spider-2020/sandbox/spider-sql-viewer/ )
+* [Spider CSV Viewer]( https://ladybug.tools/spider-2020/sandbox/spider-csv-viewer/ )
 
 
 

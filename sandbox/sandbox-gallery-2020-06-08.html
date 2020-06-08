@@ -177,7 +177,7 @@ function onLoad( response ) {
 	let files = json.tree
 		.filter( file => file.type === "blob" )
 		.map( file => file.path )
-		.filter( file => file.includes( "sandbox/" ) && ! file.includes( "remix" ) && ! file.includes( "viewer" )  )
+		.filter( file => file.includes( "sandbox/" ) && ! file.includes( "remix" ) )
 		//.filter( file => ! file.includes( "index" ) && ! file.includes( "readme" ) )
 		.map( file => file.slice( file.indexOf( "/" ) + 1 ) );
 

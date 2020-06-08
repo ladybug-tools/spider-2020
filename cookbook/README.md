@@ -1,16 +1,18 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2020/xxxxxx/readme.html "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2020/cookbook/readme.html "View file as a web page." ) </span>
 
-<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/xxxxxx/";
+<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/cookbook/";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
 # [Spider Cookbook Read Me]( ./readme.html )
 
+* [Cookbook Gallery]( ./index.html)
+
 <!--
-<iframe src=https://ladybug.tools/spider-2020/xxxxxx/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src=https://ladybug.tools/spider-2020/cookbook/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _basic-html.html_
 
-### Full Screen: [Spider Cookbook]( https://www.ladybug.tools/spider-2020/xxxxxx/ )
+### Full Screen: [Spider Cookbook]( https://www.ladybug.tools/spider-2020/cookbook/ )
 -->
 
 <details open >

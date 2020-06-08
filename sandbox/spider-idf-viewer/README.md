@@ -1,17 +1,17 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2020/xxxxxx/readme.html "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2020/sandbox/spider-idf-viewer/readme.html "View file as a web page." ) </span>
 
-<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/xxxxxx/";
+<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/spider-idf-viewer/";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Spider ZZZZZ Viewer Read Me]( ./readme.html )
+# [Spider IDF Viewer Read Me]( ./readme.html )
 
 <!--@@@
-<iframe src=https://ladybug.tools/spider-2020/xxxxxx/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
-_Spider ZZZZZ Viewer _
+<iframe src=https://ladybug.tools/spider-2020/sandbox/spider-idf-viewer/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+_Spider IDF Viewer _
 @@@-->
 
-### Full Screen: [Spider ZZZZZ Viewer]( https://www.ladybug.tools/spider-2020/xxxxxx/ )
+### Full Screen: [Spider IDF Viewer]( https://www.ladybug.tools/spider-2020/sandbox/spider-idf-viewer/ )
 
 
 <details open >
@@ -41,7 +41,7 @@ _Spider ZZZZZ Viewer _
 <details open >
 <summary>Change log </summary>
 
-### 2020
+### 2020-06-07
 
 * First commit
 

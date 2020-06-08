@@ -275,7 +275,6 @@ IDF.drawLine = function( vertices, color = "blue" ) {
 
 IDF.addShape3d = function ( vertices, index = 0, holes = []) {
 
-
 	type = IDF.surfaceTypes[ index ];
 
 	const tempVertices = IDF.getTempVertices( vertices );

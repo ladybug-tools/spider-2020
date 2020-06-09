@@ -157,6 +157,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	const response = xhr.target.response;
 	const files = JSON.parse( response );
+	GFF.files = files;
 
 	let htm = '';
 
@@ -165,7 +166,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	item.branch = item.branch || "master";
 
-	item.urlGitHubSource = 'https://github.com/' + item.user + item.repo + '/blob/master/' + item.pathRepo;
+	item.urlGitHubSource = 'https://github.com/' + item.user + item.repo + '/blob/' + item.branch  + '/' + item.pathRepo;
 
 	item.urlGitHubPage = 'https://cdn.jsdelivr.net/gh/' + item.user + item.repo + '@' + item.branch + '/' + item.pathRepo;
 

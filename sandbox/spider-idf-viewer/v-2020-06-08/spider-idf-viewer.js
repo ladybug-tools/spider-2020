@@ -167,14 +167,23 @@ const IDF = {};
 
 
 IDF.colors = {
-	Ceiling: 0xff8080,
-	Door: 0x00f0000,
-	Floor: 0x40b4ff,
-	GlassDoor: 0x8888ff,
-	Wall: 0xffb400,
-	Roof: 0x800000,
-	Window: 0x444444,
-	Undefined: 0x88888888,
+	ceiling: 0xff8080,
+	door: 0x00f0000,
+	floor: 0x40b4ff,
+	glassdoor: 0x8888ff,
+	wall: 0xffb400,
+	roof: 0x800000,
+	window: 0x444444,
+	
+	CEILING: 0xff8080,
+	DOOR: 0x00f0000,
+	FLOOR: 0x40b4ff,
+	GLASSDOOR: 0x8888ff,
+	ROOF: 0x800000,
+	WALL: 0xffb400,
+	WINDOW: 0x444444,
+
+	undefined: 0x88888888
 };
 
 IDF.callback = function ( text ) {
@@ -189,7 +198,7 @@ IDF.callback = function ( text ) {
 	const surfaces = IDF.parseType();
 
 	//const windows = IDF.parseType();
-
+	if( ! surfaces ) { console.log( "no surfaces" );return; }
 	THR.group.add( ... surfaces.lines, ... surfaces.meshes );
 
 	THR.updateGroup( THR.group );
@@ -211,6 +220,13 @@ IDF.parseType = function() {
 	}
 	//console.log( "IDF.surfaceTexts", IDF.surfaceTexts );
 
+	if ( ! IDF.surfaceTexts ) {
+
+		alert( "Do not see any 'Surface:Detailed' so nothing to draw" );
+		return;
+
+	}
+
 	surfaceLines = IDF.surfaceTexts.map( txt => txt.trim().split( /[\r?\n]/g ) );
 
 	const surfaceTypes = surfaceLines.map( lines => lines.find( line => line.endsWith( "Surface Type" ) ) );
@@ -221,11 +237,26 @@ IDF.parseType = function() {
 	vertexLines = surfaceLines.map( lines => lines.filter( txt => txt.endsWith( "{m}" ) ) );
 	//console.log( "vertexLines", vertexLines);
 
+	// if ( !vertexLines.length ) {
+	// 	alert("No surfaces data available in this file");
+	// 	return;
+	// }
+
 	vertices = vertexLines.map( lines => lines.map( 
 		line => {
-			points = line.match( /\d(.*?)[,|;] /)[ 0 ].replace( /[[,|;] /, "" ).split( "," ).map( itm => parseFloat( itm )); 
-			
-			return new THREE.Vector3().fromArray( points );	
+			points = line.match( /\d(.*?)[,|;] /)
+			if ( points ) {
+
+				points = points[ 0 ]
+				.replace( /[[,|;] /, "" ).split( "," ).map( itm => parseFloat( itm )); 
+				
+				return new THREE.Vector3().fromArray( points );	
+
+			} else {
+
+				alert("Surfaces data is not readable\n" + line);
+				return new THREE.Vector3();
+			}
 		} ) 
 	);
 	//console.log( "vertices", vertices );
@@ -256,7 +287,7 @@ IDF.drawLine = function( vertices, color = "blue" ) {
 
 IDF.addShape3d = function ( vertices, index = 0, holes = []) {
 
-	type = IDF.surfaceTypes[ index ];
+	type = IDF.surfaceTypes[ index ].toLowerCase();
 
 	if ( !IDF.colors[ type ]) {
 
@@ -330,6 +361,7 @@ RAY.getHtm = function (intersected) {
 
 	const htm = `
 	<div>
+		file: ${ obj.userData.fileName }<br>
 		type: ${ obj.userData.type }<br>
 		id: ${index}<br>
 		uuid: ${ obj.uuid}<br>

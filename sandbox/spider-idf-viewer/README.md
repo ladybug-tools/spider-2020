@@ -41,13 +41,12 @@ The script enables you to open EnergyPlus Input Data Files (IDF) from your compu
 <details open >
 <summary>To do and wish list </summary>
 
-
+* 2020-06-08 ~ Theo ~ add surfaces for "Shading:Fin", "Shading:Site" and "Shading:Building" parameters
 </details>
 
 <details open >
 <summary>Issues </summary>
 
-* PopUps are broken 
 
 </details>
 

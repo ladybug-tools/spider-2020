@@ -7,7 +7,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 # [Spider IDF Viewer Read Me]( ./readme.html )
 
 <!--@@@
-<iframe src=https://ladybug.tools/spider-2020/sandbox/spider-idf-viewer/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src=./index.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _Spider IDF Viewer _
 @@@-->
 
@@ -19,7 +19,7 @@ _Spider IDF Viewer _
 
 ### Spider IDF Viewer
 
-The script enables you to open EnergyPlus Input Data Files (IDF) from ypur computer or via a URL. Ths script locates all surfaces and windows data and displays them in 3D in your browser.
+The script enables you to open EnergyPlus Input Data Files (IDF) from your computer or via a URL. Ths script locates all surfaces and windows data and displays them in 3D in your browser.
 
 * You can rotate, zoom and pan the model by clicking or touching
 * Clicking on a surface allow you to display parametric data for the surface
@@ -54,11 +54,28 @@ The script enables you to open EnergyPlus Input Data Files (IDF) from ypur compu
 <details open >
 <summary>Links of interest</summary>
 
+NREL
+
+* https://www.energyplus.net/
+
+Sample Files
+
+* https://github.com/NREL/EnergyPlus/tree/develop/testfiles
+    * Current
+* https://www.energy.gov/eere/buildings/commercial-reference-buildings
+    * From 2012
+
+Others
+
+* https://beopt.nrel.gov/
 
 </details>
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-06-08 ~ Theo
+
 
 ### 2020-06-07
 

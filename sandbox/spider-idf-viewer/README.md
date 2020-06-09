@@ -42,6 +42,7 @@ The script enables you to open EnergyPlus Input Data Files (IDF) from your compu
 <summary>To do and wish list </summary>
 
 * 2020-06-08 ~ Theo ~ add surfaces for "Shading:Fin", "Shading:Site" and "Shading:Building" parameters
+
 </details>
 
 <details open >
@@ -74,6 +75,12 @@ Others
 <summary>Change log </summary>
 
 ### 2020-06-08 ~ Theo
+
+* Fix PopUp issues
+* Add sample file file credits
+* Fix a number of surface color issues
+* Fix loading in iframe location hash no show
+* Add working view menu - select visible by surface type
 
 
 ### 2020-06-07

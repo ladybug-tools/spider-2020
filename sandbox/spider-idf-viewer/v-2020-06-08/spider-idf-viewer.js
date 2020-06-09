@@ -174,15 +174,6 @@ IDF.colors = {
 	wall: 0xffb400,
 	roof: 0x800000,
 	window: 0x444444,
-	
-	CEILING: 0xff8080,
-	DOOR: 0x00f0000,
-	FLOOR: 0x40b4ff,
-	GLASSDOOR: 0x8888ff,
-	ROOF: 0x800000,
-	WALL: 0xffb400,
-	WINDOW: 0x444444,
-
 	undefined: 0x88888888
 };
 

@@ -1,17 +1,19 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2020/xxxxxx/readme.html "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2020/spider-template-viewer/readme.html "View file as a web page." ) </span>
 
-<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/xxxxxx/";
+<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Spider ZZZZZ Viewer Read Me]( ./readme.html )
+# [Spider Template Viewer Read Me]( ./readme.html )
+
+_This is an actual read me. See ```assets/``` for a read me template_ 
 
 <!--@@@
-<iframe src=https://ladybug.tools/spider-2020/xxxxxx/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
-_Spider ZZZZZ Viewer _
+<iframe src=https://ladybug.tools/spider-2020/spider-template-viewer/ width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+_Spider Template Viewer _
 @@@-->
 
-### Full Screen: [Spider ZZZZZ Viewer]( https://www.ladybug.tools/spider-2020/xxxxxx/ )
+### Full Screen: [Spider Template Viewer]( https://www.ladybug.tools/spider-2020/spider-template-viewer/ )
 
 
 <details open >
@@ -23,12 +25,16 @@ _Spider ZZZZZ Viewer _
 <details open >
 <summary>To do and wish list </summary>
 
+* Real EPW viewer
+* Add viewer capability
 
 </details>
 
 <details open >
 <summary>Issues </summary>
 
+* Fog has issues
+* Heart has issues
 
 </details>
 
@@ -41,7 +47,7 @@ _Spider ZZZZZ Viewer _
 <details open >
 <summary>Change log </summary>
 
-### 2020
+### 2020-06-09
 
 * First commit
 

@@ -5,10 +5,10 @@
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
-	<meta name="description" content="View EnergyPlus IDF files in 3D. Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider IDF Viewer</title>
+	<title>Spider Template Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-06-03.css">
 
@@ -26,12 +26,11 @@
 
 	<script src="three/ray-raycaster-sam-2020-05-27.js"></script>
 	<script src="three/hrt-heart-2020-05-27.js"></script>
+	<script src="three/scc-screen-ccapture-2020-05-23.js"></script>
 	
-	<script src="file-open/fo-file-open-2020-06-08.js"></script>
-	<script src="file-open/fr-file-reader-2020-06-06.js"></script>
+	<script src="file-open/fo-file-open-2020-06-09.js"></script>
 	<script src="file-open/foz-file-open-zip-2020-05-30.js"></script>
-
-	<script src="vw-view/vw-view-2020-06-08.js"></script>
+	<script src="file-open/fr-file-reader-2020-06-06.js"></script>
 
 	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-08.js"></script>
 
@@ -45,12 +44,12 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer" target="_top" title="Source code on GitHub">
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer" target="_top" title="Source code on GitHub">
 						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider IDF Viewer
+						Spider Template Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -71,7 +70,7 @@
 
 			</details>
 
-			<details id=detView open >
+			<details id=detGitHubFolderFiles >
 
 				<summary class="sumPrimary gmd-1" title="View selected items" >samples files gallery</summary>
 
@@ -81,17 +80,15 @@
 
 				<div id=GFFdivFileInfo></div>
 
-				<p>
-					<button onclick=openAll(); >Open all DOE 2012 sample files</button>
-				</p>
+				<br>
 
 			</details>
 			
-			<details id=detView ontoggle="VWdivView.innerHTML = VW.init()" >
+			<details id=detView ontoggle="" >
 
-				<summary class="sumPrimary gmd-1" title="View selected surfaces" >View menu</summary>
+				<summary class="sumPrimary gmd-1" title="View selected items" >view menu</summary>
 
-				<div id=VWdivView></div>
+				<div id=divView ></div>
 
 			</details>
 
@@ -159,7 +156,7 @@
 			</div>
 		</div>
 
-		<button onclick="VW.setAllVisible();" title="Show all surfaces" class=ftrButton>&sdotb;</button>
+		<button onclick="onclick=alert( 'What do you need to see here?' );" title="Show all surfaces" class=ftrButton>&sdotb;</button>
 	
 		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
 
@@ -167,7 +164,7 @@
 	
 
 
-	<script src="spider-idf-viewer.js"></script>
+	<script src="spider-template-viewer.js"></script>
 
 	<script>
 

@@ -1,21 +1,21 @@
 const GBX = {};
 
 GBX.colorsDefault = {
-	InteriorWall: 0x008000,
-	ExteriorWall: 0xffb400,
-	Roof: 0x800000,
-	InteriorFloor: 0x80ffff,
+	Air: 0xffff00,
+	Ceiling: 0xff8080,
 	ExposedFloor: 0x40b4ff,
+	ExteriorWall: 0xffb400,
+	EmbeddedColumn: 0x80806e,
+	FreestandingColumn: 0x808080,
+	InteriorFloor: 0x80ffff,
+	InteriorWall: 0x008000,
+	RaisedFloor: 0x4b417d,
+	Roof: 0x800000,
 	Shade: 0xffce9d,
+	SlabOnGrade: 0x804000,
 	UndergroundWall: 0xa55200,
 	UndergroundSlab: 0x804000,
-	Ceiling: 0xff8080,
-	Air: 0xffff00,
 	UndergroundCeiling: 0x408080,
-	RaisedFloor: 0x4b417d,
-	SlabOnGrade: 0x804000,
-	FreestandingColumn: 0x808080,
-	EmbeddedColumn: 0x80806e,
 	Undefined: 0x88888888,
 };
 

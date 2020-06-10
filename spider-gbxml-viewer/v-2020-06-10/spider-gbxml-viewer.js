@@ -69,17 +69,20 @@ RAY.getHtm = function ( intersected ) {
 	const surfaceXml = parser.parseFromString( surfaceText,"text/xml");
 	//console.log( "surfaceXml", surfaceXml );
 
-	const surface = surfaceXml.getElementsByTagName("Surface")[ 0 ]; //.firstChild(); //[0].childNodes[0].nodeValue;
+	surface = surfaceXml.firstChild; //[0].childNodes[0].nodeValue;
 	console.log( "surface", surface );
 
+	const atts = Array.from(surface.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "");
+
+	children = Array.from( surface.children ).map( child => `${ child.tagName }: ${ child.textContent }<br> `).join( "" )
+	
 	const id = Array.from( surface.getElementsByTagName( "CADObjectId") ).pop().textContent;
 	//console.log( "id", id );
 	const htm = `
 	<div>
-		type: ${ surface.attributes[ "surfaceType" ].value }<br>
-		id: ${ surface[ "id" ] }<br>
-		CADobjectId:<br> ${ id }</br>
-		<button onclick=GXD.getSurfaceData(${ index }); >view surface data</button>
+		attributes:<br> ${ atts }<br>
+		children:<br>${ children }<br>
+		<button onclick=GD.getSurfaceData(${ index }); >view surface data</button>
 	</div>`;
 
 	return htm;

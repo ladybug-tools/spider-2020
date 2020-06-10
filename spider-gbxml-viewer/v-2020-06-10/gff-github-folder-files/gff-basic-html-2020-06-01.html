@@ -69,7 +69,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 </head>
 <body>
 
-	<script src="gff-github-folder-files-2020-06-08.js"></script>
+	<script src="gff-github-folder-files-2020-06-10.js"></script>
 
 <nav id="navMenu" >
 
@@ -104,7 +104,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 	<div id=divNavContent >
 
 
-		<details open >
+		<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles(); open >
 
 			<summary class=sumMenuTitle >
 				Sample File Gallery
@@ -167,7 +167,7 @@ function init() {
 
 	txtX = Array( 1 ).fill( txt ).join( "<hr>");
 
-	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
+	//GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
 
 	//divContent.innerHTML += `${ ( new Date ) } ${ txtX }`;
 

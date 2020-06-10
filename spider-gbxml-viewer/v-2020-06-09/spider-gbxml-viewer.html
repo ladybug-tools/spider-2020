@@ -28,11 +28,11 @@
 	<script src="three/hrt-heart-2020-05-27.js"></script>
 	<script src="three/scc-screen-ccapture-2020-05-23.js"></script>
 	
-	<script src="file-open/fo-file-open-2020-06-08.js"></script>
-	<script src="file-open/foz-file-open-zip-2020-05-30.js"></script>
-	<script src="file-open/fr-file-reader-2020-06-06.js"></script>
+	<script src="fo-file-open/foo-file-open-object-2020-06-09.js"></script>
+	<script src="fo-file-open/foz-file-open-zip-2020-06-09.js"></script>
+	<script src="fo-file-open/fr-file-reader-2020-06-09.js"></script>
 
-	<script src="gbxml/gbx-gbxml-parser-2020-05-30.js"></script>
+	<script src="gbxml/gbx-gbxml-parser-2020-06-09.js"></script>
 	<script src="gbxml/gxv-gbxml-view-2020-05-27.js"></script>
 	<script src="gbxml/gxd-gbxml-data-2020-05-27.js"></script>
 
@@ -70,7 +70,15 @@
 
 				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
 
-				<div id=FRdivMenuFileReader></div>
+				<div id=FRdivMenuFileReader> </div>
+
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+				</p>
+		
+				<div id=FOOdivLog >to be reset</div>
+		
+				<div id=FOZdivFileOpenZip ></div>
 
 			</details>
 

@@ -82,9 +82,9 @@ THR.onStart = function () {
 
 };
 
-THR.onLoad = function ( event ) {
+THR.zzzonLoad = function ( event ) {
 
-	console.log( 'event thr', event );
+	//console.log( 'event thr', event );
 
 	THR.addLights();
 
@@ -109,7 +109,7 @@ THR.setSceneNew = function (group = new THREE.Group()) {
 
 THR.updateGroup = function ( group ) {
 
-	console.log( "group", group );
+	//console.log( "group", group );
 
 	if ( ! group.children.length ) { return; }
 

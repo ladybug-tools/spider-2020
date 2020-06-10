@@ -16,7 +16,7 @@ FOZ.checkForZip = function () {
 	if (location.hash.toLowerCase().endsWith(".zip") === false) {
 		return;
 	}
-	//console.log( 'hash', location.hash );
+	console.log( 'hash', location.hash );
 
 	const url = location.hash.slice(1);
 
@@ -45,13 +45,13 @@ FOZ.fileOpenZip = function () {
 
 	zip.loadAsync(response)
 
-		.then(function (zipp) {
-			//console.log( 'zip', zipp );
+		.then(function (zzip) {
+			//console.log( 'zip', zzip );
 
-			zipp.forEach((relativePath, zipEntry) => FOZ.files.push(zipEntry));
+			zzip.forEach((relativePath, zipEntry) => FOZ.files.push(zipEntry));
 
 			// Read first file from the zip file!
-			const uint8array = zipp.file(FOZ.files[0].name).async("uint8array");
+			const uint8array = zzip.file(FOZ.files[0].name).async("uint8array");
 			console.log("names[ 0 ]", FOZ.files[0].name);
 
 			FOZ.file = FOZ.files[0];
@@ -89,11 +89,11 @@ FOZ.fileOpenZip = function () {
 
 		.then(
 			function success(text) {
-				FO.data = text;
+				FO.string = text;
 
 				divLog.innerHTML = `
 <p>
-	bytes loaded: ${FO.data.length.toLocaleString()}<br>
+	bytes loaded: ${FO.string.length.toLocaleString()}<br>
 	time elapsed ${(performance.now() - FOZ.timeStart).toLocaleString()} ms
 </p>
 `;
@@ -120,7 +120,7 @@ FOZ.fileOpenZip = function () {
 FOZ.onZipDecompress = function (event) {
 	//console.log( 'event', event, FOZ.file );
 
-	//GBX.onLoad();
+	//FO.onLoad();
 
 	divLog.innerHTML = `
 <p>
@@ -144,5 +144,5 @@ Extract the first file found and load as text.</span></span>
 };
 
 FOZ.displayFileContents = function () {
-	FOZtxtArea.value = FOZ.text.slice(0, 1000);
+	FOZtxtArea.value = FO.string.slice(0, 1000);
 };

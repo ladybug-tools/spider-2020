@@ -10,7 +10,7 @@ const version = "v-2020-06-09";
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml";
 //urlGbxmlDefault = "https://www.ladybug.tools/spider/gbxml-sample-files/aspen-co-resort-retail.xml";
-urlGbxmlDefault = "https://www.ladybug.tools/spider/gbxml-sample-files/samples-2/Berlin_Office_SAM2017.xml";
+urlGbxml = "https://www.ladybug.tools/spider/gbxml-sample-files/samples-2/Berlin_Office_SAM2017.xml";
 //urlGbxmlDefault = "https://GreenBuildingXML.github.io/Sample_gbXML_Files/ChapelHillOffice.xml"
 
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
@@ -29,44 +29,41 @@ function init() {
 
 	aTitle.innerHTML += ` ${version}`;
 
-	FRdivMenuFileReader.innerHTML = FR.getMenuFileReader(); // also adds event listener
+	//FRdivMenuFileReader.innerHTML = FR.getMenuFileReader(); // also adds event listener
 	
 	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
-
-	//THR.addMeshes = () => {};
 
 	THR.init();
 	THR.animate();
 
-	GBX.init();
+	THR.addLights();
 
-	FO.init();
-	FO.onLoad = GBX.onLoad;
-	FO.extension = ".xml";
-	FO.responseType = "text";
+	THR.addGround();
+
+	THR.group = THR.setSceneNew( new THREE.Group() );
+
+	//GBX.init();
+
+	FOO.init();
 	
-	window.addEventListener( "onloadFR", GBX.onLoad, false );
+	//FRdivMenuFileReader.innerHTML = FR.getMenuFileReader();
+
 
 	const target = window.self === window.top ? window : window.parent;
 
-	target.location.hash = target.location.hash ? target.location.hash : urlGbxmlDefault;
+	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
+		
+		FOO.requestFile( urlGbxml, GBX.onLoad ); 
+	
+	} else {
 
-	//FO.onHashChange();
-	//THR.addMeshes();
+		target.location.hash = target.location.hash ? target.location.hash : urlGbxml;
 
-	//HRT.init();
-
-	//THR.updateGroup( GBX.meshGroup );
-
-
-};
-
-
-THR.vvvonLoad = function ( event ) {  // replaces default THR.onLoad
-
-	console.log( 'event thr', event );
+	}
 
 };
+
+
 
 
 

@@ -31,18 +31,18 @@ GBX.init = function() {
 
 GBX.onLoad = function () {
 	
-	//console.log( "string", FO.string );
-	GBX.meshGroup = THR.setSceneNew();
-	GBX.meshGroup.name = "GBX.meshGroup";
+	//console.log( "string", FOO.string );
+	THR.group = THR.setSceneNew( THR.group );
+	THR.group.name = "GBXmeshGroup";
 
 	GBX.parseResponse();
 
-	THR.updateGroup(GBX.meshGroup); 
+	THR.updateGroup( THR.group ); 
 }
 
 
-GBX.parseResponse = function (response) {
-	GBX.string = FO.string.replace(/[\t\n\r]/gm, "");
+GBX.parseResponse = function () {
+	GBX.string = FOO.string.replace(/[\t\n\r]/gm, "");
 	//console.log( 'GBX.string', GBX.string );
 
 	GBX.getElements();
@@ -50,7 +50,7 @@ GBX.parseResponse = function (response) {
 	const meshes = GBX.getSurfaceMeshes(GBX.surfaces);
 	//console.log( 'meshes', meshes );
 
-	GBX.meshGroup.add(...meshes);
+	THR.group.add(...meshes);
 };
 
 GBX.getElements = function () {

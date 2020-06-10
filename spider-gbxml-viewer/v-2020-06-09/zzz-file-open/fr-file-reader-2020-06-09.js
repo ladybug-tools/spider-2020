@@ -10,7 +10,7 @@ const FR = {};
 
 FR.getMenuFileReader = function() {
 
-	window.addEventListener( "onloadFR", FR.onLoad, false );
+	window.addEventListener( "onloadFileReader", FR.onLoad, false );
 
 	const htm = `
 <p>
@@ -28,27 +28,25 @@ FR.readFile = function ( files ) {
 
 	FO.timeStart = performance.now();
 
-	const reader = new FileReader();
-	reader.onload = ( event ) => {
+	FR.reader = new FileReader();
+	FR.reader.onload = ( event ) => {
 
-		FO.string = FO.responseType === "text" ? reader.result : JSON.parse( reader.result );
-		
 		FR.files = files;
 
-		FR.event = new Event( "onloadFR", {"bubbles": true, "cancelable": false, detail: true } );
+		FR.event = new Event( "onloadFileReader", {"bubbles": true, "cancelable": false, detail: true } );
 
-		window.addEventListener( "onloadFR", FR.onLoad, false )
+		window.addEventListener( "onloadFileReader", FR.onLoad, false );
 
 		window.dispatchEvent( FR.event );
 
 	};
 
-	reader.readAsText( files.files[ 0 ] );
+	FR.reader.readAsText( files.files[ 0 ] );
 
 };
 
 
-FR.onLoad = function () {
+FR.onLoad = function () { // replace as needed
 
 	const file = FR.files.files[ 0 ];
 

@@ -47,13 +47,14 @@ function init() {
 
 	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
 		
-		FOO.requestFile( urlGbxml, FOO.doNext ); 
+		FOO.requestFile( urlGbxml ); 
 	
 	} else {
 
 		target.location.hash = target.location.hash ? target.location.hash : urlGbxml;
-
 	}
+
+	//location.hash = urlGbxml;
 
 };
 
@@ -62,7 +63,7 @@ function onLoad() {
 
 
 
-	JTV.onLoad();
+	//JTV.onLoad();
 
 }
 
@@ -79,7 +80,7 @@ RAY.getHtm = function ( intersected ) {
 	//console.log( "surfaceXml", surfaceXml );
 
 	surface = surfaceXml.firstChild; //[0].childNodes[0].nodeValue;
-	console.log( "surface", surface );
+	//console.log( "surface", surface );
 
 	const atts = Array.from(surface.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "");
 

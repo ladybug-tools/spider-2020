@@ -9,6 +9,8 @@ value='You are now in a GitHub web page view - Click this button to view this re
 <!--@@@
 <iframe src=./v-2020-06-10/spider-gbxml-viewer.html width=100% height=500px ></iframe>
 _Spider gbXML Viewer_
+
+2020-06-10: Viewer is having issues inside an iframe. Open file on your computer does work here.
 @@@-->
 
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
@@ -29,7 +31,10 @@ _Spider gbXML Viewer_
 <details open >
 <summary>Issues </summary>
 
+2020-06-10
+
 * Not resetting all menus when new file is loaded
+* API files not showing in iframe
 
 </details>
 

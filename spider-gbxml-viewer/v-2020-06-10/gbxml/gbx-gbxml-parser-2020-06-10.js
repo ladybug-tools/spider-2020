@@ -169,13 +169,13 @@ GBX.getShape3d = function (vertices = [], holes = [], color = 0xff0000) {
 
 	const tempVertices = GBX.getTempVertices(vertices);
 
-	const area = THREE.ShapeUtils.area(tempVertices);
+	// const area = THREE.ShapeUtils.area(tempVertices);
 
-	if (area === 0) {
-		console.log("area", area, tempVertices);
+	// if (area === 0) {
+	// 	console.log("area", area, tempVertices);
 
-		//return  ( new THREE.Mesh() );
-	}
+	// 	//return  ( new THREE.Mesh() );
+	// }
 
 	const shape = new THREE.Shape(tempVertices);
 
@@ -235,8 +235,8 @@ GBX.getTempVertices = function (vertices) {
 	let triangle = new THREE.Triangle(vertices[2], vertices[1], vertices[0]);
 	// const area = triangle.getArea();
 	// if (area === 0) {
-	// 	//console.log( "", area, vertices );
-	// 	//triangle = new THREE.Triangle( vertices[ 3 ], vertices[ 1 ], vertices[ 0 ] );
+	// 	console.log( "", area, vertices );
+	// 	triangle = new THREE.Triangle( vertices[ 3 ], vertices[ 1 ], vertices[ 0 ] );
 	// }
 	const normal = triangle.getNormal(new THREE.Vector3());
 	const baseNormal = new THREE.Vector3(0, 0, 1);

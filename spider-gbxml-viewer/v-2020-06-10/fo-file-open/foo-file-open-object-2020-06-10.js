@@ -21,7 +21,7 @@ FOO.onHashChange = function() {
 
 	FOO.url = parent.location.hash.slice(1);
 
-	FOO.requestFile(FOO.url, FOO.onLoadEventXhr);
+	FOO.requestFile(FOO.url, FOO.onLoadXhr);
 
 };
 
@@ -36,6 +36,7 @@ FOO.reset = function () {
 	//FOO.objects = undefined;
 	//FOO.text = undefined;
 	FOO.onLoad = FOO.onLoadXhr; 
+	//FOO.doNext = () => {};
 	FOO.responseType = 'text';
 	FOO.string = undefined;
 	FOO.timeStart = undefined;
@@ -46,19 +47,17 @@ FOO.reset = function () {
 
 
 
-FOO.requestFile = function ( url = urlGbxmlDefault, onLoad = FOO.onLoadEventXhr ) {
+FOO.requestFile = function ( url = urlGbxmlDefault, onLoad = FOO.onLoadXhr ) {
 
 	//console.log( 'url', url );
 
 	FOO.timeStart = performance.now();
 
-	FOO.xhr = new XMLHttpRequest();
-
 	FOO.url = url;
 	FOO.fileName = FOO.url.split( "/" ).pop();
 	FOO.extension = FOO.fileName.split( "." ).pop().toLowerCase();
 	FOO.responseType = FOO.extension === "zip" ? "blob" : "text";
-	console.log( "FOO.responseType ",  FOO.responseType );
+	//console.log( "FOO.responseType ",  FOO.responseType );
 
 	FOO.xhr.open( 'GET', url, true );
 	FOO.xhr.responseType = FOO.responseType;
@@ -99,14 +98,12 @@ FOO.onProgress = function( size = 0, note = "" ) {
 
 
 
-FOO.onLoadEventXhr = function ( xhr ) {
+FOO.onLoadXhr = function ( xhr ) {
 	console.log( 'xhr', xhr );
 
-	FOO.xhr = xhr;
+	FOO.onProgress( xhr.loaded, "Load complete" );
 
-	FOO.onProgress( FOO.xhr.loaded, "Load complete" );
-
-	FOO.string = FOO.xhr.target.response;
+	FOO.string = xhr.target.response;
 
 	if ( FOO.extension === "zip" ) {
 
@@ -115,8 +112,14 @@ FOO.onLoadEventXhr = function ( xhr ) {
 
 	} else {
 
-		GBX.onLoad();
+		FOO.doNext();
 
 	}
 
 };
+
+FOO.doNext = function() {
+
+	console.log( "FOO.string", FOO.string.slice( 0, 50 ) );
+
+}

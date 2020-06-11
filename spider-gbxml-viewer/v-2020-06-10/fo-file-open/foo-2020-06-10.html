@@ -72,9 +72,9 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
 	
-	<script src="foo-file-open-object-2020-06-09.js"></script>
-	<script src="foz-file-open-zip-2020-06-09.js"></script>
-	<script src="fr-file-reader-2020-06-09.js"></script>
+	<script src="foo-file-open-object-2020-06-10.js"></script>
+	<script src="foz-file-open-zip-2020-06-10.js"></script>
+	<script src="fr-file-reader-2020-06-10.js"></script>
 
 
 <nav id="navMenu" >
@@ -106,16 +106,18 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 		</summary>
 
 		<div id=FRdivMenuFileReader> </div>
-		
+
+		<p>
+			<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+		</p>
+
 		<div id=FOOdivLog >to be reset</div>
 
 		<div id=FOZdivFileOpenZip ></div>
 
 	</details>
 
-	<hr>
-
-	<p>
+	<!-- <p>
 		<button id=but onclick=setIt(); >set it</button>
 	</p>
 	<p>
@@ -123,9 +125,7 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 	</p>
 	<p>
 		<output id=out >50</output><input type=range id="rng" oninput=out.value=this.value >
-	</p>
-
-
+	</p> -->
 
 	<div id=divNavContent ></div>
 
@@ -192,9 +192,9 @@ function init() {
 
 	FOO.init();
 
-	FRdivMenuFileReader.innerHTML = FR.getMenuFileReader();
+	//FRdivMenuFileReader.innerHTML = FR.getMenuFileReader();
 
-	FOZ.init();
+	//FOZ.init();
 
 	const target = window.self === window.top ? window : window.parent;
 

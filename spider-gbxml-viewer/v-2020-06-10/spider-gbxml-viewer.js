@@ -41,7 +41,8 @@ function init() {
 	THR.group = THR.setSceneNew( new THREE.Group() );
 
 	FOO.init();
-	
+	FOO.doNext = GBX.onLoad;
+
 	const target = window.self === window.top ? window : window.parent;
 
 	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for

@@ -75,9 +75,8 @@ FOZ.onLoadFile = function () {
 		function success( text ) {
 
 			FOO.string = text;
-			//console.log( '', FOO.string );
 
-			GBX.onLoad();
+			FOO.doNext();
 
 			FOZdivFileOpenZip.innerHTML = `
 <p>

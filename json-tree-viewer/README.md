@@ -1,16 +1,17 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/#README.md "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-2020/json-tree-viewer/#README.md "View file as a web page." ) </span>
 
-<div><input type=button onclick="window.location.href='https://github.com/ladybug-tools/honeybee-viewer/blob/master/json-tree-viewer'";
+<div><input type=button onclick="window.location.href='https://github.com/ladybug-tools/spider-2020/blob/master/json-tree-viewer'";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 # [JSON Tree Viewer Read Me]( #README.md )
 
-<!--
+<!--@@@
 <iframe src=https://jaanga.github.io/tootoo-templates/basic-html.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
--->
+@@@-->
 
-## Full screen demo with preferred link: [ JSON Tree Viewer ]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/ )
+## Full screen demo with preferred link: [ JSON Tree Viewer ]( https://www.ladybug.tools/spider-2020/json-tree-viewer/ )
 
+<mark>Later versions in Spider Template Viewer. Will upate this folder as and when needed</mark>
 
 ## Concept
 
@@ -25,12 +26,12 @@ View JSON files a tree view
 * Search and highlight facility
 
 
-## Honeybee JSON Tree View
+## Spider JSON Tree View
 
 _The following links go to the version as dated_
 
 
-### [Honeybee Tree View 2020-02-10]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/v-2020-02-10/json-tree-view.html)
+### [Spider Tree View 2020-02-10]( https://www.ladybug.tools/spider-2020/json-tree-viewer/v-2020-02-10/json-tree-view.html)
 
 * C: Update help text and titles throughout
 * F: Move Tree View display to center screen
@@ -40,7 +41,7 @@ _The following links go to the version as dated_
 	* View item in tree view highlighted in green and scrolled into view
 
 
-### [Honeybee Tree View 2020-01-24]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/v-2020-01-24/json-tree-view.html)
+### [Spider Tree View 2020-01-24]( https://www.ladybug.tools/spider-2020/json-tree-viewer/v-2020-01-24/json-tree-view.html)
 
 * Broken for now
 

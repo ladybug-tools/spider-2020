@@ -7,7 +7,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 # [Spider gbXML Viewer Read Me]( ./readme.html )
 
 <!--@@@
-<iframe src=./v-2020-06-10/spider-gbxml-viewer.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src=./v-2020-06-10/spider-gbxml-viewer.html width=100% height=500px ></iframe>
 _Spider gbXML Viewer_
 @@@-->
 
@@ -29,6 +29,7 @@ _Spider gbXML Viewer_
 <details open >
 <summary>Issues </summary>
 
+* Not resetting all menus when new file is loaded
 
 </details>
 
@@ -46,6 +47,27 @@ Many previous versions. See
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-06-10 ~ Theo
+
+* File menu
+    * New File Open JavaScript files
+    * Open files using RESTul API
+    * Open files using operating system dialog box
+    * Open .XML and .GBXML files ( as required by the Autodesk Viewer) 
+    * Open gbXML files inside compressed .ZIP files (first file only) 
+* Sample files gallery
+    * Fixes to extensive library with dozens of samples files
+* View menu
+    * Follows standard Spider viewer menu protocols
+* Data menu
+    * New: Spider JSON Tree View
+    * Converts XML data to JSON
+    * Reasonably fast and produces nice-looking output
+    * Complete gbXML data for entire file
+    * All data accessible with just a few clicks
+
+
 
 ### 2020-05-30 ~ Theo
 

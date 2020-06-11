@@ -47,7 +47,7 @@ function init() {
 
 	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
 		
-		FOO.requestFile( urlGbxml, GBX.onLoad ); 
+		FOO.requestFile( urlGbxml, FOO.doNext ); 
 	
 	} else {
 
@@ -57,6 +57,14 @@ function init() {
 
 };
 
+function onLoad() {
+	//console.log("response", response);
+
+
+
+	JTV.onLoad();
+
+}
 
 
 

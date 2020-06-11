@@ -38,6 +38,7 @@ GBX.onLoad = function () {
 	GBX.parseResponse();
 
 	THR.updateGroup( THR.group ); 
+
 }
 
 

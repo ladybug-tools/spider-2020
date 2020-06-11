@@ -90,10 +90,11 @@ RAY.getHtm = function ( intersected ) {
 	const htm = `
 	<div>
 		attributes:<br> ${ atts }<br>
-		children:<br>${ children }<br>
+		
 		<button onclick=GD.getSurfaceData(${ index }); >view surface data</button>
 	</div>`;
 
+	// children:<br>${ children }<br>
 	return htm;
 
 };

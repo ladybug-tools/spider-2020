@@ -48,6 +48,8 @@ The script enables you to open EnergyPlus Input Data Files (IDF) from your compu
 <details open >
 <summary>Issues </summary>
 
+* May have issues with unziiping non-UTF-8 files
+* Only displays data with X, Y and Z coordinates
 
 </details>
 

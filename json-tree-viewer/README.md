@@ -66,6 +66,7 @@ JSON Tree viewers
 
 JSON sample files
 
+* https://chronicdata.cdc.gov/views/dxpw-cm5u/rows.json?accessType=DOWNLOAD <<< yes!
 * https://catalog.data.gov/dataset?res_format=JSON
 * https://www.sitepoint.com/10-example-json-files/
 * https://github.com/ozlerhakan/mongodb-json-files

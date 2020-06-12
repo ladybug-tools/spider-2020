@@ -164,7 +164,7 @@ IDF.parseType = function () {
 	IDF.surfaceTexts = FOO.string.match(/:Detailed[^]*?\r\n\r\n/gim);
 
 	if (!IDF.surfaceTexts) {
-		IDF.surfaceTexts = FOO.string.match(/Surface:Detailed,[^]*?\n\n/gim);
+		IDF.surfaceTexts = FOO.string.match(/:Detailed,[^]*?\n\n/gim);
 
 		//console.log( "xxxx typeTxt", typeTxt );
 	}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+
+	<title>Spider SAM Viewer</title>
+
+	<link rel="stylesheet" href="./style-2020-06-03.css">
+
+</head>
+
+<body>
+	
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
+	
+	<script src="three/thr-threejs-aec-2020-06-03.js"></script>
+	<script src="three/ray-raycaster-sam-2020-05-27.js"></script>
+	<script src="three/hrt-heart-2020-05-27.js"></script>
+	
+	<!-- <script src="file-open/fo-file-open-2020-05-30-2150.js"></script>
+	<script src="file-open/foz-file-open-zip.js"></script> -->
+
+	<script src="file-open/fo-file-open-2020-06-03.js"></script>
+	<script src="file-open/fr-file-reader-2020-06-06.js"></script>
+	<script src="file-open/foz-file-open-zip-2020-05-30.js"></script>
+
+	<script src="json-tree-view/jtv-json-tree-view-2020-01-24.js"></script>
+	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
+	<script src="json-tree-view/jth-json-tree-helper-2020-01-24.js"></script>
+	<script src="json-tree-view/jtf-json-tree-finder-2020-02-10.js"></script>
+
+	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-04.js"></script>
+
+	<details id=detNavMenu >
+
+		<summary id=sumNavMenu class="sumPrimary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<header id="hdrTitle">
+
+				<h2>
+<!--
+
+	<a id=aGlitch class=aButton href="" target="_top" title="Source code on Glitch">
+		<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg">
+	</a>
+-->
+
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-sam-viewer/" target="_top" title="Source code on GitHub">
+						<img src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg?v=1589095846856">
+					</a>
+
+					<a id=aTitle href="" title="Click to reload this page">
+						Spider SAM Viewer
+					</a>
+					&nbsp;
+					<span class="info"><img class=infoImg  src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
+
+					</span></span>
+
+				</h2>
+
+			</header>
+
+			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
+
+			<details id=detFile >
+
+				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
+
+				<div id=FRdivMenuFileReader></div>
+
+			</details>
+
+			<details id=detView ontoggle="" >
+
+				<summary class="sumPrimary gmd-1" title="View selected items" >samples files gallery</summary>
+
+				<p>Sample files you can load, view and experiment with</p>
+
+				<div id=GFFdivGithubFoldersFiles></div>
+
+				<div id=GFFdivFileInfo></div>
+
+			</details>
+
+			<details id=detView ontoggle=GXVdivTypes.innerHTML=GXV.init() >
+
+				<summary class="sumPrimary gmd-1" title="View selected surfaces" >view menu</summary>
+
+				<div id=GXVdivTypes ></div>
+
+				
+				<p>
+					Select individual panels. Use cursor keys to scroll through the list.<br>
+
+					<select id=selPanel oninput=SAM.showPanel(this.selectedIndex); size=10></select>
+				</p>
+
+				<div id="divTime"></div>
+
+				<hr>
+
+			</details>
+
+			<details id=detData  >
+
+				<summary class="sumPrimary gmd-1" title="Browse the deta in the JSON file" >data menu</summary>
+				
+				<div id=GXDdivData ></div>
+					<p>
+						<i>We need to decide what data should appear here = and how best to format it. Work-in-progress.</i>
+					</p>	
+				<div id=RAYdivMeshData  >
+
+					<div id="JTHdivJsonTreeHelper" ></div>
+				
+					<div id="JTFdivJsonTreeFinder" style="margin: 1ch 0;""></div>
+	
+					<div id="vvvJTVdivJsonTreeView" ></div>
+	
+					<div id="JTVdivJsonTree"></div>
+
+				</div>
+
+				<hr>
+
+			</details>
+
+			<br>
+
+			<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" 
+				src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico"> 
+			</center>
+
+		</nav>
+
+	</details>
+
+	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
+
+
+	<!-- standard footer for THR ~ 2020-06-03-->
+	<footer>
+
+		<div class=divSetView >
+			<div class="divSetViewButtons" >
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,0,200);" ">top</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(200,0,0);">right</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(-200,0,0);">left</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,-200,0);">front</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,200,0);">back</button></div>
+			</div>
+			<button onclick="THR.controls.reset();" title="reset the view" class="ftrButton"><img height=32 width=32 src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
+		</div>
+	
+		<div class=divSetView >
+			<button onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" class=ftrButton>&circlearrowright;</button>
+			<div class="divSetViewButtons" >
+				<!--
+
+					<div> <button class="butSetView" onclick="THR.setCameraPosition(200,0,0);">right</button></div>
+					<div> <button class="butSetView" onclick="THR.setCameraPosition(-200,0,0);">left</button></div>
+					<div> <button class="butSetView" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
+				-->
+				<div> <button class="butSetView" onclick="alert( 'What do you need to see here?' );" >??</button></div>
+				<div> <button class="butSetView" onclick="THR.ground.visible=!THR.ground.visible" >ground</button></div>
+				<div> <button class="butSetView" onclick="THR.axesHelper.visible=!THR.axesHelper.visible" >axes</button></div>
+			</div>
+		</div>
+<!-- note the special -->
+		<button onclick="SAM.setSceneNew(SAM.panels);" title="Show all surfaces" class=ftrButton>&sdotb;</button>
+	
+		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
+
+	</footer>
+	
+
+
+	<script src="spider-sam-viewer.js"></script>
+
+	<script>
+
+		init(); // see script-sam-viewer.js
+
+		//detNavMenu.open = window.innerWidth > 640;
+
+		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+
+			//toggleNavMenu();
+
+		} else {
+
+			detNavMenu.open = true;
+
+		}
+	</script>
+
+</body>
+
+</html>

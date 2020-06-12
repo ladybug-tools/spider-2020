@@ -53,10 +53,6 @@ function init() {
 
 	aTitle.innerHTML += ` ${version}`;
 
-	//FRdivMenuFileReader.innerHTML = FR.getMenuFileReader(); // also adds event listener
-
-	//GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
-
 	THR.init();
 	THR.animate();
 	THR.addLights();

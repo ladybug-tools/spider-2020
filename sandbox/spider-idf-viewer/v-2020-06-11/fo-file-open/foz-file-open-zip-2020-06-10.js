@@ -11,7 +11,7 @@ FOZ.onLoadFile = function () {
 	FOZ.timeStart = performance.now();
 
 	const response = FOO.dataZip;
-	console.log( 'response', response );
+	//console.log( 'response', response );
 
 	const zip = new JSZip();
 	FOZ.files = [];

@@ -15,6 +15,11 @@ GitHub
 
 * Added display any :Detailed surface
 * Updated all core modules
+    * Supports AJA and file reader
+    * UnZips
+* Update View menu
+* Enhance data menu output
+
 
 ## v-2020-06-07
 

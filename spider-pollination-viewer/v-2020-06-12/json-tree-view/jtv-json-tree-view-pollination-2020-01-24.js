@@ -8,9 +8,6 @@
 const JTV = {};
 
 
-JTV.target = JTVdivJsonTreeView;
-JTV.root = "model";
-JTV.json = undefined;
 
 
 
@@ -21,9 +18,14 @@ JTV.schemas = [
 
 JTV.init = function () {
 
+	JTV.target = JTVdivJsonTreeView;
+JTV.root = "model";
+JTV.json = undefined;
+
+
 	window.addEventListener( "onloadJson", JTV.onLoad, false );
 
-	JTV.target.innerHTML = JTV.getMenu();
+	//JTV.target.innerHTML = JTV.getMenu();
 
 };
 
@@ -33,9 +35,11 @@ JTV.onLoad = function ( event ) {
 
 	//console.log( 'JTV event', event );
 
-	//console.log( 'fo.data', FO.data );
+	console.log( 'foo.string', FOO.string );
 
-	JTV.json = JSON.parse( FO.data );
+	JTV.root = "model";
+
+	JTV.json = FOO.string; //JSON.parse( FO.data );
 
 	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
 
@@ -137,7 +141,3 @@ JTV.getObject = function ( key, item, index ) {
 	</details>`;
 
 };
-
-
-
-JTV.init();

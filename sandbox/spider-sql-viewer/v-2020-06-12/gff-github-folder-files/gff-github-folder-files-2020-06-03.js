@@ -4,7 +4,7 @@
 
 
 const GFF = {
-	extension: ".xml"
+
 };
 
 

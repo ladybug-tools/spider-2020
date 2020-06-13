@@ -75,12 +75,12 @@ function init() {
 	
 };
 
-JTV.onLoad = function () {
+JTV.vvvonLoad = function () {
 
 	JTV.root = "Honeybee userData";
 	JTV.json = FOO.string;
 	
-	JTV.init()
+	//JTV.init()
 	JTH.init();
 	JTF.init();
 	//JTE.init();

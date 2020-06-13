@@ -34,6 +34,7 @@ _basic-html.html_
 <details open >
 <summary>Links of interest</summary>
 
+* https://bigladdersoftware.com/epx/docs/8-3/output-details-and-examples/eplusout.sql.html
 
 </details>
 

@@ -5,55 +5,38 @@
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
-	<meta name="description" content="View Honeybee and Dragonfly models in 3D. Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="description" content="Examone SQL files in 3D. Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider Pollination Viewer</title>
+	<title>Spider SQL Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-06-03.css">
-
-	<style>
-
-		.active { background-color: yellow; }
-	</style>
 
 </head>
 
 <body>
+	<script src="https://inloop.github.io/sqlite-viewer/js/sql.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.27.0/dist/textmesh-standalone.umd.min.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
 	
-	<script src="thr-three/thr-threejs-aec-2020-06-11.js"></script>
+	<script src="three/thr-threejs-aec-2020-06-03.js"></script>
+	<script src="three/ray-raycaster-sam-2020-05-27.js"></script>
+	<script src="three/hrt-heart-2020-05-27.js"></script>
+	
+	<script src="file-open/fo-file-open-2020-06-03.js"></script>
+	<script src="file-open/fot-file-open-text-2020-05-30.js"></script>
+	<script src="file-open/frt-file-reader-text-2020-05-30.js"></script>
+	<script src="file-open/foz-file-open-zip-2020-05-30.js"></script>
 
-	<script src="thr-three/ray-raycaster-sam-2020-05-27.js"></script>
-	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
-	<script src="thr-three/scc-screen-ccapture-2020-05-23.js"></script>
-	
-	<script src="json-tree-view/jth-json-tree-helper-2020-06-10.js"></script>
-	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
-	<script src="json-tree-view/jtf-json-tree-finder-2020-06-10.js"></script>
-	<script src="json-tree-view/jtv-json-tree-view-pollination-2020-01-24.js"></script>
-
-	<!-- viewer -->
-	<script src="pollination/pp-pollination-parse-2020-06-12.js"></script>
-	<script src="pollination/pdj-pollination-dragonfly-json-2020-05-29.js"></script>
-	<script src="pollination/phj-pollination-honeybee-json-2020-06-06.js"></script>
-
-	
-	<!-- menus -->
-	<script src="fo-file-open/foo-file-open-object-2020-06-12.js"></script>
-	<script src="fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
-	<script src="fo-file-open/fr-file-reader-2020-06-12.js"></script>
-	
-	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
-	
-	<script src="vt-view-types/vt-view-types-pollination-2020-06-12.js"></script>
-	
-
+	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-03.js"></script>
 
 	<details id=detNavMenu >
 
@@ -65,15 +48,19 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-pollination-viewer" target="_top" title="Source code on GitHub">
-						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
+					<!-- <a id=aGlitch class=aButton href="" target="_top" title="Source code on Glitch">
+						<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg">
+					</a> -->
+
+					<a id=aGithub href="" target="_top" title="Source code on GitHub">
+						<img src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg?v=1589095846856">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider Pollination Viewer
+						Spider SQL Viewer
 					</a>
 					&nbsp;
-					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
+					<span class="info"><img class=infoImg  src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
 
 					</span></span>
 
@@ -81,31 +68,25 @@
 
 			</header>
 
-			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
+			<p>Click or touch a table in the list below to view its details. Click "Surfaces" to draw the surfaces.</p>
 
 			<details id=detFile >
 
 				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
 
-				<div id=FRdivMenuFileReader></div>
-
 				<p>
-					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+					<input type=file id=FRTinpFile onchange=FRT.readFile(this); accept = "*" >
 				</p>
-		
-				<div id=FOOdivLog >to be reset</div>
-		
-				<div id=FOZdivFileOpenZip ></div>
 
-				<div =id=divLog ></div>
+				<div id=divLog ></div>
 
 			</details>
 
-			<details id=detGitHubFolderFiles ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() >
+			<details id=detView ontoggle="" open >
 
-				<summary class="sumPrimary gmd-1" title="View selected items" >sample files gallery</summary>
+				<summary class="sumPrimary gmd-1" title="View selected items" >examples files gallery</summary>
 
-				<p>Sample files you can load, view and experiment with:</p>
+				<p>Sample files you can load, view and experiment with</p>
 
 				<div id=GFFdivGithubFoldersFiles></div>
 
@@ -114,37 +95,45 @@
 				<br>
 
 			</details>
+			
+			<details id=detView ontoggle="" open>
 
-			<details id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
+				<summary class="sumPrimary gmd-1" title="View selected items" >view menu</summary>
 
-				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
+				<div id=divView ></div>
 
-				<div id=VTdivViewTypes ></div>
+				<h3 id=h3FileName ></h3>
+				
+				<p><select id=selTable oninput=SSQL.getSelect(this.value); size=40 style=width:100%; ></select></p>
+
+				<p>
+					<button onclick=SSQL.drawReportData() >draw report data </button>
+
+					<button onclick=SSQL.drawZones() >draw zones</button>
+				
+					<button onclick=SSQL.drawSurfaces() >draw surfaces</button>
+				</p>
+		
 
 			</details>
 
-			<details id=detData ontoggle=JTV.onLoad(); >
+			<details id=detData  >
 
 				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
 				
-				<div id=RAYdivMeshData ></div>
-
 				<div id=GXDdivData ></div>
 
 				<p>
-					<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
+					<i>We need to decide what data should appear here - and how best to format it. Work-in-progress.</i>
 				</p>	
+				
+				<div id=RAYdivMeshData  >
 
-				<div id=JTHdivJsonTreeHelper ></div>
-				
-				<div id=JTFdivJsonTreeFinder ></div>
-				
-				<div id=JTEdivJsonTreeEdit ></div>
-				
-				<div id=JTVdivJsonTreeView ></div>
+					<p>
+						Selected surface data will appear here when a surface in the 3D model is clicked on or touched.
+					</p>
 
-				<div id="JTVdivJsonTree"></div>
-				
+				</div>
 
 				<hr>
 
@@ -192,7 +181,7 @@
 			</div>
 		</div>
 
-		<button onclick="THR.setAllVisible();" title="Show all surfaces" class=ftrButton>&sdotb;</button>
+		<button onclick="onclick=alert( 'What do you need to see here?' );" title="Show all surfaces" class=ftrButton>&sdotb;</button>
 	
 		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
 
@@ -200,11 +189,11 @@
 	
 
 
-	<script src="spider-pollination-viewer.js"></script>
+	<script src="spider-sql-viewer.js"></script>
 
 	<script>
 
-		init(); // see script-pollination-viewer.js
+		init(); // see script-template-viewer.js
 
 		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 

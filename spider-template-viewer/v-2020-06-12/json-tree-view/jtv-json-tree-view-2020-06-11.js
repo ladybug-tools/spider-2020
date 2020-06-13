@@ -36,7 +36,7 @@ JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '',
 
 	if ( [ "string", "number", "boolean", "null", "bigint" ].includes( type ) || !item ) {
 
-		`<div>${ key }: <span style=color:green >${ item }<span></div>`;
+		return `<div>${ key }: <span style=color:green >${ item }<span></div>`;
 
 	} else if ( type === 'object' ) {
 

@@ -57,7 +57,7 @@ FOO.requestFile = function ( url = urlGbxmlDefault, onLoad = FOO.onLoadXhr ) {
 	FOO.fileName = FOO.url.split( "/" ).pop();
 	FOO.extension = FOO.fileName.split( "." ).pop().toLowerCase();
 	FOO.responseType = FOO.extension === "zip" ? "blob" : FOO.responseType ;
-	//console.log( "FOO.responseType ",  FOO.responseType );
+	console.log( "FOO.responseType ",  FOO.responseType );
 
 	FOO.xhr.open( 'GET', url, true );
 	FOO.xhr.responseType = FOO.responseType;

@@ -42,16 +42,17 @@ function init() {
 
 	FOO.requestFile( urlGbxml ); 
 
-	// const target = window.self === window.top ? window : window.parent;
+	const target = window.self === window.top ? window : window.parent;
 
-	// if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
+	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
 		
-	// 	FOO.requestFile( urlGbxml ); 
+	 	FOO.requestFile( urlGbxml ); 
 	
-	// } else {
+	} else {
 
-	// 	target.location.hash = target.location.hash ? target.location.hash : urlGbxml;
-	// }
+	 	target.location.hash = target.location.hash ? target.location.hash : urlGbxml;
+
+	}
 
 };
 

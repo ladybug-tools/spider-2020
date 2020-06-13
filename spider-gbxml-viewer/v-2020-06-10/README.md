@@ -14,14 +14,34 @@ GitHub
 
 ## Issues
 
-* not loading zip files
 
-## v-2020-06-03
+## v-2020-06-10
 
-* Add to footer icons
-* Add sample files gallery
-* Fix location has issues
 
+### 2020-06-10 ~ Theo
+
+* File menu
+    * New File Open JavaScript files
+    * Open files using RESTul API
+    * Open files using operating system dialog box
+    * Open .XML and .GBXML files ( as required by the Autodesk Viewer) 
+    * Open gbXML files inside compressed .ZIP files (first file only) 
+* Sample files gallery
+    * Fixes to extensive library with dozens of samples files
+* View menu
+    * Follows standard Spider viewer menu protocols
+* Data menu
+    * New: Spider JSON Tree View
+    * Converts XML data to JSON
+    * Reasonably fast and produces nice-looking output
+    * Complete gbXML data for entire file
+    * All data accessible with just a few clicks
+
+
+
+### 2020-05-30 ~ Theo
+
+* File reader updates
 
 ---
 

@@ -9,8 +9,6 @@ value='You are now in a GitHub web page view - Click this button to view this re
 <!--@@@
 <iframe src=./v-2020-06-10/spider-gbxml-viewer.html width=100% height=500px ></iframe>
 _Spider gbXML Viewer_
-
-2020-06-10: Viewer is having issues inside an iframe. Open file on your computer does work here.
 @@@-->
 
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
@@ -18,6 +16,22 @@ _Spider gbXML Viewer_
 
 <details open >
 <summary>Concept</summary>
+
+* File menu
+    * Open files using RESTul API
+    * Open files using operating system dialog box
+    * Open .XML and .GBXML files ( as required by the Autodesk Viewer) 
+    * Open gbXML files inside compressed .ZIP files (first file only) 
+* Sample files gallery
+    * Access extensive library with dozens of samples files
+* View menu
+    * Follows standard Spider viewer menu protocols
+* Data menu
+    * Uses Spider JSON Tree Viewer
+    * Converts XML data to JSON
+    * Reasonably fast and produces nice-looking output
+    * Complete gbXML data for entire file
+    * All data accessible with just a few clicks
 
 
 </details>
@@ -53,34 +67,10 @@ Many previous versions. See
 <details open >
 <summary>Change log </summary>
 
-### 2020-06-10 ~ Theo
-
-* File menu
-    * New File Open JavaScript files
-    * Open files using RESTul API
-    * Open files using operating system dialog box
-    * Open .XML and .GBXML files ( as required by the Autodesk Viewer) 
-    * Open gbXML files inside compressed .ZIP files (first file only) 
-* Sample files gallery
-    * Fixes to extensive library with dozens of samples files
-* View menu
-    * Follows standard Spider viewer menu protocols
-* Data menu
-    * New: Spider JSON Tree View
-    * Converts XML data to JSON
-    * Reasonably fast and produces nice-looking output
-    * Complete gbXML data for entire file
-    * All data accessible with just a few clicks
-
-
-
-### 2020-05-30 ~ Theo
-
-* File reader updates
 
 ### 2020-05-29
 
-* First commit
+* First commit of read me
 
 </details>
 

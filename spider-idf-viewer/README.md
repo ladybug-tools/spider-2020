@@ -56,6 +56,10 @@ The script enables you to open [EnergyPlus]( https://energyplus.net ) Input Data
 <details open >
 <summary>Links of interest</summary>
 
+Ladybug Tools Forum
+
+* https://discourse.ladybug.tools/t/spider-idf-viewer-alpha-release/10062
+
 NREL
 
 * https://www.energyplus.net/
@@ -75,6 +79,8 @@ Others
 
 <details open >
 <summary>Change log </summary>
+
+_See version folders for detailed change logs_
 
 ### 2020-06-12 ~ Theo
 

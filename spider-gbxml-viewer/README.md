@@ -49,6 +49,7 @@ _Spider gbXML Viewer_
 
 * Not resetting all menus when new file is loaded
 * API files not showing in iframe
+* Need scroll into view for popup data in left menu
 
 </details>
 

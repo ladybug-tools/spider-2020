@@ -3,7 +3,7 @@ const JTE = {}
 
 JTE.init = function () {
 
-	//JTHpButtons.innerHTML += JTE.getMenu();
+	JTHpButtons.innerHTML += JTE.getMenu();
 
 	window.addEventListener( "onloadjson", JTE.onLoad, false );
 
@@ -64,7 +64,7 @@ JTE.addHighLight = function ( id ) {
 
 	shape = undefined;
 
-	for ( child of THR.group.children ) {
+	for ( child of PHJ.group.children ) {
 
 		//console.log( 'child', child.userData.id, id );
 

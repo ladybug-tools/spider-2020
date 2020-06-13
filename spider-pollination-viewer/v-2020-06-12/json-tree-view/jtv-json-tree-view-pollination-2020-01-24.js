@@ -19,8 +19,8 @@ JTV.schemas = [
 JTV.init = function () {
 
 	JTV.target = JTVdivJsonTreeView;
-JTV.root = "model";
-JTV.json = undefined;
+	JTV.root = "model";
+	JTV.json = undefined;
 
 
 	window.addEventListener( "onloadJson", JTV.onLoad, false );
@@ -47,6 +47,8 @@ JTV.onLoad = function ( event ) {
 
 	details[ 0 ].open = true;
 
+	JTE.init();
+	JTE.onLoad();
 };
 
 

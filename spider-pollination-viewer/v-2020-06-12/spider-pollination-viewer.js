@@ -75,7 +75,7 @@ function init() {
 	
 };
 
-JTV.vvvonLoad = function () {
+JTV.onLoad = function () {
 
 	JTV.root = "Honeybee userData";
 	JTV.json = FOO.string;
@@ -83,12 +83,16 @@ JTV.vvvonLoad = function () {
 	//JTV.init()
 	JTH.init();
 	JTF.init();
-	//JTE.init();
+	JTE.init();
 
 	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
 
 	const details = JTVdivJsonTree.querySelectorAll( "details" );
 
 	details[ 0 ].open = true;
+
+	details[ 1 ].open = true;
+
+	JTE.onLoad();
 
 };

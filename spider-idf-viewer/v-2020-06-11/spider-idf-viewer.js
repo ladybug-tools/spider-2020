@@ -1,8 +1,8 @@
-const version = "v-2020-06-11";
+const version = "v-2020-06-12";
 
 const description = document.head.querySelector("[ name=description ]").content;
 
-aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/spider-idf-viewer/";
+aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer/";
 
 const path = "../idf-sample-files/";
 
@@ -55,8 +55,8 @@ function init() {
 
 	THR.init();
 	THR.animate();
-	THR.addLights();
 
+	THR.addLights();
 	THR.addGround();
 
 	THR.group = THR.setSceneNew();
@@ -261,10 +261,6 @@ IDF.addShape3d = function (vertices, index = 0, holes = []) {
 	const material = new THREE.MeshPhongMaterial({ color: IDF.colors[type], side: 2 });
 	mesh = new THREE.Mesh(shapeGeometry, material);
 	data = mesh.userData;
-
-	// if window then move
-	// https://stackoverflow.com/questions/23139442/how-to-get-correct-values-for-normals-in-threejs
-
 	data.fileName = FOO.fileName;
 	data.index = index;
 	data.text = IDF.surfaceTexts[index];

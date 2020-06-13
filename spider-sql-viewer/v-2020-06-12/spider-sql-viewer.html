@@ -27,16 +27,19 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
 	
-	<script src="three/thr-threejs-aec-2020-06-03.js"></script>
-	<script src="three/ray-raycaster-sam-2020-05-27.js"></script>
-	<script src="three/hrt-heart-2020-05-27.js"></script>
-	
-	<script src="file-open/fo-file-open-2020-06-03.js"></script>
-	<script src="file-open/fot-file-open-text-2020-05-30.js"></script>
-	<script src="file-open/frt-file-reader-text-2020-05-30.js"></script>
-	<script src="file-open/foz-file-open-zip-2020-05-30.js"></script>
+	<script src="thr-three/thr-threejs-aec-2020-06-11.js"></script>
 
-	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-03.js"></script>
+	<script src="thr-three/ray-raycaster-sam-2020-05-27.js"></script>
+	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
+	<script src="thr-three/scc-screen-ccapture-2020-05-23.js"></script>
+	
+	<!-- menus -->
+	<script src="fo-file-open/foo-file-open-object-2020-06-12.js"></script>
+	<script src="fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
+	<script src="fo-file-open/fr-file-reader-2020-06-12.js"></script>
+	
+	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
+	
 
 	<details id=detNavMenu >
 
@@ -48,19 +51,15 @@
 
 				<h2>
 
-					<!-- <a id=aGlitch class=aButton href="" target="_top" title="Source code on Glitch">
-						<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg">
-					</a> -->
-
-					<a id=aGithub href="" target="_top" title="Source code on GitHub">
-						<img src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg?v=1589095846856">
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer" target="_top" title="Source code on GitHub">
+						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
 						Spider SQL Viewer
 					</a>
 					&nbsp;
-					<span class="info"><img class=infoImg  src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
+					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
 
 					</span></span>
 
@@ -74,19 +73,25 @@
 
 				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
 
-				<p>
-					<input type=file id=FRTinpFile onchange=FRT.readFile(this); accept = "*" >
-				</p>
+				<div id=FRdivMenuFileReader></div>
 
-				<div id=divLog ></div>
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+				</p>
+		
+				<div id=FOOdivLog >to be reset</div>
+		
+				<div id=FOZdivFileOpenZip ></div>
+
+				<div =id=divLog ></div>
 
 			</details>
 
-			<details id=detView ontoggle="" open >
+			<details id=detGitHubFolderFiles ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() >
 
-				<summary class="sumPrimary gmd-1" title="View selected items" >examples files gallery</summary>
+				<summary class="sumPrimary gmd-1" title="View selected items" >sample files gallery</summary>
 
-				<p>Sample files you can load, view and experiment with</p>
+				<p>Sample files you can load, view and experiment with:</p>
 
 				<div id=GFFdivGithubFoldersFiles></div>
 

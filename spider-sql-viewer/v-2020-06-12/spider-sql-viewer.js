@@ -1,9 +1,10 @@
 
-const version = "v-2020-06-05";
+const version = "v-2020-06-12";
+
+aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/sqllite-threejs/";
 
 const description = document.head.querySelector( "[ name=description ]" ).content;
 
-aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/sqllite-threejs/";
 
 
 GFF.extension = ".sql";
@@ -27,8 +28,6 @@ function init() {
 
 	aTitle.innerHTML += ` ${version}`;
 
-	GFFdivGithubFoldersFiles.innerHTML = GFF.getMenuGithubFoldersFiles();
-
 	THR.init();
 	THR.animate();
 	THR.addLights();
@@ -39,20 +38,15 @@ function init() {
 
 	THR.addMeshes();
 
-
-    THR.updateGroup( THR.group );
-    
-}
-
-THR.onLoad = function ( event ) {
+	THR.updateScene();
 
 	//console.log( 'event thr', event );
 
-	FO.init();
+	FOO.init();
 	
-	FO.extension = ".sql";
-	FO.responseType = "arraybuffer";
-	FO.callback = SSQL.onLoad;
+	FOO.extension = ".sql";
+	FOO.responseType = "arraybuffer";
+	FOO.doNext = SSQL.onLoad;
 
 	const target = window.self === window.top ? window : window.parent;
 
@@ -62,20 +56,20 @@ THR.onLoad = function ( event ) {
 
 	target.location.hash = target.location.hash ? target.location.hash : path + file;
 
-	FO.onHashChange();
+	FOO.onHashChange();
 
-	window.addEventListener( "onloadFRT", FO.callback, false );
+	//window.addEventListener( "onloadFRT", FOO.callback, false );
 	
 	//HRT.init();
 	
 };
 
 
-FO.callback = function ( text ) {
+FOO.callback = function ( text ) {
 
 	console.log( 'text',  text);
 
-	FO.onProgress( text.length, "Load complete" );
+	FOO.onProgress( text.length, "Load complete" );
 
 };
 
@@ -84,9 +78,9 @@ const SSQL = {};
 
 SSQL.onLoad = function( response ) {
 
-	//console.log( "response", response );
+	console.log( "FOO.string", FOO.string );
 
-	SSQL.database = new SQL.Database(new Uint8Array(response));
+	SSQL.database = new SQL.Database(new Uint8Array(FOO.string));
 
 	SSQL.tables = SSQL.database.prepare("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name");
 	
@@ -106,7 +100,7 @@ SSQL.onLoad = function( response ) {
 				
 	selTable.innerHTML = options;
 
-	h3FileName.innerHTML = FO.fileName;
+	h3FileName.innerHTML = FOO.fileName;
 
 	console.log( "tables", SSQL.tables );
 
@@ -266,7 +260,8 @@ function addText( text = "Hello world!\n123", position = new THREE.Vector3() ) {
 
 function drawItems( items, index  ) {
 
-	//console.log( "items", items );
+	console.log( "items", items );
+
 	const min = Math.min( ... items );
 
 	const max = Math.max( ... items );
@@ -340,7 +335,7 @@ SSQL.drawSurfaces = function() {
 
 	});
 
-	THR.updateGroup( THR.group );
+	THR.updateScene( THR.group );
 
 };
 
@@ -383,13 +378,15 @@ SSQL.drawZones = function() {
 		mesh.castShadow = true;
 		mesh.userData.index = index;
 		mesh.userData.name = "Zones";
+		mesh.userData.zoneName = obj.zoneName;
+
 
 		THR.group.add( mesh );
 		console.log( "obj",obj );
 
 	});
 
-	THR.updateGroup( THR.group );
+	THR.updateScene( THR.group );
 
 };
 

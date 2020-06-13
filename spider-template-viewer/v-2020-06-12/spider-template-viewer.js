@@ -1,11 +1,11 @@
 
-const version = "v-2020-06-11";
+const version = "v-2020-06-12";
 
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/";
 
 const description = document.head.querySelector( "[ name=description ]" ).content;
 
-const urlDefault = "README.md";
+//const urlDefault = "README.md";
 
 function init() {
 

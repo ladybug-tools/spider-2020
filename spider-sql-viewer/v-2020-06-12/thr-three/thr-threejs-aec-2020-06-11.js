@@ -82,23 +82,22 @@ THR.onStart = function () {
 
 };
 
-THR.onLoad = function ( event ) {
+THR.zzzonLoad = function ( event ) {
 
-	console.log( 'event thr', event );
+	//console.log( 'event thr', event );
 
 	THR.addLights();
 
 	THR.addGround();
 
-	THR.group = THR.setSceneNew();
+	THR.group = THR.setSceneNew( new THREE.Group() );
 
-	THR.addMeshes()
-
-	THR.updateGroup( THR.group );
+	//THR.updateGroup( THR.group );
 
 };
 
-THR.setSceneNew = function ( group ) {
+THR.setSceneNew = function (group = new THREE.Group()) {
+
 	scene.remove(group);
 
 	group = new THREE.Group();
@@ -108,7 +107,11 @@ THR.setSceneNew = function ( group ) {
 	return group;
 };
 
-THR.updateGroup = function ( group = THR.group ) {
+THR.updateScene = function ( group = THR.group ) {
+
+	//console.log( "group", group );
+
+	if ( ! group.children.length ) { return; }
 
 	THR.zoomObjectBoundingSphere(group);
 
@@ -116,6 +119,8 @@ THR.updateGroup = function ( group = THR.group ) {
 
 	RAY.addMouseMove();
 };
+
+//////////
 
 THR.zoomObjectBoundingSphere = function (obj = group) {
 	//console.log( "obj", obj );
@@ -154,11 +159,14 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 	camera.far = 50 * radius; //2 * camera.position.length();
 	camera.updateProjectionMatrix();
 
+	THR.scene.fog.near = radius * 7;
+	THR.scene.fog.far = radius * 8;
+
 	THR.axesHelper.position.copy(center);
 
-	THR.ground.position.copy(center);
+	THR.ground.position.set(center.x, center.y, center.z - radius);
 
-	if ( window.HRT ) { HRT.heart.position.copy( center ); }
+	if ( window.HRT ) { HRT.heart.position.set( center.x, center.y, center.z - 2 * radius ); }
 
 	if (THR.lightDirectional) {
 		THR.lightDirectional.position.copy(
@@ -170,7 +178,7 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 
 		scene.remove(cameraHelper);
 		cameraHelper = new THREE.CameraHelper(THR.lightDirectional.shadow.camera);
-		//scene.add(cameraHelper);
+		scene.add(cameraHelper);
 	}
 
 	let event = new Event("onresetthree", { bubbles: true, cancelable: false, detail: true });
@@ -242,7 +250,9 @@ THR.setCameraPosition = function ( x = -100, y = -100, z = 100 ) {
 
 };
 
-
+THR.setAllVisible = function () {
+	THR.group.children.forEach(mesh => (mesh.visible = true));
+};
 //////////
 
 THR.addLights = function () {
@@ -288,7 +298,7 @@ THR.addLights = function () {
 };
 
 THR.addGround = function (position = new THREE.Vector3(0, 0, -80)) {
-	const geometry = new THREE.PlaneBufferGeometry(2000, 2000);
+	const geometry = new THREE.PlaneBufferGeometry(5000, 5000);
 	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( position.x, position.y, position.z ) );
 	const material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, side: 0 });
 	THR.ground = new THREE.Mesh(geometry, material);

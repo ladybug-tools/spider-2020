@@ -259,7 +259,7 @@ SAM.getEdgeVertices = function (boundary, origin, normal, axisY ) {
 		const cVV = new THREE.Vector3(cO.X + cV.X, cO.Y + cV.Y, 0);
 		//console.log( "cV", cO.X + cV.X, cO.Y + cV.Y );
 
-		let line = SAM.getLine([cOV, cVV], 0x000000 ); //lineColors.pop() );
+		let line = SAM.getLine([cOV, cVV], lineColors.shift() );
 		//console.log( "line", line );
 		line.position.copy(origin);
 		line.up.copy( axisY );

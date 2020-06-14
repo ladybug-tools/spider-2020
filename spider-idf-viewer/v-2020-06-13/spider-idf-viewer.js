@@ -78,7 +78,7 @@ function init() {
 
 	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
 		
-	 	FOO.requestFile( path + files[ 2 ] ); 
+	 	FOO.requestFile( "https://cdn.jsdelivr.net/gh/ladybug-tools/spider-2020@master/spider-idf-viewer/idf-sample-files/test-case-2020-06-13.zip" ); 
 	
 	} else {
 

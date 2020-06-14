@@ -23,6 +23,9 @@ const files = [
 	"RefBldgStripMallNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
 	"RefBldgSuperMarketNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
 	"RefBldgWarehouseNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
+	"test",
+	"test-case-2020-06-08.zip",
+	"test-case-2020-06-13.zip"
 
 ];
 
@@ -79,7 +82,7 @@ function init() {
 	
 	} else {
 
-		 target.location.hash = target.location.hash ? target.location.hash : path + files[ 15 ] ;
+		 target.location.hash = target.location.hash ? target.location.hash : path +  files[18];
 		 
 		 FOO.onHashChange();
 

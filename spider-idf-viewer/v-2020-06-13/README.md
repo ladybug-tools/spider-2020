@@ -14,6 +14,10 @@ GitHub
 ## 2020-06-13 ~ Theo
 
 * Reading files without a specified number of vertices
+* "Shade" is now a surface type
+* IDF object now in it's own file
+* Left mevo does a scrill into view when called by PopUp
+
 
 ***
 

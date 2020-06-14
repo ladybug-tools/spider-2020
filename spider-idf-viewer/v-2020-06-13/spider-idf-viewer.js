@@ -23,6 +23,7 @@ const files = [
 	"RefBldgStripMallNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
 	"RefBldgSuperMarketNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
 	"RefBldgWarehouseNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
+
 ];
 
 GFF.extension = ".idf";
@@ -64,10 +65,25 @@ function init() {
 	FOO.init();
 	FOO.doNext = IDF.callback;
 
-
 	//FOO.requestFile(path + "test-case-2020-06-08.zip");
 	//FOO.requestFile(path + "test-case-2020-06-13.zip");
-	FOO.requestFile(path + files[ 2 ]);
+
+
+	//FOO.requestFile(path + files[ 10 ]);
+
+	const target = window.self === window.top ? window : window.parent;
+
+	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
+		
+	 	FOO.requestFile( path + files[ 2 ] ); 
+	
+	} else {
+
+		 target.location.hash = target.location.hash ? target.location.hash : path + files[ 15 ] ;
+		 
+		 FOO.onHashChange();
+
+	}
 }
 
 function openAll() {

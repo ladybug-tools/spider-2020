@@ -1,4 +1,4 @@
-const version = "2020-06-11";
+const version = "2020-06-13";
 
 const urlJsonDefault = "https://cdn.jsdelivr.net/gh/hoarelea/sam-viewer@master/sam-sample-files/Wall1.JSON";
 
@@ -147,9 +147,9 @@ SAM.getPanel = function (index) {
 	SAM.origin = origin;
 	console.log( "origin", origin );
 
-	const mesh = THR.addMesh(0.3);
-	items.push(mesh);
-	mesh.position.copy(origin);
+	// const mesh = THR.addMesh(0.3);
+	// items.push(mesh);
+	// mesh.position.copy(origin);
 	//console.log( "mesh", mesh );
 
 	const pN = b3d.Plane.Normal;
@@ -169,26 +169,35 @@ SAM.getPanel = function (index) {
 
 			aO = aperture.PlanarBoundary3D.Plane.Origin;
 			aOrigin = new THREE.Vector3(aO.X, aO.Y, aO.Z);
+			SAM.aOrigin = aOrigin;
+			//console.log( "aOrigin", aOrigin );
 
-			console.log( "aOrigin", aOrigin );
+			const aN = aperture.PlanarBoundary3D.Plane.Normal;
+			const normal = new THREE.Vector3(aN.X, aN.Y, aN.Z);
+			SAM.aNormal = normal;
 
-			let vertices = SAM.getEdgeVertices(aperture.PlanarBoundary3D);
+			const aY = aperture.PlanarBoundary3D.Plane.AxisY;
+			const axisY = new THREE.Vector3(aY.X, aY.Y, aY.Z);
+			SAM.aAxisY = axisY;
+			//console.log( "SAM.aAxisY ", SAM.aAxisY );
+
+			let vertices = SAM.getEdgeVertices(aperture.PlanarBoundary3D, SAM.aOrigin, SAM.aNormal, SAM.aAxisY );
 
 			//verticesLine = vertices.map( vertex => new THREE.Vector3( aOrigin.x + vertex.x, aOrigin.y + vertex.z , aOrigin.z ) )
-
 
 			console.log( "vertices", vertices  );
 
 			aline = SAM.getLine( vertices, "black");
-			THR.scene.add( aline )
-			const hole = new THREE.Path().setFromPoints(vertices );
+			console.log( "aline", aline.geometry.vertices );
+			// aline.name = "aline"
+			// THR.scene.add( aline );
+
+			const hole = new THREE.Path().setFromPoints( vertices );
 
 			holes.push(hole);
+
 		}
 	}
-
-
-
 
 
 	let line = SAM.getLine([origin, origin.clone().add(normal)], "blue", origin, normal);
@@ -204,20 +213,20 @@ SAM.getPanel = function (index) {
 
 	//let vertices = []; // get this to Array.map
 
-	let vertices = SAM.getEdgeVertices(b3d );
+	let vertices = SAM.getEdgeVertices(b3d, SAM.origin, SAM.normal, SAM.axisY  );
 
 	const color = SAM.colors[panel.PanelType];
 	//console.log( "color", color, panel.PanelType );
 
 	let shape = SAM.getShape(vertices, holes, color);
-	shape.position.copy(SAM.origin);
-	shape.up.copy(SAM.axisY);
-	shape.lookAt(SAM.origin.clone().add(SAM.normal));
+	//shape.position.copy(SAM.origin);
+	//shape.up.copy(SAM.axisY);
+	//shape.lookAt(SAM.origin.clone().add(SAM.normal));
 	shape.userData.index = index;
-	//shape.userData.panelsJson = panel;
+	shape.userData.panelsJson = panel;
 
 	items.push(shape);
-	//console.log("items", items);
+	console.log("items", items);
 
 	return items;
 };
@@ -232,10 +241,13 @@ SAM.getLine = function (vertices, color = 0x000000) {
 	return line;
 };
 
-SAM.getEdgeVertices = function (boundary, vertices = [] ) {
+SAM.getEdgeVertices = function (boundary, origin, normal, axisY ) {
+	//console.log( "origin", origin );
 	const v2 = (x, y) => new THREE.Vector2(x, y);
 
-	let lineColors = ["red", "green", "yellow", "blue"];
+	let lineColors = ["red", "green", "yellow", "blue", "pink", "orange"];
+	vertices = [];
+
 	for (let edge of boundary.Edge2DLoop.BoundaryEdge2Ds) {
 		//console.log( "edge", edge.Curve2D );
 
@@ -247,10 +259,11 @@ SAM.getEdgeVertices = function (boundary, vertices = [] ) {
 		const cVV = new THREE.Vector3(cO.X + cV.X, cO.Y + cV.Y, 0);
 		//console.log( "cV", cO.X + cV.X, cO.Y + cV.Y );
 
-		let line = SAM.getLine([cOV, cVV], lineColors.pop() );
-		line.position.copy(SAM.origin);
-		line.up.copy( SAM.axisY );
-		line.lookAt(SAM.origin.clone().add(SAM.normal));
+		let line = SAM.getLine([cOV, cVV], 0x000000 ); //lineColors.pop() );
+		//console.log( "line", line );
+		line.position.copy(origin);
+		line.up.copy( axisY );
+		line.lookAt(origin.clone().add(normal));
 		//items.push(line);
 
 		THR.scene.add( line )

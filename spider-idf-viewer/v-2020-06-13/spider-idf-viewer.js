@@ -82,7 +82,7 @@ function init() {
 	
 	} else {
 
-		 target.location.hash = target.location.hash ? target.location.hash : path +  files[18];
+		 target.location.hash = target.location.hash ? target.location.hash : "https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/test-case-2020-06-13.zip";
 		 
 		 FOO.onHashChange();
 

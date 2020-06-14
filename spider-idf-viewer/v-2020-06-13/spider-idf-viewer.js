@@ -4,7 +4,7 @@ const description = document.head.querySelector("[ name=description ]").content;
 
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer/";
 
-const path = "../idf-sample-files/";
+const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider-2020@master/spider-idf-viewer/idf-sample-files/";
 
 const files = [
 	"RefBldgFullServiceRestaurantNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
@@ -31,7 +31,7 @@ GFF.items = [
 	{
 		user: "ladybug-tools",
 		repo: "/spider-2020",
-		pathRepo: "sandbox/spider-idf-viewer/idf-sample-files/",
+		pathRepo: "spider-idf-viewer/idf-sample-files/",
 		title: "DOE 2012 sample files",
 		subTitle: `Files from the
 		<a href="https://www.energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">DOE Sample Files</a>.`,
@@ -59,21 +59,20 @@ function init() {
 	THR.addLights();
 	THR.addGround();
 
-	THR.group = THR.setSceneNew();
-
-	//THR.addMeshes();
+	THR.group = THR.setSceneNew(new THREE.Group());
 
 	FOO.init();
-
 	FOO.doNext = IDF.callback;
 
+
 	//FOO.requestFile(path + "test-case-2020-06-08.zip");
-	FOO.requestFile(path + "test-case-2020-06-13.zip");
-	//FOO.requestFile(path + files[ 2 ]);
+	//FOO.requestFile(path + "test-case-2020-06-13.zip");
+	FOO.requestFile(path + files[ 2 ]);
 }
 
 function openAll() {
-	THR.group = THR.setSceneNew(THR.group);
+
+	THR.group = THR.setSceneNew(new THREE.Group());
 
 	FOO.doNext = FOO.callback2;
 
@@ -161,4 +160,5 @@ RAY.getMeshData = function () {
 	`;
 
 	RAYdivMeshData.innerHTML = htm;
+	RAYdivMeshData.scrollIntoView();
 };

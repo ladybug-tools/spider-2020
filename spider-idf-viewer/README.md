@@ -7,7 +7,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 # [Spider IDF Viewer Read Me]( ./readme.html )
 
 <!--@@@
-<iframe src=./index.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src=./index.html width=100% height=500px ></iframe>
 _Spider IDF Viewer _
 @@@-->
 

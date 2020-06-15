@@ -96,7 +96,7 @@ THR.zzzonLoad = function ( event ) {
 
 };
 
-THR.setSceneNew = function (group = new THREE.Group()) {
+THR.setSceneNew = function (group) {
 
 	scene.remove(group);
 

@@ -23,9 +23,9 @@ const files = [
 	"RefBldgStripMallNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
 	"RefBldgSuperMarketNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
 	"RefBldgWarehouseNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",
-	"test",
+	//"test.zip",
 	"test-case-2020-06-08.zip",
-	"test-case-2020-06-13.zip",
+	//"test-case-2020-06-13.zip",
 ];
 
 
@@ -73,21 +73,17 @@ function init() {
 	
 	//FOO.requestFile(path + files[ 10 ]);
 
-	const target = window.self === window.top ? window : window.parent;
+	//const target = window.self === window.top ? window : window.parent;
 
-	if (target.location.hash === "#README.md") {
-		// we are in iframe and no 3D file called for
+	//console.log( "target", target );
+
+	if ( ! location.hash ) {
 
 		FOO.requestFile(
 			"https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/test-case-2020-06-13.zip"
 		);
-	} else {
-		target.location.hash = target.location.hash
-			? target.location.hash
-			: "https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/test-case-2020-06-13.zip";
+	} 
 
-		FOO.onHashChange();
-	}
 
 }
 

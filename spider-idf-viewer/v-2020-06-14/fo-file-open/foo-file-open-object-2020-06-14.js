@@ -19,7 +19,7 @@ FOO.init = function () {
 FOO.onHashChange = function() {
 	//console.log( 'hash', location.hash );
 
-	FOO.url = parent.location.hash.slice(1);
+	FOO.url = location.hash.slice(1);
 
 	FOO.requestFile(FOO.url, FOO.onLoadXhr);
 

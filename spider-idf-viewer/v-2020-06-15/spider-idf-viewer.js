@@ -37,9 +37,9 @@ GFF.items = [
 		user: "ladybug-tools",
 		repo: "/spider-2020",
 		pathRepo: "spider-idf-viewer/idf-sample-files/",
-		title: "DOE 2012 sample files",
+		title: "Selected sample files",
 		subTitle: `Files from the
-		<a href="https://www.energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">DOE Sample Files</a>.`,
+		<a href="https://www.energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">DOE</a> and other sample files.`,
 	},
 	{
 		user: "nrel",
@@ -80,7 +80,7 @@ function init() {
 	if ( ! location.hash ) {
 
 		FOO.requestFile(
-			"https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/test-case-2020-06-14.zip"
+			"https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/theoretical-office-building-tel-aviv-2020-06-15.zip"
 		);
 
 	} 

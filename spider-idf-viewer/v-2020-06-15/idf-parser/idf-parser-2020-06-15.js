@@ -41,7 +41,7 @@ IDF.callback = function () {
 	RAY.intersectObjects = surfaces.meshes;
 
 	IDF.addText( IDF.items[ 0 ], new THREE.Vector3( THR.axesHelper.position.x, THR.axesHelper.position.y + 6 * THR.radius, THR.axesHelper.position.z + 5 * THR.radius ) );
-
+	VT.init();
 
 };
 
@@ -57,7 +57,7 @@ IDF.addText = function( text = "Hello world!\n123", position = new THREE.Vector3
 	textMesh.rotation.x = 0.5 * Math.PI;
 	textMesh.position.copy( position );
 	textMesh.castShadow = true;
-	textMesh.color = 0x444444;
+	textMesh.color = "maroon";
 	
 	THR.group.add(textMesh);
 

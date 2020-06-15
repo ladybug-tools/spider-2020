@@ -80,8 +80,9 @@ function init() {
 	if ( ! location.hash ) {
 
 		FOO.requestFile(
-			"https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/test-case-2020-06-13.zip"
+			"https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/test-case-2020-06-14.zip"
 		);
+		
 	} 
 
 

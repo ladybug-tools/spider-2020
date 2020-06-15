@@ -144,11 +144,9 @@ const ItoJ = {};
 ItoJ.init = function() {
 
 	ItoJ.strings = ItoJ.split( FOO.string ).map( item => item.split(/\n/g) );
-	
 	//console.log( "strings", ItoJ.strings.slice( 0, 5 ) );
 
 	ItoJ.parents = ItoJ.getParents( ItoJ.strings );
-
 	//console.log( "ItoJ.parents", ItoJ.parents );
 
 
@@ -157,12 +155,9 @@ ItoJ.init = function() {
 	<div id=ItoJdiv${ index } ></div>
 	</details>` ).join( "");
 	
-		JTVdivJsonTree.innerHTML = htm;
+	JTVdivJsonTree.innerHTML = htm;
 
-
-
-
-}
+};
 
 ItoJ.parseValues = function( index ) {
 
@@ -177,7 +172,6 @@ ItoJ.parseValues = function( index ) {
 	if ( arrs.length === 1 ) {
 
 		const arr = arrs[ 0 ].slice( 1 )[ 0 ].slice( 1 )
-		
 		const items = arr.map( item => item.split( "!- " ) )
 
 		htm = items.map( item => `<div><small><b>${ item[ 1 ] }:</b></small> <span class=value >${ item[ 0 ].trim().replace( /[,;]/, "") }</span></div>` ).join( "");
@@ -206,9 +200,6 @@ ItoJ.parseValues = function( index ) {
 
 	}
 
-
-
-
 	div.innerHTML = htm;
 
 }
@@ -229,20 +220,11 @@ ItoJ.getParents = function( items ) {
 
 		key = key.length === 1 ? "Version" : key.replace( ",", "");
 
-		// if ( i === 8 ) {
-
-		// 	console.log( "\nKKey", key );
-		// 	console.log( "value", value );
-		// 	console.log( "item", item, "\n");
-		// }
-
 		if ( ! keys.includes( key )){ 
 
 			keys.push( key );
 
-
-				values.push( value );
-
+			values.push( value );
 
 			value = [ [key, item ] ];
 

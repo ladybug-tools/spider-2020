@@ -4,7 +4,7 @@ const description = document.head.querySelector("[ name=description ]").content;
 
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer/";
 
-const path = "https://www.ladybug-tools/spider-2020/spider-idf-viewer/idf-sample-files/";
+const path = "https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/";
 
 const files = [
 	"RefBldgFullServiceRestaurantNew2004_v1.4_7.2_3B_USA_NV_LAS_VEGAS.idf",

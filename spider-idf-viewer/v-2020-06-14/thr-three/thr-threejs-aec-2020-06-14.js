@@ -25,9 +25,9 @@ THR.init = function () {
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	
-	renderer.outputEncoding = THREE.sRGBEncoding;
+	//renderer.outputEncoding = THREE.sRGBEncoding;
 	renderer.shadowMap.enabled = true;
-	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+	//renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 	
 	document.body.appendChild(renderer.domElement);
 	
@@ -98,37 +98,38 @@ THR.zzzonLoad = function ( event ) {
 
 THR.setSceneNew = function (group) {
 
-	scene.remove(group);
+	scene.remove(THR.group);
 
-	group = new THREE.Group();
+	THR.group = new THREE.Group();
 
-	THR.scene.add(group);
+	THR.scene.add(THR.group);
 
-	return group;
+	return THR.group;
 };
 
 THR.updateScene = function ( group = THR.group ) {
 
-	//console.log( "group", group );
+	//console.log( "group", THR.group  );
 
-	if ( ! group.children.length ) { return; }
+	if ( ! THR.group.children.length ) { return; }
 
 	THR.zoomObjectBoundingSphere(group);
 
-	RAY.intersectObjects = group.children;
+	RAY.intersectObjects = THR.group.children;
 
 	RAY.addMouseMove();
 };
 
 //////////
 
-THR.zoomObjectBoundingSphere = function (obj = group) {
+THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 	//console.log( "obj", obj );
 
 	//console.log( "obj", obj );
 
 	let center = new THREE.Vector3(0, 0, 0);
 	let radius = 50;
+	let bottom = 0;
 
 	const bbox = new THREE.Box3().setFromObject(obj);
 	//console.log( 'bbox', bbox );
@@ -138,6 +139,7 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 
 		center = sphere.center;
 		radius = sphere.radius;
+		bottom = bbox.min.z;
 		//console.log( "sphere", sphere )
 	}
 
@@ -154,7 +156,7 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 
 	//camera.zoom = distance / (  * radius ) ;
 
-	camera.position.copy(center.clone().add(new THREE.Vector3(-2 * radius, -2 * radius, 1.0 * radius)));
+	camera.position.copy(center.clone().add(new THREE.Vector3(-1 * radius, -1 * radius, 1.0 * radius)));
 	camera.near = 0.001 * radius; //2 * camera.position.length();
 	camera.far = 50 * radius; //2 * camera.position.length();
 	camera.updateProjectionMatrix();
@@ -164,7 +166,7 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 
 	THR.axesHelper.position.copy(center);
 
-	THR.ground.position.set(center.x, center.y, center.z - radius);
+	THR.ground.position.set(center.x, center.y, bottom );
 
 	if ( window.HRT ) { HRT.heart.position.set( center.x, center.y, center.z - 2 * radius ); }
 
@@ -172,7 +174,7 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 		THR.lightDirectional.position.copy(
 			center.clone().add(new THREE.Vector3( 1.5 * radius, 1.5 * radius, 1.5 * radius))
 		);
-		THR.lightDirectional.shadow.camera.scale.set(0.2 * radius, 0.2 * radius, 0.2 * radius);
+		THR.lightDirectional.shadow.camera.scale.set(0.01 * radius, 0.01 * radius, 0.01 * radius);
 
 		THR.lightDirectional.target = THR.axesHelper;
 
@@ -181,14 +183,14 @@ THR.zoomObjectBoundingSphere = function (obj = group) {
 		scene.add(cameraHelper);
 	}
 
-	let event = new Event("onresetthree", { bubbles: true, cancelable: false, detail: true });
+	//let event = new Event("onresetthree", { bubbles: true, cancelable: false, detail: true });
 
 	//window.addEventListener( "onrresetthree", doThings, false );
 
 	// listening: or-object-rotation-xx.js
 	// listening: dss-display-scene-settings-xx.js
 
-	window.dispatchEvent(event);
+	//window.dispatchEvent(event);
 };
 
 
@@ -270,13 +272,13 @@ THR.addLights = function () {
 
 THR.addLights = function () {
 	//scene.add( new THREE.AmbientLight( 0x404040 ) );
-	scene.add(new THREE.AmbientLight(0x666666));
+	scene.add(new THREE.AmbientLight(0xffffff) );
 
 	const pointLight = new THREE.PointLight(0xffffff, 0.2);
 	pointLight.position.copy(camera.position);
 	pointLight.shadow.radius = 2;
 	//pointLight.castShadow = true;
-	camera.add(pointLight);
+	//camera.add(pointLight);
 
 	lightDirectional = new THREE.DirectionalLight(0xdffffff, 0.5);
 	lightDirectional.position.set(-50, -200, 100);
@@ -297,7 +299,7 @@ THR.addLights = function () {
 	THR.lightDirectional = lightDirectional;
 };
 
-THR.addGround = function (position = new THREE.Vector3(0, 0, -80)) {
+THR.addGround = function (position = new THREE.Vector3(0, 0, 0)) {
 	const geometry = new THREE.PlaneBufferGeometry(5000, 5000);
 	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( position.x, position.y, position.z ) );
 	const material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, side: 0 });

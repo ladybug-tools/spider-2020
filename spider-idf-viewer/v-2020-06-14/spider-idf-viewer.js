@@ -82,7 +82,7 @@ function init() {
 		FOO.requestFile(
 			"https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/test-case-2020-06-14.zip"
 		);
-		
+
 	} 
 
 
@@ -122,6 +122,9 @@ FOO.callback2 = () => {
 	if (count < files.length) {
 		openFile(count++);
 	} else {
+
+		THR.zoomObjectBoundingSphere();
+
 		RAY.intersectObjects = THR.group.children.flatMap(group =>
 			group.children.filter(child => child.type === "Mesh")
 		);

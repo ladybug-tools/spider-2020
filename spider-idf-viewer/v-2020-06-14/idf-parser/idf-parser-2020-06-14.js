@@ -114,7 +114,7 @@ IDF.addShape3d = function (vertices, index = 0, holes = []) {
 	//console.log( "type", type );
 	const color = IDF.colors[ type ];
 	//console.log( "color", color );
-	const material = new THREE.MeshPhongMaterial({ color: color, side: 2 });
+	const material = new THREE.MeshPhongMaterial({ color: color, side: 2, specular: 0xffffff  });
 	mesh = new THREE.Mesh(shapeGeometry, material);
 	mesh.castShadow = true;
 	mesh.receiveShadow = true;

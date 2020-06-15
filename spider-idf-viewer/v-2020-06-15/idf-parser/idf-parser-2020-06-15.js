@@ -40,7 +40,7 @@ IDF.callback = function () {
 
 	RAY.intersectObjects = surfaces.meshes;
 
-	IDF.addText( IDF.items[ 0 ], new THREE.Vector3( THR.axesHelper.position.x, THR.axesHelper.position.y + 2 * THR.radius, THR.axesHelper.position.z + 0.5 * THR.radius ) );
+	IDF.addText( IDF.items[ 0 ], new THREE.Vector3( THR.axesHelper.position.x, THR.axesHelper.position.y + 5 * THR.radius, THR.axesHelper.position.z + 0.5 * THR.radius ) );
 	VT.init();
 
 };

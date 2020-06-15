@@ -127,9 +127,9 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 
 	//console.log( "obj", obj );
 
-	let center = new THREE.Vector3(0, 0, 0);
-	let radius = 50;
-	let bottom = 0;
+	THR.center = new THREE.Vector3(0, 0, 0);
+	THR.radius = 50;
+	THR.bottom = 0;
 
 	const bbox = new THREE.Box3().setFromObject(obj);
 	//console.log( 'bbox', bbox );
@@ -137,14 +137,14 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 	if (bbox.max.x !== Infinity) {
 		const sphere = bbox.getBoundingSphere(new THREE.Sphere());
 
-		center = sphere.center;
-		radius = sphere.radius;
-		bottom = bbox.min.z;
+		THR.center = sphere.center;
+		THR.radius = sphere.radius;
+		THR.bottom = bbox.min.z;
 		//console.log( "sphere", sphere )
 	}
 
-	controls.target.copy(center); // needed because model may be far from origin
-	controls.maxDistance = 50 * radius;
+	controls.target.copy(THR.center); // needed because model may be far from origin
+	controls.maxDistance = 50 * THR.radius;
 
 	//const delta = camera.position.clone().sub(controls.target).normalize();
 	//console.log( 'delta', delta );
@@ -156,25 +156,25 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 
 	//camera.zoom = distance / (  * radius ) ;
 
-	camera.position.copy(center.clone().add(new THREE.Vector3(-1 * radius, -1 * radius, 1.0 * radius)));
-	camera.near = 0.001 * radius; //2 * camera.position.length();
-	camera.far = 50 * radius; //2 * camera.position.length();
+	camera.position.copy(THR.center.clone().add(new THREE.Vector3(-1 * THR.radius, -1 * THR.radius, 1.0 * THR.radius)));
+	camera.near = 0.001 * THR.radius; //2 * camera.position.length();
+	camera.far = 50 * THR.radius; //2 * camera.position.length();
 	camera.updateProjectionMatrix();
 
-	THR.scene.fog.near = radius * 7;
-	THR.scene.fog.far = radius * 8;
+	THR.scene.fog.near = THR.radius * 7;
+	THR.scene.fog.far = THR.radius * 8;
 
-	THR.axesHelper.position.copy(center);
+	THR.axesHelper.position.copy(THR.center);
 
-	THR.ground.position.set(center.x, center.y, bottom );
+	THR.ground.position.set(THR.center.x, THR.center.y, THR.bottom );
 
-	if ( window.HRT ) { HRT.heart.position.set( center.x, center.y, center.z - 2 * radius ); }
+	if ( window.HRT ) { HRT.heart.position.set( THR.center.x, THR.center.y, THR.center.z - 2 * THR.radius ); }
 
 	if (THR.lightDirectional) {
 		THR.lightDirectional.position.copy(
-			center.clone().add(new THREE.Vector3( 1.5 * radius, 1.5 * radius, 1.5 * radius))
+			THR.center.clone().add(new THREE.Vector3( 1.5 * THR.radius, 1.5 * THR.radius, 1.5 * THR.radius))
 		);
-		THR.lightDirectional.shadow.camera.scale.set(0.01 * radius, 0.01 * radius, 0.01 * radius);
+		THR.lightDirectional.shadow.camera.scale.set(0.01 * THR.radius, 0.01 * THR.radius, 0.01 * THR.radius);
 
 		THR.lightDirectional.target = THR.axesHelper;
 

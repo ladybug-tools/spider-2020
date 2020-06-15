@@ -9,13 +9,15 @@ VT.init = function () { // called by html > view menu > ontoggle
     <p>
         Select multiple surface types to view. Use cursor keys to scroll through the list.<br>
     </p>
-    <p>
+	<p>
+		All surfaces:
         <select id=selTypes oninput=VT.showTypes(this.selectedOptions); size=10 multiple>${VT.getTypes()}</select>
     </p>
     <p>
         <button onclick="VT.setAllVisible();" title="Show all surfaces">&sdotb; all visible</button>
 	</p>
 	
+	<hr>
 	`;
 	
 	return htm;
@@ -78,7 +80,7 @@ ${ key }: <div><select id=VTsel${ index } oninput=VT.showAttributes(this) style=
 </div>` );
 
 
-	VTdivAttributes.innerHTML = htm.join( "");
+	VTdivAttributes.innerHTML = "Surfaces in 'BuildingSurface:Detailed` - work-in-progress<br>" + htm.join( "");
 
 };
 

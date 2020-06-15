@@ -40,7 +40,7 @@ IDF.callback = function () {
 
 	RAY.intersectObjects = surfaces.meshes;
 
-	IDF.addText( IDF.items[ 0 ], new THREE.Vector3( THR.axesHelper.position.x, THR.axesHelper.position.y + 6 * THR.radius, THR.axesHelper.position.z + 5 * THR.radius ) );
+	IDF.addText( IDF.items[ 0 ], new THREE.Vector3( THR.axesHelper.position.x, THR.axesHelper.position.y + 2 * THR.radius, THR.axesHelper.position.z + 0.5 * THR.radius ) );
 	VT.init();
 
 };
@@ -53,7 +53,7 @@ IDF.addText = function( text = "Hello world!\n123", position = new THREE.Vector3
 	textMesh = new troika_3d_text.TextMesh();
 	//textMesh.font = "../../assets/Inconsolata-Regular.ttf";
 	textMesh.text = text;
-	textMesh.fontSize = 50;
+	textMesh.fontSize = 0.1 * THR.radius;
 	textMesh.rotation.x = 0.5 * Math.PI;
 	textMesh.position.copy( position );
 	textMesh.castShadow = true;

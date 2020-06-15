@@ -157,6 +157,8 @@ ItoJ.init = function() {
 	
 	JTVdivJsonTree.innerHTML = htm;
 
+	JTF.init();
+
 };
 
 ItoJ.parseValues = function( index ) {

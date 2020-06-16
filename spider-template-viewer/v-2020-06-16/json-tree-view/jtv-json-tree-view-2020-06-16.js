@@ -20,12 +20,15 @@ JTV.onLoad = function () {
 	JTH.init();
 	JTF.init();
 	//JTE.init();
+	JTV.count = 0;
 
 	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
 
-	const details = JTVdivJsonTree.querySelectorAll( "details" );
+	details = JTVdivJsonTree.querySelectorAll( "details" );
 
 	details[ 0 ].open = true;
+
+
 
 };
 
@@ -36,7 +39,7 @@ JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '',
 
 	if ( [ "string", "number", "boolean", "null", "bigint" ].includes( type ) || !item ) {
 
-		return `<div>${ key }: <span style=color:green >${ item }<span></div>`;
+		return `<div>${ key }: <span style=color:blue >${ item }<span></div>`;
 
 	} else if ( type === 'object' ) {
 
@@ -62,13 +65,31 @@ JTV.getArray = function ( key, array, index ) { //console.log( 'Array', key, arr
 
 JTV.getObject = function ( key, item, index ) {
 
-	//if ( !item ) { console.log( 'error:', key, item, index ); return; }
+	//console.log( 'item:', key, item, index ); 
+
+
+	let butt = "";
+
+	if ( key === "data") { 
+		
+		console.log( "data", key, item, index )
+		butt = `<p><button onclick=JTV.showObject(${JTV.count})>highlight object ${ JTV.count + 1 }</button></p>`
+	
+		JTV.count ++;
+	}
 
 	const keys = Object.keys( item );
 	const htm = keys.map( key => JTV.parseJson( key, item[ key ] ) ).join( "" );
 
-	return `<details style="margin: 1ch 0 1ch 1ch;" >
+	return `${ butt }<details style="margin: 1ch 0 1ch 1ch;" >
 		<summary>${ key } ${ index }: { ${ keys.length } }</summary>${ htm }
 	</details>`;
 
 };
+
+
+JTV.showObject = function( index ) {
+
+	THR.group.children.forEach( ( mesh, i ) => mesh.visible = index === i );
+
+}

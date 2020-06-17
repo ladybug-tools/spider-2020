@@ -30,7 +30,8 @@ FOO.reset = function () {
 
     FOOdivLog.innerHTML = "";
     
-    FOO.extension = ".md";
+	FOO.extension = ".md";
+	
 	FOO.fileName = undefined;
 	FOO.hostName = undefined;
 	//FOO.objects = undefined;
@@ -56,8 +57,11 @@ FOO.requestFile = function ( url = urlGbxmlDefault, onLoad = FOO.onLoadXhr ) {
 	FOO.url = url;
 	FOO.fileName = FOO.url.split( "/" ).pop();
 	FOO.extension = FOO.fileName.split( "." ).pop().toLowerCase();
-	FOO.responseType = FOO.extension === "zip" ? "blob" : FOO.responseType ;
-	//console.log( "FOO.responseType ",  FOO.responseType );
+	//console.log( "FOO.extension ",  FOO.extension );
+	FOO.responseType = "text";
+
+	FOO.responseType = FOO.extension === "zip" ? "blob" : FOO.responseType;
+	//console.log( "FOO.responseType",  FOO.responseType );
 
 	FOO.xhr.open( 'GET', url, true );
 	FOO.xhr.responseType = FOO.responseType;

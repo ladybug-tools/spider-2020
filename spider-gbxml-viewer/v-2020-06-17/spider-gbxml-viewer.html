@@ -8,7 +8,7 @@
 	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider Template Viewer</title>
+	<title>Spider gbXML Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-06-03.css">
 
@@ -21,34 +21,30 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
+	
+	<script src="three/thr-threejs-aec-2020-06-09.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.28.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.28.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.28.0/dist/textmesh-standalone.umd.min.js"></script>
-
+	<script src="three/ray-raycaster-sam-2020-05-27.js"></script>
+	<script src="three/hrt-heart-2020-05-27.js"></script>
+	<script src="three/scc-screen-ccapture-2020-05-23.js"></script>
+	
+	<script src="gbxml/gbx-gbxml-parser-2020-06-10.js"></script>
 
 	
-	<script src="thr-three/thr-threejs-aec-2020-06-16.js"></script>
-
-	<script src="thr-three/ray-raycaster-sam-2020-05-27.js"></script>
-	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
-	<script src="thr-three/scc-screen-ccapture-2020-05-23.js"></script>
-	
-	<script src="json-tree-view/jtv-json-tree-view-2020-06-16.js"></script>
-
+	<script src="json-tree-view/jtv-json-tree-view-gbx-2020-06-10.js"></script>
 	<script src="json-tree-view/jth-json-tree-helper-2020-06-10.js"></script>
 	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
 	<script src="json-tree-view/jtf-json-tree-finder-2020-06-10.js"></script>
-	<!-- <script src="json-tree-view/xml-to-json-2020-06-10.js"></script> -->
+	<script src="json-tree-view/xml-to-json-2020-06-10.js"></script>
 	
 	<!-- menus -->
-	<script src="fo-file-open/foo-file-open-object-2020-06-16.js"></script>
-	<script src="fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
-	<script src="fo-file-open/fr-file-reader-2020-06-12.js"></script>
+	<script src="fo-file-open/foo-file-open-object-2020-06-10.js"></script>
+	<script src="fo-file-open/foz-file-open-zip-2020-06-10.js"></script>
+	<script src="fo-file-open/fr-file-reader-2020-06-10.js"></script>
 	
 	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
 	
-	<script src="vt-view-types/vt-view-types-2020-06-16.js"></script>
+	<script src="vt-view-types/vt-view-types-2020-06-10.js"></script>
 	
 	<script src="gd-get-data/gd-get-data-2020-06-10.js"></script>
 
@@ -62,12 +58,12 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer" target="_top" title="Source code on GitHub">
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer" target="_top" title="Source code on GitHub">
 						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider Template Viewer
+						Spider gbXML Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -84,7 +80,7 @@
 
 				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
 
-				<div id=FRdivMenuFileReader></div>
+				<div id=FRdivMenuFileReader> </div>
 
 				<p>
 					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
@@ -94,13 +90,13 @@
 		
 				<div id=FOZdivFileOpenZip ></div>
 
-				<div id=divLog ></div>
+				<div =id=divLog ></div>
 
 			</details>
 
 			<details id=detGitHubFolderFiles ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() >
 
-				<summary class="sumPrimary gmd-1" title="View selected items" >sample files gallery</summary>
+				<summary class="sumPrimary gmd-1" title="View selected items" >samples files gallery</summary>
 
 				<p>Sample files you can load, view and experiment with:</p>
 
@@ -118,18 +114,17 @@
 
 				<div id=VTdivViewTypes ></div>
 
-				<div id=VTdivAttributes></div>
-
 			</details>
 
 			<details id=detData ontoggle=JTV.onLoad(); >
 
 				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
 				
-				<div id=RAYdivMeshData ></div>
+				<p>
+					<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
+				</p>	
 
-				<div id=GXDdivData ></div>
-
+				
 				<div id=JTHdivJsonTreeHelper ></div>
 				
 				<div id=JTFdivJsonTreeFinder ></div>
@@ -139,6 +134,8 @@
 				<div id=JTVdivJsonTreeView ></div>
 				
 				<div id="JTVdivJsonTree"></div>
+				
+				<div id=GDdivGetData></div>
 
 				<hr>
 
@@ -147,8 +144,7 @@
 			<br>
 
 			<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" 
-				src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico"> 
-			</center>
+				src="noun_buildings_1825113.svg"> </center>
 
 		</nav>
 
@@ -186,7 +182,7 @@
 			</div>
 		</div>
 
-		<button onclick="THR.setAllVisible();" title="Show all surfaces" class=ftrButton>&sdotb;</button>
+		<button onclick="GXV.setAllVisible();" title="Show all surfaces" class=ftrButton>&sdotb;</button>
 	
 		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
 
@@ -194,11 +190,10 @@
 	
 
 
-	<script src="spider-template-viewer.js"></script>
+	<script src="spider-gbxml-viewer.js"></script>
 
 	<script>
-
-		init(); // see script-template-viewer.js
+		init(); // see script-sam-viewer.js
 
 		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 

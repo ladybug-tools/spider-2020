@@ -1,8 +1,8 @@
 const version = "v-2020-06-16";
 
-const description = document.head.querySelector("[ name=description ]").content;
-
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer/";
+
+const description = document.head.querySelector("[ name=description ]").content;
 
 const path = "https://www.ladybug.tools/spider-2020/spider-idf-viewer/idf-sample-files/";
 

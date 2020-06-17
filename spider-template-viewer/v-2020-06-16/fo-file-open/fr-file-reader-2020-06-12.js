@@ -33,7 +33,7 @@ FR.onLoad = function () {
 	if ( FR.file.name.toLowerCase().endsWith( ".zip" ) ) {
 
 		FOO.dataZip = FR.file;
-		console.log( "name", FR.file.name );
+		//console.log( "name", FR.file.name );
 		
 		FOZ.onLoadFile();
 

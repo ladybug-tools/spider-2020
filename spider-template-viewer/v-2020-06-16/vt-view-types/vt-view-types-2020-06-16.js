@@ -1,11 +1,5 @@
 const VT = {};
 
-VT.types = [
-
-    { type: "Surface Type"},
-    { type: "Zone"},
-    { type: "Level"},
-]
 
 VT.init = function () {
 	const htm = `

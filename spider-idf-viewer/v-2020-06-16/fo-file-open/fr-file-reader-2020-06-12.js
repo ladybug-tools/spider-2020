@@ -33,13 +33,13 @@ FR.onLoad = function () {
 	if ( FR.file.name.toLowerCase().endsWith( ".zip" ) ) {
 
 		FOO.dataZip = FR.file;
-		console.log( "name", FR.file.name );
+		//console.log( "name", FR.file.name );
 		
 		FOZ.onLoadFile();
 
 	} else {
 
-		FOO.string = FR.reader.result;
+		FOO.string = FOO.responseType === "json" ? JSON.parse( FR.reader.result ) : FR.reader.result;
 		FOO.doNext();
 
 	}

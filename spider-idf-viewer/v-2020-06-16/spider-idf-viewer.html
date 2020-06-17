@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description" content="View EnergyPlus IDF files in 3D. Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+
+	<title>Spider IDF Viewer</title>
+
+	<link rel="stylesheet" href="./style-2020-06-03.css">
+
+	<style>
+.value{ color: #333; }
+
+#navMenu { width: 25rem; }
+
+
+	</style>
+
+</head>
+
+<body>
+	
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.28.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.28.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.28.0/dist/textmesh-standalone.umd.min.js"></script>
+
+
+	
+	<script src="thr-three/thr-threejs-aec-2020-06-15.js"></script>
+
+	<script src="thr-three/ray-raycaster-sam-2020-05-27.js"></script>
+	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
+	<script src="thr-three/scc-screen-ccapture-2020-05-23.js"></script>
+	
+	<script src="json-tree-view/jtv-json-tree-view-2020-06-11.js"></script>
+	<script src="json-tree-view/jth-json-tree-helper-2020-06-10.js"></script>
+	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
+	<script src="json-tree-view/jtf-json-tree-finder-2020-06-10.js"></script>
+	<script src="json-tree-view/xml-to-json-2020-06-10.js"></script>
+
+	<!-- parser -->
+
+	<script src="idf-parser/idf-parser-2020-06-16.js"></script>
+	
+	<!-- menus -->
+	<script src="fo-file-open/foo-file-open-object-2020-06-16.js"></script>
+	<script src="fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
+	<script src="fo-file-open/fr-file-reader-2020-06-12.js"></script>
+	
+	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
+	
+	<script src="vt-view-types/vt-view-types-idf-2020-06-15.js"></script>
+	
+	<!-- <script src="gd-get-data/gd-get-data-2020-06-10.js"></script> -->
+
+	<details id=detNavMenu >
+
+		<summary id=sumNavMenu class="sumPrimary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<header id="hdrTitle">
+
+				<h2>
+
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer" target="_top" title="Source code on GitHub">
+						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
+					</a>
+
+					<a id=aTitle href="" title="Click to reload this page">
+						Spider IDF Viewer
+					</a>
+					&nbsp;
+					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
+
+					</span></span>
+
+				</h2>
+
+			</header>
+
+			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
+
+			<details id=detFile >
+
+				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
+
+				<div id=FRdivMenuFileReader></div>
+
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+				</p>
+		
+				<div id=FOOdivLog >to be reset</div>
+		
+				<div id=FOZdivFileOpenZip ></div>
+
+				<div id=divLog ></div>
+
+			</details>
+
+			<details id=detGitHubFolderFiles ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() >
+
+				<summary class="sumPrimary gmd-1" title="View selected items" >samples files gallery</summary>
+
+				<p>Sample files you can load, view and experiment with:</p>
+
+				<div id=GFFdivGithubFoldersFiles></div>
+
+				<div id=GFFdivFileInfo></div>
+
+				<p>
+					<button onclick=openAll(); >Open a selection of sample files</button>
+				</p>
+
+			</details>
+
+			<details id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
+
+				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
+
+				<div id=VTdivViewTypes ></div>
+
+				<div id=VTdivAttributes></div>
+
+			</details>
+
+			<details id=detData ontoggle="ItoJ.init()"; >
+
+				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
+				<p><i>2020-06-14: Connection between the JSON tree view in this menu and surfaces in the 3D model are stil to be worked out.</i></p2020-06-14:></p>
+				
+				<div id=RAYdivMeshData ></div>
+
+				<div id=GXDdivData ></div>
+
+				<div id=JTHdivJsonTreeHelper ></div>
+				
+				<div id=JTFdivJsonTreeFinder ></div>
+				
+				<div><i>2020-06-14: Click "open all" and wait until data loads before doing a find. Currently finds too many things.</i></div></div>
+				<div id=JTEdivJsonTreeEdit ></div>
+				
+				<div id=JTVdivJsonTreeView ></div>
+				
+				<div id="JTVdivJsonTree"></div>
+
+				<hr>
+
+			</details>
+
+			<br>
+
+			<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" 
+				src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico"> 
+			</center>
+
+		</nav>
+
+	</details>
+
+	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
+
+
+	<!-- standard footer for THR ~ 2020-06-04-->
+	<footer>
+
+		<div class=divSetView >
+			<div class="divSetViewButtons" >
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,0,200);" ">top</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(200,0,0);">right</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(-200,0,0);">left</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,-200,0);">front</button></div>
+				<div> <button class="butSetView" onclick="THR.setCameraPosition(0,200,0);">back</button></div>
+			</div>
+			<button onclick="THR.controls.reset();" title="reset the view" class="ftrButton"><img height=32 width=32 src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
+		</div>
+	
+		<div class=divSetView >
+			<button onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" class=ftrButton>&circlearrowright;</button>
+			<div class="divSetViewButtons" >
+				<!--
+					<div> <button class="butSetView" onclick="THR.setCameraPosition(200,0,0);">right</button></div>
+					<div> <button class="butSetView" onclick="THR.setCameraPosition(-200,0,0);">left</button></div>
+					<div> <button class="butSetView" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
+				-->
+				<div> <button class="butSetView" onclick="alert( 'What do you need to see here?' );" >??</button></div>
+				<div> <button class="butSetView" onclick="THR.ground.visible=!THR.ground.visible" >ground</button></div>
+				<div> <button class="butSetView" onclick="THR.axesHelper.visible=!THR.axesHelper.visible" >axes</button></div>
+			</div>
+		</div>
+
+		<button onclick="THR.setAllVisible();" title="Show all surfaces" class=ftrButton>&sdotb;</button>
+	
+		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
+
+	</footer>
+	
+
+
+	<script src="spider-idf-viewer.js"></script>
+
+	<script>
+
+		init(); // see script-template-viewer.js
+
+		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+
+			//toggleNavMenu();
+
+		} else {
+
+			detNavMenu.open = true
+
+		}
+
+	</script>
+
+</body>
+
+</html>

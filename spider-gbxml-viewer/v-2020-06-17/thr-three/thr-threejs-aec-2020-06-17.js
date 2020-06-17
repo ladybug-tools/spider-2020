@@ -166,7 +166,7 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 
 	THR.axesHelper.position.copy(THR.center);
 
-	THR.ground.position.set(THR.center.x, THR.center.y, THR.bottom );
+	THR.ground.position.set(THR.center.x, THR.center.y, THR.bottom - 0.2 );
 
 	if ( window.HRT ) { HRT.heart.position.set( THR.center.x, THR.center.y, THR.center.z - 2 * THR.radius ); }
 
@@ -272,13 +272,13 @@ THR.addLights = function () {
 
 THR.addLights = function () {
 	//scene.add( new THREE.AmbientLight( 0x404040 ) );
-	scene.add(new THREE.AmbientLight(0xffffff) );
+	scene.add(new THREE.AmbientLight(0xaaaaaa) );
 
 	const pointLight = new THREE.PointLight(0xffffff, 0.2);
 	pointLight.position.copy(camera.position);
 	pointLight.shadow.radius = 2;
 	//pointLight.castShadow = true;
-	//camera.add(pointLight);
+	camera.add(pointLight);
 
 	lightDirectional = new THREE.DirectionalLight(0xdffffff, 0.5);
 	lightDirectional.position.set(-50, -200, 100);
@@ -301,7 +301,7 @@ THR.addLights = function () {
 
 THR.addGround = function (position = new THREE.Vector3(0, 0, 0)) {
 	const geometry = new THREE.PlaneBufferGeometry(5000, 5000);
-	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( position.x, position.y, position.z ) );
+	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( position.x, position.y, position.z - 0.01) );
 	const material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, side: 0 });
 	THR.ground = new THREE.Mesh(geometry, material);
 	//THR.ground.position.copy(position);

@@ -37,7 +37,7 @@ GBX.onLoad = function () {
 
 	GBX.parseResponse();
 
-	THR.updateGroup( THR.group ); 
+	THR.updateScene( THR.group ); 
 
 }
 
@@ -58,6 +58,11 @@ GBX.getElements = function () {
 	const reSurface = /<Surface(.*?)<\/surface>/gi;
 	GBX.surfaces = GBX.string.match(reSurface);
 	//console.log( 'GBX.surfaces', GBX.surfaces );
+
+	const reSpaces = /<Space(.*?)<\/Space>/gi;
+	GBX.spaces= GBX.string.match(reSpaces);
+	GBX.spaces = Array.isArray(GBX.spaces) ? GBX.spaces : [];
+	//console.log( 'GBX.spaces', GBX.spaces );
 
 	const reStoreys = /<BuildingStorey(.*?)<\/BuildingStorey>/gi;
 	GBX.storeys = GBX.string.match(reStoreys);
@@ -114,6 +119,7 @@ GBX.getSurfaceMeshes = function (surfaces) {
 
 		const mesh = GBX.getShape3d(verticesSurfaces, verticesOpenings, color);
 		mesh.userData.index = index;
+		mesh.userData.type = surfaceType;
 		//console.log( 'mesh', mesh );
 
 		return mesh;

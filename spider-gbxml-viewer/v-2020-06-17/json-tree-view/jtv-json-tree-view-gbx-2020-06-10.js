@@ -108,7 +108,7 @@ JTV.getString = function ( key, item, index ) { //console.log( 'string', key, it
 
 		`<div>${ key }: <a href="https://ladybug-tools.github.io/honeybee-schema/model.html#tag/${ item.toLowerCase() }_model" style=background-color:yellow;color:green;cursor:help; target="_blank">${ item }</a></div>`
 		:
-		`<div>${ key }: <span style=color:green >${ item }<span></div>`;
+		`<div>${ key }: <span style=color:blue >${ item }<span></div>`;
 
 
 	return htm;

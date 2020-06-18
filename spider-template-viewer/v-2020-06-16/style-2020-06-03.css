@@ -57,9 +57,9 @@ center {
 }
 
 footer {
-	border: 0 solid red;
+	/* border: 0 solid red;
 	bottom: 1ch;
-	position: fixed;
+	position: fixed; */
 
 	left: 0;
 	margin: 0 auto;
@@ -213,6 +213,8 @@ input[type="range"]::-webkit-slider-thumb {
 #sumNavMenu {
 	margin: 1ch;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
 	:root {

@@ -1,5 +1,5 @@
 
-const version = "v-2020-06-10";
+const version = "v-2020-06-17";
 
 aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
 

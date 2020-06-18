@@ -10,7 +10,7 @@
 
 	<title>Spider gbXML Viewer</title>
 
-	<link rel="stylesheet" href="./style-2020-06-03.css">
+	<link rel="stylesheet" href="./style-2020-06-17.css">
 
 </head>
 
@@ -42,7 +42,7 @@
 	<script src="fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
 	<script src="fo-file-open/fr-file-reader-2020-06-12.js"></script>
 	
-	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
+	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-17.js"></script>
 	
 	<script src="vt-view-types/vt-view-types-gbx-2020-06-17.js"></script>
 	
@@ -94,9 +94,11 @@
 
 			</details>
 
-			<details id=detGitHubFolderFiles ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() >
+			<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() >
 
 				<summary class="sumPrimary gmd-1" title="View selected items" >samples files gallery</summary>
+
+				<div class=divNavMenu >
 
 				<p>Sample files you can load, view and experiment with:</p>
 
@@ -108,37 +110,45 @@
 
 			</details>
 
-			<details id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
+			<details class=detNavMenu id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
 
 				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
 
-				<div id=VTdivViewTypes ></div>
+				<div class=divNavMenu >
+
+					
+					<div id=VTdivViewTypes ></div>
+					
+				</div>
 
 			</details>
 
-			<details id=detData ontoggle=JTV.onLoad(); >
+			<details class=detNavMenu id=detData ontoggle=JTV.onLoad(); >
 
 				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
-				
-				<p>
-					<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
-				</p>	
 
-				
-				<div id=JTHdivJsonTreeHelper ></div>
-				
-				<div id=JTFdivJsonTreeFinder ></div>
-				
-				<div id=JTEdivJsonTreeEdit ></div>
-				
-				<div id=JTVdivJsonTreeView ></div>
-				
-				<div id="JTVdivJsonTree"></div>
-				
-				<div id=GDdivGetData></div>
+				<div class=divNavMenu >
 
-				<hr>
-
+					<p>
+						<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
+					</p>	
+					
+					<div id=JTHdivJsonTreeHelper ></div>
+					
+					<div id=JTFdivJsonTreeFinder ></div>
+					
+					<div id=JTEdivJsonTreeEdit ></div>
+					
+					<div id=JTVdivJsonTreeView ></div>
+					
+					<div id="JTVdivJsonTree"></div>
+					
+					<div id=GDdivGetData></div>
+					
+					<hr>
+					
+				</div>
+				
 			</details>
 
 			<br>

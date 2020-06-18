@@ -10,6 +10,7 @@ IDF.colors = {
 	glassdoor: 0x8888ff,
 	wall: 0xffb400,
 	roof: 0x800000,
+	roofceiling: 0xaa4444,
 	shade: 0x888888,
 	window: 0x444444,
 	undefined: 0x00ff00,

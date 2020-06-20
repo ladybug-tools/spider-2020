@@ -142,15 +142,16 @@ function init() {
 // geometry.applyMatrix4( new THREE.Matrix4().makeScale( 1, 1, 1 ) );
 // geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, 0, 0 ) );
 
-    //var texture = new THREE.TextureLoader().load( "white-32.png" );
-    const material = new THREE.MeshBasicMaterial( { color: "pink", 
-    polygonOffset: true, 
-    polygonOffsetFactor:-0.1,
+    let texture = new THREE.TextureLoader().load( "../../assets/textures/white-32.png" );
+	const material = new THREE.MeshPhongMaterial( { color: "pink", 
+	displacementMap: texture,
+    //polygonOffset: true, 
+    //polygonOffsetFactor:-0.1,
     side: 2 });
 
     plane = new THREE.Mesh(geometry, material);
 
-    plane.position.set( 7, 0, 15)
+    plane.position.set( 0, 0, 15)
 
     scene.add( plane )
 

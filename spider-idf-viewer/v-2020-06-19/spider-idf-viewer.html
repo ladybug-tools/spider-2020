@@ -5,12 +5,20 @@
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
-	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="description" content="View EnergyPlus IDF files in 3D. Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider Template Viewer</title>
+	<title>Spider IDF Viewer</title>
 
 	<link rel="stylesheet" href="./style-2020-06-19.css">
+
+	<style>
+.value{ color: blue; }
+
+#navMenu { width: 25rem; }
+
+
+	</style>
 
 </head>
 
@@ -40,6 +48,10 @@
 	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
 	<script src="json-tree-view/jtf-json-tree-finder-2020-06-10.js"></script>
 	<!-- <script src="json-tree-view/xml-to-json-2020-06-10.js"></script> -->
+
+	<!-- parser -->
+
+	<script src="idf-parser/idf-parser-2020-06-19.js"></script>
 	
 	<!-- menus -->
 	<script src="fo-file-open/foo-file-open-object-2020-06-16.js"></script>
@@ -48,9 +60,9 @@
 	
 	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
 	
-	<script src="vt-view-types/vt-view-types-2020-06-16.js"></script>
+	<script src="vt-view-types/vt-view-types-idf-2020-06-15.js"></script>
 	
-	<script src="gd-get-data/gd-get-data-2020-06-10.js"></script>
+	<!-- <script src="gd-get-data/gd-get-data-2020-06-10.js"></script> -->
 
 	<details id=detNavMenu >
 
@@ -62,12 +74,12 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer" target="_top" title="Source code on GitHub">
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer" target="_top" title="Source code on GitHub">
 						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider Template Viewer
+						Spider IDF Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -110,9 +122,16 @@
 					
 					<div id=GFFdivFileInfo></div>
 					
+					<p>
+						<button onclick=openAll(); >Open a selection of sample files</button>
+					</p>
+				
 					<br>
 
-				</div>
+				</div>				
+				
+				
+				
 
 			</details>
 
@@ -130,7 +149,7 @@
 
 			</details>
 
-			<details id=detData ontoggle=JTV.onLoad(); >
+			<details id=detData ontoggle="ItoJ.init()"; >
 
 				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
 
@@ -144,6 +163,7 @@
 				
 				<div id=JTFdivJsonTreeFinder ></div>
 				
+				<div><i>2020-06-14: Click "open all" and wait until data loads before doing a find. Currently finds too many things.</i></div></div>
 				<div id=JTEdivJsonTreeEdit ></div>
 				
 				<div id=JTVdivJsonTreeView ></div>
@@ -165,8 +185,6 @@
 		</nav>
 
 	</details>
-
-	<!-- Used by RAY -->
 
 	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
 
@@ -213,7 +231,7 @@
 	
 
 
-	<script src="spider-template-viewer.js"></script>
+	<script src="spider-idf-viewer.js"></script>
 
 	<script>
 

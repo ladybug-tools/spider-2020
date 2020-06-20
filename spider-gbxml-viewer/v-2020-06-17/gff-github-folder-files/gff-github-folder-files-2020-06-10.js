@@ -72,7 +72,7 @@ GFF.getMenuGithubFoldersFiles = function () {
 
 	const htm = GFF.items.map( ( item, index ) =>
 		`
-		<details class=GFFdet ontoggle="GFFdivFoldersFiles${ index}.innerHTML=GFF.getGithubFoldersFiles(${index});" >
+		<details ontoggle="GFFdivFoldersFiles${ index}.innerHTML=GFF.getGithubFoldersFiles(${index});" >
 
 			<summary id=TMPsumSurfaces >${ index + 1} - ${item.title}</summary>
 

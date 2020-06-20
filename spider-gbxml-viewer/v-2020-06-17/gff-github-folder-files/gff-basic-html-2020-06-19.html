@@ -5,16 +5,71 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name=version content="2020-06-17">
+<meta name=version content="2020-06-01">
 
 <title></title>
 
-<link rel="stylesheet" href="../style-2020-06-17.css">
+<style>
 
+/* Copyright 2020 Theo Armour. MIT License */
+
+
+* { box-sizing: border-box; }
+
+:root { font: 100% monospace; --mnu-width: 25rem; --screen-width: calc( 100vw ); }
+
+html { margin: 0; padding: 0; }
+
+body { margin: 0; overflow: hidden; padding: 0; }
+
+a { color: crimson; text-decoration: none; }
+a:hover, a:focus, a:active { background-color: yellow; color: #aaa; text-decoration: underline }
+
+aside { border: 1px solid lightgray; margin-top: 15px; padding: 2px; }
+
+blockquote { background-color: #ddd; padding: 1ch; }
+
+button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
+button:hover { background: #ccc; color: #fff }
+
+code { background-color: #eee; }
+pre { background-color: #eee; padding: 5px; }
+
+input[type="range"] { -webkit-appearance: none; -moz-appearance: none; background-color: #ddd; height: 2ch;
+	width: 100%; }
+
+input[type="range"]::-moz-range-thumb { background-color: #888; border-radius: 0; height: 3ch; width: 10px; }
+
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; background-color: #888; height: 3ch; width: 10px; }
+
+main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
+	overflow: auto; padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
+
+summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
+
+
+.aDingbat { font-size: 3ch; }
+
+.info { float: right }
+
+.info:hover>.infoTooltip { display: block; }
+
+.infoTooltip { border: 0.8ch double #888; background: white; display: none;
+	font: 100% monospace; font-size: 1rem; font-weight: normal; /* unset summary settings */
+	margin-left: -28ch; padding: 10px; position: absolute; z-index: 1000; }
+
+.sumMenuTitle { background-color: #ccc; color: #777; margin: 10px 0; text-align: center; }
+
+#divContent { margin: 0 auto; max-width: 100ch; }
+#navMenu { background-color: #eee; max-height: 100vh; left: 0; margin: 0; overflow: auto; padding: 0 1rem;
+	position: absolute; top: 0; width: var( --mnu-width ); }
+
+
+</style>
 </head>
 <body>
 
-	<script src="gff-github-folder-files-2020-06-17.js"></script>
+	<script src="gff-github-folder-files-2020-06-10.js"></script>
 
 <nav id="navMenu" >
 
@@ -48,22 +103,22 @@
 
 	<div id=divNavContent >
 
-		<details id=GFFdet  ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles(); open >
 
-			<summary class=sumPrimary >
+		<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles(); open >
+
+			<summary class=sumMenuTitle >
 				Sample File Gallery
 				<span class="info" >&#x24d8;<span id=divDetails class="infoTooltip" >How can I help you?</span></span>
 			</summary>
 
-			<div class=divNavMenu >
 
 			<div id=GFFdivGithubFoldersFiles></div>
 
-			<div id=GFFdivFileInfo ></div>
-
-		</div>
+			<div id=GFFdivFileInfo></div>
 
 		</details>
+
+
 	</div>
 
 	<footer>
@@ -75,16 +130,18 @@
 
 	</footer>
 
-
-
-
 </nav>
 
 <main>
 
 	<div id="divContent" >
 
-bbb
+
+
+		<br>
+
+		<span class="info">&#x24d8;<span class="infoTooltip"> Content 2</span></span>
+
 	</div>
 
 </main>

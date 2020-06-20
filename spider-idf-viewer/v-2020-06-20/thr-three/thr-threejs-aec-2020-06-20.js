@@ -85,11 +85,12 @@ THR.onStart = function () {
 
 
 THR.setSceneNew = function (group) {
-	scene.remove(THR.group);
+	scene.remove(THR.group, THRU.group );
 
 	THR.group = new THREE.Group();
+	THRU.group = new THREE.Group();
 
-	THR.scene.add(THR.group);
+	THR.scene.add(THR.group, THRU.group);
 
 	return THR.group;
 };
@@ -103,7 +104,7 @@ THR.updateScene = function (group = THR.group) {
 
 	THR.zoomObjectBoundingSphere(group);
 
-	RAY.intersectObjects = group.children;
+	RAY.intersectObjects = THR.group.children;
 
 	RAY.addMouseMove();
 };
@@ -111,8 +112,6 @@ THR.updateScene = function (group = THR.group) {
 //////////
 
 THR.zoomObjectBoundingSphere = function (obj = THR.group) {
-	//console.log( "obj", obj );
-
 	//console.log( "obj", obj );
 
 	THR.center = new THREE.Vector3(0, 0, 0);
@@ -124,18 +123,19 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 
 	if (bbox.max.x !== Infinity) {
 		const sphere = bbox.getBoundingSphere(new THREE.Sphere());
-		//console.log( "sphere", sphere )
+		//console.log( "sphere", sphere );
 
 		THR.center = sphere.center;
 		THR.radius = sphere.radius;
 		THR.bottom = bbox.min.z;
 	}
 
-	controls.target.copy(THR.center); // needed because model may be far from origin
-	controls.maxDistance = 50 * THR.radius;
+	THR.controls.target.copy(THR.center); // needed because model may be far from origin
+	THR.controls.maxDistance = 50 * THR.radius;
+	THR.controls.update();
 
 	THR.camera.position.copy(
-		THR.center.clone().add(new THREE.Vector3(-1 * THR.radius, -1 * THR.radius, 1.0 * THR.radius))
+		THR.center.clone().add(new THREE.Vector3(-1.5 * THR.radius, -1.5 * THR.radius, 1.0 * THR.radius))
 	);
 	THR.camera.near = 0.001 * THR.radius; //2 * camera.position.length();
 	THR.camera.far = 50 * THR.radius; //2 * camera.position.length();
@@ -168,12 +168,7 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 	}
 
 	//let event = new Event("onresetthree", { bubbles: true, cancelable: false, detail: true });
-
 	//window.addEventListener( "onrresetthree", doThings, false );
-
-	// listening: or-object-rotation-xx.js
-	// listening: dss-display-scene-settings-xx.js
-
 	//window.dispatchEvent(event);
 };
 
@@ -208,11 +203,9 @@ THR.zoomToFitObject = function (camera = THR.camera, controls = THR.controls, ob
 
 	THR.controls.update();
 
-	let event = new Event("onresetthree", { bubbles: true, cancelable: false, detail: true });
-
+	//let event = new Event("onresetthree", { bubbles: true, cancelable: false, detail: true });
 	//window.addEventListener( "onrresetthree", doThings, false );
-
-	window.dispatchEvent(event);
+	//window.dispatchEvent(event);
 };
 
 THR.setCameraPosition = function (x = -100, y = -100, z = 100) {

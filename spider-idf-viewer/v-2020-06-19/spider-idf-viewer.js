@@ -82,8 +82,7 @@ function init() {
 
 	if ( ! location.hash ) {
 
-		FOO.requestFile( path + files[ 0 ]
-		);
+		FOO.requestFile( urlDefault );
 
 	} 
 

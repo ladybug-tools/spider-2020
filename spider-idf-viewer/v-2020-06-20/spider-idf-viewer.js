@@ -37,11 +37,11 @@ GFF.extension = ".idf";
 GFF.items = [
 	{
 		user: "ladybug-tools",
-		repo: "/spider-2020",
-		pathRepo: "spider-idf-viewer/idf-sample-files/",
+		repo: "/3d-models",
+		pathRepo: "idf-sample-files/2020/",
 		title: "Selected sample files",
 		subTitle: `Files from the
-		<a href="https://www.energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">DOE</a> and other sample files.`,
+		<a href="https://github.com/NREL/EnergyPlus/tree/develop/testfiles" target="_blank">NREL</a> and other sources of sample files.`,
 	},
 	{
 		user: "nrel",
@@ -49,8 +49,8 @@ GFF.items = [
 		pathRepo: "testfiles/",
 		branch: "develop",
 		title: "EnergyPlus sample files",
-		subTitle: `Files from the
-		<a href="" target="_blank">NREL</a>
+		subTitle: `All sample files from the
+		<a href="https://github.com/NREL/EnergyPlus/tree/develop/testfiles" target="_blank">NREL</a>
 		repository on GitHub.`,
 	},
 ];
@@ -202,7 +202,7 @@ ItoJ.checkZones = function( group = THR.group ) {
 
 		for ( let child of group.children ) {
 
-			const childName = "";
+			let childName = "";
 
 			if ( child.userData.text && child.userData.text.includes( name + "," ) ) {
 

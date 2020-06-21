@@ -202,7 +202,7 @@ ItoJ.checkZones = function( group = THR.group ) {
 
 		for ( let child of group.children ) {
 
-			childName = "";
+			const childName = "";
 
 			if ( child.userData.text && child.userData.text.includes( name + "," ) ) {
 
@@ -232,8 +232,12 @@ ItoJ.checkZones = function( group = THR.group ) {
 			
 	}
 
-	if ( !zonesArr[ 0 ][ 7 ] )  { return; }
+	//if ( !zonesArr[ 0 ][ 7 ] )  { return; }
 
+	if ( !zonesArr[ 0 ].find( line => line.includes( "Multiplier" ) ) ) {
+		console.log( "no multiplier found" );
+		return;
+	}
 
 
 	const multiplierArray = zonesArr.map( zone => {
@@ -244,7 +248,7 @@ ItoJ.checkZones = function( group = THR.group ) {
 
 	} );
 
-	console.log( "multiplierArray", multiplierArray );
+	//console.log( "multiplierArray", multiplierArray );
 
 	for ( let i = 0; i < multiplierArray.length; i++ ) {
 
@@ -253,7 +257,7 @@ ItoJ.checkZones = function( group = THR.group ) {
 		if ( multiplier < 2 ) {  }
 
 		zoneName = zonesArr[ i ][ 1 ].split( "," ).shift().trim();
-		console.log( "zoneName", zoneName );
+		//console.log( "zoneName", zoneName );
 
 		const zoneGroup = new THREE.Group();
 		
@@ -261,7 +265,7 @@ ItoJ.checkZones = function( group = THR.group ) {
 
 			if ( child.userData.zone && child.userData.zone === zoneName ) {
 
-				console.log( "child", i, child.userData.zone );
+				//console.log( "child", i, child.userData.zone );
 
 				clone = child.clone();
 				zoneGroup.add( clone );
@@ -272,8 +276,7 @@ ItoJ.checkZones = function( group = THR.group ) {
 		}	
 		
 		const height= new THREE.Box3().setFromObject( zoneGroup ).getSize( new THREE.Vector3() ).z;
-
-		console.log( "height", height );
+		//console.log( "height", height );
 
 		for ( let j = 0; j < multiplier; j++ ) {
 

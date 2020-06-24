@@ -35,8 +35,8 @@ a:active {
 
 button {
 	background-color: #ddd;
-	border: none;
-	border-radius: 2px;
+	/* border: none; */
+	border-radius: 1rem;
 	color: #322;
 	cursor: pointer;
 	padding: 3px 5px;

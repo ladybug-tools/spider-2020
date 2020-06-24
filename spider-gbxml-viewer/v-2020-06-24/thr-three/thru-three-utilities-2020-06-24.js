@@ -150,7 +150,7 @@ THRU.setObjectOpacity = function( obj = THR.group, range = THRrngOpacity ) {
 	const opacity = parseInt( range.value, 10 );
 	//outOpacity.value = opacity + "%";
 
-	console.log( "opacity", opacity );
+	//console.log( "opacity", opacity );
 
 	obj.traverse( child => {
 

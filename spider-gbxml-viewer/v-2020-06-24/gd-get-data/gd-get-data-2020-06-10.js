@@ -1,5 +1,7 @@
 
 
+// not currently used
+
 GD = {}
 
 GD.getMenuGetData = function() {

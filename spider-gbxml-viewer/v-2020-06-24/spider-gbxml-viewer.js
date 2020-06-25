@@ -54,12 +54,12 @@ function init() {
 
 	}
 
+	
+
 };
 
 function onLoad() {
 	//console.log("response", response);
-
-
 
 	//JTV.onLoad();
 
@@ -67,10 +67,48 @@ function onLoad() {
 
 
 
+RAY.getMeshData = function (index) {
 
-RAY.getHtm = function ( intersected ) {
+	detNavMenu.open = true;
+	detData.open = true;
+
+	JTH.toggleAll(); // default = close all
+
+	details = JTVdivJsonTree.querySelectorAll("details");
+
+	details[0].open = true;
+
+	details[ 2 ].open = true;
+
+	//details[4].open = true;
+
+	//const index = intersected.object.userData.index;
+
+	detSurf = JTVdivJsonTree.querySelector("#JTVdetSurface");
+
+	detSurf.open = true
+
+
+	panelsHtml = Array.from( detSurf.children).slice(1);
+
+	panelsHtml.forEach( item => item.className = item.className.replace(" active", "") );
+
+	panelsHtml[index].open = true;
+
+	panelsHtml[index].scrollIntoView();
+
+	panelsHtml[index].className += " active";
+
+};
+
+
+
+RAY.xxxgetHtm = function ( intersected ) {
 
 	const index = intersected.object.userData.index;
+
+	JTF.findStuff();
+	
 	const surfaceText = GBX.surfaces[ index ]
 
 	const parser = new DOMParser();
@@ -79,13 +117,19 @@ RAY.getHtm = function ( intersected ) {
 
 	surface = surfaceXml.firstChild; //[0].childNodes[0].nodeValue;
 	//console.log( "surface", surface );
+	//console.log( "children", surface.children );
 
 	const atts = Array.from(surface.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "");
 
 	children = Array.from( surface.children ).map( child => `${ child.tagName }: ${ child.textContent }<br> `).join( "" )
-	
+	//console.log( "children", children );
+
 	const id = Array.from( surface.getElementsByTagName( "CADObjectId") ).pop().textContent;
 	//console.log( "id", id );
+
+	space = surface.getElementsByTagName( "AdjacentSpaceId")
+	//console.log( "space", space );
+
 	const htm = `
 	<div>
 		attributes:<br> ${ atts }<br>

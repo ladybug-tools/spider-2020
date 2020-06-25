@@ -39,6 +39,10 @@ GBX.onLoad = function () {
 
 	THR.updateScene( THR.group ); 
 
+	setTimeout( 500 );
+
+	requestIdleCallback( JTV.init);
+
 }
 
 
@@ -116,6 +120,8 @@ GBX.getSurfaceMeshes = function (surfaces) {
 		const surfaceType = surface.match('surfaceType="(.*?)"')[1];
 		const color = new THREE.Color(GBX.colors[surfaceType]);
 		//console.log( 'color', color );
+
+		
 
 		const mesh = GBX.getShape3d(verticesSurfaces, verticesOpenings, color);
 		mesh.userData.index = index;

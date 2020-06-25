@@ -2,6 +2,13 @@ const VT = {};
 
 
 VT.init = function () {
+
+	console.log( "", JTV.json.Campus.Building.Space  );
+
+	names = JTV.json.Campus.Building.Space.map( space => space.Name["#text"] )
+
+	console.log( "names", names );
+
 	const htm = `
     <p>
         Select multiple surface types to view. Use cursor keys to scroll through the list.<br>
@@ -75,7 +82,7 @@ VT.getNames = function( objs ) {
 
 		//id = obj.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 		
-		console.log( "obj", name );
+		//console.log( "obj", name );
 
 		return name;
 	} );

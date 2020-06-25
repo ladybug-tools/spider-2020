@@ -25,25 +25,51 @@ JTV.init = function () {
 
 	//JTV.target.innerHTML = JTV.getMenu();
 
+	const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
+	obj = xmlToJson(xmlNode);
+
+	
+	JTV.json = obj.gbXML;
+	
+	console.log("JTV.json", JTV.json);
+
+	//if ( JTVdivJsonTree.innerHTML === "") {
+
+		JTH.init();
+		JTF.init();
+		//JTE.init();
+
+		JTV.root = "gbXML";
+		//JTV.json = obj.gbXML;
+
+		JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
+
+	//}
 };
 
 
 
 JTV.onLoad = function () {
 
-	const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
-	obj = xmlToJson(xmlNode);
+	//const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
+	//obj = xmlToJson(xmlNode);
 
 	//console.log("obj", obj);
 
-	JTH.init();
-	JTF.init();
-	//JTE.init();
+	if ( JTVdivJsonTree.innerHTML === "") {
 
-	JTV.root = "gbXML";
-	JTV.json = obj.gbXML;
+		JTH.init();
+		JTF.init();
+		//JTE.init();
 
-	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
+		JTV.root = "gbXML";
+		//JTV.json = obj.gbXML;
+
+		JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
+
+	}
+
+
 
 	const details = JTVdivJsonTree.querySelectorAll( "details" );
 
@@ -121,7 +147,7 @@ JTV.getArray = function ( key, array, index ) { //console.log( 'Array', key, arr
 
 	const htm = array.map( ( item, index ) => JTV.parseJson( key, item, index ) ).join( "" );
 
-	return `<details style="margin: 1ch 0 1ch 1ch;" >
+	return `<details id=JTVdet${ key } style="margin: 1ch 0 1ch 1ch;" >
 		<summary>${ key } [ ${ array.length } ]</summary>${ htm }
 	</details>`;
 

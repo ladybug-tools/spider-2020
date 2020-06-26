@@ -54,8 +54,6 @@ function init() {
 
 	}
 
-	
-
 };
 
 function onLoad() {

@@ -1,7 +1,7 @@
 
-const version = "v-2020-06-25";
+const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
 
-aGithub.href = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
+const version = "v-2020-06-25";
 
 const description = `
 Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser 
@@ -24,9 +24,12 @@ urlGbxml = "https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@mast
 
 function init() {
 
-	divDescription.innerHTML = description;
+	aGithub.href = source;
 
 	aTitle.innerHTML += ` ${version}`;
+
+	divDescription.innerHTML = description;
+
 
 	THR.init();
 	THR.animate();

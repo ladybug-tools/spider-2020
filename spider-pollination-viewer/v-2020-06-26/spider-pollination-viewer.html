@@ -5,17 +5,17 @@
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
-	<meta name="description" content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="description" content="View Honeybee and Dragonfly models in 3D. Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider gbXML Viewer</title>
+	<title>Spider Pollination Viewer</title>
 
-	<link rel="stylesheet" href="./style-2020-06-24.css">
+	<link rel="stylesheet" href="./style-2020-06-26.css">
 
 </head>
 
 <body>
-	
+
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
@@ -35,25 +35,27 @@
 	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
 	<script src="thr-three/scc-screen-ccapture-2020-05-23.js"></script>
 	
-	<script src="gbxml/gbx-gbxml-parser-2020-06-17.js"></script>
-
-	
-	<script src="json-tree-view/jtv-json-tree-view-gbx-2020-06-24.js"></script>
 	<script src="json-tree-view/jth-json-tree-helper-2020-06-10.js"></script>
 	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
 	<script src="json-tree-view/jtf-json-tree-finder-2020-06-10.js"></script>
-	<script src="ftj-file-type-to-json/xml-to-json-2020-06-10.js"></script>
+	<script src="json-tree-view/jtv-json-tree-view-pollination-2020-01-24.js"></script>
+
+	<!-- viewer -->
+	<script src="pollination/pp-pollination-parse-2020-06-26.js"></script>
+	<script src="pollination/pdj-pollination-dragonfly-json-2020-06-26.js"></script>
+	<script src="pollination/phj-pollination-honeybee-json-2020-06-26.js"></script>
+
 	
 	<!-- menus -->
-	<script src="fo-file-open/foo-file-open-object-2020-06-16.js"></script>
+	<script src="fo-file-open/foo-file-open-object-2020-06-26.js"></script>
 	<script src="fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
 	<script src="fo-file-open/fr-file-reader-2020-06-12.js"></script>
 	
 	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
 	
-	<script src="vt-view-types/vt-view-types-gbx-2020-06-25.js"></script>
+	<script src="vt-view-types/vt-view-types-pollination-2020-06-26.js"></script>
 	
-	<!-- <script src="gd-get-data/gd-get-data-2020-06-10.js"></script> -->
+
 
 	<details id=detNavMenu >
 
@@ -65,12 +67,12 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer" target="_top" title="Source code on GitHub">
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-pollination-viewer" target="_top" title="Source code on GitHub">
 						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider gbXML Viewer
+						Spider Pollination Viewer
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -97,7 +99,7 @@
 		
 				<div id=FOZdivFileOpenZip ></div>
 
-				<div id=divLog ></div>
+				<div =id=divLog ></div>
 
 			</details>
 
@@ -119,7 +121,7 @@
 
 			</details>
 
-			<details class=detNavMenu id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
+			<details id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
 
 				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
 
@@ -133,44 +135,41 @@
 
 			</details>
 
-			<details class=detNavMenu id=detData ontoggle=JTV.onLoad(); >
+			<details id=detData ontoggle=JTV.onLoad(); >
 
 				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
 
 				<div class=divNavResize >
 
-					<p>
-						<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
-					</p>	
-					
-					<div id=JTHdivJsonTreeHelper ></div>
-					
-					<div id=JTFdivJsonTreeFinder ></div>
-					
-					<div id=JTEdivJsonTreeEdit ></div>
-					
-					<div id=JTVdivJsonTreeView ></div>
-					
-					<div id="JTVdivJsonTree"></div>
-					
-					<div id=GDdivGetData></div>
-					
-					<hr>
-					
-				</div>
+				<p>
+					<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
+				</p>	
+
+				<div id=JTHdivJsonTreeHelper ></div>
 				
+				<div id=JTFdivJsonTreeFinder ></div>
+				
+				<div id=JTEdivJsonTreeEdit ></div>
+				
+				<div id=JTVdivJsonTreeView ></div>
+
+				<div id="JTVdivJsonTree"></div>
+				
+
+				<hr>
+				</div>
+
 			</details>
 
 			<br>
 
 			<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" 
-				src="noun_buildings_1825113.svg"> </center>
+				src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico"> 
+			</center>
 
 		</nav>
 
 	</details>
-
-	<!-- Used by RAY -->
 
 	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
 
@@ -229,10 +228,11 @@
 	
 
 
-	<script src="spider-gbxml-viewer.js"></script>
+	<script src="spider-pollination-viewer.js"></script>
 
 	<script>
-		init(); // see script-gbxml-viewer.js
+
+		init(); // see script-pollination-viewer.js
 
 		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 

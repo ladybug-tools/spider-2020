@@ -11,6 +11,8 @@
 	box-sizing: border-box;
 }
 
+/* tags */
+
 body {
 	color: teal;
 	margin: 0;
@@ -33,8 +35,8 @@ a:active {
 
 button {
 	background-color: #ddd;
-	border: none;
-	border-radius: 2px;
+	/* border: none; */
+	border-radius: 1rem;
 	color: #322;
 	cursor: pointer;
 	padding: 3px 5px;
@@ -51,21 +53,10 @@ button:active {
 }
 
 center {
+	/* old school tag - just for fun - used in some footers */
 	font-size: 3ch;
 	font-weight: bold;
 	text-decoration: none;
-}
-
-footer {
-	border: 0 solid red;
-	bottom: 1ch;
-	position: fixed;
-
-	left: 0;
-	margin: 0 auto;
-	right: 0;
-	text-align: center;
-	max-width: 25rem;
 }
 
 input[type="range"] {
@@ -91,13 +82,18 @@ input[type="range"]::-webkit-slider-thumb {
 	width: 10px;
 }
 
-.ftrButton {
-	background-color: #eee;
-	border-radius: 0.5ch;
-	font-size: 2rem;
-	margin: 0 1rem;
-	vertical-align: bottom;
+/* classes */
+
+.active { background-color: yellow; }
+
+.divNavResize {
+	border-right: 1px solid teal;
+	max-height: 60vh;
+	overflow: auto;
+	resize: vertical;
 }
+
+/* gmd = Google Material Design */
 
 .gmd-1 {
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -155,37 +151,51 @@ input[type="range"]::-webkit-slider-thumb {
 	cursor: pointer;
 	outline: none;
 	padding: 1ch;
-
-	
 }
 
+.THRbutChild {
+	border-radius: 0.5rem;
+}
+
+.THRbutParent {
+	/* border: 1px solid red; */
+	background-color: #eee;
+	border-radius: 0.5ch;
+	font-size: 2rem;
+	margin: 0 1rem;
+	vertical-align: bottom;
+	z-index: 3;
+}
+
+.THRdivButtonGroup {
+	display: inline-block;
+	position: relative;
+	z-index: 3;
+}
+
+.THRdivButtonGroup:hover > .THRdivChild {
+	display: block;
+}
+
+.THRdivChild {
+	background-color: #eee;
+	border-radius: 0.5ch;
+	bottom: 2.9rem;
+	display: none;
+	/* left: 5rem; */
+	padding: 0.5rem;
+	position: absolute;
+	text-align: left;
+	width: 8rem;
+}
+
+/* IDs */
 
 #detNavMenu {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 2ch;
 	margin: 1ch;
 	position: absolute;
-}
-
-.divSetView {
-	display: inline-block;
-	position: relative;
-}
-
-.divSetViewButtons {
-	display: none;
-	position: absolute;
-	left: 1rem;
-	bottom: 2.9rem;
-	width:3rem;
-}
-
-.butSetView {
-	width: 3rem;
-}
-
-.divSetView:hover > .divSetViewButtons {
-	display: block;
 }
 
 #divPopUp {
@@ -200,13 +210,24 @@ input[type="range"]::-webkit-slider-thumb {
 	top: 30%;
 }
 
+#THRftr {
+	bottom: 1ch;
+	left: 0;
+	margin: 0 auto;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	max-width: 30%;
+	z-index: 3;
+}
+
 #navMenu {
 	background-color: #fafffa;
 	border: 0 solid red;
 	border-radius: 2ch;
 	margin: 1ch;
 	max-height: 90vh;
-	width: 17rem;
+	width: 20rem;
 	overflow: auto;
 	padding: 1ch 1ch 0 1ch;
 	resize: both;
@@ -215,15 +236,6 @@ input[type="range"]::-webkit-slider-thumb {
 
 #sumNavMenu {
 	margin: 1ch;
-}
-
-
-.divNavMenu {
-
-	border: 0 solid red;
-	max-height:60vh;
-	overflow: auto;
-	resize:vertical;
 }
 
 @media (prefers-color-scheme: dark) {

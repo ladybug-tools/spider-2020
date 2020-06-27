@@ -29,7 +29,7 @@
 
 	<!-- core -->
 	<script src="thr-three/thr-threejs-aec-2020-06-26.js"></script>
-	<script src="thr-three/thru-three-utilities-2020-06-24.js"></script>
+	<script src="thr-three/thru-three-utilities-2020-06-26.js"></script>
 
 	<!-- <script src="thr-three/ray-raycaster-mousemove-2020-06-26.js"></script> -->
 	<script src="thr-three/ray-raycaster-mousedown-2020-06-26.js"></script>
@@ -183,6 +183,8 @@
 				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
 				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,-200,0);">front</button></div>
 				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,200,0);">back</button></div>
+				<div> <button id=THRUbutOrtho class="THRbutChild" onclick="THRU.toggleCameraOrthoPerspective();">ortho</button></div>
+				
 				<div> <button class="THRbutChild" onclick="THR.zoomToFitObject();">zoom fit</button></div>
 				
 			</div>
@@ -213,7 +215,7 @@
 				<button class="THRbutChild" onclick="THRU.toggleBoundingBoxHelper();" >bounding box</button>
 				<button class="THRbutChild" onclick="THRU.toggleWireframe();" >wireframe</button>
 				<button class="THRbutChild" onclick="THRU.toggleMeshEdges();" >edges</button>
-				<button class="THRbutChild" onclick="THRU.toggleTitles();" >titles</button>
+				<div><button class="THRbutChild" onclick="THRU.toggleTitles();" >titles</button></div>
 			
 			</div>
 		</div>

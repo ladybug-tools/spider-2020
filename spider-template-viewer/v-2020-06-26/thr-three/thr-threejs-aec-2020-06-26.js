@@ -16,7 +16,7 @@ THR.center = new THREE.Vector3(0, 0, 0);
 THR.radius = 50;
 
 THR.init = function () {
-	camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+	camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 1, 1000);
 	camera.position.set(-100, -100, 100);
 	camera.up.set(0, 0, 1);
 
@@ -281,52 +281,6 @@ THR.addGround = function (position = new THREE.Vector3(0, 0, 0)) {
 	// 	side: 2,
 	// });
 	// THR.ground.add(new THREE.Mesh(geo, mat));
-};
-
-THR.addMesh = function (size = 10) {
-	// CylinderGeometry( radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded )
-	// SphereGeometry( radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength )
-	// TorusGeometry( radius, tube, radialSegments, tubularSegments, arc )
-
-	types = [
-		new THREE.BoxBufferGeometry(size, size, size),
-		new THREE.CylinderBufferGeometry(5, 5, size),
-		new THREE.DodecahedronGeometry(5),
-		new THREE.SphereBufferGeometry(0.5 * size),
-		new THREE.TorusBufferGeometry(size, 0.5 * size),
-		new THREE.TorusKnotBufferGeometry(size, 0.5 * size),
-	];
-
-	const geometry = types[Math.floor(types.length * Math.random())];
-
-	// geometry.applyMatrix4( new THREE.Matrix4().makeRotationX( -0.5 * Math.PI ) );
-	// geometry.applyMatrix4( new THREE.Matrix4().makeScale( 1, 1, 1 ) );
-	// geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, 0, 0 ) );
-
-	//const material = new THREE.MeshNormalMaterial();  
-	//const geometry = new THREE.BoxBufferGeometry(size, size, size);
-	const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random(), specular: 0x444444 });
-	mesh = new THREE.Mesh(geometry, material);
-	mesh.receiveShadow = true;
-	mesh.castShadow = true;
-
-	return mesh;
-};
-
-THR.addMeshes = function (count = 100) {
-	THR.group.add(
-		...Array(count)
-			.fill()
-			.map(() => THR.addMesh())
-	);
-
-	THR.group.children.forEach((mesh, i) => {
-		mesh.position.set(Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100);
-		mesh.rotation.set(0.2 * Math.random(), 0.2 * Math.random(), 0.2 * Math.random());
-		mesh.name = "Item " + i;
-		mesh.userData.index = i;
-		
-	});
 };
 
 THR.setStats = function () {

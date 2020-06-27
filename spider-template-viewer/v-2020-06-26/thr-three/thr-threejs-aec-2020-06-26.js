@@ -106,7 +106,8 @@ THR.updateScene = function (group = THR.group) {
 
 	RAY.intersectObjects = THR.group.children;
 
-	RAY.addMouseMove();
+	//RAY.addMouseMove();
+	RAY.addMouseDown();
 };
 
 //////////
@@ -171,20 +172,18 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 	//window.dispatchEvent(event);
 };
 
-THR.zoomToFitObject = function (camera = THR.camera, controls = THR.controls, object = THR.group, fitOffset = 1.5) {
+THR.zoomToFitObject = function (object = THR.group, fitOffset = 1 ) {
+
 	const box = new THREE.Box3().setFromObject(object);
-
-	//for ( const object of selection ) box.expandByObject( object );
-
 	const size = box.getSize(new THREE.Vector3());
 	const center = box.getCenter(new THREE.Vector3());
 
 	const maxSize = Math.max(size.x, size.y, size.z);
-	const fitHeightDistance = maxSize / (2 * Math.atan((Math.PI * camera.fov) / 360));
-	const fitWidthDistance = fitHeightDistance / camera.aspect;
+	const fitHeightDistance = maxSize / (2 * Math.atan((Math.PI * THR.camera.fov) / 360));
+	const fitWidthDistance = fitHeightDistance / THR.camera.aspect;
 	const distance = fitOffset * Math.max(fitHeightDistance, fitWidthDistance);
 
-	const direction = controls.target.clone().sub(camera.position).normalize().multiplyScalar(distance);
+	const direction = THR.controls.target.clone().sub(THR.camera.position).normalize().multiplyScalar(distance);
 
 	THR.controls.maxDistance = distance * 10;
 	THR.controls.target.copy(center);
@@ -308,7 +307,6 @@ THR.addMesh = function (size = 10) {
 	//const geometry = new THREE.BoxBufferGeometry(size, size, size);
 	const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random(), specular: 0x444444 });
 	mesh = new THREE.Mesh(geometry, material);
-	mesh.userData.type = mesh.geometry.type;
 	mesh.receiveShadow = true;
 	mesh.castShadow = true;
 
@@ -325,7 +323,9 @@ THR.addMeshes = function (count = 100) {
 	THR.group.children.forEach((mesh, i) => {
 		mesh.position.set(Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100);
 		mesh.rotation.set(0.2 * Math.random(), 0.2 * Math.random(), 0.2 * Math.random());
+		mesh.name = "Item " + i;
 		mesh.userData.index = i;
+		
 	});
 };
 

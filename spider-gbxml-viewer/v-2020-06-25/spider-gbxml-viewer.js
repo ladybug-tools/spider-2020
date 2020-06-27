@@ -75,11 +75,11 @@ RAY.getMeshData = function (index) {
 
 	JTH.toggleAll(); // default = close all
 
-	details = JTVdivJsonTree.querySelectorAll("details");
+	// details = JTVdivJsonTree.querySelectorAll("details");
 
-	details[0].open = true;
+	// details[0].open = true;
 
-	details[ 2 ].open = true;
+	// details[ 2 ].open = true;
 
 	//details[4].open = true;
 

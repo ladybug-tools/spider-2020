@@ -10,15 +10,15 @@ const RAY = {
 	intersectObjects: [],
 };
 
-RAY.addMouseMove = function () {
-	renderer.domElement.addEventListener("mousedown", RAY.onMouseMove);
-	renderer.domElement.addEventListener("touchstart", RAY.onMouseMove);
-	renderer.domElement.addEventListener("touchmove", RAY.onMouseMove);
+RAY.addMouseDown = function () {
+	renderer.domElement.addEventListener("mousedown", RAY.onMouseDown);
+	renderer.domElement.addEventListener("touchstart", RAY.onMouseDown);
+	renderer.domElement.addEventListener("touchmove", RAY.onMouseDown);
 
 	//divInfo.innerHTML = "";
 };
 
-RAY.onMouseMove = function (event) {
+RAY.onMouseDown = function (event) {
 	if (event.type === "touchmove" || event.type === "touchstart") {
 		event.clientX = event.touches[0].clientX;
 		event.clientY = event.touches[0].clientY;
@@ -31,11 +31,12 @@ RAY.onMouseMove = function (event) {
 
 	let intersects = RAY.raycaster.intersectObjects(RAY.intersectObjects);
 
+	//console.log( "int", intersects );
+
 	if (intersects.length) {
 		RAY.intersected = intersects[0];
 
 		//if ( intersected.instanceId ) {
-
 		//console.log( "intersected", RAY.intersected );
 
 		divPopUp.hidden = false;
@@ -78,27 +79,29 @@ RAY.getHtm = function (intersected) {
 
 RAY.getHtm = function (intersected) {
 	console.log("intersected", RAY.intersected);
-	const index = RAY.intersected.object.userData.index;
-	const mesh = THR.group.children[index];
+	const mesh = RAY.intersected.object;
 
 	const htm = `
 	<div>
-		id: ${index}<br>
+		id: ${THR.group.children.indexOf( mesh ) }<br>
+		geometry: ${ mesh.geometry.type }<br>
+		name: ${ mesh.name }</br>
 		uuid: ${mesh.uuid}<br>
-		<button onclick=RAY.getMeshData(${index}); >view mesh data</button>
-
+		<button onclick=RAY.getMeshData(${THR.group.children.indexOf( mesh )}); >view mesh data</button>
 	</div>`;
 
 	return htm;
 };
 
 RAY.getMeshData = function (index) {
+
+	console.log( "index", index );
+
+	JTV.init();
+
+	JTV.onLoad( index );
+
 	detNavMenu.open = true;
 	detData.open = true;
 
-	const mesh = THR.group.children[index];
-
-	const htm = JSON.stringify(mesh, null, "\t").replace(/[",]/g, "");
-
-	RAYdivMeshData.innerText = htm;
 };

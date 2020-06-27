@@ -59,7 +59,7 @@ JTH.addPopupHelp = function () {
 
 	let id = 0;
 
-	detailsArray = Array.from( JTVdivJsonTree.querySelectorAll( "details" ) ).filter( det => det.children.length < 10 && !det.innerText.includes( "model" ) );
+	detailsArray = Array.from( JTVdetJsonTreeView.querySelectorAll( "details" ) ).filter( det => det.children.length < 10 && !det.innerText.includes( "model" ) );
 
 	//console.log( 'detailsArray', detailsArray );
 
@@ -104,14 +104,14 @@ JTH.addHelp = function () {
 
 JTH.toggleAll = function ( boole = false ) {
 
-	JTVdivJsonTree.querySelectorAll( "details" ).forEach( detail => detail.open = boole );
+	JTVdetJsonTreeView.querySelectorAll( "details" ).forEach( detail => detail.open = boole );
 
 };
 
 
 JTH.addUrls = function () {
 
-	JTVdivJsonTree.innerHTML = JTVdivJsonTree.innerHTML.replace(
+	JTVdetJsonTreeView.innerHTML = JTVdetJsonTreeView.innerHTML.replace(
 		/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a> ' );
 
 };

@@ -6,6 +6,8 @@ const VT = {};
 
 VT.init = function () {
 
+	JTV.init();
+
 	const typesArr = THR.group.children.map(mesh => mesh.userData.type );
 	VT.types = [ ... new Set( typesArr ) ];
 	const htm = `

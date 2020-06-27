@@ -3,10 +3,11 @@
 /* global renderer, divPopUp */
 
 
-// <div id=divPopUp style=position:absolute ></div>
-const RAY = {
-	// three.js mouse interaction with scene
+// needs: <div id=divPopUp style=position:absolute; ></div>
 
+// three.js mouse interaction with scene
+
+const RAY = {
 	raycaster: new THREE.Raycaster(),
 	mouse: new THREE.Vector2(),
 	intersectObjects: [],
@@ -84,23 +85,21 @@ RAY.getHtm = function (intersected) {
 };
 
 RAY.getHtm = function (intersected) {
-	//console.log("intersected", RAY.intersected);
-	const mesh = RAY.intersected.object; //group.children[index];
-	const index = mesh.userData.index;
-	const lines = mesh.userData.lines;
+	console.log("intersected", RAY.intersected);
+	const mesh = RAY.intersected.object;
 
-	// const htm = `
-	// <div>
-	// 	id: ${group.children.indexOf( mesh ) }<br>
-	// 	uuid: ${mesh.uuid}<br>
-	// 	<button onclick=RAY.getMeshData(${ group.children.indexOf( mesh ) }); >view mesh data</button>
-
-	// </div>`;
-
-	const htm = lines[ index ].join( "<br>");
+	const htm = `
+	<div>
+		id: ${THR.group.children.indexOf( mesh ) }<br>
+		geometry: ${ mesh.geometry.type }<br>
+		name: ${ mesh.name }</br>
+		uuid: ${mesh.uuid}<br>	
+	</div>`;
 
 	return htm;
 };
+
+
 
 RAY.getMeshData = function (index) {
 	//detNavMenu.open = true;

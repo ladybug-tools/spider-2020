@@ -28,16 +28,17 @@
 
 
 	<!-- core -->
-	<script src="thr-three/thr-threejs-aec-2020-06-24.js"></script>
+	<script src="thr-three/thr-threejs-aec-2020-06-26.js"></script>
 	<script src="thr-three/thru-three-utilities-2020-06-24.js"></script>
 
-	<script src="thr-three/ray-raycaster-sam-2020-05-27.js"></script>
+	<!-- <script src="thr-three/ray-raycaster-mousemove-2020-06-26.js"></script> -->
+	<script src="thr-three/ray-raycaster-mousedown-2020-06-26.js"></script>
 	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
 	<script src="thr-three/scc-screen-ccapture-2020-05-23.js"></script>
 	
-	<script src="json-tree-view/jtv-json-tree-view-2020-06-16.js"></script>
+	<script src="json-tree-view/jtv-json-tree-view-2020-06-26.js"></script>
 
-	<script src="json-tree-view/jth-json-tree-helper-2020-06-10.js"></script>
+	<script src="json-tree-view/jth-json-tree-helper-2020-06-26.js"></script>
 	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
 	<script src="json-tree-view/jtf-json-tree-finder-2020-06-10.js"></script>
 	<!-- <script src="json-tree-view/xml-to-json-2020-06-10.js"></script> -->
@@ -131,7 +132,7 @@
 
 			</details>
 
-			<details class=detNavMenu id=detData ontoggle=JTV.onLoad(); >
+			<details class=detNavMenu id=detData ontoggle=JTV.init();JTV.onLoad(); >
 
 				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
 
@@ -148,10 +149,6 @@
 					<div id=JTEdivJsonTreeEdit ></div>
 					
 					<div id=JTVdivJsonTreeView ></div>
-					
-					<div id="JTVdivJsonTree"></div>
-					
-					<div id=GDdivGetData></div>
 					
 					<hr>
 					
@@ -216,9 +213,8 @@
 				<button class="THRbutChild" onclick="THRU.toggleBoundingBoxHelper();" >bounding box</button>
 				<button class="THRbutChild" onclick="THRU.toggleWireframe();" >wireframe</button>
 				<button class="THRbutChild" onclick="THRU.toggleMeshEdges();" >edges</button>
-				
-
-				
+				<button class="THRbutChild" onclick="THRU.toggleTitles();" >titles</button>
+			
 			</div>
 		</div>
 

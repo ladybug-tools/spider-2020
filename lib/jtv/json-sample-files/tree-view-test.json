@@ -1,0 +1,17 @@
+{
+	"folder1": { "path": "bbb/nnn/", "contents": [{ "file1": "file1.txt" }] },
+	"folder2": [ { "file2": "file2.txt" }, { "file3": "file3.txt" }],
+	"folder3": [
+		{
+			"folder4": [
+				{
+					"file4": {
+						"path": "file4.txt",
+						"size": "12345"
+					}
+				}
+			]
+		}
+	],
+	"folder5": [{ "folder6": [] }]
+}

@@ -184,8 +184,7 @@ main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
 	display: block;
 }
 
-.THRdivChild,
-.THRdivChildParent {
+.THRdivChild {
 	background-color: #eee;
 	border-radius: 0.5ch;
 	bottom: 2.9rem;
@@ -195,17 +194,6 @@ main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
 	position: absolute;
 	text-align: left;
 	width: 8rem;
-}
-
-.THRdivChildChild {
-	background-color: pink;
-	border-radius: 0.5ch;
-	bottom: 2.9rem;
-	left: 4rem;
-	padding: 1rem;
-	position: absolute;
-	text-align: left;
-	width: 20rem;
 }
 
 /* IDs */

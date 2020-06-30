@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset = "utf-8" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
+<meta name = "description" content = "GitHub Repository folder and files tree view template" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = version content="2020-06-28">
+
+<title>GRV GitHub Repository Tree View</title>
+
+<style>
+
+/* Copyright 2020 Theo Armour. MIT License */
+
+
+* { box-sizing: border-box; }
+
+:root { font: 100% monospace; --mnu-width: 25rem; }
+
+html { margin: 0; padding: 0; }
+
+body { margin: 0; overflow: hidden; padding: 0; }
+
+a { color: crimson; text-decoration: none; }
+a:hover, a:focus, a:active { background-color: yellow; color: #aaa; text-decoration: underline }
+
+aside { border: 1px solid lightgray; margin-top: 15px; padding: 2px; }
+
+blockquote { background-color: #ddd; padding: 1ch; }
+
+button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
+button:hover { background: #ccc; color: #fff }
+
+code { background-color: #eee; }
+pre { background-color: #eee; padding: 5px; }
+
+input[type="range"] { -webkit-appearance: none; -moz-appearance: none; background-color: #ddd; height: 2ch;
+	width: 100%; }
+
+input[type="range"]::-moz-range-thumb { background-color: #888; border-radius: 0; height: 3ch; width: 10px; }
+
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; background-color: #888; height: 3ch; width: 10px; }
+
+main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
+	overflow: auto; padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
+
+summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
+
+
+.aDingbat { font-size: 3ch; }
+
+.info { float: right }
+
+.info:hover>.infoTooltip { display: block; }
+
+.infoTooltip { border: 0.8ch double #888; background: white; display: none;
+	font: 100% monospace; font-size: 1rem; font-weight: normal; /* unset summary settings */
+	margin-left: -28ch; padding: 10px; position: absolute; z-index: 1000; }
+
+.sumMenuTitle { background-color: #ccc; color: #777; margin: 10px 0; text-align: center; }
+
+#divContent { margin: 0 auto; max-width: 100ch; }
+
+#navMenu { background-color: #eee; left: 0; margin: 0;  max-height: 100vh; overflow: auto; padding: 0 1rem;
+	position: absolute; resize: both; top: 0; width: var( --mnu-width ); z-index: 5; }
+
+
+</style>
+</head>
+<body>
+<script src="grv-github-repo-tree-view-2020-06-28.js"></script>
+
+<nav id="navMenu" >
+
+	<header>
+
+		<h2>
+			<a href="https://github.com/theo-armour/2020/tree/master/sandbox/grv-github-repo-tree-view/" target=_top title="Source code on GitHub" >
+				<img src="https://theo-armour.github.io/2020/assets/icons/octicon.svg" >
+			</a>
+
+			<a href="" title="Click to reload this page" >
+				GRV GitHub Repository Tree View
+				<span id=sVersion ></span>
+			</a>
+
+			<span class="info" >&#x24d8;<span id=divDescription class="infoTooltip" ></span></span>
+
+		</h2>
+
+	</header>
+
+	<!-- <p>
+		<button id=but onclick=setIt(); >set it</button>
+	</p>
+	<p>
+		<label><input type=checkbox > checkbox</label>
+	</p>
+	<p>
+		<output id=out >50</output><input type=range id="rng" oninput=out.value=this.value >
+	</p> -->
+
+	<div id=divNavContent ></div>
+
+		<details open >
+
+			<summary class=sumMenuTitle >
+				Summary
+				<span class="info" >&#x24d8;<span id=divDetails class="infoTooltip" >How can I help you?</span></span>
+			</summary>
+
+			<div id=GRVdivGitHubRepoTreeView ></div>
+
+		</details>
+
+		<br>
+
+		<span class="info">&#x24d8;<span class="infoTooltip"> Content 2</span></span>
+
+    </div>
+    
+	<footer>
+
+		<hr>
+
+		<p title="go to top of menu" style=text-align:center; >
+			<a class=aDingbat href=javascript:navMenu.scrollTo(0,0); >❦</a>
+		</p>
+
+	</footer>
+
+</nav>
+
+<main>
+
+<div style="height:100%;overflow:hidden;resize:both;width:100%;">
+    
+    <iframe id=ifr style="border-width: 0 1px 1px 0;height:100%;width:100%;" ></iframe>
+
+</div>
+
+</main>
+
+
+
+<script>
+
+const title = document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " );
+const version = document.head.querySelector( "[ name=version ]" );
+const description = document.head.querySelector( "[ name=description ]" ).content;
+
+
+//sTitle.innerHTML= title;
+sVersion.innerHTML = version ? version.content : "";
+divDescription.innerHTML = description;
+
+
+init();
+
+function init() {
+
+	const urlApi = "https://api.github.com/repos/theo-armour/2020/git/trees/master?recursive=1";
+
+    ifr.src = path = "../../../readme.html"
+
+    requestFile( urlApi, GRV.onLoadTree );
+    
+    window.addEventListener( "hashchange", onHashChange, false );
+    
+}
+
+
+function onHashChange() {
+
+    let path = "../../../";
+
+    if ( location.hash.endsWith( ".md" ) ) {
+
+        path = "../../../readme.html#"
+    }
+
+	ifr.src = path + location.hash.slice( 1 );
+	
+	
+	// keeps address bar pointed to latest dev. can comment out while developing stop annoying message
+
+	//if ( location.protocol === "https:" ) {
+
+		//window.history.pushState( "", "", "../../../index.html" );
+
+	//}
+    
+}
+
+
+function requestFile( url = "https://example.com" , callback = onLoad ) {
+
+	const urlCORS = "https://cors-anywhere.herokuapp.com/";
+
+	xhr = new XMLHttpRequest();
+	xhr.open( "GET", urlCORS + url, true );
+	xhr.responseType = "json";
+	xhr.onerror = ( xhr ) => console.log( "error:", xhr  );
+	//xhr.onprogress = ( xhr ) => console.log( "bytes loaded:", xhr.loaded );
+	xhr.onload = ( xhr ) => callback( xhr.target.response );
+	xhr.send( null );
+
+}
+
+
+
+function onLoad( response ) {
+
+	console.log( "response", response );
+
+}
+
+
+
+</script>
+</body>
+</html>

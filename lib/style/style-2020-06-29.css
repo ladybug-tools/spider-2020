@@ -5,6 +5,7 @@
 :root {
 	font-size: 100%;
 	font-family: "Lato", sans-serif;
+ 	--mnu-width: 25rem;
 }
 
 * {
@@ -82,11 +83,15 @@ input[type="range"]::-webkit-slider-thumb {
 	width: 10px;
 }
 
+main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
+	overflow: auto; padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
+
+
 /* classes */
 
-.active {
-	background-color: lightyellow;
-}
+.active { background-color: lightyellow; }
+
+.aDingbat { font-size: 3ch; }
 
 .divNavResize {
 	border-right: 1px solid teal;
@@ -192,7 +197,7 @@ input[type="range"]::-webkit-slider-thumb {
 	width: 8rem;
 }
 
-.THRdivChildChild {
+  .THRdivChildChild {
 	background-color: blue;
 	border-radius: 0.5ch;
 	bottom: 2.9rem;

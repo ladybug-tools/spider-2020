@@ -16,7 +16,7 @@ THR.center = new THREE.Vector3(0, 0, 0);
 THR.radius = 50;
 
 THR.init = function () {
-	camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000);
 	camera.position.set(-100, -100, 100);
 	camera.up.set(0, 0, 1);
 
@@ -85,12 +85,12 @@ THR.onStart = function () {
 
 
 THR.setSceneNew = function (group) {
-	scene.remove(THR.group );
+	scene.remove(THR.group, THRU.group );
 
 	THR.group = new THREE.Group();
-	//THRU.group = new THREE.Group();
+	THRU.group = new THREE.Group();
 
-	THR.scene.add(THR.group);
+	THR.scene.add(THR.group, THRU.group);
 
 	return THR.group;
 };
@@ -104,10 +104,9 @@ THR.updateScene = function (group = THR.group) {
 
 	THR.zoomObjectBoundingSphere(group);
 
-	//RAY.intersectObjects = THR.group.children;
+	RAY.intersectObjects = THR.group.children;
 
-	//RAY.addMouseMove();
-	//RAY.addMouseDown();
+	RAY.addMouseMove();
 };
 
 //////////
@@ -135,7 +134,7 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 	THR.controls.update();
 
 	THR.camera.position.copy(
-		THR.center.clone().add(new THREE.Vector3(-2 * THR.radius, -1 * THR.radius, 3.0 * THR.radius))
+		THR.center.clone().add(new THREE.Vector3(-1 * THR.radius, -1 * THR.radius, 1.0 * THR.radius))
 	);
 	THR.camera.near = 0.001 * THR.radius; //2 * camera.position.length();
 	THR.camera.far = 50 * THR.radius; //2 * camera.position.length();
@@ -172,18 +171,20 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 	//window.dispatchEvent(event);
 };
 
-THR.zoomToFitObject = function (object = THR.group, fitOffset = 1 ) {
-
+THR.zoomToFitObject = function (camera = THR.camera, controls = THR.controls, object = THR.group, fitOffset = 1.5) {
 	const box = new THREE.Box3().setFromObject(object);
+
+	//for ( const object of selection ) box.expandByObject( object );
+
 	const size = box.getSize(new THREE.Vector3());
 	const center = box.getCenter(new THREE.Vector3());
 
 	const maxSize = Math.max(size.x, size.y, size.z);
-	const fitHeightDistance = maxSize / (2 * Math.atan((Math.PI * THR.camera.fov) / 360));
-	const fitWidthDistance = fitHeightDistance / THR.camera.aspect;
+	const fitHeightDistance = maxSize / (2 * Math.atan((Math.PI * camera.fov) / 360));
+	const fitWidthDistance = fitHeightDistance / camera.aspect;
 	const distance = fitOffset * Math.max(fitHeightDistance, fitWidthDistance);
 
-	const direction = THR.controls.target.clone().sub(THR.camera.position).normalize().multiplyScalar(distance);
+	const direction = controls.target.clone().sub(camera.position).normalize().multiplyScalar(distance);
 
 	THR.controls.maxDistance = distance * 10;
 	THR.controls.target.copy(center);
@@ -207,18 +208,14 @@ THR.zoomToFitObject = function (object = THR.group, fitOffset = 1 ) {
 };
 
 THR.setCameraPosition = function (x = -100, y = -100, z = 100) {
-
-
 	THR.camera.position.set(x, y, z);
 
 	THR.camera.up.set(0, 0, 1);
-	
-	if ( THR.camera.type === "PerspectiveCamera" ) {
 
-		THR.zoomToFitObject();
+	//THRVchkDelta.checked = false;
+	//THR.cameraDelta = 0;
 
-	} 
-
+	THR.zoomToFitObject();
 };
 
 THR.setAllVisible = function () {
@@ -287,6 +284,51 @@ THR.addGround = function (position = new THREE.Vector3(0, 0, 0)) {
 	// THR.ground.add(new THREE.Mesh(geo, mat));
 };
 
+THR.addMesh = function (size = 10) {
+	// CylinderGeometry( radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded )
+	// SphereGeometry( radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength )
+	// TorusGeometry( radius, tube, radialSegments, tubularSegments, arc )
+
+	types = [
+		new THREE.BoxBufferGeometry(size, size, size),
+		new THREE.CylinderBufferGeometry(5, 5, size),
+		new THREE.DodecahedronGeometry(5),
+		new THREE.SphereBufferGeometry(0.5 * size),
+		new THREE.TorusBufferGeometry(size, 0.5 * size),
+		new THREE.TorusKnotBufferGeometry(size, 0.5 * size),
+	];
+
+	const geometry = types[Math.floor(types.length * Math.random())];
+
+	// geometry.applyMatrix4( new THREE.Matrix4().makeRotationX( -0.5 * Math.PI ) );
+	// geometry.applyMatrix4( new THREE.Matrix4().makeScale( 1, 1, 1 ) );
+	// geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, 0, 0 ) );
+
+	//const material = new THREE.MeshNormalMaterial();  
+	//const geometry = new THREE.BoxBufferGeometry(size, size, size);
+	const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random(), specular: 0x444444 });
+	mesh = new THREE.Mesh(geometry, material);
+	mesh.userData.type = mesh.geometry.type;
+	mesh.receiveShadow = true;
+	mesh.castShadow = true;
+
+	return mesh;
+};
+
+THR.addMeshes = function (count = 100) {
+	THR.group.add(
+		...Array(count)
+			.fill()
+			.map(() => THR.addMesh())
+	);
+
+	THR.group.children.forEach((mesh, i) => {
+		mesh.position.set(Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100);
+		mesh.rotation.set(0.2 * Math.random(), 0.2 * Math.random(), 0.2 * Math.random());
+		mesh.userData.index = i;
+	});
+};
+
 THR.setStats = function () {
 	const script = document.head.appendChild(document.createElement("script"));
 	script.onload = () => {
@@ -317,11 +359,10 @@ Triangles: ${render.triangles.toLocaleString()}<br>
 };
 
 THR.onWindowResize = function () {
-	THR.camera.aspect = window.innerWidth / window.innerHeight;
-	THR.camera.updateProjectionMatrix();
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
 
-	THR.controls.reset();
-	THR.renderer.setSize(window.innerWidth, window.innerHeight);
+	renderer.setSize(window.innerWidth, window.innerHeight);
 	//console.log( 'onWindowResize  window.innerWidth', window.innerWidth );
 };
 

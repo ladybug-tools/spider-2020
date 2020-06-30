@@ -207,14 +207,18 @@ THR.zoomToFitObject = function (object = THR.group, fitOffset = 1 ) {
 };
 
 THR.setCameraPosition = function (x = -100, y = -100, z = 100) {
+
+
 	THR.camera.position.set(x, y, z);
 
 	THR.camera.up.set(0, 0, 1);
+	
+	if ( THR.camera.type === "PerspectiveCamera" ) {
 
-	//THRVchkDelta.checked = false;
-	//THR.cameraDelta = 0;
+		THR.zoomToFitObject();
 
-	THR.zoomToFitObject();
+	} 
+
 };
 
 THR.setAllVisible = function () {

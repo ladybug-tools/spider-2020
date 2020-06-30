@@ -5,17 +5,20 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 # [Spider xxxxx Viewer Read Me]( ./readme.html )
 
+<!--@@@
+<iframe src=https://theo-armour.github.io/2020/xxxxx height=500px width=100% ></iframe>
+_ZZZZZ_
+
+### Full Screen: [ZZZZZ]( https://theo-armour.github.io/2020/xxxxx.html )
+
+@@@-->
+
 GitHub
 
 * https://ladybug-tools.github.io//spider-2020/spider-gbxml-viewer/index.html
 * https://github.com/ladybug-tools/spider-2020/spider-gbxml-viewer/issues
 
-Replit
 
-* https://ladybug-tools.repl.it/
-* https://repl.it.com/~ladybug-tools
-
-Path to use to import to Replit:
 
 ## v-xxxx
 

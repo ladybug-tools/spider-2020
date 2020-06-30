@@ -10,7 +10,7 @@
 
 	<title>Spider gbXML Viewer</title>
 
-	<link rel="stylesheet" href="./style-2020-06-24.css">
+	<link rel="stylesheet" href="../../lib/style/style-2020-06-29.css">
 
 </head>
 
@@ -28,8 +28,8 @@
 
 
 	<!-- core -->
-	<script src="thr-three/thr-threejs-aec-2020-06-24.js"></script>
-	<script src="thr-three/thru-three-utilities-2020-06-24.js"></script>
+	<script src="../../lib/thr-three/thr-threejs-2020-06-29.js"></script>
+	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-06-29.js"></script>
 
 	<script src="thr-three/ray-raycaster-sam-2020-05-27.js"></script>
 	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
@@ -175,20 +175,45 @@
 	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
 
 
-	<!-- standard footer for THR ~ 2020-06-24-->
+	<!-- standard footer for THR ~ 2020-06-29 -->
 	<footer id=THRftr >
 
 		<div class=THRdivButtonGroup >
 			<button class=THRbutParent onclick="THR.controls.reset();" title="reset the view" ><img height=32 width=32 src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
 			<div class="THRdivChild" >
-				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,0,200);" ">top</button></div>
-				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(200,0,0);">right</button></div>
-				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(-200,0,0);">left</button></div>
-				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
-				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,-200,0);">front</button></div>
-				<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,200,0);">back</button></div>
+
+				<div title="Camera frustum near plane." >
+					camera near: <output id=outNear >1</output>
+					<input type=range id=inpNear value=1 oninput=THRU.setCameraNear(this);outNear.value=THR.camera.near.toFixed(); >
+				</div>	
+
+				<div title="Camera frustum vertical field of view." >
+					field of view: <output id="outFov" >40</output>
+					<input type=range oninput=THRU.setFieldOfView(this);outFov.value=this.value; min=1 max=179 value=40 >
+				</div>	
+
+				<div><button id="THRbutViews" 
+					class="THRbutChildParent">views</button></div>
+<!--
+
+onmouseout=THRdivViews.hidden=true; 
+
+
+	onmousedown=THRdivViews.hidden=!THRdivViews.hidden;
+-->
+				<div id="THRdivViews" class="THRdivChildChild" >
+
+					<button class="THRbutChild" onclick="THR.setCameraPosition(0,0,200);">top</button>
+					<button class="THRbutChild" onclick="THR.setCameraPosition(200,0,0);">right</button>
+					<button class="THRbutChild" onclick="THR.setCameraPosition(-200,0,0);">left</button>
+					<button class="THRbutChild" onclick="THR.setCameraPosition(0,0,-200);">bottom</button>
+					<button class="THRbutChild" onclick="THR.setCameraPosition(0,-200,0);">front</button>
+					<button class="THRbutChild" onclick="THR.setCameraPosition(0,200,0);">back</button>
+	
+				</div>		
+
+				<div><button id=THRUbutOrtho class="THRbutChildParent" onclick="THRU.toggleCameraOrthoPerspective();">ortho|perspective</button></div>	
 				<div> <button class="THRbutChild" onclick="THR.zoomToFitObject();">zoom fit</button></div>
-				
 			</div>
 		</div>
 	
@@ -201,9 +226,9 @@
 					<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
 				-->
 				<div> <button class="THRbutChild" onclick="alert( 'What do you need to see here?' );" >??</button></div>
-				<div> <button class="THRbutChild" onclick="THR.cameraHelper.visible=!THR.cameraHelper.visible" title="Shadow area frustum" >Light box</button></div>
+				<div> <button class="THRbutChild" onclick="THR.cameraHelper.visible=!THR.cameraHelper.visible" title="Shadow area frustum" >light box</button></div>
 
-				<div> <button class="THRbutChild" onclick="THR.ground.visible=!THR.ground.visible" >ground</button></div>
+				<div> <button class="THRbutChild" onclick="THR.ground.visible=!THR.ground.visible" >ground plane</button></div>
 				<div> <button class="THRbutChild" onclick="THR.axesHelper.visible=!THR.axesHelper.visible" >axes</button></div>
 
 			</div>
@@ -212,14 +237,18 @@
 		<div class=THRdivButtonGroup >
 			<button class=THRbutParent onclick="THR.setAllVisible();" title="Show all surfaces" >&sdotb;</button>
 			<div  class="THRdivChild" >
+				explode: <output id=THRoutExplode >1</output>
+				<input type=range id="THRrngExplode" 
+					oninput=THRU.setObjectExplode(this);THRoutExplode.value=this.value value=1 >
+
 				opacity: <output id=THRoutOpacity >85</output>%
 				<input type=range id="THRrngOpacity" oninput=THRU.setObjectOpacity();THRoutOpacity.value=this.value value=85 >
 				<button class="THRbutChild" onclick="THRU.toggleBoundingBoxHelper();" >bounding box</button>
 				<button class="THRbutChild" onclick="THRU.toggleWireframe();" >wireframe</button>
 				<button class="THRbutChild" onclick="THRU.toggleMeshEdges();" >edges</button>
+				<div><button class="THRbutChild" onclick="THRU.toggleTitles();" >titles</button></div>
 				
-
-				
+			
 			</div>
 		</div>
 

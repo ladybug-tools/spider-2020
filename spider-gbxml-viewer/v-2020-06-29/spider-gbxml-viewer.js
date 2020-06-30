@@ -1,7 +1,7 @@
 
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
 
-const version = "v-2020-06-25";
+const version = "v-2020-06-29";
 
 const description = `
 Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser 
@@ -40,6 +40,11 @@ function init() {
 
 	THR.group = THR.setSceneNew( new THREE.Group() );
 
+	RAY.intersectObjects = THR.group.children;
+
+	RAY.addMouseMove();
+	//RAY.addMouseDown();
+	
 	FOO.init();
 	FOO.doNext = GBX.onLoad;
 

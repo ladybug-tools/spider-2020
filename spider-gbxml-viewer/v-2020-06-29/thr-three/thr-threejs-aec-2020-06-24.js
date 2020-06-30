@@ -16,7 +16,7 @@ THR.center = new THREE.Vector3(0, 0, 0);
 THR.radius = 50;
 
 THR.init = function () {
-	camera = new THREE.PerspectiveCamera( 178, window.innerWidth / window.innerHeight, 1, 1000);
+	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000);
 	camera.position.set(-100, -100, 100);
 	camera.up.set(0, 0, 1);
 

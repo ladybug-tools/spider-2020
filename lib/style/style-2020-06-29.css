@@ -84,7 +84,9 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* classes */
 
-.active { background-color: lightyellow; }
+.active {
+	background-color: lightyellow;
+}
 
 .divNavResize {
 	border-right: 1px solid teal;
@@ -177,7 +179,8 @@ input[type="range"]::-webkit-slider-thumb {
 	display: block;
 }
 
-.THRdivChild, .THRdivChildParent {
+.THRdivChild,
+.THRdivChildParent {
 	background-color: #eee;
 	border-radius: 0.5ch;
 	bottom: 2.9rem;
@@ -189,9 +192,8 @@ input[type="range"]::-webkit-slider-thumb {
 	width: 8rem;
 }
 
-
 .THRdivChildChild {
-	background-color: pink;
+	background-color: blue;
 	border-radius: 0.5ch;
 	bottom: 2.9rem;
 	left: 4rem;
@@ -200,7 +202,6 @@ input[type="range"]::-webkit-slider-thumb {
 	text-align: left;
 	width: 20rem;
 }
-
 
 /* IDs */
 

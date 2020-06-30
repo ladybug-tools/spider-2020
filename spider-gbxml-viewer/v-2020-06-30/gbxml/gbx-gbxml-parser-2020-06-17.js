@@ -30,8 +30,8 @@ GBX.init = function() {
 };
 
 GBX.onLoad = function () {
-	
 	//console.log( "string", FOO.string );
+
 	THR.group = THR.setSceneNew( THR.group );
 	THR.group.name = "GBXmeshGroup";
 
@@ -39,7 +39,14 @@ GBX.onLoad = function () {
 
 	THR.updateScene( THR.group ); 
 
+	// RAY.intersectObjects = THR.group.children;
+
+	// RAY.addMouseMove();
+	// //RAY.addMouseDown();
+
 	setTimeout( 500 );
+
+	//JTV.init();
 
 	requestIdleCallback( JTV.init);
 

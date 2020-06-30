@@ -381,4 +381,4 @@ THRU.setObjectExplode = function( range ) {
 		
 	} );
 
-}
+};

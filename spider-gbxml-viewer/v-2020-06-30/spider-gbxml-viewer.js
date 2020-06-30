@@ -15,7 +15,7 @@ designed to be forked, hacked and remixed using the WebGL and the
 
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/warwick-university-5k-surfaces.zip";
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/annapolis-md-single-family-residential-2016.xml"
-urlGbxml = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
+//urlGbxml = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 //urlGbxml = "https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml";
 //urlGbxmlDefault = "https://www.ladybug.tools/spider/gbxml-sample-files/aspen-co-resort-retail.xml";
 //urlGbxml = "https://www.ladybug.tools/spider/gbxml-sample-files/samples-2/Berlin_Office_SAM2017.xml";
@@ -38,12 +38,12 @@ function init() {
 
 	THR.addGround();
 
-	THR.group = THR.setSceneNew( new THREE.Group() );
+	THR.group = THR.setSceneNew( THR.group );
 
-	RAY.intersectObjects = THR.group.children;
+	THRU.group = THR.setSceneNew( THRU.group );
+	
 
-	RAY.addMouseMove();
-	//RAY.addMouseDown();
+
 	
 	FOO.init();
 	FOO.doNext = GBX.onLoad;
@@ -52,7 +52,7 @@ function init() {
 
 	const target = window.self === window.top ? window : window.parent;
 
-	if ( target.location.hash === "#README.md" ) { // we are in iframe and no 3D file called for
+	if ( target.location.hash === "#README.md" ) { // we are in an iframe and no 3D file called for
 		
 	 	FOO.requestFile( urlGbxml ); 
 	

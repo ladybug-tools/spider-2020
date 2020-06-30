@@ -21,6 +21,8 @@ JTV.schemas = [
 
 JTV.init = function () {
 
+	console.log( "", 23 );
+
 	//window.addEventListener( "onloadJson", JTV.onLoad, false );
 
 	//JTV.target.innerHTML = JTV.getMenu();
@@ -28,7 +30,6 @@ JTV.init = function () {
 	const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
 	obj = xmlToJson(xmlNode);
 
-	
 	JTV.json = obj.gbXML;
 	
 	console.log("JTV.json", JTV.json);

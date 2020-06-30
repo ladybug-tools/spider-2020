@@ -3,7 +3,7 @@ const VT = {};
 
 VT.init = function () {
 
-	console.log( "", JTV.json );
+	console.log( "JTV.json ", JTV.json );
 
 	VT.surfaces = JTV.json.Campus.Surface;
 

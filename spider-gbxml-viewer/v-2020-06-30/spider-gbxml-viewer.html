@@ -16,9 +16,9 @@
 
 <body>
 	
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/build/three.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r118/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r118/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r118/examples/js/utils/BufferGeometryUtils.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/jszip@3.5.0/dist/jszip.min.js"></script>
 
@@ -28,12 +28,13 @@
 
 
 	<!-- core -->
-	<script src="../../lib/thr-three/thr-threejs-2020-06-29.js"></script>
-	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-06-29.js"></script>
+	<script src="../../lib/thr-three/thr-threejs-2020-06-30.js"></script>
+	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-06-30.js"></script>
 
-	<script src="thr-three/ray-raycaster-sam-2020-05-27.js"></script>
-	<script src="thr-three/hrt-heart-2020-05-27.js"></script>
-	<script src="thr-three/scc-screen-ccapture-2020-05-23.js"></script>
+	<script src="../../lib/thrr-three-raycaster/thrr-three-raycaster-2020-06-30.js"></script>
+
+	<script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+	<script src="../../lib/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
 	
 	<script src="gbxml/gbx-gbxml-parser-2020-06-17.js"></script>
 
@@ -175,35 +176,34 @@
 	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
 
 
-	<!-- standard footer for THR ~ 2020-06-29 -->
+
+	<!-- standard footer for THR ~ 2020-06-30 -->
 	<footer id=THRftr >
 
 		<div class=THRdivButtonGroup >
-			<button class=THRbutParent onclick="THR.controls.reset();" title="reset the view" ><img height=32 width=32 src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
-			<div class="THRdivChild" >
+			<button class="THRbutParent gmd-1" onmouseout=THRdivViews.hidden=true; onclick="THR.controls.reset();" title="reset the view" ><img height=32 width=32 src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
+			<div class="THRdivChild gmd-2" >
 
 				<div title="Camera frustum near plane." >
 					camera near: <output id=outNear >1</output>
 					<input type=range id=inpNear value=1 oninput=THRU.setCameraNear(this);outNear.value=THR.camera.near.toFixed(); >
 				</div>	
 
-				<div title="Camera frustum vertical field of view." >
-					field of view: <output id="outFov" >40</output>
-					<input type=range oninput=THRU.setFieldOfView(this);outFov.value=this.value; min=1 max=179 value=40 >
+				<div >
+					<label id=lblFOV title="Camera frustum vertical field of view. Perspective camera only" >
+
+						field of view: <output id=outFov >40</output>
+						<input id=rngFieldOfView type=range oninput=THRU.setFieldOfView(this);outFov.value=this.value; min=1 max=179 value=40 >
+					</label>
 				</div>	
+				<div><button id=THRUbutOrtho class="THRbutChildParent" onclick="THRU.toggleCameraOrthoPerspective();">ortho|perspective</button></div>	
 
-				<div><button id="THRbutViews" 
-					class="THRbutChildParent">views</button></div>
-<!--
+				<div><button id=THRUbutViews
+					class="THRbutChildParent gmd-1" onclick="THRdivViews.hidden=!THRdivViews.hidden;" >views</button></div>
 
-onmouseout=THRdivViews.hidden=true; 
+				<div id=THRdivViews class="THRdivChildChild gmd-2" >
 
-
-	onmousedown=THRdivViews.hidden=!THRdivViews.hidden;
--->
-				<div id="THRdivViews" class="THRdivChildChild" >
-
-					<button class="THRbutChild" onclick="THR.setCameraPosition(0,0,200);">top</button>
+					<button class="THRbutChild" onclick="THR.setCameraPosition(0,0,200);" ">top</button>
 					<button class="THRbutChild" onclick="THR.setCameraPosition(200,0,0);">right</button>
 					<button class="THRbutChild" onclick="THR.setCameraPosition(-200,0,0);">left</button>
 					<button class="THRbutChild" onclick="THR.setCameraPosition(0,0,-200);">bottom</button>
@@ -212,19 +212,14 @@ onmouseout=THRdivViews.hidden=true;
 	
 				</div>		
 
-				<div><button id=THRUbutOrtho class="THRbutChildParent" onclick="THRU.toggleCameraOrthoPerspective();">ortho|perspective</button></div>	
 				<div> <button class="THRbutChild" onclick="THR.zoomToFitObject();">zoom fit</button></div>
 			</div>
 		</div>
 	
 		<div class=THRdivButtonGroup >
-			<button class=THRbutParent onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" >&circlearrowright;</button>
-			<div class="THRdivChild" >
-				<!--
-					<div> <button class="THRbutChild" onclick="THR.setCameraPosition(200,0,0);">right</button></div>
-					<div> <button class="THRbutChild" onclick="THR.setCameraPosition(-200,0,0);">left</button></div>
-					<div> <button class="THRbutChild" onclick="THR.setCameraPosition(0,0,-200);">bottom</button></div>
-				-->
+			<button class="THRbutParent gmd-1" onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" >&circlearrowright;</button>
+			<div class="THRdivChild gmd-2" >
+
 				<div> <button class="THRbutChild" onclick="alert( 'What do you need to see here?' );" >??</button></div>
 				<div> <button class="THRbutChild" onclick="THR.cameraHelper.visible=!THR.cameraHelper.visible" title="Shadow area frustum" >light box</button></div>
 
@@ -236,7 +231,7 @@ onmouseout=THRdivViews.hidden=true;
 
 		<div class=THRdivButtonGroup >
 			<button class=THRbutParent onclick="THR.setAllVisible();" title="Show all surfaces" >&sdotb;</button>
-			<div  class="THRdivChild" >
+			<div class="THRdivChild gmd-2" >
 				explode: <output id=THRoutExplode >1</output>
 				<input type=range id="THRrngExplode" 
 					oninput=THRU.setObjectExplode(this);THRoutExplode.value=this.value value=1 >
@@ -255,7 +250,8 @@ onmouseout=THRdivViews.hidden=true;
 		<button class=THRbutParent onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" >fps</button>
 
 	</footer>
-	
+
+	<!-- end -->	
 
 
 	<script src="spider-gbxml-viewer.js"></script>

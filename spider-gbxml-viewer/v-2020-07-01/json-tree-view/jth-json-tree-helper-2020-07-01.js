@@ -29,6 +29,8 @@ JTH.getMenu = function() {
 			<button id=but onclick=JTH.toggleAll(); >close all</button>
 			<button id=but onclick=JTH.toggleAll(true); >open all</button>
 
+			<button id=but onclick=JTH.saveFile(); >save JSON to file</button>
+
 			<!--
 			<button id=JTHbutHelp onclick=JTH.addHelp(); >add links to API</button>
 			<button id=but onclick=JTH.addUrls(); >clickable links</button>
@@ -115,3 +117,16 @@ JTH.addUrls = function () {
 		/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a> ' );
 
 };
+
+
+JTH.saveFile = function() {
+
+	const blob = new Blob( [ JSON.stringify( JTV.json ) ] );
+	let a = document.body.appendChild( document.createElement( 'a' ) );
+	a.href = window.URL.createObjectURL( blob );
+	a.download = `hello-world-${ new Date().toISOString().slice( 0, 10 ) }.txt`;
+	a.click();
+//		delete a;
+	a = null;
+
+}

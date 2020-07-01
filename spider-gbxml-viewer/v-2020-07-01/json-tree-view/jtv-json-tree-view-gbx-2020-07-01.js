@@ -27,6 +27,7 @@ JTV.init = function () {
 };
 
 JTV.reset = function() {
+	
 	JTVdivJsonTreeView.innerHTML = JTV.getMenu();
 
 	JTV.json = undefined;

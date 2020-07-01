@@ -12,13 +12,18 @@ VT.init = function () {
 	
 	VT.spaces = [].concat( JTV.json.Campus.Building.Space );
 	VT.spaceNames = VT.spaces.map( space => space.Name["#text"] );
-	VT.storeyNames = JTV.json.Campus.Building.BuildingStorey.map( storey => storey.Name["#text"] );
+
+	stories = Array.isArray(  JTV.json.Campus.Building.BuildingStorey  ) ? 
+		JTV.json.Campus.Building.BuildingStorey  : [  JTV.json.Campus.Building.BuildingStorey  ];
+	VT.storeyNames = JTV.json.Campus.Building.BuildingStorey ?
+		stories.map( storey => storey.Name["#text"] ) : [];
 	VT.zones = [].concat( JTV.json.Zone ); // ? JTV.json.Zone : [ JTV.json.Zone ];
 	VT.zoneNames = VT.zones.map( zone => zone.Name["#text"] );
 
-	cadObjectIds = VT.surfaces.map( surface => surface.CADObjectId["#text"].replace( / \[.*\]/, "")  );
+	cadObjectIds = VT.surfaces.map( surface => surface.CADObjectId )
+		.map( item => item["#text"].replace( / \[.*\]/, "")  );
 	VT.cadObjects = [ ... new Set( cadObjectIds ) ]
-	console.log( "cadObjects", VT.cadObjects );
+	//console.log( "cadObjects", VT.cadObjects );
 
 	const htm = `
     <p>

@@ -9,7 +9,7 @@ const JTV = {};
 
 
 //JTV.target = JTVdivJsonTreeView;
-JTV.root = "model";
+JTV.root = "gbXML";
 JTV.json = undefined;
 
 
@@ -21,39 +21,38 @@ JTV.schemas = [
 
 JTV.init = function () {
 
-	//window.addEventListener( "onloadJson", JTV.onLoad, false );
+	JTV.reset()
 
-	//JTV.target.innerHTML = JTV.getMenu();
+	if ( FOO.string.length < 3000000 ) {
+		setTimeout( 500 );
+		requestIdleCallback( JTV.onOpen);
 
-	const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
-	obj = xmlToJson(xmlNode);
+	}
 
-	JTV.json = obj.gbXML;
-	
-	//console.log("JTV.json", JTV.json);
-
-	//if ( JTVdivJsonTree.innerHTML === "") {
-
-		JTH.init();
-		JTF.init();
-		//JTE.init();
-
-		JTV.root = "gbXML";
-		//JTV.json = obj.gbXML;
-
-		JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
-
-	//}
 };
 
+JTV.reset = function() {
 
+	JTV.json = undefined;
+	detView.open = false;
+	detData.open = false;
+	VTdivViewTypes.innerHTML = "";
+	JTVdivJsonTree.innerHTML = "";
 
-JTV.onLoad = function () {
+};
 
-	//const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
-	//obj = xmlToJson(xmlNode);
+JTV.onOpen = function () {
+
 
 	//console.log("obj", obj);
+
+	if ( !JTV.json ) {
+		
+		const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
+		obj = xmlToJson(xmlNode);
+		
+		JTV.json = obj.gbXML;
+	}
 
 	if ( JTVdivJsonTree.innerHTML === "") {
 
@@ -61,14 +60,9 @@ JTV.onLoad = function () {
 		JTF.init();
 		//JTE.init();
 
-		JTV.root = "gbXML";
-		//JTV.json = obj.gbXML;
-
 		JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
 
 	}
-
-
 
 	const details = JTVdivJsonTree.querySelectorAll( "details" );
 

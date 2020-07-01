@@ -77,14 +77,8 @@ FOO.doNext = function () {
 	RAY.addMouseMove();
 	// //RAY.addMouseDown();
 
+	JTV.init();
 
-
-	//JTV.init();
-	if ( FOO.string.length < 3000000 ) {
-		setTimeout( 500 );
-		requestIdleCallback( JTV.init);
-
-	}
 
 }
 

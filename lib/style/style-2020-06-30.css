@@ -213,9 +213,9 @@ main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
 #detNavMenu {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 2ch;
-	max-height: 90vh;
+	max-height: 95vh;
 	margin: 1ch;
-	overflow: hidden;
+	overflow: auto;
 	position: absolute;
 	resize: both;
 	width: var( --mnu-width );
@@ -249,7 +249,6 @@ main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
 	background-color: #fafffa;
 	border: 0 solid red;
 	border-radius: 2ch;
-	height: 100%;
 	margin: 1ch;	
 	padding: 1ch 1ch 0 1ch;
 

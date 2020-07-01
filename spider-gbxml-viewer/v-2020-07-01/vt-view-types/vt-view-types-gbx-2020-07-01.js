@@ -21,10 +21,15 @@ VT.init = function () {
 	VT.zones = Array.isArray( VT.zones ) ? VT.zones : [ VT.zones  ];
 	VT.zoneNames = VT.zones.map( zone => zone.Name["#text"] );
 
-	cadObjectIds = VT.surfaces.map( surface => surface.CADObjectId )
+	VT.surfacesCadObj = VT.surfaces.filter( surface => surface.CADObjectId )
+
+	cadObjectIds = VT.surfacesCadObj.map( surface => surface.CADObjectId )
 		.map( item => item["#text"].replace( / \[.*\]/, "")  );
 	VT.cadObjects = [ ... new Set( cadObjectIds ) ]
 	//console.log( "cadObjects", VT.cadObjects );
+
+	
+
 
 	THR.group.children.forEach( surface => surface.userData.positionStart = surface.position.clone() );
 
@@ -189,7 +194,7 @@ VT.showCadObjects = function( selectedOptions ) {
 
 	for (let option of selectedOptions) {
 
-		VT.surfaces.filter( surface => surface.CADObjectId["#text"].includes( option.innerText ) )
+		VT.surfacesCadObj.filter( surface => surface.CADObjectId["#text"].includes( option.innerText ) )
 			.map( item => VT.surfaces.indexOf( item))
 			.forEach( index => THR.group.children[ index ].visible = true );
 
@@ -200,7 +205,7 @@ VT.showCadObjects = function( selectedOptions ) {
 
 VT.setGbxStoreyExplode = function( value ) {
 
-	let items = JTV.json.Campus.Building.BuildingStorey
+	let items = JTV.json.Campus.Building.BuildingStorey;
 
 	items = Array.isArray( items ) ? items : [ items ];
 	const itemIds = items.map( item => item["@attributes"].id );
@@ -264,7 +269,7 @@ VT.setGbxCadObjectExplode = function( value ) {
 
 	items.forEach( (item, i ) => {
 
-		surfaces = VT.surfaces.filter( surface => surface.CADObjectId["#text"].includes( item ) )
+		surfaces = VT.surfacesCadObj.filter( surface => surface.CADObjectId["#text"].includes( item ) )
 			.map( item => VT.surfaces.indexOf( item))
 			.forEach( index => THR.group.children[ index ].position.z = i * value / 5 );
 

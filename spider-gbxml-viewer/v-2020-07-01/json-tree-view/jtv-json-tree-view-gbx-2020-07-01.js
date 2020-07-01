@@ -14,14 +14,9 @@ JTV.json = undefined;
 
 
 
-JTV.schemas = [
-	"Plane", "Face3D", "Ground", "Outdoors", "Adiabatic", "Surface", "ShadeEnergyPropertiesAbridged", "ShadePropertiesAbridged", "Shade", "ApertureEnergyPropertiesAbridged", "AperturePropertiesAbridged", "Aperture", "DoorEnergyPropertiesAbridged", "DoorPropertiesAbridged", "Door", "FaceEnergyPropertiesAbridged", "FacePropertiesAbridged", "Face", "PeopleAbridged", "LightingAbridged", "ElectricEquipmentAbridged", "GasEquipmentAbridged", "InfiltrationAbridged", "VentilationAbridged", "SetpointAbridged", "RoomEnergyPropertiesAbridged", "RoomPropertiesAbridged", "Room", "WallSetAbridged", "FloorSetAbridged", "RoofCeilingSetAbridged", "ApertureSetAbridged", "DoorSetAbridged", "ConstructionSetAbridged", "OpaqueConstructionAbridged", "WindowConstructionAbridged", "ShadeConstruction", "EnergyMaterial", "EnergyMaterialNoMass", "EnergyWindowMaterialGas", "EnergyWindowMaterialGasCustom", "EnergyWindowMaterialGasMixture", "EnergyWindowMaterialSimpleGlazSys", "EnergyWindowMaterialBlind", "EnergyWindowMaterialGlazing", "EnergyWindowMaterialShade", "IdealAirSystemAbridged", "ProgramTypeAbridged", "ScheduleDay", "ScheduleRuleAbridged", "ScheduleRulesetAbridged", "ScheduleFixedIntervalAbridged", "ScheduleTypeLimit", "ModelEnergyProperties", "ModelProperties", "Model"
-];
-
-
 JTV.init = function () {
 
-	JTV.reset()
+	JTV.reset();
 
 	if ( FOO.string.length < 3000000 ) {
 		setTimeout( 500 );
@@ -32,6 +27,7 @@ JTV.init = function () {
 };
 
 JTV.reset = function() {
+	JTVdivJsonTreeView.innerHTML = JTV.getMenu();
 
 	JTV.json = undefined;
 	detView.open = false;
@@ -39,12 +35,12 @@ JTV.reset = function() {
 	VTdivViewTypes.innerHTML = "";
 	JTVdivJsonTree.innerHTML = "";
 
+
 };
 
 JTV.onOpen = function () {
 
-
-	//console.log("obj", obj);
+	console.log("FOO.string len", FOO.string.length);
 
 	if ( !JTV.json ) {
 		
@@ -104,33 +100,15 @@ JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '',
 
 	if ( [ "string", "number", "boolean", "null", "bigint" ].includes( type ) || !item ) {
 
-		return JTV.getString( key, item, index );
+		//return JTV.getString( key, item, index );
+
+		return `<div>${ key }: <span style=color:blue >${ item }<span></div>`;
 
 	} else if ( type === 'object' ) {
 
 		return Array.isArray( item ) ? JTV.getArray( key, item, index ) : JTV.getObject( key, item, index );
 
 	}
-
-};
-
-
-
-
-JTV.getString = function ( key, item, index ) { //console.log( 'string', key, item, index  );
-
-	// https://stackoverflow.com/questions/8299742/is-there-a-way-to-convert-html-into-normal-text-without-actually-write-it-to-a-s
-	//if ( typeof item === "string" ) { item = item.replace( /<[^>]*>/g, '' ); }
-	//if ( typeof item === "number" ) { item = item.toLocaleString() };
-
-	const htm = JTV.schemas.includes( item ) ?
-
-		`<div>${ key }: <a href="https://ladybug-tools.github.io/honeybee-schema/model.html#tag/${ item.toLowerCase() }_model" style=background-color:yellow;color:green;cursor:help; target="_blank">${ item }</a></div>`
-		:
-		`<div>${ key }: <span style=color:blue >${ item }<span></div>`;
-
-
-	return htm;
 
 };
 

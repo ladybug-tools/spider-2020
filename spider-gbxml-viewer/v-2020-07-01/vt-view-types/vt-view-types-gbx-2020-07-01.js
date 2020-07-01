@@ -208,8 +208,9 @@ VT.setGbxStoreyExplode = function( value ) {
 
 	itemIds.forEach( (itemId, i ) => {
 
-		const surfaceIds = VT.spaces.filter( space => space["@attributes"].buildingStoreyIdRef === itemId )
-			.flatMap( space => space.SpaceBoundary.map( item => item["@attributes"].surfaceIdRef ) );
+		const spaces = VT.spaces.filter( space => space["@attributes"].buildingStoreyIdRef === itemId );
+
+		const surfaceIds = spaces.flatMap( space => space.SpaceBoundary.map( item => item["@attributes"].surfaceIdRef ) );
 		//console.log( "surfaceIds", surfaceIds );
 
 		surfaces = VT.surfaces.filter( surface => surfaceIds.includes( surface["@attributes"].id ) )

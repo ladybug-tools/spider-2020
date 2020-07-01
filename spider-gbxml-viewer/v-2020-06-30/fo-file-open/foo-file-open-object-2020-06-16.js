@@ -48,6 +48,12 @@ FOO.reset = function () {
 
 
 
+FOO.doNext = function() {
+
+	console.log( "FOO.string", FOO.string.slice( 0, 50 ) );
+
+};
+
 FOO.requestFile = function ( url = urlGbxmlDefault, onLoad = FOO.onLoadXhr ) {
 
 	//console.log( 'url', url );
@@ -121,9 +127,3 @@ FOO.onLoadXhr = function ( xhr ) {
 	}
 
 };
-
-FOO.doNext = function() {
-
-	console.log( "FOO.string", FOO.string.slice( 0, 50 ) );
-
-}

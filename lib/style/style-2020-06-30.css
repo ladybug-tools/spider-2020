@@ -232,6 +232,7 @@ main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
 	position: absolute;
 	left: 30%;
 	top: 30%;
+	z-index: 10;
 }
 
 #THRftr {

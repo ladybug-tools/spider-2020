@@ -29,28 +29,7 @@ GBX.init = function() {
 	//window.addEventListener( "onloadFRX", GBX.onLoad, false )
 };
 
-GBX.onLoad = function () {
-	//console.log( "string", FOO.string );
 
-	THR.group = THR.setSceneNew( THR.group );
-	THR.group.name = "GBXmeshGroup";
-
-	GBX.parseResponse();
-
-	THR.updateScene( THR.group ); 
-
-	// RAY.intersectObjects = THR.group.children;
-
-	// RAY.addMouseMove();
-	// //RAY.addMouseDown();
-
-	setTimeout( 500 );
-
-	//JTV.init();
-
-	requestIdleCallback( JTV.init);
-
-}
 
 
 GBX.parseResponse = function () {

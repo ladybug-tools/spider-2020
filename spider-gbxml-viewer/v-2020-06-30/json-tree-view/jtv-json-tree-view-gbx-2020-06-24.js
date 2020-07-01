@@ -1,5 +1,5 @@
 // copyright 2020 Theo Armour. MIT license.
-/* global GFO, JTVdivJsonTreeView, JTVdivJsonTree */
+/* global */
 // jshint esversion: 6
 // jshint loopfunc: true
 
@@ -21,8 +21,6 @@ JTV.schemas = [
 
 JTV.init = function () {
 
-	console.log( "", 23 );
-
 	//window.addEventListener( "onloadJson", JTV.onLoad, false );
 
 	//JTV.target.innerHTML = JTV.getMenu();
@@ -32,7 +30,7 @@ JTV.init = function () {
 
 	JTV.json = obj.gbXML;
 	
-	console.log("JTV.json", JTV.json);
+	//console.log("JTV.json", JTV.json);
 
 	//if ( JTVdivJsonTree.innerHTML === "") {
 

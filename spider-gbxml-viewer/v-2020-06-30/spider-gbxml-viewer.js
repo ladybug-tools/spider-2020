@@ -10,13 +10,13 @@ designed to be forked, hacked and remixed using the WebGL and the
 `;
 
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/bilt-2019-template.zip";
-urlGbxml = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-fixed.xml";
+//urlGbxml = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-fixed.xml";
 //urlGbxml = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-down-road-utf16.xml";
 
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/warwick-university-5k-surfaces.zip";
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/annapolis-md-single-family-residential-2016.xml"
 //urlGbxml = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
-//urlGbxml = "https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml";
+urlGbxml = "https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml";
 //urlGbxmlDefault = "https://www.ladybug.tools/spider/gbxml-sample-files/aspen-co-resort-retail.xml";
 //urlGbxml = "https://www.ladybug.tools/spider/gbxml-sample-files/samples-2/Berlin_Office_SAM2017.xml";
 //urlGbxmlDefault = "https://GreenBuildingXML.github.io/Sample_gbXML_Files/ChapelHillOffice.xml"
@@ -42,11 +42,9 @@ function init() {
 
 	THRU.group = THR.setSceneNew( THRU.group );
 	
-
-
 	
 	FOO.init();
-	FOO.doNext = GBX.onLoad;
+	//FOO.doNext = GBX.onLoad;
 
 	FOO.requestFile( urlGbxml ); 
 
@@ -64,13 +62,31 @@ function init() {
 
 };
 
-function onLoad() {
-	//console.log("response", response);
+FOO.doNext = function () {
+	//console.log( "string", FOO.string );
 
-	//JTV.onLoad();
+	THR.group = THR.setSceneNew( THR.group );
+	THR.group.name = "GBXmeshGroup";
+
+	GBX.parseResponse();
+
+	THR.updateScene( THR.group ); 
+
+	RAY.intersectObjects = THR.group.children;
+
+	RAY.addMouseMove();
+	// //RAY.addMouseDown();
+
+
+
+	//JTV.init();
+	if ( FOO.string.length < 3000000 ) {
+		setTimeout( 500 );
+		requestIdleCallback( JTV.init);
+
+	}
 
 }
-
 
 
 RAY.getMeshData = function (index) {

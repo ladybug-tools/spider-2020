@@ -11,8 +11,13 @@ GitHub
 * https://github.com/ladybug-tools/spider-2020/spider-template-viewer/issues
 
 
+## Change Log
 
-## v-2020-06-09
+### 2020-07-03
+
+* All modules to ../lib
+
+### v-2020-06-09
 
 * Update to latest modules from the various viewers
 

@@ -84,16 +84,15 @@ THR.onStart = function () {
 };
 
 
-THR.setSceneNew = function ( group ) {
-	
-	THR.scene.remove( group );
+THR.setSceneNew = function (group) {
+	scene.remove(THR.group, THRU.group );
 
-	group = new THREE.Group();
+	THR.group = new THREE.Group();
+	THRU.group = new THREE.Group();
 
-	THR.scene.add(group);
+	THR.scene.add(THR.group, THRU.group);
 
-	return group;
-
+	return THR.group;
 };
 
 THR.updateScene = function (group = THR.group) {
@@ -105,10 +104,10 @@ THR.updateScene = function (group = THR.group) {
 
 	THR.zoomObjectBoundingSphere(group);
 
-	//RAY.intersectObjects = THR.group.children;
+	RAY.intersectObjects = THR.group.children;
 
 	//RAY.addMouseMove();
-	//RAY.addMouseDown();
+	RAY.addMouseDown();
 };
 
 //////////
@@ -136,7 +135,7 @@ THR.zoomObjectBoundingSphere = function (obj = THR.group) {
 	THR.controls.update();
 
 	THR.camera.position.copy(
-		THR.center.clone().add(new THREE.Vector3(-1.5 * THR.radius, -1 * THR.radius, 1.5 * THR.radius))
+		THR.center.clone().add(new THREE.Vector3(-5 * THR.radius, -1 * THR.radius, 1.0 * THR.radius))
 	);
 	THR.camera.near = 0.001 * THR.radius; //2 * camera.position.length();
 	THR.camera.far = 50 * THR.radius; //2 * camera.position.length();
@@ -270,7 +269,7 @@ THR.addLights = function () {
 
 THR.addGround = function (position = new THREE.Vector3(0, 0, 0)) {
 	const geometry = new THREE.PlaneBufferGeometry(5000, 5000);
-	geometry.applyMatrix4(new THREE.Matrix4().makeTranslation(position.x, position.y, position.z ));
+	geometry.applyMatrix4(new THREE.Matrix4().makeTranslation(position.x, position.y, position.z));
 	const material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, side: 0 });
 	THR.ground = new THREE.Mesh(geometry, material);
 	//THR.ground.position.copy(position);

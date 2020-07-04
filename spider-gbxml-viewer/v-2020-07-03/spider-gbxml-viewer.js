@@ -50,18 +50,6 @@ function init() {
 
 	FOO.requestFile( urlGbxml ); 
 
-	// const target = window.self === window.top ? window : window.parent;
-
-	// if ( target.location.hash === "#README.md" ) { // we are in an iframe and no 3D file called for
-		
-	//  	FOO.requestFile( urlGbxml ); 
-	
-	// } else {
-
-	//  	target.location.hash = target.location.hash ? target.location.hash : urlGbxml;
-
-	// }
-
 	THRU.setObjectExplode = VT.setGbxItemsExplode;
 
 };
@@ -69,7 +57,9 @@ function init() {
 FOO.onLoadFile = function () {
 	//console.log( "string", FOO.string );
 
-	THR.group = THR.setSceneNew( THR.group );
+	divPopUp.hidden = true;
+
+	THR.group = THR.setSceneNew();
 	THR.group.name = "GBXmeshGroup";
 
 	GBX.parseResponse();
@@ -85,75 +75,26 @@ FOO.onLoadFile = function () {
 
 THRR.getMeshData = function (index) {
 
+	JTV.onOpen();
+
 	detNavMenu.open = true;
 	detData.open = true;
 
-	JTH.toggleAll(); // default = close all
-
-	// details = JTVdivJsonTree.querySelectorAll("details");
-
-	// details[0].open = true;
-
-	// details[ 2 ].open = true;
-
-	//details[4].open = true;
-
-	//const index = intersected.object.userData.index;
-
+	summaries = Array.from( JTVdivJsonTree.querySelectorAll("summary") );
+	campus = summaries.find( summary => summary.innerText.includes( "Campus 0"))
+	console.log( "campus", campus );
+	campus.parentNode.open = true
+	
 	detSurf = JTVdivJsonTree.querySelector("#JTVdetSurface");
-
-	detSurf.open = true
-
+	detSurf.open = true;
 
 	panelsHtml = Array.from( detSurf.children).slice(1);
-
 	panelsHtml.forEach( item => item.className = item.className.replace(" active", "") );
-
 	panelsHtml[index].open = true;
 
 	panelsHtml[index].scrollIntoView();
-
 	panelsHtml[index].className += " active";
+	Array.from( panelsHtml[index].children ).forEach( child => child.open = true );
 
-};
-
-
-
-THRR.xxxgetHtm = function ( intersected ) {
-
-	const index = intersected.object.userData.index;
-
-	JTF.findStuff();
-	
-	const surfaceText = GBX.surfaces[ index ]
-
-	const parser = new DOMParser();
-	const surfaceXml = parser.parseFromString( surfaceText,"text/xml");
-	//console.log( "surfaceXml", surfaceXml );
-
-	surface = surfaceXml.firstChild; //[0].childNodes[0].nodeValue;
-	//console.log( "surface", surface );
-	//console.log( "children", surface.children );
-
-	const atts = Array.from(surface.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "");
-
-	children = Array.from( surface.children ).map( child => `${ child.tagName }: ${ child.textContent }<br> `).join( "" )
-	//console.log( "children", children );
-
-	const id = Array.from( surface.getElementsByTagName( "CADObjectId") ).pop().textContent;
-	//console.log( "id", id );
-
-	space = surface.getElementsByTagName( "AdjacentSpaceId")
-	//console.log( "space", space );
-
-	const htm = `
-	<div>
-		attributes:<br> ${ atts }<br>
-		
-		<button onclick=GD.getSurfaceData(${ index }); >view surface data</button>
-	</div>`;
-
-	// children:<br>${ children }<br>
-	return htm;
 
 };

@@ -8,13 +8,13 @@
 <meta name="description" content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash." >
 <meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS" >
 
+<link rel="stylesheet" href="./lib/style/style-2020-07-04.css">
 </head>
 <body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" ></script>
 
-	<link rel="stylesheet" href="./lib/style/style-2020-07-04.css">
 
-	<div id=divContent ></div>
+	<div id=divContentReadMe ></div>
 
 <script>
 
@@ -50,7 +50,7 @@
 		xhr.open( "get", url, true );
 		xhr.onload = () => {
 			const txt = xhr.responseText.replace( /\<!--@@@/, "").replace( /\@@@-->/, "");
-			divContent.innerHTML = new showdown.Converter( options ).makeHtml( txt );
+			divContentReadMe.innerHTML = new showdown.Converter( options ).makeHtml( txt );
 		}
 		xhr.send( null );
 

@@ -15,7 +15,7 @@
 body {
 	color: teal;
 	margin: 0;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 /* tags in abc order */
@@ -77,11 +77,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 main {
-	border: 0 solid red;
+	border: 0 solid green;
 	height: 100vh;
 	left: var(--mnu-width);
 	margin: 0;
-	overflow: auto;
+	overflow: hidden;
 	padding: 0 1rem;
 	position: absolute;
 	width: calc(100% - var(--mnu-width));
@@ -226,8 +226,9 @@ main {
 	z-index: 5;
 }
 
-#divContent {
-	border: 0 solid red;
+#divContentMain {
+	border: 0 solid blue;
+	height: 100vh;
 	margin: 0 auto;
 	max-width: 50rem;
 }

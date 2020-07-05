@@ -227,7 +227,7 @@ main {
 }
 
 #divContent {
-	border: 1px solid red;
+	border: 0 solid red;
 	margin: 0 auto;
 	max-width: 50rem;
 }

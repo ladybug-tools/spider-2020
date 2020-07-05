@@ -8,7 +8,7 @@
 <meta name="description" content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash." >
 <meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS" >
 
-<style>
+<!-- <style>
 
 :root { font: 100% monospace; }
 * { box-sizing: border-box; }
@@ -23,18 +23,19 @@ code { background-color: #eee; }
 pre { background-color: #eee; padding: 5px; }
 summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
 
-</style>
+</style> -->
 
 </head>
 <body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" ></script>
+
+	<link rel="stylesheet" href="./lib/style/style-2020-07-04.css">
 
 	<div id=divContent ></div>
 
 <script>
 
 // https://github.com/showdownjs/showdown
-// Canonical version: https://github.com/pushme-pullyou/templates-01/tree/master/open-markdown-or-html
 
 	defaultFile = "README.md";
 	

@@ -1,21 +1,23 @@
 
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-covid-19-viz-3d/readme.html#dev/v-2020-04-06/0-templates/README.md "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-2020/xxxxxx/readme.html "View file as a web page." ) </span>
 
-<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-covid-19-viz-3d/tree/master/dev/";
+<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/assets/";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
-<br>
 
-# [Template Read Me]( https://www.ladybug.tools/spider-covid-19-viz-3d/readme.html#assets/README.md )
+# [Spider ZZZZZ Viewer Read Me]( ./readme.html )
 
 <!--@@@
-<iframe src=https://pushme-pullyou.github.io/tootoo-templates/basic-html.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
+<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://theo-armour.github.io/2020/xxxxxx/ height=100% width=100% ></iframe></div>
+_Spider ZZZZZ Viewer_
 
-## Full Screen: [ZZZZZ]( https://pushme-pullyou.github.io/index.html )
+### Full Screen: [Spider ZZZZZ Viewer]( https://theo-armour.github.io/2020/xxxxxx/ )
 @@@-->
 
 
 ## Concept
+
+<mark>Yikes! This file is out of date!</mark>
 
 * The files in this folder are templates or demos or 'boilerplate' files that may be used to build gbXML viewer modules.
 
@@ -49,4 +51,5 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 ***
 
-# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="../../assets/spider.ico" height=24  </a></center>
+<center title="hello! Click me to go up to the top" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img width=24 src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" > </a></center>
+

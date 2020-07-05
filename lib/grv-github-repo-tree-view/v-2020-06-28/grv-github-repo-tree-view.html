@@ -107,7 +107,8 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 
 			<summary class=sumMenuTitle >
 				Summary
-				<span class="info" >&#x24d8;<span id=divDetails class="infoTooltip" >How can I help you?</span></span>
+				<span class="info" >&#x24d8;<span id=divDetails 
+					class="infoTooltip" >How can I help you?</span></span>
 			</summary>
 
 			<div id=GRVdivGitHubRepoTreeView ></div>
@@ -160,9 +161,9 @@ init();
 
 function init() {
 
-	const urlApi = "https://api.github.com/repos/theo-armour/2020/git/trees/master?recursive=1";
+	const urlApi = "https://api.github.com/repos/ladybug-tools/spider-2020/git/trees/master?recursive=1";
 
-    ifr.src = path = "../../../readme.html"
+    ifr.src = path = "../../../index.html"
 
     requestFile( urlApi, GRV.onLoadTree );
     
@@ -177,10 +178,14 @@ function onHashChange() {
 
     if ( location.hash.endsWith( ".md" ) ) {
 
-        path = "../../../readme.html#"
+        path = "../../../index.html#"
     }
 
+	//console.log( "path", path );
+	//console.log( "url", path + location.hash.slice( 1 ) );
 	ifr.src = path + location.hash.slice( 1 );
+
+	//console.log( "src", ifr.src );
 	
 	
 	// keeps address bar pointed to latest dev. can comment out while developing stop annoying message

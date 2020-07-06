@@ -5,9 +5,9 @@
 <meta name = "viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
 <meta name = "description" content = "2020 Home page providing access to all the current Spider file viewers hosted using GitHub Pages." >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content="2020-07-04">
+<meta name = "version" content="2020-07-06">
 
-<link rel="stylesheet" href="../style/style-2020-07-04.css">
+<link rel="stylesheet" href="../style/style-2020-07-05.css">
 
 <title></title>
 
@@ -16,9 +16,9 @@
 
     <script src="../grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-04.js"></script>
 
-	<script src="../fo-file-open/foo-file-open-object-2020-06-16.js"></script>
+	<script src="../fo-file-open/foo-file-open-object-2020-07-03.js"></script>
 	<script src="../fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
-	<script src="../fo-file-open/fr-file-reader-2020-06-12.js"></script>
+	<script src="../fo-file-open/fr-file-reader-2020-07-06.js"></script>
 
 	<details id=detNavMenu >
 
@@ -31,14 +31,14 @@
 				<h2>
 
 					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/lib/htm/" target="_top" title="Source code on GitHub">
-						<img src="../assets/icons/octicon.svg">
+						<img src="https://www.ladybug.tools/spider-2020/assets/icons/octicon.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
 						GRV GitHub Repo Tree View
 					</a>
 					
-					<span class="info"><img class=infoImg  src="../assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
+					<span class="info"><img class=infoImg  src="https://www.ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
 
 					</span></span>
 
@@ -139,13 +139,9 @@
 
 <main>
 
-	<div id="divContent" style="height:100vh;overflow:hidden; >
+	<div id="divContentMain" >
 
-		<div style="height:100vh;overflow:hidden;resize:both;width:100%;">
-    
-			<iframe id=ifr style="border-width: 0 1px 1px 0;height:100%;width:100%;" ></iframe>
-		
-		</div>
+		<iframe id=ifr style="border-width: 0 1px 1px 0;height:100%;width:100%;" ></iframe>
 
 	</div>
 
@@ -171,7 +167,6 @@ function init() {
 
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
-		document.documentElement.style.setProperty("--mnu-width", "18rem");
 
 	} else {
 
@@ -193,17 +188,17 @@ function onHashChange() {
 
 	if ( !location.hash ) {
 
-		ifr.src = "../../index.html";
+		ifr.src = "../../readme.html";
 
 		return;
 
 	}
 
-	let path = "../../";
+	let path = "../../"; //path needs review in every new instance
 
-	if ( location.hash.endsWith( ".md" ) ) {
+	if ( location.hash.endsWith( ".md" ) ) { // use readme.html to convert markdown to HTML
 
-		path = "./readme.html#"; // convert markdown to HTML
+		path += "readme.html#";  
 
 	}
 

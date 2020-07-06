@@ -5,9 +5,18 @@
 <meta name = "viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content="2020-07-04">
+<meta name = "version" content="2020-07-05">
 
-<link rel="stylesheet" href="../style/style-2020-07-04.css">
+<link rel="stylesheet" href="../style/style-2020-07-05.css">
+
+<style>
+
+	:root {
+
+		--main-hue: 0; /* 0 to 360 0=red 120=green 240=blue */
+
+	}
+</style>
 
 <title></title>
 
@@ -20,7 +29,7 @@
 
 	<details id=detNavMenu >
 
-		<summary id=sumNavMenu class="sumPrimary gmd-1">show || hide menu</summary>
+		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
 
 		<nav id="navMenu" class="gmd-2">
 
@@ -33,7 +42,7 @@
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						TA Core HTML
+						Spider 2020 Test Style HTML
 					</a>
 					&nbsp;
 					<span class="info"><img class=infoImg  src="../assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
@@ -48,7 +57,7 @@
 
 			<details id=detFile >
 
-				<summary class="sumPrimary gmd-1" title="Open files on your device: ">file menu</summary>
+				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
 
 				<div id=FRdivMenuFileReader></div>
 
@@ -66,7 +75,7 @@
 
 			<details ontoggle="" >
 
-				<summary class="sumPrimary gmd-1" title="View selected items" >sample files gallery</summary>
+				<summary class="summary-primary gmd-1" title="View selected items" >sample files gallery</summary>
 
 				<div class=divNavResize >
 
@@ -84,7 +93,7 @@
 
 			<details class=detNavMenu id=detView ontoggle="">
 
-				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
+				<summary class="summary-primary gmd-1" title="View selected model aspects" >view menu</summary>
 
 				<div class=divNavResize >
 
@@ -98,7 +107,7 @@
 
 			<details class=detNavMenu id=detData ontoggle=JTV.init();JTV.onLoad(); >
 
-				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
+				<summary class="summary-primary gmd-1" title="Browse the data in the file" >data menu</summary>
 
 				<div class=divNavResize >
 
@@ -137,9 +146,9 @@
 
 <main>
 
-	<div id="divContent" >
+	<div id="divContentMain" >
 
-		<details open >
+		<!-- <details open >
 
 			<summary class=sumMenuTitle >
 				Summary
@@ -148,11 +157,19 @@
 
 			<p>Can be here or in the menu</p>
 
-		</details>
+		</details> -->
 
-		<article id=artMain ></article>
+		<article id=artMain >
 
-		<footer>
+			<div style=height:100vh;overflow:hidden;resize:both;width:100%;>
+
+				<iframe id=ifr src="style-sample-tags.html" height=100% width=100% style="border: 0 solid red;" ></iframe>
+
+			</div>
+
+		</article>
+
+		<!-- <footer>
 
 			<hr>
 			
@@ -160,7 +177,7 @@
 				<a class=aDingbat href=javascript:window.scrollTo(0,0); >❦</a>
 			</div>
 
-		</footer>
+		</footer> -->
 	</div>
 
 
@@ -183,28 +200,27 @@ function init() {
 
 	txtX = Array( 1 ).fill( txt ).join( "<hr>");
 
-	artMain.innerHTML =  `${ ( new Date ) } ${ txtX }`;
+	//artMain.innerHTML =  `${ ( new Date ) } ${ txtX }`;
 
-	divNavLog.innerHTML = txtX;
+	//divNavLog.innerHTML = txtX;
 
-	// requestFile();
+	//requestFile( "style-sample-tags.html" );
 
-	//init(); // see script-template-viewer.js
+	// var cssLink = ifr.contentDocument.createElement("link");
+	// cssLink.href = "../style/style-2020-07-05.css"; 
+	// cssLink.rel = "stylesheet"; 
+	// cssLink.type = "text/css"; 
+	// //frames['iframe1'].document.head.appendChild(cssLink);
+	// ifr.contentDocument.head.appendChild( cssLink );
+
 
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
-		//toggleNavMenu();
-
 		document.documentElement.style.setProperty("--mnu-width", "18rem");
-		console.log( "", document.documentElement.style.getPropertyValue('--mnu-width') );
-
-		root = document.querySelector(":root")
-
-		console.log( "root", root );
 
 	} else {
 
-		detNavMenu.open = true
+		detNavMenu.open = true;
 
 	}
 

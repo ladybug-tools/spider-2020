@@ -6,9 +6,9 @@
 	font-size: 100%;
 	font-family: "Lato", sans-serif;
 	--mnu-width: 25rem;
-	--main-hue: 240; /* 0 to 360 0=red 120=green 240=blue */
+	--main-hue: 206; /* 0 to 360 0=red 120=green 240=blue */
 
-	--saturation: 70%;
+	--saturation: 89%;
 	--lightness1: 20%;
 	--lightness2: 30%;
 	--lightness3: 50%;

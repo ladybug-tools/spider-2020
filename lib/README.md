@@ -7,10 +7,10 @@ value='You are now in a GitHub web page view - Click this button to view this re
 # [Spider Viewer Lib Read Me]( ./readme.html )
 
 <!--@@@
-<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://theo-armour.github.io/2020/lib/ height=100% width=100% ></iframe></div>
+<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://www.ladybug.tools/spider-2020/lib/ height=100% width=100% ></iframe></div>
 _Spider Viewer Lib_
 
-### Full Screen: [Spider Viewer Lib]( https://theo-armour.github.io/2020/lib/ )
+### Full Screen: [Spider Viewer Lib]( https://www.ladybug.tools/spider-2020/lib/ )
 @@@-->
 
 

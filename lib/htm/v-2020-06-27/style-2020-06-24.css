@@ -1,0 +1,259 @@
+/* Copyright 2020 Theo Armour. MIT License */
+
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
+
+:root {
+	font-size: 100%;
+	font-family: "Lato", sans-serif;
+ 	--mnu-width: 25rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/* tags */
+
+body {
+	color: teal;
+	margin: 0;
+	overflow: hidden;
+}
+
+a {
+	color: #22bb22;
+	font-weight: 800;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+	background-color: yellow;
+	color: #aaa;
+	text-decoration: underline;
+}
+
+button {
+	background-color: #ddd;
+	/* border: none; */
+	border-radius: 1rem;
+	color: #322;
+	cursor: pointer;
+	padding: 3px 5px;
+}
+
+button:hover {
+	background: #c88;
+	color: #fff;
+}
+
+button:active {
+	background: blue;
+	color: #fff;
+}
+
+center {
+	/* old school tag - just for fun - used in some footers */
+	font-size: 3ch;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+input[type="range"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: #ddd;
+	border-radius: 2px;
+	height: 1.7ch;
+	width: 98%;
+}
+
+input[type="range"]::-moz-range-thumb {
+	background-color: #888;
+	border-radius: 2;
+	height: 3ch;
+	width: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background-color: #888;
+	height: 3ch;
+	width: 10px;
+}
+
+main { border: 0 solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
+	overflow: auto; padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
+
+
+/* classes */
+
+.active { background-color: lightyellow; }
+
+.aDingbat { font-size: 3ch; }
+
+.divNavResize {
+	border-right: 1px solid teal;
+	max-height: 60vh;
+	overflow: auto;
+	resize: vertical;
+}
+
+/* gmd = Google Material Design */
+
+.gmd-1 {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	transition: all 0.25s ease-in-out;
+}
+
+.gmd-1:hover {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.gmd-2 {
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.gmd-5 {
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.info {
+	cursor: pointer;
+	float: right;
+}
+
+.info:hover {
+	background-color: yellow;
+}
+
+.infoImg {
+	opacity: 0.5;
+	width: 16px;
+}
+
+.infoTooltip {
+	border: 0 double #888;
+	border-radius: 2ch;
+	background: white;
+	display: none;
+	font: 100% monospace;
+	font-size: 1rem;
+	font-weight: normal;
+	margin-left: -12rem;
+	padding: 10px;
+	position: absolute;
+	max-width: 20rem;
+	z-index: 1000;
+}
+
+.info:hover > .infoTooltip {
+	display: block;
+}
+
+.sumPrimary {
+	background-color: #eee;
+	border-radius: 2ch;
+	cursor: pointer;
+	outline: none;
+	padding: 1ch;
+}
+
+.THRbutChild {
+	border-radius: 0.5rem;
+}
+
+.THRbutParent {
+	/* border: 1px solid red; */
+	background-color: #eee;
+	border-radius: 0.5ch;
+	font-size: 2rem;
+	margin: 0 1rem;
+	vertical-align: bottom;
+	z-index: 3;
+}
+
+.THRdivButtonGroup {
+	display: inline-block;
+	position: relative;
+	z-index: 3;
+}
+
+.THRdivButtonGroup:hover > .THRdivChild {
+	display: block;
+}
+
+.THRdivChild {
+	background-color: #eee;
+	border-radius: 0.5ch;
+	bottom: 2.9rem;
+	display: none;
+	/* left: 5rem; */
+	padding: 0.5rem;
+	position: absolute;
+	text-align: left;
+	width: 8rem;
+}
+
+/* IDs */
+
+#detNavMenu {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 2ch;
+	max-height: 90vh;
+	margin: 1ch;
+	overflow: hidden;
+	position: absolute;
+	resize: both;
+	width: var( --mnu-width );
+	z-index: 5;
+}
+
+#divPopUp {
+	background-color: white;
+	border-radius: 0.5ch;
+	margin: 1ch 0;
+	max-height: 30vh;
+	padding: 1ch;
+	overflow: auto;
+	position: absolute;
+	left: 30%;
+	top: 30%;
+}
+
+#THRftr {
+	bottom: 1ch;
+	left: 0;
+	margin: 0 auto;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	max-width: 30%;
+	z-index: 3;
+}
+
+#navMenu {
+	background-color: #fafffa;
+	border: 0 solid red;
+	border-radius: 2ch;
+	height: 100%;
+	margin: 1ch;	
+	padding: 1ch 1ch 0 1ch;
+
+}
+
+#sumNavMenu {
+	margin: 1ch;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		background-color: #1e1f23;
+		color: #aaa;
+	}
+
+	#navMenu {
+		background-color: #555;
+	}
+}

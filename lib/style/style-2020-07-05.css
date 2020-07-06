@@ -260,11 +260,11 @@ main {
 
 #divContentMain {
 	/* border: 0 solid blue;
-	height: 100vh;
 	margin: 0 auto;
 	max-width: 50rem; */
-
-	border:1px red solid; height:100vh;overflow:hidden;resize:both;width:100%;
+	
+	height: 100vh;
+	width:100%;
 	
 }
 

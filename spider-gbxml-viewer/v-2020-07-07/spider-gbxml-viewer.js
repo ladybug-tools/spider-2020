@@ -50,7 +50,7 @@ function init() {
 
 	FOO.requestFile( urlGbxml ); 
 
-	THRU.setObjectExplode = VT.setGbxItemsExplode;
+	//THRU.setObjectExplode = VT.setGbxItemsExplode;
 
 };
 

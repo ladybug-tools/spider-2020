@@ -37,6 +37,8 @@ function init() {
 	THR.addLights();
 
 	THR.addGround();
+
+	
 	
 	FOO.init();
 
@@ -111,6 +113,8 @@ FOO.onLoadFile = function () {
 	THR.group = THR.setSceneNew( THR.group );
 	THR.group.name = "GBXmeshGroup";
 
+	THRU.setSceneNew( THRU.group );
+
 	GBX.parseResponse();
 
 	THR.updateScene( THR.group ); 
@@ -122,27 +126,99 @@ FOO.onLoadFile = function () {
 };
 
 
+THRR.getHtm = function (intersected) {
+	console.log("intersected", THRR.intersected);
+	const mesh = THRR.intersected.object;
+
+	const htm = `
+	<div>
+		id: ${THR.group.children.indexOf( mesh ) }<br>
+		geometry: ${ mesh.geometry.type }<br>
+		name: ${ mesh.name }</br>
+		uuid: ${mesh.uuid}<br>
+		<button onclick=THRR.getMeshData(${THR.group.children.indexOf( mesh )}); >view mesh data</button>
+	</div>`;
+
+	return htm;
+};
+
+
+
+THRR.getHtm = function ( intersected ) {
+
+	// assume no JSON data yet - ther's only the gbXML data to play with 
+
+	const index = intersected.object.userData.index;
+	const surfaceText = GBX.surfaces[ index ];
+
+	const parser = new DOMParser();
+	const surfaceXml = parser.parseFromString( surfaceText,"text/xml");
+	//console.log( "surfaceXml", surfaceXml );
+
+	surface = surfaceXml.firstChild; //[0].childNodes[0].nodeValue;
+	//console.log( "surface", surface );
+
+	const atts = Array.from(surface.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "");
+
+	children = Array.from( surface.children ).map( child => `${ child.tagName }: ${ child.textContent }<br> `).join( "" )
+	
+	const id = Array.from( surface.getElementsByTagName( "CADObjectId") ).pop()
+
+
+	const htm = `
+	<div>
+		Surface attributes:<br> ${ atts }
+
+		${ id ? "CAD ID: " + id.textContent + "<br>" : ""}
+		
+		<button onclick=THRR.getMeshData(${ index }); >view full surface data</button>
+	</div>`;
+
+	// children:<br>${ children }<br>
+	return htm;
+
+};
+
 THRR.getMeshData = function (index) {
 
 	//JTV.onOpen();
 
+	if ( !JTV.json ) {
+
+		divPopUp.hidden = false;
+		divPopUp.innerHTML = "<p>Parsing gbXML data...</p><p>Try again when you see the 'loaded successfully' message</p>";
+
+	}
+	
 	detNavMenu.open = true;
 	detData.open = true;
-
-	summaries = Array.from( JTVdivJsonTree.querySelectorAll("summary") );
-	campus = summaries.find( summary => summary.innerText.includes( "Campus 0"))
-	console.log( "campus", campus );
-	campus.parentNode.open = true
 	
-	detSurf = JTVdivJsonTree.querySelector("#JTVdetSurface");
-	detSurf.open = true;
+	console.log( "json", JTV.json );
 
-	panelsHtml = Array.from( detSurf.children).slice(1);
-	panelsHtml.forEach( item => item.className = item.className.replace(" active", "") );
-	panelsHtml[index].open = true;
+	if ( JTV.json ) {
 
-	panelsHtml[index].scrollIntoView();
-	panelsHtml[index].className += " active";
-	Array.from( panelsHtml[index].children ).forEach( child => child.open = true );
+		summaries = Array.from( JTVdivJsonTree.querySelectorAll("summary") );
+		campus = summaries.find( summary => summary.innerText.includes( "Campus 0"))
+		//console.log( "campus", campus );
+		campus.parentNode.open = true;
+		
+		detSurf = JTVdivJsonTree.querySelector("#JTVdetSurface");
+		detSurf.open = true;
+
+		panelsHtml = Array.from( detSurf.children).slice(1);
+		panelsHtml.forEach( item => item.className = item.className.replace(" active", "") );
+		panelsHtml[index].open = true;
+
+		panelsHtml[index].scrollIntoView();
+		panelsHtml[index].className += " active";
+		Array.from( panelsHtml[index].children ).forEach( child => child.open = true );
+
+	} else {
+
+		// divPopUp.hidden = false;
+		// divPopUp.innerHTML = "<p>Parsing gbXML data...</p><p>Try again when you see the 'loaded successfully' message</p>";
+
+	}
+
 
 };

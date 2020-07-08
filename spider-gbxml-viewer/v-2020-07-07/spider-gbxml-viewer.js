@@ -118,7 +118,7 @@ FOO.onLoadFile = function () {
 
 	divPopUp.hidden = true;
 
-	THR.group = THR.setSceneNew();
+	THR.group = THR.setSceneNew( THR.group );
 	THR.group.name = "GBXmeshGroup";
 
 	GBX.parseResponse();

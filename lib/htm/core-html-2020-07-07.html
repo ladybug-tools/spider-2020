@@ -3,22 +3,20 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
-<meta name = "description" content = "2020 Home page providing access to all the current Spider file viewers hosted using GitHub Pages." >
+<meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "version" content="2020-07-07">
 
-<link rel="stylesheet" href="../../lib/style/style-2020-07-07.css">
+<link rel="stylesheet" href="../style/style-2020-07-07.css">
 
 <title></title>
 
 </head>
 <body>
 
-    <script src="../../lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-06.js"></script>
-
-	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-07.js"></script>
-	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
-	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+	<script src="../fo-file-open/foo-file-open-object-2020-07-07.js"></script>
+	<script src="../fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
+	<script src="../fo-file-open/fr-file-reader-2020-07-06.js"></script>
 
 	<details id=detNavMenu >
 
@@ -30,14 +28,14 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/lib/grv-github-repo-tree-view/" target="_top" title="Source code on GitHub">
+					<a id=aGithub href="https://github.com/theo-armour/2020/tree/master/lib/htm/" target="_top" title="Source code on GitHub">
 						<img src="../assets/icons/octicon.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						GRV GitHub Repo Tree View
+						TA Core HTML 2020-07-07
 					</a>
-					
+					&nbsp;
 					<span class="info">
 						<img class=infoImg  src="../assets/icons/noun_Information_585560.svg"> 
 						<span id="divDescription" class="infoTooltip gmd-5">
@@ -68,25 +66,27 @@
 
 			</details>
 
-			<details ontoggle="" open>
+			<details ontoggle="" >
 
-				<summary class="summary-primary gmd-1" title="View selected items" >repo files</summary>
+				<summary class="summary-primary gmd-1" title="View selected items" >sample files gallery</summary>
 
 				<div class=divNavResize >
 
-					<p>Files you can load, view and experiment with:</p>
+					<p>Sample files you can load, view and experiment with:</p>
 					
-					<div id=GRVdivGitHubRepoTreeView ></div>
+					<div id=GFFdivGithubFoldersFiles></div>
+					
+					<div id=GFFdivFileInfo></div>
 					
 					<br>
 
 				</div>
 
 			</details>
-<!-- 
+
 			<details class=detNavMenu id=detView ontoggle="">
 
-				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
+				<summary class="summary-primary gmd-1" title="View selected model aspects" >view menu</summary>
 
 				<div class=divNavResize >
 
@@ -100,7 +100,7 @@
 
 			<details class=detNavMenu id=detData ontoggle=JTV.init();JTV.onLoad(); >
 
-				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
+				<summary class="summary-primary gmd-1" title="Browse the data in the file" >data menu</summary>
 
 				<div class=divNavResize >
 
@@ -120,9 +120,9 @@
 					
 				</div>
 
-			</details> -->
+			</details>
 
-			<hr>
+			<br>
 
 			<footer>
 	
@@ -143,8 +143,29 @@
 
 	<div id="divContentMain" >
 
-		<iframe id=ifr style="border-width: 0 1px 1px 0;height:100%;width:100%;" ></iframe>
+		<details open >
 
+			<summary class=summary-primary >
+				Summary
+				<span class="info" >&#x24d8;<span id=divDetails class="infoTooltip" >How can I help you?</span></span>
+			</summary>
+
+			<p>Can be here or in the menu</p>
+
+		</details>
+
+		<article id=artMain ></article>
+
+		<footer>
+
+			<hr>
+			
+			<div title="go to top of menu" style=text-align:center; >
+				<a class=aDingbat href=javascript:window.scrollTo(0,0); >❦</a>
+			</div>
+
+		</footer>
+		
 	</div>
 
 </main>
@@ -163,13 +184,19 @@ init();
 
 function init() {
 
-	const urlApi = "https://api.github.com/repos/ladybug-tools/spider-2020/git/trees/master?recursive=1";
-	
-	requestFile( urlApi, GRV.onLoadTree );
+	txt = "<h3>Title</h3><p>orem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
 
-	window.addEventListener( "hashchange", onHashChange, false );
+	txtX = Array( 1 ).fill( txt ).join( "<hr>");
 
-	onHashChange();
+	artMain.innerHTML =  `${ ( new Date ) } ${ txtX }`;
+
+	divNavLog.innerHTML = txtX;
+
+	divPopUp.hidden = true;
+
+	// requestFile();
+
+	//init(); // see script-template-viewer.js
 
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
@@ -190,26 +217,9 @@ function init() {
 
 }
 
-function onHashChange() {
+function setIt() {
 
-	if ( !location.hash ) {
-
-		ifr.src = "../../readme.html";
-
-		return;
-
-	}
-
-	let path = "../../"; //path needs review in every new instance
-
-	if ( location.hash.endsWith( ".md" ) ) { // use readme.html to convert markdown to HTML
-
-		path += "readme.html#";  
-
-	}
-
-	ifr.src = path + location.hash.slice( 1 );
-
+	divContent.innerHTML += `<p>${ ( performance.now() ) } - Howdy! </p>`;
 
 }
 
@@ -220,7 +230,7 @@ function requestFile( url = "https://example.com" , callback = onLoad ) {
 
 	const xhr = new XMLHttpRequest();
 	xhr.open( "GET", url, true );
-	xhr.responseType = "json";
+	xhr.responseType = "text";
 	xhr.onerror = ( xhr ) => console.log( "error:", xhr  );
 	//xhr.onprogress = ( xhr ) => console.log( "bytes loaded:", xhr.loaded );
 	xhr.onload = ( xhr ) => callback( xhr.target.response );

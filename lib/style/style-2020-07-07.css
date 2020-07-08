@@ -250,6 +250,12 @@ input, select, option {
 
 /* IDs */
 
+#artMain {
+
+	margin: 0 auto;
+	max-width: 50rem;
+}
+
 #detNavMenu {
 	background-color: var( --color-2-background );
 	border-radius: 2ch;

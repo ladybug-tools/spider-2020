@@ -1,7 +1,7 @@
 
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/";
 
-const version = "v-2020-07-07";
+const version = "v-2020-07-09";
 
 const description = document.head.querySelector( "[ name=description ]" ).content;
 

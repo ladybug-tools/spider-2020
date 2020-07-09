@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description" content="View Honeybee and Dragonfly models in 3D. Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+
+	<title>Spider Pollination Viewer</title>
+
+	<link rel="stylesheet" href="../../lib/style/style-2020-07-07.css">
+
+	<style>
+		:root {
+			--main-hue: 60; /* 0 to 360 0=red 120=green 240=blue */
+			--color-2-background: hsl(var(--main-hue), var(--saturation), 70% );
+		}
+
+		body {
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/jszip@3.5.0/dist/jszip.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.28.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.28.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.28.0/dist/textmesh-standalone.umd.min.js"></script>
+
+
+	<!-- core -->
+	<script src="../../lib/thr-three/thr-threejs-2020-06-30.js"></script>
+	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-07-01.js"></script>
+
+	<script src="../../lib/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-07-03.js"></script>
+	<script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+	<script src="../../lib/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
+	
+	<script src="json-tree-view/jth-json-tree-helper-2020-06-10.js"></script>
+	<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
+	<script src="json-tree-view/jtf-json-tree-finder-2020-06-10.js"></script>
+	<script src="json-tree-view/jtv-json-tree-view-pollination-2020-01-24.js"></script>
+
+	<!-- viewer -->
+	<script src="pollination/pp-pollination-parse-2020-06-26.js"></script>
+	<script src="pollination/pdj-pollination-dragonfly-json-2020-06-26.js"></script>
+	<script src="pollination/phj-pollination-honeybee-json-2020-06-26.js"></script>
+
+	
+	<!-- menus -->
+	<script src="fo-file-open/foo-file-open-object-2020-06-26.js"></script>
+	<script src="fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
+	<script src="fo-file-open/fr-file-reader-2020-06-12.js"></script>
+	
+	<script src="gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
+	
+	<script src="vt-view-types/vt-view-types-pollination-2020-06-26.js"></script>
+	
+
+
+	<details id=detNavMenu >
+
+		<summary id=sumNavMenu class="summary-primary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<header id="hdrTitle">
+
+				<h2>
+
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-pollination-viewer" target="_top" title="Source code on GitHub">
+						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
+					</a>
+
+					<a id=aTitle href="" title="Click to reload this page">
+						Spider Pollination Viewer
+					</a>
+					&nbsp;
+					<span class="info"><img class=infoImg  src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
+
+					</span></span>
+
+				</h2>
+
+			</header>
+
+			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
+
+			<details id=detFile >
+
+				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
+
+				<div id=FRdivMenuFileReader></div>
+
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+				</p>
+		
+				<div id=FOOdivLog >to be reset</div>
+		
+				<div id=FOZdivFileOpenZip ></div>
+
+				<div =id=divLog ></div>
+
+			</details>
+
+			<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() >
+
+				<summary class="summary-primary gmd-1" title="View selected items" >sample files gallery</summary>
+
+				<div class=divNavResize >
+
+					<p>Sample files you can load, view and experiment with:</p>
+					
+					<div id=GFFdivGithubFoldersFiles></div>
+					
+					<div id=GFFdivFileInfo></div>
+					
+					<br>
+
+				</div>
+
+			</details>
+
+			<details id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
+
+				<summary class="summary-primary gmd-1" title="View selected model aspects" >view menu</summary>
+
+				<div class=divNavResize >
+
+				<div id=VTdivViewTypes ></div>
+
+				<div id=VTdivAttributes></div>
+
+				</div>
+
+			</details>
+
+			<details id=detData ontoggle=JTV.onLoad(); >
+
+				<summary class="summary-primary gmd-1" title="Browse the data in the file" >data menu</summary>
+
+				<div class=divNavResize >
+
+				<p>
+					<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
+				</p>	
+
+				<div id=JTHdivJsonTreeHelper ></div>
+				
+				<div id=JTFdivJsonTreeFinder ></div>
+				
+				<div id=JTEdivJsonTreeEdit ></div>
+				
+				<div id=JTVdivJsonTreeView ></div>
+
+				<div id="JTVdivJsonTree"></div>
+				
+
+				<hr>
+				</div>
+
+			</details>
+
+			<br>
+
+			<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" 
+				src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico"> 
+			</center>
+
+		</nav>
+
+	</details>
+
+	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
+
+
+		<!-- standard footer for THR ~ 2020-06-30 -->
+		<footer id=THRftr >
+
+			<div class=THRdivButtonGroup >
+				<button class="THRbutParent gmd-1" onmouseout=THRdivViews.hidden=true; onclick="THR.controls.reset();" title="reset the view" ><img height=32 width=32 src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
+				<div class="THRdivChild gmd-2" >
+	
+					<div title="Camera frustum near plane." >
+						camera near: <output id=outNear >1</output>
+						<input type=range id=inpNear value=1 oninput=THRU.setCameraNear(this);outNear.value=THR.camera.near.toFixed(); >
+					</div>	
+	
+					<div >
+						<label id=lblFOV title="Camera frustum vertical field of view. Perspective camera only" >
+	
+							field of view: <output id=outFov >40</output>
+							<input id=rngFieldOfView type=range oninput=THRU.setFieldOfView(this);outFov.value=this.value; min=1 max=179 value=40 >
+						</label>
+					</div>	
+					<div><button id=THRUbutOrtho class="THRbutChildParent" onclick="THRU.toggleCameraOrthoPerspective();">ortho|perspective</button></div>	
+	
+					<div><button id=THRUbutViews
+						class="THRbutChildParent gmd-1" onclick="THRdivViews.hidden=!THRdivViews.hidden;" >views</button></div>
+	
+					<div id=THRdivViews class="THRdivChildChild gmd-2" >
+	
+						<button class="THRbutChild" onclick="THR.setCameraPosition(0,0,200);" ">top</button>
+						<button class="THRbutChild" onclick="THR.setCameraPosition(200,0,0);">right</button>
+						<button class="THRbutChild" onclick="THR.setCameraPosition(-200,0,0);">left</button>
+						<button class="THRbutChild" onclick="THR.setCameraPosition(0,0,-200);">bottom</button>
+						<button class="THRbutChild" onclick="THR.setCameraPosition(0,-200,0);">front</button>
+						<button class="THRbutChild" onclick="THR.setCameraPosition(0,200,0);">back</button>
+		
+					</div>		
+	
+					<div> <button class="THRbutChild" onclick="THR.zoomToFitObject();">zoom fit</button></div>
+				</div>
+			</div>
+		
+			<div class=THRdivButtonGroup >
+				<button class="THRbutParent gmd-1" onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" >&circlearrowright;</button>
+				<div class="THRdivChild gmd-2" >
+	
+					<div> <button class="THRbutChild" onclick="alert( 'What do you need to see here?' );" >??</button></div>
+					<div> <button class="THRbutChild" onclick="THR.cameraHelper.visible=!THR.cameraHelper.visible" title="Shadow area frustum" >light box</button></div>
+	
+					<div> <button class="THRbutChild" onclick="THR.ground.visible=!THR.ground.visible" >ground plane</button></div>
+					<div> <button class="THRbutChild" onclick="THR.axesHelper.visible=!THR.axesHelper.visible" >axes</button></div>
+	
+				</div>
+			</div>
+	
+			<div class=THRdivButtonGroup >
+				<button class=THRbutParent onclick="THR.setAllVisible();" title="Show all surfaces" >&sdotb;</button>
+				<div class="THRdivChild gmd-2" >
+	
+	
+					opacity: <output id=THRoutOpacity >85</output>%
+					<input type=range id="THRrngOpacity" oninput=THRU.setObjectOpacity();THRoutOpacity.value=this.value value=85 >
+					<button class="THRbutChild" onclick="THRU.toggleBoundingBoxHelper();" >bounding box</button>
+					<button class="THRbutChild" onclick="THRU.toggleWireframe();" >wireframe</button>
+					<button class="THRbutChild" onclick="THRU.toggleMeshEdges();" >edges</button>
+					<div><button class="THRbutChild" onclick="THRU.toggleTitles();" >titles</button></div>
+					
+				
+				</div>
+			</div>
+	
+			<button class=THRbutParent onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" >fps</button>
+	
+		</footer>
+	
+		<!-- end -->
+	
+	
+
+
+	<script src="spider-pollination-viewer.js"></script>
+
+	<script>
+
+		init(); // see script-pollination-viewer.js
+
+		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+
+			//toggleNavMenu();
+
+		} else {
+
+			detNavMenu.open = true
+
+		}
+
+	</script>
+
+</body>
+
+</html>

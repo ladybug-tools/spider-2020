@@ -39,9 +39,10 @@
 
 	<!-- core -->
 	<script src="../../lib/thr-three/thr-threejs-2020-06-30.js"></script>
+	<script src="../../lib/thrc-three-set-colors/thrc-three-set-colors-2020-07-07.js"></script>
 	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-07-01.js"></script>
-
 	<script src="../../lib/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-07-03.js"></script>
+
 	<script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
 	<script src="../../lib/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
 	
@@ -52,10 +53,10 @@
 	
 	<!-- menus -->
 	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-07.js"></script>
-	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
+	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
 	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
 	
-	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-06-10.js"></script>
+	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-07-07.js"></script>
 	
 	<script src="../../lib/vt-view-types/vt-view-types-2020-06-26.js"></script>
 	
@@ -127,21 +128,21 @@
 
 			</details>
 
-			<details class=detNavMenu id=detView ontoggle=VTdivViewTypes.innerHTML=VT.init() >
+			<details class=detNavMenu id=detView ontoggle=JTV.setMessage();>
 
 				<summary class="summary-primary gmd-1" title="View selected model aspects" >view menu</summary>
 
-				<div class=divNavResize >
+					<div class=divNavResize >
 
-				<div id=VTdivViewTypes ></div>
+					<div id=VTdivViewTypes ></div>
 
-				<div id=VTdivAttributes></div>
+					<div id=VTdivAttributes></div>
 
 				</div>
 
 			</details>
 
-			<details class=detNavMenu id=detData ontoggle=JTV.init() >
+			<details class=detNavMenu id=detData ontoggle=JTV.setMessage(); >
 
 				<summary class="summary-primary gmd-1" title="Browse the data in the file" >data menu</summary>
 
@@ -173,12 +174,13 @@
 
 	</details>
 
+
 	<!-- Used by RAY -->
 
 	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear here </div>
 
 
-	<!-- standard footer for THR ~ 2020-06-30 -->
+	<!-- standard footer for THR ~ 2020-07-08 -->
 	<footer id=THRftr >
 
 		<div class=THRdivButtonGroup >
@@ -192,7 +194,6 @@
 
 				<div >
 					<label id=lblFOV title="Camera frustum vertical field of view. Perspective camera only" >
-
 						field of view: <output id=outFov >40</output>
 						<input id=rngFieldOfView type=range oninput=THRU.setFieldOfView(this);outFov.value=this.value; min=1 max=179 value=40 >
 					</label>
@@ -217,23 +218,40 @@
 			</div>
 		</div>
 	
-		<div class=THRdivButtonGroup >
+		<div class=THRdivButtonGroup title="Settings that update the entire scene">
 			<button class="THRbutParent gmd-1" onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" >&circlearrowright;</button>
 			<div class="THRdivChild gmd-2" >
 
-				<div> <button class="THRbutChild" onclick="alert( 'What do you need to see here?' );" >??</button></div>
-				<div> <button class="THRbutChild" onclick="THR.cameraHelper.visible=!THR.cameraHelper.visible" title="Shadow area frustum" >light box</button></div>
+				<div> <button class="THRbutChild" title="Show or hide the fog" onclick="THR.scene.fog.far=THR.scene.fog.far === THR.radius * 8 ? 999999 :  THR.radius * 8;" >fog</button></div>
+				<div> <button class="THRbutChild" onclick="THR.cameraHelper.visible=!THR.cameraHelper.visible" title="Show or hide the shadow area frustum" >light box</button></div>
 
-				<div> <button class="THRbutChild" onclick="THR.ground.visible=!THR.ground.visible" >ground plane</button></div>
-				<div> <button class="THRbutChild" onclick="THR.axesHelper.visible=!THR.axesHelper.visible" >axes</button></div>
+				<div> <button class="THRbutChild" title="Show or hide the floor" onclick="THR.ground.visible=!THR.ground.visible" >ground plane</button></div>
+				<div> <button class="THRbutChild" title="Show or hide the RGB|XYZ bars" onclick="THR.axesHelper.visible=!THR.axesHelper.visible" >axes</button></div>
 
 			</div>
 		</div>
 
-		<div class=THRdivButtonGroup >
-			<button class=THRbutParent onclick="THR.setAllVisible();" title="Show all surfaces" >&sdotb;</button>
+		<div class=THRdivButtonGroup title="Settings that update just the model">
+			<button class=THRbutParent onmouseover=THRdivMaterials.hidden=true;  onclick="THR.setAllVisible();" title="Show all surfaces" >
+				&sdotb;
+			</button>
+			
 			<div class="THRdivChild gmd-2" >
 
+				<div><button id=THRUbutMaterials
+					class="THRbutChildParent gmd-1" onclick="THRdivMaterials.hidden=!THRdivMaterials.hidden;" >materials</button>
+				</div>
+
+				<div id=THRdivMaterials class="THRdivChildChild gmd-2" style=top:0rem; >
+
+					<button class="THRbutChild" onclick="THRC.setExposureMaterial();" ">Exposure type</button>
+					<button class="THRbutChild" onclick="THRC.setPhongDefaultMaterial();">Shades of gray</button>
+					<button class="THRbutChild" onclick="THRC.setNormalMaterial();">Normals</button>
+					<button class="THRbutChild" onclick="THRC.setImageTexture();">images</button>
+					<button class="THRbutChild" onclick="THRC.setRandomMaterial();">Random colors</button>
+					<button class="THRbutChild" onclick="THRC.setDefaultMaterial();">Default materials</button>
+	
+				</div>	
 
 				opacity: <output id=THRoutOpacity >85</output>%
 				<input type=range id="THRrngOpacity" oninput=THRU.setObjectOpacity();THRoutOpacity.value=this.value value=85 >
@@ -246,8 +264,17 @@
 			</div>
 		</div>
 
-		<button class=THRbutParent onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" >fps</button>
+		<div class=THRdivButtonGroup >
+			<button class=THRbutParent onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" >fps</button>
+			<div class="THRdivChild gmd-2" >
 
+				<div> 
+					<button class="THRbutChild" onclick="alert( 'What do you need to see here?' );" >??</button>
+				</div>
+
+
+			</div>
+		</div>
 	</footer>
 
 	<!-- end -->
@@ -267,7 +294,6 @@
 			detNavMenu.open = true
 
 		}
-
 
 	</script>
 

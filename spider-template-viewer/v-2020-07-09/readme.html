@@ -1,19 +1,35 @@
-﻿<!doctype html>
-<html lang="en" >
-<head>
-<meta charset="utf-8" >
-<title>Open Index or Markdown</title>
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Open Index or Markdown</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain" >
-<meta name="description" content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash." >
-<meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS" >
-<meta name="version" content="2020-06-13" >
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain" />
+		<meta
+			name="description"
+			content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash."
+		/>
+		<meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS" />
+		<meta name="version" content="2020-07-05" />
 
-<style>
+		<link rel="stylesheet" href="../../lib/style/style-2020-07-05.css" />
 
+		<style>
+			
+			:root {
+				--main-hue: 120; /* 0 to 360 0=red 120=green 240=blue */
+			}
+
+			#RMdivContent {
+				border: 0 solid red;
+				margin: 0 auto;
+				width: 50rem;
+			}
+
+			/*
 :root { font: 100% monospace; }
 * { box-sizing: border-box; }
-body { margin: 0 auto; max-width: 100ch; }
+body { margin: 0 auto; max-width: 50rem; }
 a { color: crimson; text-decoration: none; }
 a:hover, a:focus, a:active { text-decoration: underline; }
 aside { border: 1px solid lightgray; margin-top: 15px; padding: 2px; }
@@ -23,56 +39,56 @@ center { text-decoration:none; font-size: 2ch;}
 code { background-color: #eee; }
 pre { background-color: #eee; padding: 5px; }
 summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; outline: none; }
+*/
+		</style>
+	</head>
+	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
 
+		<div id="RMdivContent"></div>
 
-</style>
+		<script>
+			// https://github.com/showdownjs/showdown
 
-</head>
-<body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" ></script>
+			defaultFile = "README.md";
 
-	<div id=divContent ></div>
+			//location.hash = "../assets/markdown-help.md"; // test
+			//location.hash = "../assets/style.css"
 
-<script>
+			init();
 
-// https://github.com/showdownjs/showdown
+			function init() {
+				showdown.setFlavor("github");
 
-	defaultFile = "README.md";
-	
-	//location.hash = "../assets/markdown-help.md"; // test
-	//location.hash = "../assets/style.css"
+				if (!location.hash) {
+					location.hash = defaultFile;
+				}
 
-	init();
+				location.hash.endsWith(".md") ? onHashChange() : (window.location.href = location.hash);
 
-	function init() {
+				window.addEventListener("hashchange", onHashChange, false);
+			}
 
-		showdown.setFlavor("github");
+			function onHashChange() {
+				const url = location.hash.slice(1);
+				document.title = url.split("/").pop();
+				const options = {
+					excludeTrailingPunctuationFromURLs: true,
+					ghMention: true,
+					simplifiedAutoLink: true,
+					simpleLineBreaks: true,
+					emoji: true,
+					openLinksInNewWindow: true,
+				};
 
-		if ( ! location.hash ) { location.hash = defaultFile; }
-
-		location.hash.endsWith( ".md" ) ? onHashChange() : window.location.href = location.hash;
-
-		window.addEventListener( "hashchange", onHashChange, false );
-
-	}
-
-	function onHashChange() {
-
-		const url = location.hash.slice( 1 );
-		document.title = url.split( "/" ).pop();
-		const options = { excludeTrailingPunctuationFromURLs: true, ghMention: true, simplifiedAutoLink: true, simpleLineBreaks: true, emoji: true, openLinksInNewWindow: true };
-
-
-		const xhr = new XMLHttpRequest();
-		xhr.open( "get", url, true );
-		xhr.onload = () => {
-			const txt = xhr.responseText.replace( /\<!--@@@/, "").replace( /\@@@-->/, "");
-			divContent.innerHTML = new showdown.Converter( options ).makeHtml( txt );
-		}
-		xhr.send( null );
-
-	}
-
-</script>
-</body>
+				const xhr = new XMLHttpRequest();
+				xhr.open("get", url, true);
+				xhr.onload = () => {
+					const txt = xhr.responseText.replace(/\<!--@@@/, "").replace(/\@@@-->/, "");
+					RMdivContent.innerHTML = new showdown.Converter(options).makeHtml(txt);
+				};
+				xhr.send(null);
+			}
+		</script>
+	</body>
 </html>

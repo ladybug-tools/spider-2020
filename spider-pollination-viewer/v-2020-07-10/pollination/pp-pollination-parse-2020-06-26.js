@@ -37,6 +37,8 @@ PP.onLoadJson = function () {
 
 	JTV.init();
 
+	VT.init();
+
 	// grp2 = new THREE.Group();
 	// grp2.position.x = 500;
 	// grp3 = new THREE.Group();

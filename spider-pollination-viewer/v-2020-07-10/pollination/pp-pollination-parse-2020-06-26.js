@@ -25,9 +25,9 @@ PP.onLoadJson = function () {
 	//json = xhr.target.response
 	//console.log( 'json', json);
 
-	THR.group = THR.setSceneNew();
+	THR.group = THR.setSceneNew( THR.group );
 
-
+	THRU.group = THRU.setSceneNew();
 
 	scene.remove(PDJ.group);
 

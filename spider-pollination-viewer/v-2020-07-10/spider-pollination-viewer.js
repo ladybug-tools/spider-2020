@@ -17,6 +17,8 @@ const files = [
 
 GFF.extension = ".json";
 
+GFF.urlViewer = "../../spider-pollination-viewer/index.html"
+
 GFF.items = [
 	{
 		"user": "ladybug-tools",

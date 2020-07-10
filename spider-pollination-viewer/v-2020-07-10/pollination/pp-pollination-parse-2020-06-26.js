@@ -35,6 +35,8 @@ PP.onLoadJson = function () {
 
 	scene.add( PDJ.group );
 
+	JTV.init();
+
 	// grp2 = new THREE.Group();
 	// grp2.position.x = 500;
 	// grp3 = new THREE.Group();

@@ -7,7 +7,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 # [Spider gbXML Viewer Read Me]( ./readme.html )
 
 <!--@@@
-<iframe src=https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ width=100% height=500px ></iframe>
+<iframe src=index.html class=iframe-resize></iframe>
 _Spider gbXML Viewer_
 @@@-->
 

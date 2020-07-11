@@ -10,7 +10,7 @@
 
 	<title>Spider gbXML Viewer</title>
 
-	<link rel="stylesheet" href="../../lib/style/style-2020-07-07.css">
+	<link rel="stylesheet" href="../../lib/style/style-2020-07-10.css">
 
 	<style>
 		:root {
@@ -38,7 +38,7 @@
 
 
 	<!-- core -->
-	<script src="../../lib/thr-three/thr-threejs-2020-06-30.js"></script>
+	<script src="../../lib/thr-three/thr-threejs-2020-07-10.js"></script>
 	<script src="../../lib/thrc-three-set-colors/thrc-three-set-colors-2020-07-07.js"></script>
 	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-07-01.js"></script>
 	<script src="../../lib/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-07-03.js"></script>
@@ -201,10 +201,10 @@
 						<input id=rngFieldOfView type=range oninput=THRU.setFieldOfView(this);outFov.value=this.value; min=1 max=179 value=40 >
 					</label>
 				</div>	
-				<div><button id=THRUbutOrtho class="THRbutChildParent" onclick="THRU.toggleCameraOrthoPerspective();">ortho|perspective</button></div>	
+				<div><button id=THRUbutOrtho class="THRbutChild" onclick="THRU.toggleCameraOrthoPerspective();">ortho|perspective</button></div>	
 
 				<div><button id=THRUbutViews
-					class="THRbutChildParent gmd-1" onclick="THRdivViews.hidden=!THRdivViews.hidden;" >views</button></div>
+					class="THRbutChild gmd-1" onclick="THRdivViews.hidden=!THRdivViews.hidden;" >views</button></div>
 
 				<div id=THRdivViews class="THRdivChildChild gmd-2" >
 

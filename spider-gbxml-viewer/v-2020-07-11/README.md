@@ -25,4 +25,4 @@ GitHub
 
 ---
 
-<center><img title="Single finger for single method!" height="32" width="32" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" ></center>
+<center><img title="" height="32" width="32" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" ></center>

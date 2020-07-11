@@ -137,6 +137,10 @@ pre {
 
 /* classes */
 
+.active {
+	background-color: lightgreen;
+}
+
 .highlight {
 	background-color: var(--color-2-background);
 }

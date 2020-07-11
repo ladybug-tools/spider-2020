@@ -3,10 +3,9 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
 
 :root {
-
 	font-size: 100%;
 	font-family: "Lato", sans-serif;
-	
+
 	--mnu-width: 25rem;
 	--main-hue: 206; /* 0 to 360 0=red 120=green 240=blue */
 
@@ -16,17 +15,17 @@
 	--lightness3: 50%;
 	--lightness4: 80%;
 	--lightness5: 99.9%;
-	
+
 	--color-0-background: #fff;
 
-	--color-1-text: hsl(var(--main-hue), var(--saturation), 1% );
-	--color-1-background: hsl(var(--main-hue), var(--saturation), 99.9% );
+	--color-1-text: hsl(var(--main-hue), var(--saturation), 1%);
+	--color-1-background: hsl(var(--main-hue), var(--saturation), 99.9%);
 
-	--color-2-text: hsl(var(--main-hue), var(--saturation), 30% );
-	--color-2-background: hsl(var(--main-hue), var(--saturation), 90% );
+	--color-2-text: hsl(var(--main-hue), var(--saturation), 30%);
+	--color-2-background: hsl(var(--main-hue), var(--saturation), 90%);
 
-	--color-3-text:hsl(var(--main-hue), var(--saturation), 40% );
-	--color-3-background: hsl(var(--main-hue), var(--saturation), 95% );
+	--color-3-text: hsl(var(--main-hue), var(--saturation), 40%);
+	--color-3-background: hsl(var(--main-hue), var(--saturation), 95%);
 }
 
 * {
@@ -34,8 +33,8 @@
 }
 
 body {
-	background-color: var( --color-0-background );
-	color: var( --color-1-text);
+	background-color: var(--color-0-background);
+	color: var(--color-1-text);
 	margin: 0;
 	/* overflow: hidden; */
 }
@@ -43,7 +42,7 @@ body {
 /* tags in abc order */
 
 a {
-	color: var( --color-2-text );
+	color: var(--color-2-text);
 	font-weight: 800;
 	text-decoration: none;
 }
@@ -52,46 +51,55 @@ a:hover,
 a:focus,
 a:active {
 	background-color: yellow;
-	color: var( --color-1-text );
+	color: var(--color-1-text);
 	text-decoration: underline;
 }
 
-aside { border: 1px solid lightgray; margin-top: 15px; padding: 2px; }
+aside {
+	border: 1px solid lightgray;
+	margin-top: 15px;
+	padding: 2px;
+}
 
-blockquote { background-color: #ddd; padding: 1ch; }
+blockquote {
+	background-color: #ddd;
+	padding: 1ch;
+}
 
 button {
-	background-color: var( --color-2-background );
+	background-color: var(--color-2-background);
 	/* border: none; */
 	border-radius: 1rem;
-	color: var( --color-1-text );
+	color: var(--color-1-text);
 	cursor: pointer;
 	padding: 3px 5px;
 }
 
 button:hover {
-	background-color: var( --color-2-background);
-	color: var( --color-lighter );
+	background-color: var(--color-2-background);
+	color: var(--color-lighter);
 }
 
 button:active {
-	background-color: var( --color-1-text );
-	color: var( --color-lighter );
+	background-color: var(--color-1-text);
+	color: var(--color-lighter);
 }
 
-code { background-color: #eee; }
+code {
+	background-color: #eee;
+}
 
 input[type="range"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background-color: var( --color-2-background );
+	background-color: var(--color-2-background);
 	border-radius: 2px;
 	height: 1.7ch;
 	width: 98%;
 }
 
 input[type="range"]::-moz-range-thumb {
-	background-color: var( --color-2-text );
+	background-color: var(--color-2-text);
 	border-radius: 2;
 	height: 3ch;
 	width: 10px;
@@ -99,7 +107,7 @@ input[type="range"]::-moz-range-thumb {
 
 input[type="range"]::-webkit-slider-thumb {
 	-webkit-appearance: none;
-	background-color: var( --color-2-text );
+	background-color: var(--color-2-text);
 	height: 3ch;
 	width: 10px;
 }
@@ -115,17 +123,21 @@ main {
 	width: calc(100% - var(--mnu-width));
 }
 
-input, select, option {
-	background-color: var( --color-3-background );
+input,
+select,
+option {
+	background-color: var(--color-3-background);
 }
 
-pre { background-color: #eee; padding: 5px; }
-
+pre {
+	background-color: #eee;
+	padding: 5px;
+}
 
 /* classes */
 
-.highlight { 
-	background-color: var( --color-2-background );
+.highlight {
+	background-color: var(--color-2-background);
 }
 
 .aDingbat {
@@ -158,11 +170,20 @@ pre { background-color: #eee; padding: 5px; }
 	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
+.GRVdet {
+	font-size: 1.1re;
+	margin: 0 0 0rem 1rem;
+}
+
+.GRVdiv  {
+	margin: 0 0 0.3rem 1rem;
+}
+
 .iframe-resize {
-	height:400px;
-	overflow:hidden;
-	resize:both;
-	width:100%;
+	height: 400px;
+	overflow: hidden;
+	resize: both;
+	width: 100%;
 }
 
 .info {
@@ -199,14 +220,14 @@ pre { background-color: #eee; padding: 5px; }
 }
 
 .select-resize {
-	overflow:hidden;
-	resize:both;
-	width:100%;
+	overflow: hidden;
+	resize: both;
+	width: 100%;
 }
 
 .summary-primary {
-	background-color:  var( --color-2-background );
-	color: var( --color-2-text );
+	background-color: var(--color-2-background);
+	color: var(--color-2-text);
 	border-radius: 2ch;
 	cursor: pointer;
 	outline: none;
@@ -214,8 +235,8 @@ pre { background-color: #eee; padding: 5px; }
 }
 
 .summary-secondary {
-	background-color:  var( --color-3-background );
-	color: var( --color-3-text );
+	background-color: var(--color-3-background);
+	color: var(--color-3-text);
 	border-radius: 0.5ch;
 	cursor: pointer;
 	outline: none;
@@ -228,7 +249,7 @@ pre { background-color: #eee; padding: 5px; }
 
 .THRbutParent {
 	/* border: 1px solid red; */
-	background-color: var( --color-3-background );
+	background-color: var(--color-3-background);
 	border-radius: 0.5ch;
 	font-size: 2rem;
 	margin: 0 1rem;
@@ -248,7 +269,7 @@ pre { background-color: #eee; padding: 5px; }
 
 .THRdivChild,
 .THRdivChildParent {
-	background-color: var( --color-3-background );
+	background-color: var(--color-3-background);
 	border-radius: 0.5ch;
 	bottom: 2.9rem;
 	display: none;
@@ -278,7 +299,7 @@ pre { background-color: #eee; padding: 5px; }
 }
 
 #detNavMenu {
-	background-color: var( --color-2-background );
+	background-color: var(--color-2-background);
 	border-radius: 2ch;
 	max-height: 95vh;
 	margin: 1ch;
@@ -293,14 +314,13 @@ pre { background-color: #eee; padding: 5px; }
 	/* border: 0 solid blue;
 	margin: 0 auto;
 	max-width: 50rem; */
-	
+
 	height: 100vh;
-	width:100%;
-	
+	width: 100%;
 }
 
 #divPopUp {
-	background-color: var( --color-2-background );
+	background-color: var(--color-2-background);
 	border-radius: 0.5ch;
 	margin: 1ch 0;
 	max-height: 30vh;
@@ -313,7 +333,7 @@ pre { background-color: #eee; padding: 5px; }
 }
 
 #navMenu {
-	background-color: var( --color-1-background );
+	background-color: var(--color-1-background);
 	border: 0 solid red;
 	border-radius: 2ch;
 	margin: 1ch;
@@ -346,29 +366,26 @@ pre { background-color: #eee; padding: 5px; }
 	}
 }
 
-
-
 @media all and (max-width: 640px) {
+	#detNavMenu {
+		width: 60%;
+	}
 
-	#detNavMenu { width: 60%; }
-
-	#THRftr { max-width: 100%; }
+	#THRftr {
+		max-width: 100%;
+	}
 
 	main {
 		left: 0;
 		padding: 0;
 		width: 100%;
 	}
-
 }
 
-
 @media all and (max-height: 640px) {
-
 	main {
 		left: 0;
 		padding: 0rem;
 		width: 100%;
 	}
-
 }

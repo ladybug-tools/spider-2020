@@ -1,13 +1,13 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-2020/xxxxxx/readme.html "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-2020/xxxxx/readme.html "View file as a web page." ) </span>
 
-<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/xxxxxx/";
+<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/xxxxx/";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Spider ZZZZZ Viewer Read Me]( ./readme.html )
+# [Spider ZZZZZ Viewer Read Me]( https://www.ladybug.tools/spider-2020/assets/readme.html )
 
 <!--@@@
-<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://www.ladybug.tools/spider-2020/xxxxxx/ height=100% width=100% ></iframe></div>
+<iframe src=https://www.ladybug.tools/spider-2020/xxxxx/ class=iframe-resize ></iframe></div>
 _Spider ZZZZZ Viewer_
 
 ### Full Screen: [Spider ZZZZZ Viewer]( https://www.ladybug.tools/spider-2020/xxxxxx/ )

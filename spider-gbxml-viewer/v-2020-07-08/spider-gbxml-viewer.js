@@ -32,6 +32,7 @@ function init() {
 
 
 	THR.init();
+	
 	THR.animate();
 
 	THR.addLights();

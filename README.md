@@ -10,7 +10,7 @@ Your 2020 3D happy place for online browsing of many of the standard architectur
 ## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
 
 <!--@@@
-<iframe src=https://ladybug.tools/spider-2020/spider-gbxml-viewer/ width=100% height=400px ></iframe>
+<iframe src=https://ladybug.tools/spider-2020/spider-gbxml-viewer/ class="iframe-resize" ></iframe>
 _Spider gbXML Viewer_
 @@@-->
 

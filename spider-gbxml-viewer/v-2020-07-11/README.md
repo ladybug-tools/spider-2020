@@ -19,9 +19,14 @@ GitHub
 
 ## 2020-07-11 ~ Theo
 
-
-
-
+* JSON Tree View
+    * Add context menu support
+* View icon working better
+    * Nice style
+    * Home view work)
+    * Top/bottom views work as expected
+* Models settings icon
+    * Surface types have different images
 
 ---
 

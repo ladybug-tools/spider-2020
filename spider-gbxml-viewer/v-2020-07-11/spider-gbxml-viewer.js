@@ -16,10 +16,11 @@ designed to be forked, hacked and remixed using the WebGL and the
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/warwick-university-5k-surfaces.zip";
 //urlGbxmlDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/annapolis-md-single-family-residential-2016.xml"
 //urlGbxml = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
-urlGbxml = "https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml";
+//urlGbxml = "https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml";
 //urlGbxmlDefault = "https://www.ladybug.tools/spider/gbxml-sample-files/aspen-co-resort-retail.xml";
 //urlGbxml = "https://www.ladybug.tools/spider/gbxml-sample-files/samples-2/Berlin_Office_SAM2017.xml";
 //urlGbxmlDefault = "https://GreenBuildingXML.github.io/Sample_gbXML_Files/ChapelHillOffice.xml"
+urlGbxml = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/samples-2/18141-M18.xml"
 
 
 function init() {
@@ -112,6 +113,8 @@ FOO.onLoadFile = function () {
 
 	//divPopUp.hidden = true;
 
+	addTellTale();
+
 	THR.group = THR.setSceneNew( THR.group );
 	THR.group.name = "GBXmeshGroup";
 
@@ -130,7 +133,26 @@ FOO.onLoadFile = function () {
 
 THRR.getHtm = function ( intersected ) {
 
-	// assume no JSON data yet - ther's only the gbXML data to play with 
+	// assume no JSON data yet - there's only the gbXML data to play with 
+
+	//console.log( "intersected", intersected );
+
+	const faceA = intersected.face.a;
+	const faceB = intersected.face.b;
+	const faceC = intersected.face.c;
+
+	const objGeo = intersected.object.geometry;
+
+	//console.log( "objGeo", objGeo );
+	//objGeo = new THREE.Geometry().fromBufferGeometry( intersected.object.geometry );
+	const vertexA = objGeo.vertices[ faceA ];
+	console.log( "vertexA", vertexA );
+
+	tellTale.position.copy( vertexA );
+
+	const vertices = [ vertexA, objGeo.vertices[ faceB ], objGeo.vertices[ faceC ], vertexA ];
+	addLine( vertices );
+
 
 	const index = intersected.object.userData.index;
 	const surfaceText = GBX.surfaces[ index ];
@@ -155,7 +177,7 @@ THRR.getHtm = function ( intersected ) {
 
 		${ id ? "CAD ID: " + id.textContent + "<br>" : ""}
 		
-		<button onclick=THRR.getMeshData(${ index }); >view full surface data</button>
+		<button onclick=THRR.getMeshData(${ index }); >view full surface data</button> &nbsp; right-click: show||hide
 	</div>`;
 
 	// children:<br>${ children }<br>
@@ -199,3 +221,30 @@ THRR.getMeshData = function (index) {
 
 
 };
+
+
+let size = 1;
+let line = new THREE.Line();
+let tellTale;
+
+function addTellTale( siz = 0.5 / size) { 
+
+	const geometry = new THREE.BoxBufferGeometry( siz, siz, siz );
+	const material = new THREE.MeshNormalMaterial();
+	tellTale = new THREE.Mesh( geometry, material );
+	scene.add( tellTale );
+
+}
+
+
+function addLine( vertices ) { // THRR-caster only
+
+	scene.remove( line );
+	const geometry = new THREE.Geometry();
+	geometry.vertices = vertices;
+	const material = new THREE.LineBasicMaterial( { color: 0xffffff } );
+	line = new THREE.Line( geometry, material );
+	scene.add( line );
+
+}
+

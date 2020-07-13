@@ -29,7 +29,7 @@ GitHub
 
 ## 2020-07-12
 
-* Fix issies with loading ZIP files
+* Fix issues with loading ZIP files
 * Enhance tell tale display
 
 ## 2020-07-11 ~ Theo

@@ -58,7 +58,6 @@ function init() {
 FOO.onLoadFile = function () {
 	//console.log( "string", FOO.string );
 
-	addTellTale();
 
 	THR.group = THR.setSceneNew( THR.group );
 	THR.group.name = "GBXmeshGroup";
@@ -73,7 +72,6 @@ FOO.onLoadFile = function () {
 
 	detView.open = false;
 	VTdivViewTypes.innerHTML = "";
-
 
 	detData.open = false;
 	JTV.json = undefined;
@@ -154,16 +152,20 @@ THRR.getHtm = function ( intersected ) {
 
 	const objGeo = intersected.object.geometry;
 
-	//console.log( "objGeo", objGeo );
+	console.log( "objGeo", objGeo );
+
 	//objGeo = new THREE.Geometry().fromBufferGeometry( intersected.object.geometry );
 	const vertexA = objGeo.vertices[ faceA ];
 	//console.log( "vertexA", vertexA );
 
-	tellTale.position.copy( vertexA );
+	THRU.tellTaleReset();
 
-	const vertices = [ vertexA, objGeo.vertices[ faceB ], objGeo.vertices[ faceC ], vertexA ];
-	addLine( vertices );
+	THRU.addTellTale().position.copy( vertexA );
 
+	const verticesFace = [ vertexA, objGeo.vertices[ faceB ], objGeo.vertices[ faceC ], vertexA ];
+	THRU.addLine( verticesFace, 0xffff0000 );
+
+	THRU.addLine( intersected.object.geometry.vertices, 0x000000 );
 
 	const index = intersected.object.userData.index;
 	const surfaceText = GBX.surfaces[ index ];
@@ -232,30 +234,4 @@ THRR.getMeshData = function (index) {
 
 
 };
-
-
-let size = 1;
-let line = new THREE.Line();
-let tellTale;
-
-function addTellTale( siz = 0.5 / size) { 
-
-	const geometry = new THREE.BoxBufferGeometry( siz, siz, siz );
-	const material = new THREE.MeshNormalMaterial();
-	tellTale = new THREE.Mesh( geometry, material );
-	scene.add( tellTale );
-
-}
-
-
-function addLine( vertices ) { // THRR-caster only
-
-	scene.remove( line );
-	const geometry = new THREE.Geometry();
-	geometry.vertices = vertices;
-	const material = new THREE.LineBasicMaterial( { color: 0xffffff } );
-	line = new THREE.Line( geometry, material );
-	scene.add( line );
-
-}
 

@@ -3,18 +3,18 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
-<meta name = "description" content = "Spider 2020 home page providing access to all the current Spider file viewers hosted using GitHub Pages." >
+<meta name = "description" content = "2020 home page providing access to all the current files hosted using GitHub Pages." >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "version" content="2020-07-11">
 
-<link rel="stylesheet" href="../../lib/style/style-2020-07-11.css">
+<link rel="stylesheet" href="../../lib/style/style-2020-07-13.css">
 
 <title></title>
 
 </head>
 <body>
 
-    <script src="../../lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-10.js"></script>
+    <script src="../../lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-12.js"></script>
 
 	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-07.js"></script>
 	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
@@ -31,7 +31,7 @@
 				<h2>
 
 					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/lib/grv-github-repo-tree-view/" target="_top" title="Source code on GitHub">
-						<img src="../assets/icons/octicon.svg">
+						<img src="../../lib/assets/icons/octicon.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
@@ -39,7 +39,7 @@
 					</a>
 					
 					<span class="info">
-						<img class=infoImg  src="../assets/icons/noun_Information_585560.svg"> 
+						<img class=infoImg  src="../../lib/assets/icons/noun_Information_585560.svg"> 
 						<span id="divDescription" class="infoTooltip gmd-5">
 
 					</span></span>
@@ -68,7 +68,7 @@
 
 			</details>
 
-			<details ontoggle="" open>
+			<details ontoggle="GRV.init()" open><!-- 'open' triggers a run on load -->
 
 				<summary class="summary-primary gmd-1" title="View selected items" >repo files</summary>
 
@@ -165,28 +165,15 @@ function init() {
 
 	divPopUp.hidden = true;
 
-	const urlApi = "https://api.github.com/repos/ladybug-tools/spider-2020/git/trees/master?recursive=1";
-	
-	requestFile( urlApi, GRV.onLoadTree );
-
 	window.addEventListener( "hashchange", onHashChange, false );
 
 	onHashChange();
 
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
-
 	} else {
 
 		detNavMenu.open = true
-
-	}
-
-	// if running on server, keeps address bar pointed to latest dev
-
-	if ( !location.hash && location.protocol === "https:" ) {
-
-		window.history.pushState( "", "", "./" );
 
 	}
 
@@ -202,43 +189,11 @@ function onHashChange() {
 
 	}
 
-	let path = "../../"; //path needs review in every new instance
-
-	if ( location.hash.endsWith( ".md" ) ) { // use readme.html to convert markdown to HTML
-
-		path += "readme.html#";  
-
-	}
+	path = "../../";
 
 	ifr.src = path + location.hash.slice( 1 );
 
-
 }
-
-
-function requestFile( url = "https://example.com" , callback = onLoad ) {
-
-	//const urlCORS = "https://cors-anywhere.herokuapp.com/";
-
-	const xhr = new XMLHttpRequest();
-	xhr.open( "GET", url, true );
-	xhr.responseType = "json";
-	xhr.onerror = ( xhr ) => console.log( "error:", xhr  );
-	//xhr.onprogress = ( xhr ) => console.log( "bytes loaded:", xhr.loaded );
-	xhr.onload = ( xhr ) => callback( xhr.target.response );
-	xhr.send( null );
-
-}
-
-
-
-function onLoad( response ) {
-
-	console.log( "response", response );
-
-}
-
-
 
 </script>
 </body>

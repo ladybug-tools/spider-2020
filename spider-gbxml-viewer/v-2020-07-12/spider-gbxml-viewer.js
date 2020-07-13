@@ -149,10 +149,8 @@ THRR.getHtm = function ( intersected ) {
 	const faceA = intersected.face.a;
 	const faceB = intersected.face.b;
 	const faceC = intersected.face.c;
-
 	const objGeo = intersected.object.geometry;
-
-	console.log( "objGeo", objGeo );
+	//console.log( "objGeo", objGeo );
 
 	//objGeo = new THREE.Geometry().fromBufferGeometry( intersected.object.geometry );
 	const vertexA = objGeo.vertices[ faceA ];

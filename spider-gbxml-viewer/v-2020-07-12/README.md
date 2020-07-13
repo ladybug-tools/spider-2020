@@ -16,6 +16,21 @@ GitHub
 
 
 * Getting ready for gbXML Webinar on July 16
+* THRU.tellTale: add to mesh parent instead of group
+* Data menu: button to highlight 3D surface
+* Data menu update highlighting as you click items
+* Data menu: search into input search
+* View menu: add context menus to select boxes
+* View menu > show...: reset tell tales
+* Progress indicators would be nice
+* Footer > model icon: add titles
+* Footer > model icon > surface types: vertical || exposed to Sun etc
+* gbXML parser: fix mis-triangulation
+
+## 2020-07-12
+
+* Fix issies with loading ZIP files
+* Enhance tell tale display
 
 ## 2020-07-11 ~ Theo
 

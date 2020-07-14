@@ -1,13 +1,13 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/readme.html "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www/ladybug.tools/spider-2020/spider-gbxml-viewer/readme.html "View file as a web page." ) </span>
 
-<div><input type=button class = 'btn btn-secondary btn-sm' onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer/";
+<div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer/"
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Spider gbXML Viewer Read Me]( ./readme.html )
+# [Spider gbXML Viewer Read Me]( #spider-gbxml-viewer/README.md )
 
 <!--@@@
-<iframe src=index.html class=iframe-resize></iframe>
+<iframe src=https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ class=iframe-resize></iframe>
 _Spider gbXML Viewer_
 @@@-->
 
@@ -20,7 +20,7 @@ _Spider gbXML Viewer_
 * File menu
     * Open files using RESTul API
     * Open files using operating system dialog box
-    * Open .XML and .GBXML files ( as required by the Autodesk Viewer) 
+    * Open .XML and .GBXML files ( the latter is required by the [Autodesk Viewer]( https://viewer.autodesk.com/designviews )) 
     * Open gbXML files inside compressed .ZIP files (first file only) 
 * Sample files gallery
     * Access extensive library with dozens of samples files
@@ -56,8 +56,9 @@ _Spider gbXML Viewer_
 <details open >
 <summary>Links of interest</summary>
 
-Many previous versions. See
+Many previous versions of the Spider gbXML Viewer. See
 
+* https://ladybug.tools/spider-2020/spider-gbxml-archive/
 * https://ladybug.tools/spider/
 * https://ladybug.tools/spider-gbxml-tools/
 

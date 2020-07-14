@@ -32,6 +32,7 @@ function init() {
 
 	divDescription.innerHTML = description;
 
+	MASdivMenuAppSwitch.innerHTML=MAS.getAppSwitch()
 
 	THR.init();
 	
@@ -155,25 +156,27 @@ THRR.getHtm = function ( intersected ) {
 	divPopUp.innerHTML = "<p>Parsing gbXML data...</p><p>Try again when you see the 'loaded successfully' message";
 
 	
+	THRU.removeLines();
 
 	const faceA = intersected.face.a;
 	const faceB = intersected.face.b;
 	const faceC = intersected.face.c;
-	const objGeo = intersected.object.geometry;
+
+	const obj = intersected.object;
+	const objGeo = obj.geometry;
 	//console.log( "objGeo", objGeo );
 
 	//objGeo = new THREE.Geometry().fromBufferGeometry( intersected.object.geometry );
 	const vertexA = objGeo.vertices[ faceA ];
 	//console.log( "vertexA", vertexA );
 
-	THRU.tellTaleReset();
 
-	THRU.addTellTale().position.copy( vertexA );
+	//THRU.addTellTale().position.copy( vertexA );
 
 	const verticesFace = [ vertexA, objGeo.vertices[ faceB ], objGeo.vertices[ faceC ], vertexA ];
-	THRU.addLine( verticesFace, 0xffff0000 );
+	THRU.addLine( obj, verticesFace, 0xffff0000 );
 
-	THRU.addLine( intersected.object.geometry.vertices, 0x000000 );
+	THRU.addLine( obj, objGeo.vertices, 0x000000 );
 
 	const index = intersected.object.userData.index;
 	const surfaceText = GBX.surfaces[ index ];
@@ -191,22 +194,7 @@ THRR.getHtm = function ( intersected ) {
 	
 	const id = Array.from( surface.getElementsByTagName( "CADObjectId") ).pop()
 
-	if ( !JTV.json ) {
-
-		const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
-		obj = xmlToJson(xmlNode);
-		
-		JTV.json = obj.gbXML;
-
-		divPopUp.innerHTML = "gbXML parsed to JSON successfully!";
-
-		JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
-
-		JTV.details = JTVdivJsonTree.querySelectorAll( "details" );
-
-		JTV.details[ 0 ].open = true;
-		
-	}
+	XTJ.init();
 
 	const htm = `
 	<div>
@@ -259,3 +247,33 @@ THRR.getMeshData = function (index) {
 
 };
 
+
+
+
+
+
+GBX.toggleSpaceTitles = function() {
+
+	XTJ.init();
+
+	if ( !GBX.texts ) {
+
+		
+		const floors = THR.group.children.filter( mesh => ["InteriorFloor", "RaisedFloor", "SlabOnGrade" ].includes( mesh.userData.type ));
+		//console.log( "floors", floors );
+		
+		const spaceIds = floors.map( floor => JTV.json.Campus.Surface[ floor.userData.index ].AdjacentSpaceId )
+		.map( id => Array.isArray( id ) ? id[ 0 ][ "@attributes"].spaceIdRef : id[ "@attributes"].spaceIdRef)
+		//console.log( "spaceIds", spaceIds );
+		
+		GBX.texts = floors.map( ( floor, i ) => floor.add( THRU.drawPlacard( spaceIds[ i ], THR.radius / 1000, 0xffffff, 
+			floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) ) ) );
+			
+			
+			// texts = floors.map( ( floor, i ) => floor.add( ... THRU.addDoubleSidedText( { text: spaceIds[ i ], 
+			// 	size: 2,
+			// 	position: floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) } ) ) );
+			//THRU.group.add( ... texts )
+			
+	}
+};

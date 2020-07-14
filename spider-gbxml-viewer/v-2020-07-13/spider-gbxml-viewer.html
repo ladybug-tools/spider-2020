@@ -38,24 +38,28 @@
 
 
 	<!-- core -->
+
 	<script src="../../lib/thr-three/thr-threejs-2020-07-11.js"></script>
 	<script src="../../lib/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
 	<script src="../../lib/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-07-11.js"></script>
-	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-07-12.js"></script>
+	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
 
 	<script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
 	<script src="../../lib/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
 	
 	<script src="../../lib/gbxml/gbx-gbxml-parser-2020-06-17.js"></script>
 	
-	<script src="../../lib/ftj-file-type-to-json/xml-to-json-2020-06-10.js"></script>
+	<script src="../../lib/ftj-file-type-to-json/xtj-xml-to-json-2020-07-13.js"></script>
 
-	<script src="../../lib/jtv-json-tree-view/jtv-json-tree-view-gbx-2020-07-08.js"></script>
+	<script src="../../lib/jtv-json-tree-view/jtv-json-tree-view-gbx-2020-07-13.js"></script>
 	<script src="../../lib/jtv-json-tree-view/jth-json-tree-helper-2020-07-07.js"></script>
 	<script src="../../lib/jtv-json-tree-view/jtf-json-tree-finder-2020-07-13.js"></script>
 
 	
 	<!-- menus -->
+
+	<script src="mas-menu-app-switch.js"></script>
+
 	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-11.js"></script>
 	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
 	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
@@ -74,6 +78,8 @@
 		<nav id="navMenu" class="gmd-2">
 
 			<header>
+
+				<div id="MASdivMenuAppSwitch" ></div>
 
 				<h2>
 
@@ -267,7 +273,7 @@
 				<button class="THRbutChild" onclick="THRU.toggleBoundingBoxHelper();" >bounding box</button>
 				<button class="THRbutChild" onclick="THRU.toggleWireframe();" >wireframe</button>
 				<button class="THRbutChild" onclick="THRU.toggleMeshEdges();" >edges</button>
-				<div><button class="THRbutChild" onclick="THRU.toggleTitles();" >titles</button></div>
+				<div><button class="THRbutChild" onclick="GBX.toggleSpaceTitles();" >titles</button></div>
 				
 			
 			</div>

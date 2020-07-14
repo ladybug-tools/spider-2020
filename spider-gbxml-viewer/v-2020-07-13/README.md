@@ -16,16 +16,27 @@ GitHub
 
 
 * Getting ready for gbXML Webinar on July 16
+* navMenu: Add select version
 * THRU.tellTale: add to mesh parent instead of group
 * Data menu: button to highlight 3D surface
 * Data menu update highlighting as you click items
-* Data menu: search into input search
 * View menu: add context menus to select boxes
 * View menu > show...: reset tell tales
 * Progress indicators would be nice
 * Footer > model icon: add titles
 * Footer > model icon > surface types: vertical || exposed to Sun etc
 * gbXML parser: fix mis-triangulation
+
+
+## 2020-07-13
+
+JT Finder
+
+* input type set to search and width to 100%
+
+Done
+
+* Data menu: search into input search
 
 ## 2020-07-12
 

@@ -139,7 +139,7 @@ pre {
 /* classes */
 
 .active {
-	background-color: lightgreen;
+	background-color: var(--color-3-background);
 }
 
 .highlight {

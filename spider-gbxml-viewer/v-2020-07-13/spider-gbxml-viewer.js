@@ -59,6 +59,10 @@ FOO.onLoadFile = function () {
 	//console.log( "string", FOO.string );
 
 
+
+	divPopUp.hidden = false;
+	divPopUp.innerHTML = "<p>When you touch a surface,<br>the rotation will stop<br>and its details will appear here</p>";
+
 	THR.group = THR.setSceneNew( THR.group );
 	THR.group.name = "GBXmeshGroup";
 
@@ -146,6 +150,12 @@ THRR.getHtm = function ( intersected ) {
 
 	//console.log( "intersected", intersected );
 
+	
+	divPopUp.hidden = false;
+	divPopUp.innerHTML = "<p>Parsing gbXML data...</p><p>Try again when you see the 'loaded successfully' message";
+
+	
+
 	const faceA = intersected.face.a;
 	const faceB = intersected.face.b;
 	const faceC = intersected.face.c;
@@ -181,6 +191,22 @@ THRR.getHtm = function ( intersected ) {
 	
 	const id = Array.from( surface.getElementsByTagName( "CADObjectId") ).pop()
 
+	if ( !JTV.json ) {
+
+		const xmlNode = new DOMParser().parseFromString( FOO.string, "text/xml");
+		obj = xmlToJson(xmlNode);
+		
+		JTV.json = obj.gbXML;
+
+		divPopUp.innerHTML = "gbXML parsed to JSON successfully!";
+
+		JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
+
+		JTV.details = JTVdivJsonTree.querySelectorAll( "details" );
+
+		JTV.details[ 0 ].open = true;
+		
+	}
 
 	const htm = `
 	<div>
@@ -208,19 +234,19 @@ THRR.getMeshData = function (index) {
 	if ( JTV.json ) {
 
 		summaries = Array.from( JTVdivJsonTree.querySelectorAll("summary") );
-		campus = summaries.find( summary => summary.innerText.includes( "Campus 0"))
+		JTV.campus = summaries.find( summary => summary.innerText.includes( "Campus 1"))
 		//console.log( "campus", campus );
-		campus.parentNode.open = true;
+		JTV.campus.parentNode.open = true;
 		
 		detSurf = JTVdivJsonTree.querySelector("#JTVdetSurface");
 		detSurf.open = true;
 
 		panelsHtml = Array.from( detSurf.children).slice(1);
-		panelsHtml.forEach( item => item.className = item.className.replace(" active", "") );
+		panelsHtml.forEach( item => item.className = item.classList.remove("active") );
+		panelsHtml.forEach( item => item.open = false );
 		panelsHtml[index].open = true;
-
 		panelsHtml[index].scrollIntoView();
-		panelsHtml[index].className += " active";
+		panelsHtml[index].classList.add( "active" );
 		Array.from( panelsHtml[index].children ).forEach( child => child.open = true );
 
 	} else {

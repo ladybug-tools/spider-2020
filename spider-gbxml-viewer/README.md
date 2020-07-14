@@ -14,47 +14,72 @@ _Spider gbXML Viewer_
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
 
 
-<details open >
-<summary>Concept</summary>
+## Concept
 
-* File menu
-    * Open files using RESTul API
-    * Open files using operating system dialog box
-    * Open .XML and .GBXML files ( the latter is required by the [Autodesk Viewer]( https://viewer.autodesk.com/designviews )) 
-    * Open gbXML files inside compressed .ZIP files (first file only) 
-* Sample files gallery
-    * Access extensive library with dozens of samples files
-* View menu
-    * Follows standard Spider viewer menu protocols
-* Data menu
-    * Uses Spider JSON Tree Viewer
-    * Converts XML data to JSON
-    * Reasonably fast and produces nice-looking output
-    * Complete gbXML data for entire file
-    * All data accessible with just a few clicks
+### File menu 
+
+File sources
+    * Open gbXML files using your operating system dialog box
+    * Open gbXML files using a [RESTful API]( https://en.wikipedia.org/wiki/Representational_state_transfer ) - [REST API Tutorial]( https://restfulapi.net/ )
+
+File menu types
+    * Open both .XML and .GBXML files ( the latter is required by the [Autodesk Viewer]( https://viewer.autodesk.com/designviews )) 
+    * Handle both 8-bit and 16-bit data
+    * Open gbXML files inside compressed .ZIP files - asynchronously (first file only) 
+
+File menu reports
+    * Provide feedback on the name of the opened file, its size, the length of time it took to load and more
+
+To Do
+
+* Drag and drop support
+* Reload most recently loaded local file
+* Display the names of all the files in a compressed folder and enable de-compressing and opening a selected file
+
+_Following are a work-in-progress_
+
+### Sample files gallery
+
+* Access extensive library with dozens of samples files
 
 
-</details>
+### View menu
 
-<details open >
-<summary>To do and wish list </summary>
+* Follows standard Spider viewer menu protocols
 
 
-</details>
+### Data menu
 
-<details open >
-<summary>Issues </summary>
+* Uses Spider JSON Tree Viewer
+* Converts XML data to JSON
+* Reasonably fast and produces nice-looking output
+* Complete gbXML data for entire file
+* All data accessible with just a few clicks
 
-2020-06-10
+### Quick access icons
 
-* Not resetting all menus when new file is loaded
-* API files not showing in iframe
-* Need scroll into view for popup data in left menu
+* Select dark or light mode
 
-</details>
 
-<details open >
-<summary>Links of interest</summary>
+
+## To do and wish list
+
+* Getting ready for gbXML Webinar on July 16
+* Data menu: button to highlight 3D surface
+* View menu: add context menus to select boxes
+
+* Footer > model icon > surface types: vertical || exposed to Sun etc
+
+* "LT" version with gallery page
+
+
+
+## Issues
+
+* Better timing feedback with large files and progress indicators would be nice
+* gbXML parser: fix mis-triangulation
+
+## Links of interest
 
 Many previous versions of the Spider gbXML Viewer. See
 
@@ -64,17 +89,17 @@ Many previous versions of the Spider gbXML Viewer. See
 
 
 
-</details>
 
-<details open >
-<summary>Change log </summary>
+## Change log
+
+_see also read me files in the daily builds folders_
 
 
 ### 2020-05-29
 
 * First commit of read me
 
-</details>
+
 
 ***
 

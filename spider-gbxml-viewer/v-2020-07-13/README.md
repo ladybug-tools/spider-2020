@@ -16,17 +16,21 @@ GitHub
 
 
 * Getting ready for gbXML Webinar on July 16
-* navMenu: Add select version
-* THRU.tellTale: add to mesh parent instead of group
 * Data menu: button to highlight 3D surface
-* Data menu update highlighting as you click items
 * View menu: add context menus to select boxes
-* View menu > show...: reset tell tales
 * Progress indicators would be nice
-* Footer > model icon: add titles
 * Footer > model icon > surface types: vertical || exposed to Sun etc
 * gbXML parser: fix mis-triangulation
 
+## 2020-07-14
+
+Done
+
+* THRU.tellTale: add to mesh parent instead of group
+* View menu > show...: reset tell tales
+* Data menu update highlighting as you click items
+* Footer > model icon: add titles
+* navMenu: Add select version
 
 ## 2020-07-13
 

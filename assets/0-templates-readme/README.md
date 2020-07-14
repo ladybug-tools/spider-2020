@@ -8,10 +8,10 @@ value='You are now in a GitHub web page view - Click this button to view this re
 # [Spider ZZZZZ Viewer Read Me]( ./readme.html )
 
 <!--@@@
-<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://theo-armour.github.io/2020/xxxxxx/ height=100% width=100% ></iframe></div>
+<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://https://www.ladybug.tools/spider-2020/  xxxxxx/ height=100% width=100% ></iframe></div>
 _Spider ZZZZZ Viewer_
 
-### Full Screen: [Spider ZZZZZ Viewer]( https://theo-armour.github.io/2020/xxxxxx/ )
+### Full Screen: [Spider ZZZZZ Viewer]( https://https://www.ladybug.tools/spider-2020/  xxxxxx/ )
 @@@-->
 
 

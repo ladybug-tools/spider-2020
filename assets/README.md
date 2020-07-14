@@ -9,7 +9,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 * [Assets Gallery]( ./index.html)
 
 <!--
-<iframe src=https://ladybug.tools/spider-2020/assets/ width=100% height=500passets >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src=https://ladybug.tools/spider-2020/assets/ width=100% height=500px  >Iframes are not viewable in GitHub source code view</iframe>
 _basic-html.html_
 
 ### Full Screen: [Spider Assets]( https://www.ladybug.tools/spider-2020/assets/ )

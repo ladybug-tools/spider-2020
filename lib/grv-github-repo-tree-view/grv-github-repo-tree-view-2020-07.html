@@ -9,6 +9,15 @@
 
 <link rel="stylesheet" href="../../lib/style/style-2020-07-13.css">
 
+<style>
+			
+	:root {
+		--main-hue: 0; /* 0 to 360 0=red 120=green 240=blue */
+	}
+
+</style>
+
+
 <title></title>
 
 </head>
@@ -177,21 +186,38 @@ function init() {
 
 	}
 
+	// if running on server, keeps address bar pointed to latest dev
+
+	if ( !location.hash && location.protocol === "https:" ) {
+
+		window.history.pushState( "", "", "./" );
+
+	}
+
 }
 
 function onHashChange() {
 
+	const path = ".../../";
+
 	if ( !location.hash ) {
 
-		ifr.src = "../../readme.html";
+		ifr.src = path + "readme.html";
 
 		return;
 
 	}
 
-	path = "../../";
+	if ( location.hash.toLowerCase().endsWith( ".md") ) {
+
+		ifr.src = path + "readme.html" + location.hash;
+
+		return;
+
+	}
 
 	ifr.src = path + location.hash.slice( 1 );
+
 
 }
 

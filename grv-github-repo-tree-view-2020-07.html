@@ -204,9 +204,11 @@ function init() {
 
 function onHashChange() {
 
+	const path = "./";
+
 	if ( !location.hash ) {
 
-		ifr.src = "./readme.html";
+		ifr.src = path + "readme.html";
 
 		return;
 
@@ -214,13 +216,13 @@ function onHashChange() {
 
 	if ( location.hash.toLowerCase().endsWith( ".md") ) {
 
-		ifr.src = "./readme.html" + location.hash;
+		ifr.src = path + "readme.html" + location.hash;
 
 		return;
 
 	}
 
-	ifr.src = "./" + location.hash.slice( 1 );
+	ifr.src = path + location.hash.slice( 1 );
 
 
 }

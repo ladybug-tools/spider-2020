@@ -2,17 +2,19 @@
   <a href="https://ladybug-tools.github.io/spider-2020/" title="View file as a web page.">You are now in a GitHub source code view - click this link to view Read Me file as a web page</a>
 </span>
 
-<div>
-  <input type="button" onclick="window.location.href=&quot;https://github.com/ladybug-tools/spider-2020&quot;;" value="You are now in a GitHub web page view - Click this button to view this read me file as source code">
-</div>
+<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/blob/master/spider-3d-remixer-roadmap.md/"
+value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
-# Spider 3D Re-mixer Road Map
+
+# Spider 2020 Road Map
+
+<mark>2020-07-14: This page is due for a serious update! There are many new accomplishments to discuss and new ideas arising from this progress.</mark>
 
 # Work-in-progress: [Spider 3D Re-mixer](https://ladybug.tools/spider-2020/spider-3d-remixer/ "Architecture is frozen music")
 
-- Current dev stream in obscure repo
+- one of the dev streams in obscure repositpry
 
-![](https://user-images.githubusercontent.com/547626/75589643-2c840100-5a30-11ea-98ae-ad386b27d106.png)
+<img style=width:100% src=https://user-images.githubusercontent.com/547626/75589643-2c840100-5a30-11ea-98ae-ad386b27d106.png >
 
 ## Concept
 

@@ -1,20 +1,27 @@
-<span style=display:none; >  <a href="https://ladybug-tools.github.io/spider-2020/" title="View file as a web page.">You are now in a GitHub source code view - click this link to view Read Me file as a web page</a> </span>
+<span style=display:none; >  <a href="https://ladybug-tools.github.io/spider-2020/spider-gbxml-viewer-lt
+spider-gbxml-viewer-lt/" title="View file as a web page.">You are now in a GitHub source code view - click this link to view Read Me file as a web page</a> </span>
 
-<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/blob/master/README.md" value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
+<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/blob/master/spider-gbxml-viewer-lt
+spider-gbxml-viewer-lt/README.md" value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Spider ZZZZZ Viewer Read Me]( https://www.ladybug.tools/spider-2020/assets/readme.html )
+# [Spider gbXML Viewer LT Read Me]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/readme.html )
 
 <!--@@@
-<iframe src=https://www.ladybug.tools/spider-2020/xxxxx/ class=iframe-resize ></iframe></div>
-_Spider ZZZZZ Viewer_
+<iframe src=https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/ class=iframe-resize ></iframe></div>
+_Spider gbXML Viewer LT_
 
-### Full Screen: [Spider ZZZZZ Viewer]( https://www.ladybug.tools/spider-2020/xxxxxx/ )
+### Full Screen: [Spider gbXML Viewer LT]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/ )
 @@@-->
 
 
 ## Concept
 
+The name follows the style of "AutoCAD LT"
+
+A bare bomes version
+
+* Suitable for embedding in other web pages
 
 ## To Do / Wish List
 
@@ -28,7 +35,7 @@ _Spider ZZZZZ Viewer_
 ## Change Log
 
 
-### 123
+### 2020-07-15
 
 * First commit
 

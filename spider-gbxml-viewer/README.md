@@ -14,6 +14,9 @@ _Spider gbXML Viewer_
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
 
 
+### Single page view [ Gallery gbXML Files]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/gallery-gbxml-files.html )
+
+
 ## Concept
 
 ### File menu 

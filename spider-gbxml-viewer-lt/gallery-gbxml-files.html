@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang=en >
+<head>
+<title></title>
+<meta charset=utf-8 />
+<style>
+    /* body { font: bold 12pt monospace; } */
+
+    .parent {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .child {
+        /* //  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+        //  If we don't want the items to stretch: */
+        flex: 0 0 300px;
+        /* //  If we do want the items to stretch: */
+        flex: 1 1 300px;
+        
+        /* //   etc. */
+        border: 1px solid red;
+        background: lightpink;
+        /* font-size: 2rem;
+        text-align: center; */
+    }
+
+    body {
+        font-family: system-ui, serif;
+    }
+
+    iframe { height:16rem;overflow:hidden;resize:both;width:100%; }
+
+    .div-resize { height:16rem;overflow:hidden;resize:both;width:100%;  }
+
+</style>
+</head>
+<body>
+
+    <div class="parent">
+        <div class="child" title="Click to reload page">1 <div class=div-resize >
+
+            <a href="https://www.ladybug.tools/spider-2020/" >spider 2020</a>
+            <h3><a href="">Flex box thing</a></h3>
+
+            <p>The nine boxes resize and float around as you change the size of the browser window.</p>
+
+            <p>Each box is individually resizable</p>
+        </div></div>
+        <div class="child">2 <iframe src=index.html#https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/21.xml ></iframe></div>
+        <div class="child">3 <iframe src=index.html#https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/8-a.xml ></iframe></div>
+        <div class="child">4 <iframe src=https://example.com ></iframe></div>
+        <div class="child">5 <div class=div-resize >lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</div></div>
+        <div class="child">6 <iframe src=index.html#https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/annapolis-md-single-family-residential-2016.xml ></iframe></div>
+        <div class="child">7 
+            <div class=div-resize >
+            <figure style="display:inline-block;border: 1px solid #888;" >
+                <a href=https://google.com >
+                    <img src="https://picsum.photos/200/200/" >
+                    <figcaption>Fig2. A view of the caption</figcaption>
+                </a>
+            </figure>
+        </div></div>
+        <div class="child">8 <iframe src=index.html#https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/boston-ma-urban-house-mep.xml ></iframe></div>
+        <div class="child">9 <iframe src=index.html#https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/bristol-clifton-downs-fixed.xml ></iframe></div>
+    </div>
+
+<script>
+
+</script>
+</body>
+</html>

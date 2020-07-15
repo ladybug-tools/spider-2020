@@ -10,16 +10,17 @@ spider-gbxml-viewer-lt/README.md" value='You are now in a GitHub web page view -
 <!--@@@
 <iframe src=https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/ class=iframe-resize ></iframe></div>
 _Spider gbXML Viewer LT_
-
-### Full Screen: [Spider gbXML Viewer LT]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/ )
 @@@-->
 
+### Full Screen: [Spider gbXML Viewer LT]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/ )
+
+### Single page view [ Gallery gbXML Files]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/gallery-gbxml-files.html )
 
 ## Concept
 
 The name follows the style of "AutoCAD LT"
 
-A bare bomes version
+A bare bones version
 
 * Suitable for embedding in other web pages
 

@@ -7,15 +7,18 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 Your 2020 3D happy place for online browsing of many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
 
-## [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
+## Full screen: [Spider gbXML Viewer]( https://ladybug.tools/spider-2020/spider-gbxml-viewer/)
 
 <!--@@@
 <iframe src=https://ladybug.tools/spider-2020/spider-gbxml-viewer/ class="iframe-resize" ></iframe>
 _Spider gbXML Viewer_
 @@@-->
 
-* schema: https://gbxml.org
+
+* Schema: https://gbxml.org
 * [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer/)
+* Single page view example [ Gallery gbXML Files]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/gallery-gbxml-files.html )
+
 
 ## [Spider IDF Viewer]( https://ladybug.tools/spider-2020/spider-idf-viewer/)
 
@@ -24,7 +27,7 @@ _Spider gbXML Viewer_
 
 ## [Spider Open Studio Viewer]( https://ladybug.tools/spider-2020/spider-open-studio-viewer/)
 
-* schema: https://gbxml.org
+* Schema: https://gbxml.org
 * code: Old code - many, issues, needs work
 * [Read Me]( https://github.com/ladybug-tools/spider-2020/tree/master/spider-open-studio-viewer/)
 

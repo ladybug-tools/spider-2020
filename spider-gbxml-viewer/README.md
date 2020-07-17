@@ -14,6 +14,12 @@ _Spider gbXML Viewer in a resizable window. One finger to rotate. Two to zoom._
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
 
 * Latest stable version
+* Objective 1: All the features and more of previous versions - with simpler, faster more intuitive user experience 
+
+After Objective 1 is complete
+
+* Objective 2: Find and fix all issues of all types with just a few clicks
+
 
 #### Full Screen: [Spider gbXML Viewer LT]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/ )
 

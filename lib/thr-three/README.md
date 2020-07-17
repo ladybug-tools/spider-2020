@@ -18,8 +18,12 @@ _THR Three in a resizable window. One finger to rotate. Two to zoom._
 
 ## To Do / Wish List
 
+* 2020-07-17 ~ Axes helper to a toggle
+* 2020-07-17 ~ Ground to a toggle
 
 ## Issues
+
+* 2020-07-17 ~ Should axes, ground and lights be here or in a separate module?
 
 
 ## Links of Interest

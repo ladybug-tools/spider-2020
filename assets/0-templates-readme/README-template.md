@@ -7,7 +7,7 @@
 
 <!--@@@
 <iframe src=https://www.ladybug.tools/spider-2020/assets/ class=iframe-resize ></iframe></div>
-_Spider ZZZZZ Viewer_
+_Spider ZZZZZ Viewer in a resizable window. One finger to rotate. Two to zoom._
 
 ### Full Screen: [Spider ZZZZZ Viewer]( https://www.ladybug.tools/spider-2020/assets/ )
 @@@-->

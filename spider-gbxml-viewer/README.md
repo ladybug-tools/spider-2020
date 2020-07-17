@@ -8,16 +8,25 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 <!--@@@
 <iframe src=https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ class=iframe-resize></iframe>
-_Spider gbXML Viewer_
+_Spider gbXML Viewer in a resizable window. One finger to rotate. Two to zoom._
 @@@-->
 
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
 
+* Latest stable version
 
 #### Full Screen: [Spider gbXML Viewer LT]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/ )
 
+* Core version - no menus - very useful sample for embedding views of models in your web pages
 
 #### Single page view [ Gallery gbXML Files]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/gallery-gbxml-files.html )
+
+* View many models in a single web page
+
+#### Earlier versions [Spider gbXML Archive]( https://www.ladybug.tools/spider-2020/spider-gbxml-archive/ )
+
+* All stable versions are always available and runnable with a single click. Stick to your favorite. Or try them all!
+
 
 
 ## Concept
@@ -51,7 +60,7 @@ gbXML Viewer is a collection of modular experiments for viewing, examining and v
 #### Vision and engineering objectives
 
 * Help students, clients and non-AEC peeps gain access to BIM data easily, quickly and freely
-* Help engineer, researchers and designers gain deeper insights into the issues of projects
+* Help engineers, researchers and designers gain deeper insights into the issues of projects
 * Facilitating the transfer of data between design programs and analysis programs
 
 #### Coding objectives

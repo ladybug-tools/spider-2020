@@ -29,9 +29,15 @@ The script makes API calls and reads the data one folder at a time. This may be 
 
 ## Change Log
 
+### 2020-07-17 ~ Theo
+
+* Display file name in pop up
+
+
+
 ### 2020-06-03 ~ Theo
 
-* Fork too Spider 2020
+* Fork to Spider 2020
 
 
 ### 2019-07-20 ~ Theo

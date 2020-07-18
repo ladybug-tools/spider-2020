@@ -1,7 +1,7 @@
 
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
 
-const version = "v-2020-07-13";
+const version = "v-2020-07-17";
 
 const description = `
 Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser 
@@ -10,6 +10,8 @@ designed to be forked, hacked and remixed using the WebGL and the
 
 
 files = [
+	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/annapolis-md-single-family-residential-2016.xml",
+	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/8-a.xml",
 	"https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/ConferenceCenter%20(Older).xml",
 	"https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml",
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/bilt-2019-template.zip",
@@ -60,10 +62,8 @@ function init() {
 FOO.onLoadFile = function () {
 	//console.log( "string", FOO.string );
 
-
-
 	divPopUp.hidden = false;
-	divPopUp.innerHTML = "<p>When you touch a surface,<br>the rotation will stop<br>and its details will appear here</p>";
+	divPopUp.innerHTML = FOO.messagePopUp;
 
 	THR.group = THR.setSceneNew( THR.group );
 	THR.group.name = "GBXmeshGroup";
@@ -89,8 +89,9 @@ FOO.onLoadFile = function () {
 
 };
 
+const MNU = {};
 
-function toggleDarkMode( button ) {
+MNU.toggleDarkMode = function( button ) {
 
 	if ( butDark.innerHTML === "dark" ) {
 
@@ -152,7 +153,6 @@ THRR.getHtm = function ( intersected ) {
 
 	//console.log( "intersected", intersected );
 
-	
 	divPopUp.hidden = false;
 	divPopUp.innerHTML = "<p>Parsing gbXML data...</p><p>Try again when you see the 'loaded successfully' message";
 
@@ -249,17 +249,12 @@ THRR.getMeshData = function (index) {
 };
 
 
-
-
-
-
 GBX.toggleSpaceTitles = function() {
 
 	XTJ.init();
 
 	if ( !GBX.texts ) {
 
-		
 		const floors = THR.group.children.filter( mesh => ["InteriorFloor", "RaisedFloor", "SlabOnGrade" ].includes( mesh.userData.type ));
 		//console.log( "floors", floors );
 		
@@ -269,12 +264,11 @@ GBX.toggleSpaceTitles = function() {
 		
 		GBX.texts = floors.map( ( floor, i ) => floor.add( THRU.drawPlacard( spaceIds[ i ], THR.radius / 1000, 0xffffff, 
 			floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) ) ) );
-			
-			
-			// texts = floors.map( ( floor, i ) => floor.add( ... THRU.addDoubleSidedText( { text: spaceIds[ i ], 
-			// 	size: 2,
-			// 	position: floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) } ) ) );
-			//THRU.group.add( ... texts )
+						
+		// texts = floors.map( ( floor, i ) => floor.add( ... THRU.addDoubleSidedText( { text: spaceIds[ i ], 
+		// 	size: 2,
+		// 	position: floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) } ) ) );
+		//THRU.group.add( ... texts )
 			
 	}
 };

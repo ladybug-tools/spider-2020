@@ -12,7 +12,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 # Work-in-progress: [Spider 3D Re-mixer](https://ladybug.tools/spider-2020/spider-3d-remixer/ "Architecture is frozen music")
 
-- one of the dev streams in obscure repositpry
+- image from one of the dev streams in obscure repository. Remixed gbXML and OBJ files
 
 <img style=width:100% src=https://user-images.githubusercontent.com/547626/75589643-2c840100-5a30-11ea-98ae-ad386b27d106.png >
 

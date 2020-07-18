@@ -62,6 +62,27 @@ gbXML Viewer is a collection of modular experiments for viewing, examining and v
 * Fast effective insightful workflow: get things done faster
 * Fully interactive 3D
 
+#### Visualization Objectives
+
+* Open and display any file in three seconds
+	* On ver large files at least some usable data should start appearing in three seconds
+* Display the data in a highly attractive, accessible and informing manner
+* "Meta" data such as surface types, spaces, storey and zones are vieawble with in a click or two
+
+#### Identifying and fixing issues Objectives
+
+* Be able to identify and fix 99% of RP-1440 issues
+* Be able to display the before and after differences
+* Be able to reduce the complexity of a file
+* Be able to identify and fix manifold/"watertight" issues
+
+#### Sun Path etc
+
+* Sun path
+* Draw Google maps
+* Add terrain
+* Add buildings
+
 
 #### Vision and engineering objectives
 
@@ -114,7 +135,7 @@ _Following are a work-in-progress_
 
 * Access extensive library with dozens of samples files
 * Use [GitHub Developer API]( https://developer.github.com/v3/ ) to obtain a list of files in a GitHub repo
-* Read data from selected GitHub repositoties, folders and files and display as links in details/summary that update location.hash
+* Read data from selected GitHub repositories, folders and files and display as links in details/summary that update location.hash
 * Build menu tree view system to access the files
 
 
@@ -130,6 +151,7 @@ _Following are a work-in-progress_
 * Reasonably fast and produces nice-looking output
 * Complete gbXML data for entire file
 * All data accessible with just a few clicks
+* Search the entire contents using a text string 
 
 ### Quick access icons
 
@@ -139,11 +161,11 @@ _Following are a work-in-progress_
 
 ## To do and wish list
 
-* Getting ready for gbXML Webinar on July 16
 * Data menu: button to highlight 3D surfaces
+* Data menu: more data exposed to reduce need to click. Hover to open or view?
 * View menu: add context menus to select boxes
 * Footer > model icon > surface types: vertical || exposed to Sun etc
-
+* Links from JSON to schema
 
 
 
@@ -151,7 +173,6 @@ _Following are a work-in-progress_
 
 * Better timing feedback with large files and progress indicators would be nice
 * gbXML parser: fix mis-triangulation
-* Stop jittering when resizing windows
 * Fix issues when toggling between light and dark mode
 
 
@@ -173,6 +194,7 @@ Many previous versions of the Spider gbXML Viewer. See
 
 
 ### gbXML GitHub Presence
+
 * <https://github.com/GreenBuildingXML>
 	* <https://github.com/GreenBuildingXML/gbXML-Schema>
 	* <https://github.com/GreenBuildingXML/Sample-gbXML-Files>
@@ -222,6 +244,8 @@ NREL include a very basic version of the Spider gbXML Viewer in current releases
 <img src="https://www.ladybug.tools/spider-gbxml-tools/images/openstudio-imported-gbxml.jpg" width=800 >
 
 _Screen capture NREL tutorial on Spider gbXML Viewer running in OpenStudio_
+
+
 
 ### Other Spider gbXML Resources
 

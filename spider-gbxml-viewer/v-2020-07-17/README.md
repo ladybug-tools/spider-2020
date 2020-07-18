@@ -1,9 +1,9 @@
 <span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page](https://ladybug-tools.github.io/spider-2020/#README.md "View file as a web page.") </span>
 
-<div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer"
+<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer"
 value="You are now in a GitHub web page view - Click this button to view this read me file as source code" ></div>
 
-# [spider-gbxml-viewer.html readme]( ./readme.html )
+# [spider-gbxml-viewer.html readme]( https://www.ladybug.tools/spider-2020/#spider-gbxml-viewer/README.md )
 
 GitHub
 
@@ -14,13 +14,19 @@ GitHub
 
 ## Issues
 
-
-* Getting ready for gbXML Webinar on July 16
-* Data menu: button to highlight 3D surface
 * View menu: add context menus to select boxes
+* Data menu: button to highlight 3D surface
 * Progress indicators would be nice
 * Footer > model icon > surface types: vertical || exposed to Sun etc
 * gbXML parser: fix mis-triangulation
+
+
+## 2020-07-17
+
+Done
+
+* Stop jittering when resizing windows
+* Getting ready for gbXML Webinar on July 16
 
 ## 2020-07-14
 

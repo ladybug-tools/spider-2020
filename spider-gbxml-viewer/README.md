@@ -65,13 +65,13 @@ gbXML Viewer is a collection of modular experiments for viewing, examining and v
 #### Visualization Objectives
 
 * Open and display any file in three seconds
-	* On ver large files at least some usable data should start appearing in three seconds
+	* On very large files at least some usable data should start appearing in three seconds
 * Display the data in a highly attractive, accessible and informing manner
 * "Meta" data such as surface types, spaces, storey and zones are vieawble with in a click or two
 
 #### Identifying and fixing issues Objectives
 
-* Be able to identify and fix 99% of RP-1440 issues
+* Be able to identify and fix 99% of RP-1810 issues
 * Be able to display the before and after differences
 * Be able to reduce the complexity of a file
 * Be able to identify and fix manifold/"watertight" issues

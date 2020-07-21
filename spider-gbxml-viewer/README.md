@@ -67,7 +67,7 @@ gbXML Viewer is a collection of modular experiments for viewing, examining and v
 * Open and display any file in three seconds
 	* On very large files at least some usable data should start appearing in three seconds
 * Display the data in a highly attractive, accessible and informing manner
-* "Meta" data such as surface types, spaces, storey and zones are vieawble with in a click or two
+* "Meta" data such as surface types, spaces, storey and zones are vieawable with in a click or two
 
 #### Identifying and fixing issues Objectives
 

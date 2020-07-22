@@ -39,7 +39,7 @@
 
 		<h1><a href="">MAP </a></h1>
 		<div id=MAPdivMenu></div>
-		
+
 	</nav>
 	
 
@@ -51,19 +51,23 @@
 
 		THR.group = THR.setSceneNew();
 
+		THR.scene.fog.far = 99999;
+
 		THR.addGround();
 
 		THR.addLights();
 
-		const geometry = new THREE.BoxGeometry(10, 10, 10);
-		const material = new THREE.MeshNormalMaterial();
-		const mesh = new THREE.Mesh(geometry, material);
-		mesh.castShadow = true;
-		THR.group.add(mesh);
+		// const geometry = new THREE.BoxGeometry(10, 10, 10);
+		// const material = new THREE.MeshNormalMaterial();
+		// const mesh = new THREE.Mesh(geometry, material);
+		// mesh.castShadow = true;
+		// THR.group.add(mesh);
 
 		MAP.init()
 
 		THR.updateScene();
+
+		THR.scene.fog.far = 99999;
 
 	</script>
 </body>

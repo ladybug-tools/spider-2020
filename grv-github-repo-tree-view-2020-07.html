@@ -1,39 +1,41 @@
 <!doctype html>
-<html lang = "en" >
+<html lang="en">
+
 <head>
-<meta charset = "utf-8" >
-<meta name = "viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
-<meta name = "description" content = "Spider 2020 home page providing access to all the current Spider file viewers hosted using GitHub Pages." >
-<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content="2020-07-11">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="Spider 2020 home page providing access to all the current Spider file viewers hosted using GitHub Pages.">
+	<meta name="keywords" content="JavaScript,GitHub,FOSS">
+	<meta name="version" content="2020-07-11">
 
 
-<link rel="stylesheet" href="./lib/style/style-2020-07-13.css">
+	<link rel="stylesheet" href="./lib/style/style-2020-07-13.css">
 
-<style>
-			
-	:root {
-		/* --main-hue: 206; 0 to 360 0=red 120=green 240=blue */
+	<style>
+		:root {
+			/* --main-hue: 206; 0 to 360 0=red 120=green 240=blue */
 
-		--main-hue: 240; /* 0 to 360 0=red 120=green 240=blue */
-			
-	}
+			--main-hue: 240;
+			/* 0 to 360 0=red 120=green 240=blue */
 
-</style>
+		}
+	</style>
 
 
-<title></title>
+	<title></title>
 
 </head>
+
 <body>
 
-    <script src="./lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-12.js"></script>
+	<script src="./lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-12.js"></script>
 
 	<script src="./lib/fo-file-open/foo-file-open-object-2020-07-07.js"></script>
 	<script src="./lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
 	<script src="./lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
 
-	<details id=detNavMenu >
+	<details id=detNavMenu>
 
 		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
 
@@ -45,60 +47,62 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/" target="_top" title="Source code on GitHub">
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/" target="_top"
+						title="Source code on GitHub">
 						<img src="./assets/icons/octicon.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
 						Spider 2020
 					</a>
-					
+
 					<span class="info">
-						<img class=infoImg  src="./lib/assets/icons/noun_Information_585560.svg"> 
+						<img class=infoImg src="./lib/assets/icons/noun_Information_585560.svg">
 						<span id="divDescription" class="infoTooltip gmd-5">
 
-					</span></span>
+						</span></span>
 
 				</h2>
 
 			</header>
 
-			<div id=divNavLog ></div>
+			<div id=divNavLog></div>
 
-			<details id=detFile >
+			<details id=detFile>
 
 				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
 
 				<div id=FRdivMenuFileReader></div>
 
 				<p>
-					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept="*">
 				</p>
-		
-				<div id=FOOdivLog >to be reset</div>
-		
-				<div id=FOZdivFileOpenZip ></div>
 
-				<div id=divLog ></div>
+				<div id=FOOdivLog>to be reset</div>
+
+				<div id=FOZdivFileOpenZip></div>
+
+				<div id=divLog></div>
 
 			</details>
 
-			<details ontoggle="GRV.init()" open><!-- 'open' triggers a run on load -->
+			<details ontoggle="GRV.init()" open>
+				<!-- 'open' triggers a run on load -->
 
-				<summary class="summary-primary gmd-1" title="View selected items" >repo files</summary>
+				<summary class="summary-primary gmd-1" title="View selected items">repo files</summary>
 
-				<div class=divNavResize >
+				<div class=divNavResize>
 
 					<p>Files you can load, view and experiment with:</p>
-					
-					<div id=GRVdivGitHubRepoTreeView ></div>
-					
+
+					<div id=GRVdivGitHubRepoTreeView></div>
+
 					<br>
 
 				</div>
 
 			</details>
-<!-- 
+			<!-- 
 			<details class=detNavMenu id=detView ontoggle="">
 
 				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
@@ -140,13 +144,14 @@
 			<hr>
 
 			<footer>
-	
-				<div title="go to top of menu" style=text-align:center; >
-					<a class=aDingbat href=javascript:navMenu.scrollTo(0,0); >
-						<img title="Your AEC 3D viewer happy place!" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height="24" width="24" > 
+
+				<div title="go to top of menu" style=text-align:center;>
+					<a class=aDingbat href=javascript:navMenu.scrollTo(0,0);>
+						<img title="Your AEC 3D viewer happy place!"
+							src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height="24" width="24">
 					</a>
 				</div>
-				
+
 			</footer>
 
 		</nav>
@@ -154,78 +159,79 @@
 	</details>
 
 
-<main>
+	<main>
 
-	<div id="divContentMain" >
+		<div id="divContentMain">
 
-		<iframe id=ifr style="border-width: 0 1px 1px 0;height:100%;width:100%;" ></iframe>
+			<iframe id=ifr style="border-width: 0 1px 1px 0;height:100%;width:100%;"></iframe>
 
-	</div>
+		</div>
 
-</main>
+	</main>
 
-<div id="divPopUp" class="gmd-2">Welcome! </div>
-
-
-
-<script>
+	<div id="divPopUp" class="gmd-2">Welcome! </div>
 
 
-divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
+
+	<script>
 
 
-init();
+		divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
 
-function init() {
 
-	divPopUp.hidden = true;
+		init();
 
-	window.addEventListener( "hashchange", onHashChange, false );
+		function init() {
 
-	onHashChange();
+			divPopUp.hidden = true;
 
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+			window.addEventListener( "hashchange", onHashChange, false );
 
-	} else {
+			onHashChange();
 
-		detNavMenu.open = true
+			if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
-	}
+			} else {
 
-	// if running on server, keeps address bar pointed to latest dev
+				detNavMenu.open = true
+				
+			}
 
-	if ( !location.hash && location.protocol === "https:" ) {
+			// if running on server, keeps address bar pointed to latest dev
 
-		window.history.pushState( "", "", "./" );
+			if ( !location.hash && location.protocol === "https:" ) {
 
-	}
+				window.history.pushState( "", "", "./" );
 
-}
+			}
 
-function onHashChange() {
+		}
 
-	const path = "./";
+		function onHashChange() {
 
-	if ( !location.hash ) {
+			const path = "./"
 
-		ifr.src = path + "readme.html";
+			if ( !location.hash ) {
 
-		return;
+				ifr.src = path + "readme.html";
 
-	}
+				return;
 
-	if ( location.hash.toLowerCase().endsWith( ".md") ) {
+			}
 
-		ifr.src = path + "readme.html" + location.hash;
+			if ( location.hash.toLowerCase().endsWith( ".md" ) ) {
 
-		return;
+				ifr.src = path + "readme.html" + location.hash;
 
-	}
+				return;
 
-	ifr.src = path + location.hash.slice( 1 );
+			}
 
-}
+			ifr.src = path + location.hash.slice( 1 );
 
-</script>
+		}
+
+	</script>
 </body>
+
 </html>

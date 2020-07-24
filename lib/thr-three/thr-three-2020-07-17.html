@@ -24,8 +24,8 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r118/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r118/examples/js/controls/OrbitControls.js"></script>
 
-	<script src="../thr-three/thr-threejs-2020-07-17.js"></script>
-
+<script src="../../lib/thr-three/thr-threejs-2020-07-17.js"></script>
+<script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
 
 	<script>
 
@@ -45,7 +45,9 @@
 		mesh.castShadow = true;
 		THR.group.add(mesh);
 
-		THR.updateScene();
+HRT.init();
+
+THR.updateScene();
 
 	</script>
 </body>

@@ -36,7 +36,7 @@ function init() {
 	FOO.responseType = "json";
 	//FOO.onLoadFile = PP.onLoadJson;
 
-	path = "../../assets/json/";
+	path = "../../../assets/json/";
 
 	FOO.requestFile( path + "lab_building_result.json" );
 

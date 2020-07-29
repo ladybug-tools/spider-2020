@@ -1,5 +1,5 @@
 
-const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/";
+const source = "https://github.com/ladybug-tools/spider-2020/tree/master/sandbox/pollination-results-viewer/";
 
 const version = "v-2020-07-28";
 

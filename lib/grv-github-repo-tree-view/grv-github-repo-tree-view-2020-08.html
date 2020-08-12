@@ -5,20 +5,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
 	<meta name="description"
-		content="Spider 2020 home page providing access to all the current Spider file viewers hosted using GitHub Pages.">
+		content="2020 home page providing access to all the current files hosted using GitHub Pages.">
 	<meta name="keywords" content="JavaScript,GitHub,FOSS">
-	<meta name="version" content="2020-07-11">
+	<meta name="version" content="2020-08-11">
 
-
-	<link rel="stylesheet" href="./lib/style/style-2020-07-13.css">
+	<link rel="stylesheet" href="../../lib/style/style-2020-08-11.css">
 
 	<style>
 		:root {
-			/* --main-hue: 206; 0 to 360 0=red 120=green 240=blue */
-
-			--main-hue: 240;
+			--main-hue: 0;
 			/* 0 to 360 0=red 120=green 240=blue */
-
 		}
 	</style>
 
@@ -29,11 +25,11 @@
 
 <body>
 
-	<script src="./lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-12.js"></script>
+	<script src="../../lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-08-11.js"></script>
 
-	<script src="./lib/fo-file-open/foo-file-open-object-2020-07-07.js"></script>
-	<script src="./lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
-	<script src="./lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-07.js"></script>
+	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
+	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
 
 	<details id=detNavMenu>
 
@@ -43,21 +39,20 @@
 
 			<header id="hdrTitle">
 
-				<div><a href="https://www.ladybug.tools" target="_blank">www.ladybug.tools</a>/</div>
-
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/" target="_top"
-						title="Source code on GitHub">
-						<img src="./assets/icons/octicon.svg">
+					<a id=aGithub
+						href="https://github.com/ladybug-tools/spider-2020/tree/master/lib/grv-github-repo-tree-view/"
+						target="_top" title="Source code on GitHub">
+						<img src="../../lib/assets/icons/octicon.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
-						Spider 2020
+						GRV GitHub Repo Tree View
 					</a>
 
 					<span class="info">
-						<img class=infoImg src="./lib/assets/icons/noun_Information_585560.svg">
+						<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
 						<span id="divDescription" class="infoTooltip gmd-5">
 
 						</span></span>
@@ -102,14 +97,14 @@
 				</div>
 
 			</details>
-			<!-- 
+
 			<details class=detNavMenu id=detView ontoggle="">
 
-				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
+				<summary class="summary-primary gmd-1" title="View selected model aspects">view menu</summary>
 
-				<div class=divNavResize >
+				<div class=divNavResize>
 
-					<div id=VTdivViewTypes ></div>
+					<div id=VTdivViewTypes>things to consider</div>
 
 					<div id=VTdivAttributes></div>
 
@@ -117,29 +112,30 @@
 
 			</details>
 
-			<details class=detNavMenu id=detData ontoggle=JTV.init();JTV.onLoad(); >
+			<details class=detNavMenu id=detData ontoggle=JTV.init();JTV.onLoad();>
 
-				<summary class="sumPrimary gmd-1" title="Browse the data in the file" >data menu</summary>
+				<summary class="summary-primary gmd-1" title="Browse the data in the file">data menu</summary>
 
-				<div class=divNavResize >
+				<div class=divNavResize>
 
 					<p>
-						<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
-					</p>	
-					
-					<div id=JTHdivJsonTreeHelper ></div>
-					
-					<div id=JTFdivJsonTreeFinder ></div>
-					
-					<div id=JTEdivJsonTreeEdit ></div>
-					
-					<div id=JTVdivJsonTreeView ></div>
-					
+						<i>We need to decide what data should appear here & and how best to format it.
+							Work-in-progress.</i>
+					</p>
+
+					<div id=JTHdivJsonTreeHelper></div>
+
+					<div id=JTFdivJsonTreeFinder></div>
+
+					<div id=JTEdivJsonTreeEdit></div>
+
+					<div id=JTVdivJsonTreeView></div>
+
 					<hr>
-					
+
 				</div>
 
-			</details> -->
+			</details>
 
 			<hr>
 
@@ -147,8 +143,7 @@
 
 				<div title="go to top of menu" style=text-align:center;>
 					<a class=aDingbat href=javascript:navMenu.scrollTo(0,0);>
-						<img title="Your AEC 3D viewer happy place!"
-							src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height="24" width="24">
+						❦
 					</a>
 				</div>
 
@@ -189,12 +184,12 @@
 
 			onHashChange();
 
-			if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+			if ( window.innerWidth < 640 || window.innerHeight < 500 ) {
 
 			} else {
 
 				detNavMenu.open = true
-				
+
 			}
 
 			// if running on server, keeps address bar pointed to latest dev
@@ -209,7 +204,7 @@
 
 		function onHashChange() {
 
-			const path = "./"
+			const path = ".../../";
 
 			if ( !location.hash ) {
 

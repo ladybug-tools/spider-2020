@@ -7,13 +7,13 @@
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "version" content="2020-07-05">
 
-<link rel="stylesheet" href="../style/style-2020-07-10.css">
+<link rel="stylesheet" href="../style/style-2020-08-11.css">
 
 <style>
 
 	:root {
 
-		--main-hue: 0; /* 0 to 360 0=red 120=green 240=blue */
+		--main-hue: 200; /* 0 to 360 0=red 120=green 240=blue */
 
 	}
 </style>
@@ -27,11 +27,11 @@
 	<script src="../fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
 	<script src="../fo-file-open/fr-file-reader-2020-06-12.js"></script>
 
-	<details id=detNavMenu >
+	<details id=detNavMenu class="gmd-2">
 
 		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
 
-		<nav id="navMenu" class="gmd-2">
+		<nav id="navMenu" class="gmd-4">
 
 			<header id="hdrTitle">
 
@@ -213,7 +213,7 @@ function init() {
 	// ifr.contentDocument.head.appendChild( cssLink );
 
 
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+	if ( window.innerWidth < 800 || window.innerHeight < 500 ) {
 
 		document.documentElement.style.setProperty("--mnu-width", "18rem");
 

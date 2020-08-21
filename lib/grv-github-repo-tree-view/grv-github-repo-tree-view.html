@@ -2,12 +2,12 @@
 <html lang = "en" >
 <head>
 <meta charset = "utf-8" >
-<meta name = "viewport" content= "width=device-width, initial-scale=1" >	
-<meta name = "description" content = "Basic HTML template" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
+<meta name = "description" content = "GitHub Repository folder and files tree view template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = version content="2020-06-29">
+<meta name = version content="2020-06-28">
 
-<title></title>
+<title>GRV GitHub Repository Tree View</title>
 
 <style>
 
@@ -69,18 +69,19 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 </style>
 </head>
 <body>
+<script src="grv-github-repo-tree-view-2020-07-03.js"></script>
 
 <nav id="navMenu" >
 
 	<header>
 
 		<h2>
-			<a href="https://github.com/theo-armour.github.io/2020/" target=_top title="Source code on GitHub" >
+			<a href="https://github.com/theo-armour/2020/tree/master/sandbox/grv-github-repo-tree-view/" target=_top title="Source code on GitHub" >
 				<img src="https://theo-armour.github.io/2020/assets/icons/octicon.svg" >
 			</a>
 
 			<a href="" title="Click to reload this page" >
-				<span id=sTitle ></span>
+				GRV GitHub Repository Tree View
 				<span id=sVersion ></span>
 			</a>
 
@@ -90,19 +91,35 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 
 	</header>
 
-	<p>
+	<!-- <p>
 		<button id=but onclick=setIt(); >set it</button>
 	</p>
 	<p>
 		<label><input type=checkbox > checkbox</label>
 	</p>
 	<p>
-		<output id=out >50</output>
-		<input type=range id="rng" oninput=out.value=this.value >
-	</p>
+		<output id=out >50</output><input type=range id="rng" oninput=out.value=this.value >
+	</p> -->
 
 	<div id=divNavContent ></div>
 
+		<details open >
+
+			<summary class=sumMenuTitle >
+				Summary
+				<span class="info" >&#x24d8;<span id=divDetails class="infoTooltip" >How can I help you?</span></span>
+			</summary>
+
+			<div id=GRVdivGitHubRepoTreeView ></div>
+
+		</details>
+
+		<br>
+
+		<span class="info">&#x24d8;<span class="infoTooltip"> Content 2</span></span>
+
+    </div>
+    
 	<footer>
 
 		<hr>
@@ -117,24 +134,11 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 
 <main>
 
-	<div id="divContent" >
+<div style="height:100%;overflow:hidden;resize:both;width:100%;">
+    
+    <iframe id=ifr style="border-width: 0 1px 1px 0;height:100%;width:100%;" ></iframe>
 
-		<details open >
-
-			<summary class=sumMenuTitle >
-				Summary
-				<span class="info" >&#x24d8;<span id=divDetails class="infoTooltip" >How can I help you?</span></span>
-			</summary>
-
-			<p>Can be here or in the menu</p>
-
-		</details>
-
-		<br>
-
-		<span class="info">&#x24d8;<span class="infoTooltip"> Content 2</span></span>
-
-	</div>
+</div>
 
 </main>
 
@@ -144,35 +148,49 @@ summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 
 const title = document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " );
 const version = document.head.querySelector( "[ name=version ]" );
-const description = document.head.querySelector( "[ name=description ]" );
+const description = document.head.querySelector( "[ name=description ]" ).content;
 
 
-sTitle.innerHTML= title;
+//sTitle.innerHTML= title;
 sVersion.innerHTML = version ? version.content : "";
-divDescription.innerHTML = description ? description.content : "description to be added";
+divDescription.innerHTML = description;
 
 
 init();
 
 function init() {
 
-	txt = "<h3>Title</h3><p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
+	const urlApi = "https://api.github.com/repos/theo-armour/2020/git/trees/master?recursive=1";
 
-	txtX = Array( 1 ).fill( txt ).join( "<hr>");
+    ifr.src = path = "../../readme.html"
 
-	//divContent.innerHTML += `${ svgGitHubMark } ${ ( new Date ) } ${ txtX }`;
-
-	divNavContent.innerHTML = txtX;
-
-	requestFile();
-
+    requestFile( urlApi, GRV.onLoadTree );
+    
+    window.addEventListener( "hashchange", onHashChange, false );
+    
 }
 
 
-function setIt() {
+function onHashChange() {
 
-	divContent.innerHTML += `<p>${ ( performance.now() ) } - Howdy! </p>`;
+    let path = "../../";
 
+    if ( location.hash.endsWith( ".md" ) ) {
+
+        path = "../../readme.html#"
+    }
+
+	ifr.src = path + location.hash.slice( 1 );
+	
+	
+	// keeps address bar pointed to latest dev. can comment out while developing stop annoying message
+
+	//if ( location.protocol === "https:" ) {
+
+		//window.history.pushState( "", "", "../../../index.html" );
+
+	//}
+    
 }
 
 
@@ -182,7 +200,7 @@ function requestFile( url = "https://example.com" , callback = onLoad ) {
 
 	xhr = new XMLHttpRequest();
 	xhr.open( "GET", urlCORS + url, true );
-	xhr.responseType = "text";
+	xhr.responseType = "json";
 	xhr.onerror = ( xhr ) => console.log( "error:", xhr  );
 	//xhr.onprogress = ( xhr ) => console.log( "bytes loaded:", xhr.loaded );
 	xhr.onload = ( xhr ) => callback( xhr.target.response );

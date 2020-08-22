@@ -85,7 +85,7 @@ function init() {
 
 	FOO.requestFile( path + files[ 1 ]);
 
-	JTV.init()
+	JTV.init();
 
 
 };

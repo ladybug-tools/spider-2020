@@ -90,7 +90,7 @@ FOO.onLoadFile = function () {
 
 	}
 
-	
+
 
 
 };
@@ -122,8 +122,9 @@ THRR.getHtm = function () {
 	return htm;
 };
 
-const MNU = {};
 
+
+const MNU = {};
 
 MNU.toggleDarkMode = function( button ) {
 

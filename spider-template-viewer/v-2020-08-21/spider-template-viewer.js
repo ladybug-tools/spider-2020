@@ -122,8 +122,10 @@ THRR.getHtm = function () {
 	return htm;
 };
 
+const MNU = {};
 
-function toggleDarkMode( button ) {
+
+MNU.toggleDarkMode = function( button ) {
 
 	if ( butDark.innerHTML === "dark" ) {
 
@@ -159,7 +161,6 @@ function toggleDarkMode( button ) {
 		return;
 
 	}
-
 
 	//root.style.backgroundColor = "#1e1f23";
 	document.body.style.color = "teal";

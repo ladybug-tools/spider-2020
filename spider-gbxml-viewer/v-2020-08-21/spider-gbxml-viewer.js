@@ -50,7 +50,7 @@ function init() {
 
 	if ( !location.hash ) {
 
-		FOO.requestFile( files[ 0 ] );
+		FOO.requestFile( files[ 5 ] );
 
 	}
 

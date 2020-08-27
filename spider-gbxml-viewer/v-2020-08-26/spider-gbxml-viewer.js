@@ -50,10 +50,9 @@ function init() {
 
 	if ( !location.hash ) {
 
-		FOO.requestFile( files[ 0 ] );
+		FOO.requestFile( files[ 5 ] );
 
 	}
-
 
 };
 
@@ -70,23 +69,14 @@ FOO.onLoadFile = function () {
 
 	THRU.setSceneNew( THRU.group );
 
-	GBX.parseResponse();
+	GBX.init();
 
 	THR.updateScene( THR.group );
 
-	THRR.updateScene();
+	//THRR.updateScene();
 
 	detView.open = false;
 	VTdivViewTypes.innerHTML = "";
-
-	detData.open = false;
-	JTV.json = undefined;
-	JTH.init();
-	JTF.init();
-	JTVdivJsonTreeView.innerHTML = JTV.getMenu();
-	JTVdivJsonTree.addEventListener( "contextmenu", JTV.onContextMenu );
-
-
 };
 
 const MNU = {};

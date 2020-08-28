@@ -33,7 +33,7 @@ GBX.referenceObject = new THREE.Object3D();
 GBX.init = function () {
 
 
-	const timeStart = performance.now();
+	timeStart = performance.now();
 
 	GBX.string = FOO.string.replace( /[\t\n\r]/gm, "" );
 
@@ -44,98 +44,44 @@ GBX.init = function () {
 
 	THR.group.add( ...meshes );
 
-	console.log( '',  performance.now() - timeStart );
+
 
 
 };
 
-
-
-// GBX.getSurfaceMeshes = function () {
-// 	//console.log( 'GBX.surfaces', surfaces );
-
-// 	const meshes = GBX.surfaces.map( ( surface, index ) => {
-
-// 		const polyloopText = surface.match( /<PlanarGeometry(.*?)<polyloop(.*?)<\/polyloop>/gi );
-// 		const polyloops = polyloopText.map( polyloop => polyloop.replace( /<\/?polyloop>/gi, "" ) );
-// 		const coordinates = GBX.getCoordinates( polyloops[ 0 ] );
-// 		//console.log( "coordinates", coordinates );
-// 		const verticesSurfaces = [];
-
-// 		for ( let i = 0; i < coordinates.length; ) {
-
-// 			verticesSurfaces.push( new THREE.Vector3( coordinates[ i++ ], coordinates[ i++ ], coordinates[ i++ ] ) );
-// 		}
-// 		//console.log( 'verticesSurfaces', verticesSurfaces );
-
-// 		const coordinatesArray = polyloops.slice( 1 ).map( polyLoop => GBX.getCoordinates( polyLoop ) );
-
-// 		const openings = coordinatesArray.map( coordinates => {
-
-// 			const opening = [];
-
-// 			for ( let i = 0; i < coordinates.length; ) {
-// 				opening.push(
-// 					new THREE.Vector3( coordinates[ i++ ], coordinates[ i++ ], coordinates[ i++ ] )
-// 				);
-// 			}
-
-// 			return opening;
-
-// 		} );
-
-// 		//console.log( 'openings', openings );
-
-// 		const verticesOpenings = GBX.parseOpenings( openings );
-// 		//console.log( 'verticesOpenings', verticesOpenings );
-
-// 		const surfaceType = surface.match( 'surfaceType="(.*?)"' )[ 1 ];
-// 		const color = new THREE.Color( GBX.colors[ surfaceType ] );
-// 		//console.log( 'color', color );
-
-// 		const mesh = GBX.getShape3d( verticesSurfaces, verticesOpenings, color );
-
-// 		mesh.userData.index = index;
-// 		mesh.userData.type = surfaceType;
-
-// 		return mesh;
-
-// 	} );
-
-// 	return meshes;
-
-// };
 
 
 GBX.getSurfaceMeshes = function () {
 	// console.log( 'surfaces', surfaces );
 
-	GBX.materialType = THR.scene.getObjectByName( 'lightAmbient' ) ? THREE.MeshPhongMaterial : THREE.MeshBasicMaterial;
+	GBX.materialType = THR.scene.getObjectByName( 'lightAmbient' ) ?
+		THREE.MeshPhongMaterial : THREE.MeshBasicMaterial;
 	//GBX.materialType = THREE.MeshBasicMaterial;
+
+	const getCoordinates = ( text ) => text.match( /<Coordinate>(.*?)<\/Coordinate>/gi ).map( coordinate => + coordinate.replace( /<\/?coordinate>/gi, "" ) );
 
 	const meshes = GBX.surfaces.map( ( surface, index ) => {
 
-		const polyloopText = surface.match( /<PlanarGeometry(.*?)<polyloop(.*?)<\/polyloop>/gi );
-		const polyloops = polyloopText.map( polyloop => polyloop.replace( /<\/?polyloop>/gi, "" ) );
+		const polyloops = surface.match( /<PlanarGeometry(.*?)<polyloop(.*?)<\/polyloop>/gi )
+			.map( polyloop => polyloop.replace( /<\/?polyloop>/gi, "" ) );
 
-		const coordinates = GBX.getCoordinates( polyloops[ 0 ] );
+		const coordinates = getCoordinates( polyloops[ 0 ] );
 
-		const openings = polyloops.slice( 1 ).map( polyLoop => GBX.getCoordinates( polyLoop ) );
+		const openings = polyloops.slice( 1 ).map( polyLoop => getCoordinates( polyLoop ) );
 
 		const mesh = GBX.getSurfaceMesh( coordinates, index, openings );
+
 
 		return mesh;
 
 	} );
 
+	console.log( '', performance.now() - timeStart );
 
 	return meshes;
 
 };
 
-
-
-GBX.getCoordinates = ( text ) => text.match( /<Coordinate>(.*?)<\/Coordinate>/gi ).map( coordinate => + coordinate.replace( /<\/?coordinate>/gi, "" ) );
 
 
 GBX.parseOpenings = function ( verticesArray ) {
@@ -170,7 +116,7 @@ GBX.getSurfaceMesh = function ( arr, index, holes ) {
 
 		const points = [ v( arr.slice( 0, 3 ) ), v( arr.slice( 3, 6 ) ), v( arr.slice( 6 ) ) ];
 
-		geometry = GBX.getBufferGeometry( points, color );
+		geometry = GBX.getBufferGeometry( points );
 
 	} else if ( arr.length === 12 && holes.length === 0 ) {
 
@@ -181,7 +127,7 @@ GBX.getSurfaceMesh = function ( arr, index, holes ) {
 
 		];
 
-		geometry = GBX.getBufferGeometry( points, color );
+		geometry = GBX.getBufferGeometry( points );
 
 	} else {
 
@@ -192,27 +138,22 @@ GBX.getSurfaceMesh = function ( arr, index, holes ) {
 			points.push( v( arr.slice( 3 * i, 3 * i + 3 ) ) );
 
 		}
-		//console.log( 'points', points );
 
-		const pointsHoles = [];
+		const pointsHoles = holes.map( hole => {
 
-		for ( let i = 0; i < holes.length; i++ ) {
-
-			const hole = holes[ i ];
 			const points = [];
 
-			for ( let j = 0; j < ( hole.length / 3 ); j++ ) {
+			for ( let i = 0; i < ( hole.length / 3 ); i++ ) {
 
-				points.push( v( hole.slice( 3 * j, 3 * j + 3 ) ) );
+				points.push( v( hole.slice( 3 * i, 3 * i + 3 ) ) );
 
 			}
 
-			pointsHoles.push( points );
-			//console.log( '', points, pointsHoles );
+			return points;
 
-		}
+		} );
 
-		geometry = GBX.setPolygon( points, color, pointsHoles );
+		geometry = GBX.getBufferGeometryShape( points, color, pointsHoles );
 
 	}
 
@@ -229,51 +170,35 @@ GBX.getSurfaceMesh = function ( arr, index, holes ) {
 
 };
 
-
-GBX.getBufferGeometry = function ( points ) {
-	//console.log( 'points', points, color );
-
-	const geometry = new THREE.BufferGeometry();
-	geometry.setFromPoints( points );
-	geometry.computeVertexNormals();
-	return geometry;
-
-};
+GBX.getBufferGeometry = points => ( new THREE.BufferGeometry() ).setFromPoints( points ).computeVertexNormals();
 
 
 
-GBX.setPolygon = function ( points, color, holes = [] ) {
-	//console.log( { holes } );
+GBX.getBufferGeometryShape = function ( points, color, holes = [] ) {
 
 	//assume points are coplanar but at an arbitrary rotation and position in space
 	const normal = GBX.getNormal( points );
 
 	// rotate points to lie on XY plane
-	GBX.referenceObject.lookAt( normal ); // copy the rotation of the plane
-	GBX.referenceObject.quaternion.conjugate(); // figure out the angle it takes to rotate the points so they lie on the XY plane
+	GBX.referenceObject.lookAt( normal ) // copy the rotation of the plane
+	GBX.referenceObject.quaternion.conjugate() // figure out the angle it takes to rotate the points so they lie on the XY plane
 	GBX.referenceObject.updateMatrixWorld();
 
-	const pointsFlat = points.map( vertex => GBX.referenceObject.localToWorld( vertex ) );
-	//console.log( { pointsFlat } );
-
-	const holesFlat = holes.map( pointsHoles => pointsHoles.map( vertex => GBX.referenceObject.localToWorld( vertex ) ) );
+	const pointsFlat = points.map( point => GBX.referenceObject.localToWorld( point ) );
+	const holesFlat = holes.map( pointsHoles => pointsHoles.map( point => GBX.referenceObject.localToWorld( point ) ) );
 
 	// points must be coplanar with the XY plane for Earcut.js to triangulate a set of points
 	const triangles = THREE.ShapeUtils.triangulateShape( pointsFlat, holesFlat );
-	//console.log( { triangles } );
-
 	const pointsAll = points.slice( 0 ).concat( ...holesFlat );
-	//console.log( 'pointsAll', pointsAll );
-
 	const pointsTriangles = [];
 
 	for ( let triangle of triangles ) {
 
-		for ( let j = 0; j < 3; j++ ) {
+		for ( let i = 0; i < 3; i++ ) {
 
-			const vertex = pointsAll[ triangle[ j ] ];
+			const point = pointsAll[ triangle[ i ] ];
 
-			pointsTriangles.push( vertex );
+			pointsTriangles.push( point );
 
 		}
 
@@ -305,10 +230,3 @@ GBX.getNormal = function ( points, start = 0 ) {
 	return GBX.triangle.getNormal( new THREE.Vector3() );
 
 };
-
-
-
-
-
-
-

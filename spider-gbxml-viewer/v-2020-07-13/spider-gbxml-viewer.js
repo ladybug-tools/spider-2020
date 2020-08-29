@@ -4,8 +4,8 @@ const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-
 const version = "v-2020-07-13";
 
 const description = `
-Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser 
-designed to be forked, hacked and remixed using the WebGL and the 
+Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser
+designed to be forked, hacked and remixed using the WebGL and the
 <a href="https://threejs.org" target="_blank">Three.js</a> JavaScript library`;
 
 
@@ -36,19 +36,19 @@ function init() {
 	MASdivMenuAppSwitch.innerHTML=MAS.getAppSwitch()
 
 	THR.init();
-	
+
 	THR.animate();
 
 	THR.addLights();
 
 	THR.addGround();
 
-	
+
 	FOO.init();
 
 	if ( !location.hash ) {
 
-		FOO.requestFile( files[ 0 ] ); 
+		FOO.requestFile( files[ 5 ] );
 
 	}
 
@@ -72,7 +72,9 @@ FOO.onLoadFile = function () {
 
 	GBX.parseResponse();
 
-	THR.updateScene( THR.group ); 
+	THR.updateScene( THR.group );
+
+	console.log( '', performance.now() - FOO.timeStart );
 
 	THRR.updateScene();
 
@@ -99,7 +101,7 @@ function toggleDarkMode( button ) {
 		navMenu.style.backgroundColor = "#555";
 
 		THR.scene.background = new THREE.Color(0x222222);
-		THR.scene.fog.far = 999999; 
+		THR.scene.fog.far = 999999;
 
 		//const summaries = document.querySelectorAll(".summary-secondary");
 		//console.log( "", summaries );
@@ -113,7 +115,7 @@ function toggleDarkMode( button ) {
 		document.documentElement.style.setProperty("--color-2-background", "#888");
 		Array.from( document.querySelectorAll(".summary-primary") )
 		.forEach( sum => sum.style.backgroundColor = "#888" );
-		
+
 		document.documentElement.style.setProperty("--color-3-background", "#bbb");
 		Array.from( document.querySelectorAll(".summary-secondary") )
 		.forEach( sum => sum.style.backgroundColor = "#bbb" );
@@ -121,11 +123,11 @@ function toggleDarkMode( button ) {
 
 		divPopUp.style.backgroundColor = "#333";
 
-		butDark.innerHTML = "light";          
+		butDark.innerHTML = "light";
 
 		return;
 
-	} 
+	}
 
 	//root.style.backgroundColor = "#1e1f23";
 	document.body.style.color = "teal";
@@ -148,15 +150,15 @@ function toggleDarkMode( button ) {
 
 THRR.getHtm = function ( intersected ) {
 
-	// assume no JSON data yet - there's only the gbXML data to play with 
+	// assume no JSON data yet - there's only the gbXML data to play with
 
 	//console.log( "intersected", intersected );
 
-	
+
 	divPopUp.hidden = false;
 	divPopUp.innerHTML = "<p>Parsing gbXML data...</p><p>Try again when you see the 'loaded successfully' message";
 
-	
+
 	THRU.removeLines();
 
 	const faceA = intersected.face.a;
@@ -192,7 +194,7 @@ THRR.getHtm = function ( intersected ) {
 	const atts = Array.from(surface.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "");
 
 	children = Array.from( surface.children ).map( child => `${ child.tagName }: ${ child.textContent }<br> `).join( "" )
-	
+
 	const id = Array.from( surface.getElementsByTagName( "CADObjectId") ).pop()
 
 	XTJ.init();
@@ -202,7 +204,7 @@ THRR.getHtm = function ( intersected ) {
 		Surface attributes:<br> ${ atts }
 
 		${ id ? "CAD ID: " + id.textContent + "<br>" : ""}
-		
+
 		<button onclick=THRR.getMeshData(${ index }); >view full surface data</button> &nbsp; right-click: show||hide
 	</div>`;
 
@@ -217,7 +219,7 @@ THRR.getMeshData = function (index) {
 
 	detNavMenu.open = true;
 	detData.open = true;
-	
+
 	//console.log( "json", JTV.json );
 
 	if ( JTV.json ) {
@@ -226,7 +228,7 @@ THRR.getMeshData = function (index) {
 		JTV.campus = summaries.find( summary => summary.innerText.includes( "Campus 1"))
 		//console.log( "campus", campus );
 		JTV.campus.parentNode.open = true;
-		
+
 		detSurf = JTVdivJsonTree.querySelector("#JTVdetSurface");
 		detSurf.open = true;
 
@@ -259,22 +261,22 @@ GBX.toggleSpaceTitles = function() {
 
 	if ( !GBX.texts ) {
 
-		
+
 		const floors = THR.group.children.filter( mesh => ["InteriorFloor", "RaisedFloor", "SlabOnGrade" ].includes( mesh.userData.type ));
 		//console.log( "floors", floors );
-		
+
 		const spaceIds = floors.map( floor => JTV.json.Campus.Surface[ floor.userData.index ].AdjacentSpaceId )
 		.map( id => Array.isArray( id ) ? id[ 0 ][ "@attributes"].spaceIdRef : id[ "@attributes"].spaceIdRef)
 		//console.log( "spaceIds", spaceIds );
-		
-		GBX.texts = floors.map( ( floor, i ) => floor.add( THRU.drawPlacard( spaceIds[ i ], THR.radius / 1000, 0xffffff, 
+
+		GBX.texts = floors.map( ( floor, i ) => floor.add( THRU.drawPlacard( spaceIds[ i ], THR.radius / 1000, 0xffffff,
 			floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) ) ) );
-			
-			
-			// texts = floors.map( ( floor, i ) => floor.add( ... THRU.addDoubleSidedText( { text: spaceIds[ i ], 
+
+
+			// texts = floors.map( ( floor, i ) => floor.add( ... THRU.addDoubleSidedText( { text: spaceIds[ i ],
 			// 	size: 2,
 			// 	position: floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) } ) ) );
 			//THRU.group.add( ... texts )
-			
+
 	}
 };

@@ -50,7 +50,7 @@ function init() {
 
 	if ( !location.hash ) {
 
-		FOO.requestFile( files[ 5 ] );
+		FOO.requestFile( files[ 7 ] );
 
 	}
 
@@ -60,6 +60,8 @@ function init() {
 
 FOO.onLoadFile = function () {
 	//console.log( "string", FOO.string );
+
+	//timeStart = performance.now();
 
 	divPopUp.hidden = false;
 	divPopUp.innerHTML = FOO.messagePopUp;
@@ -73,11 +75,17 @@ FOO.onLoadFile = function () {
 
 	THR.updateScene( THR.group );
 
-	//THRR.updateScene();
+
+
+
+	THRR.updateScene();
 
 	detView.open = false;
 	VTdivViewTypes.innerHTML = "";
+
 };
+
+
 
 const MNU = {};
 

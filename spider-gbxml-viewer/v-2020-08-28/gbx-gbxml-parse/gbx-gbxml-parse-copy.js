@@ -32,7 +32,8 @@ GBX.referenceObject = new THREE.Object3D();
 
 GBX.init = function () {
 
-	const timeStart = performance.now();
+
+	timeStart = performance.now();
 
 	GBX.string = FOO.string.replace( /[\t\n\r]/gm, "" );
 
@@ -43,25 +44,9 @@ GBX.init = function () {
 
 	THR.group.add( ...meshes );
 
-	console.log( '', performance.now() - FOO.timeStart );
-
-	//showPaintTimings();
-
 };
 
 
-function showPaintTimings () {
-
-	if ( window.performance ) {
-		let performance = window.performance;
-		let performanceEntries = performance.getEntriesByType( 'paint' );
-		performanceEntries.forEach( ( performanceEntry, i, entries ) => {
-			console.log( "The time to " + performanceEntry.name + " was " + performanceEntry.startTime + " milliseconds." );
-		} );
-	} else {
-		console.log( 'Performance timing isn\'t supported.' );
-	}
-}
 
 GBX.getSurfaceMeshes = function () {
 	// console.log( 'surfaces', surfaces );
@@ -83,11 +68,31 @@ GBX.getSurfaceMeshes = function () {
 
 		const mesh = GBX.getSurfaceMesh( coordinates, index, openings );
 
+
 		return mesh;
 
 	} );
 
+	console.log( '', performance.now() - timeStart );
+
 	return meshes;
+
+};
+
+
+
+GBX.parseOpenings = function ( verticesArray ) {
+
+	const holes = verticesArray.reverse().map( vertices => {
+
+		const tempVerticesHoles = GBX.getTempVertices( vertices );
+		const path = new THREE.Path( tempVerticesHoles );
+
+		return { path, vertices };
+
+	} );
+
+	return holes;
 
 };
 
@@ -101,9 +106,22 @@ GBX.getSurfaceMesh = function ( arr, index, holes ) {
 	const color = new THREE.Color( GBX.colors[ surfaceType ] );
 
 	const v = arr => new THREE.Vector3().fromArray( arr );
+
 	let geometry;
 
-	if ( arr.length < 10 ) {
+	if ( arr.length < 6 ) {
+
+		console.log( 'not enough to draw a line', arr );
+
+	} else if ( arr.length < 9 ) {
+		//console.log( 'Try to draw a line', arr );
+
+		const points = [ v( arr.slice( 0, 3 ) ), v( arr.slice( 3, 6 ) ), v( arr.slice( 0, 3 ) ) ];
+		//console.log( 'points', points );
+
+		geometry = GBX.getBufferGeometry( points );
+
+	} else if ( arr.length === 9 ) {
 
 		const points = [ v( arr.slice( 0, 3 ) ), v( arr.slice( 3, 6 ) ), v( arr.slice( 6 ) ) ];
 
@@ -155,19 +173,13 @@ GBX.getSurfaceMesh = function ( arr, index, holes ) {
 	mesh.userData.index = index;
 	mesh.userData.surfaceType = surfaceType;
 
+	//GBX.meshAddGbJson( surface, mesh );
+
 	return mesh;
 
 };
 
-
-
-GBX.getBufferGeometry = function ( points ) {
-
-	const geometry = new THREE.BufferGeometry().setFromPoints( points );
-	geometry.computeVertexNormals();
-	return geometry;
-
-};
+GBX.getBufferGeometry = points => ( new THREE.BufferGeometry() ).setFromPoints( points ).computeVertexNormals();
 
 
 
@@ -177,8 +189,8 @@ GBX.getBufferGeometryShape = function ( points, holes = [] ) {
 	const normal = GBX.getNormal( points );
 
 	// rotate points to lie on XY plane
-	GBX.referenceObject.lookAt( normal ); // copy the rotation of the plane
-	GBX.referenceObject.quaternion.conjugate(); // figure out the angle it takes to rotate the points so they lie on the XY plane
+	GBX.referenceObject.lookAt( normal ) // copy the rotation of the plane
+	GBX.referenceObject.quaternion.conjugate() // figure out the angle it takes to rotate the points so they lie on the XY plane
 	GBX.referenceObject.updateMatrixWorld();
 
 	const pointsFlat = points.map( point => GBX.referenceObject.localToWorld( point ) );

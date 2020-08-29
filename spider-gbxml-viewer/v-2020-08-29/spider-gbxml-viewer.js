@@ -1,7 +1,7 @@
 
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
 
-const version = "v-2020-08-28";
+const version = "v-2020-08-29";
 
 const description = `
 Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser
@@ -50,7 +50,7 @@ function init() {
 
 	if ( !location.hash ) {
 
-		FOO.requestFile( files[ 7 ] );
+		FOO.requestFile( files[ 5 ] );
 
 	}
 

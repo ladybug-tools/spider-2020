@@ -14,124 +14,199 @@ VT.init = function () {
 
 VT.onLoad = function() {
 
-	//console.log( "onload JTV.json ", JTV.json );
-
-	//VT.surfaces = JTV.json.Campus.Surface;
-
-
 	const typesArr = GBX.surfaces.map( surface => surface.match( 'surfaceType="(.*?)"' )[ 1 ] );
-	VT.surfaceTypes = [ ... new Set( typesArr ) ]
-	console.log( "VT.surfaceTypes ", VT.surfaceTypes  );
+	VT.surfaceTypes = [ ... new Set( typesArr ) ];
+	//console.log( "VT.surfaceTypes ", VT.surfaceTypes  );
 
 	// VT.spaces = [].concat( JTV.json.Campus.Building.Space );
 	// VT.spaceNames = VT.spaces.map( space => space.Name["#text"] );
 
 	const reStoreys = /<BuildingStorey(.*?)<\/BuildingStorey>/gi;
-	GBX.storeys = GBX.string.match( reStoreys );
-	GBX.storeys = Array.isArray( GBX.storeys ) ? GBX.storeys : [];
-	console.log( 'GBX.storeys', GBX.storeys );
+	VT.storeys = GBX.string.match( reStoreys );
+	VT.storeys = Array.isArray( VT.storeys ) ? VT.storeys : [];
+	//console.log( 'VT.storeys', VT.storeys );
 
-	const storeyNamesArr = GBX.storeys.map( storey => storey.match( /<Name>(.*?)<\/Name>/i )[ 1 ] );
-	console.log( "storeyNamesArr", storeyNamesArr );
-
-	// stories = Array.isArray(  JTV.json.Campus.Building.BuildingStorey  ) ?
-	// 	JTV.json.Campus.Building.BuildingStorey  : [  JTV.json.Campus.Building.BuildingStorey  ];
-	// VT.storeyNames = JTV.json.Campus.Building.BuildingStorey ?
-	// 	stories.map( storey => storey.Name["#text"] ) : [];
-	// VT.zones = JTV.json.Zone || [];
-	// VT.zones = Array.isArray( VT.zones ) ? VT.zones : [ VT.zones  ];
-	// VT.zoneNames = VT.zones.map( zone => zone.Name["#text"] );
-
-	// VT.surfacesCadObj = VT.surfaces.filter( surface => surface.CADObjectId )
-
-	// cadObjectIds = VT.surfacesCadObj.map( surface => surface.CADObjectId )
-	// 	.map( item => item["#text"].replace( / \[.*\]/, "")  );
-	// VT.cadObjects = [ ... new Set( cadObjectIds ) ]
-	// //console.log( "cadObjects", VT.cadObjects );
+	VT.storeyNames = VT.storeys.map( storey => storey.match( /<Name>(.*?)<\/Name>/i )[ 1 ] );
+	//console.log( "storeyNames", VT.storeyNames );
 
 
+	VT.spaces = GBX.string.match( /<Space(.*?)<\/Space>/gi );
+	VT.spaces = Array.isArray( VT.spaces ) ? VT.spaces : [];
+	//console.log( 'VT.spaces', VT.spaces );
+
+	VT.spaceNames = VT.spaces.map( space => space.match( /<Name>(.*?)<\/Name>/i )[ 1 ] );
+	//console.log( "spaceNames", VT.spaceNames );
+
+	VT.zones = GBX.string.match( /<Zone(.*?)<\/Zone>/gi );
+	VT.zones = Array.isArray( VT.zones ) ? VT.zones : [];
+	//console.log( 'VT.zones', VT.zones );
+
+	VT.zoneNames = VT.zones.map( zone => zone.match( /<Name>(.*?)<\/Name>/i )[ 1 ] );
+	//console.log( "zoneNames", VT.zoneNames );
+
+	VT.CADObjectIds = GBX.surfaces.map( surface => surface.match( /<CADObjectId>(.*?)<\/CADObjectId>/i ));
+	console.log( "VT.CADObjectIds", VT.CADObjectIds );
+
+	VT.CADObjectIds = VT.CADObjectIds.map( text => text ? text: ["", "" ] ).map( text => text[ 1 ].replace( /\[(.*)\]/, "" ) );
+
+	VT.CADObjects = [ ... new Set( VT.CADObjectIds ) ];
+	console.log( "VT.CADObjects", VT.CADObjects );
 
 
-	THR.group.children.forEach( surface => surface.userData.positionStart = surface.position.clone() );
+	//THR.group.children.forEach( surface => surface.userData.positionStart = surface.position.clone() );
 
 	const htm = `
 	<p>
-	Select multiple surface types to view. Use cursor keys to scroll through the list.<br>
+		Select multiple items to view. Use cursor keys to scroll through the lists.<br>
 	</p>
 	<p>
 		<button onclick="VT.resetAll();" title="Show all surfaces">&sdotb; reset visibility & position</button>
 	</p>
-	<p>
-		Surface Types (<span>${ VT.surfaceTypes.length }</span> visible):
-		<select id=selTypes oninput=VT.showTypes(this.selectedOptions);
-			size=${ VT.surfaceTypes.length < 10 ? VT.surfaceTypes.length : 10 }
-			style=resize:vertical;width:100%; multiple>
-			${ VT.surfaceTypes.map(( name, index) => `<option value=${index} >${name}</option>`)}
-		</select>
 
-		<label>
-			explode: <output id=VToutSurfaceExplode >1</output>
-			<input type=range
-			oninput=VT.setGbxSurfaceExplode(this.value);VToutSurfaceExplode.value=this.value value=1 >
-		</label>
+	<div id=VTdivStoreys>${ this.innerHTML = VT.getElementSelect( "Surface Types", VT.surfaceTypes ) }</div>
 
-	</p>
-	<p>
-		Spaces (<span>${ VT.spaceNames.length }</span> visible):
-		<select id=selSpaces oninput=VT.showSpaces(this.selectedOptions);
-		size=${ VT.spaceNames.length < 10 ? VT.spaceNames.length : 10 }
-		style=resize:vertical;width:100%; multiple>
-			${ VT.spaceNames.map(( name, index) => `<option value=${index} >${name}</option>`) }
-		</select>
-	</p>
+	<div id=VTdivStoreys>${ this.innerHTML = VT.getElementSelect("Storeys",VT.storeyNames) }</div>
 
-	<p>
-		Storeys (<span>${ VT.storeyNames.length }</span> visible):
-		<select id=selStoreys oninput=VT.showStoreys(this.selectedOptions);
-		size=${ VT.storeyNames.length < 10 ? VT.storeyNames.length : 10 } style=resize:vertical;width:100%; multiple>
-			${ VT.storeyNames.map(( name, index) => `<option value=${index} >${name}</option>`) }
-		</select>
+	<div id=VTdivSpaces>${ this.innerHTML = VT.getElementSelect( "Spaces", VT.spaceNames ) }</div>
 
-		<label>
-			explode: <output id=VToutExplode >1</output>
-			<input type=range id="VTrngExplode"
-			oninput=VT.setGbxStoreyExplode(this.value);VToutExplode.value=this.value value=1 >
-		</label>
-	</p>
+	<div id=VTdivZones>${ this.innerHTML = VT.getElementSelect( "Zones", VT.zoneNames ) }</div>
 
-	<p>
-		Zones (<span>${ VT.zoneNames.length }</span> visible):
-		<select id=selzones oninput=VT.showZones(this.selectedOptions);
-		size=${ VT.zoneNames.length < 10 ? VT.zoneNames.length : 10 }
-		style=resize:vertical;width:100%; multiple>
-			${ VT.zoneNames.map(( name, index) => `<option value=${index} >${name}</option>`) }}
-		</select>
-		<label>
-			explode: <output id=VToutZoneExplode >1</output>
-			<input type=range id="VTrngZoneExplode"
-			oninput=VT.setGbxZoneExplode(this.value);VToutZoneExplode.value=this.value value=1 >
-		</label>
-	</p>
+	<div id=VTdivCadObjects>${ this.innerHTML = VT.getElementSelect( "CAD Objects", VT.CADObjects ) }</div>
 
-	<p>
-		CAD Objects (<span>${ VT.cadObjects.length }</span> visible):
-		<select id=selzones oninput=VT.showCadObjects(this.selectedOptions);
-			size=${ VT.cadObjects.length < 10 ? VT.cadObjects.length : 10 }
-			style=resize:vertical;width:100%; multiple>
-			${ VT.cadObjects.map(( name, index) => `<option value=${index} >${name}</option>`) }}
-		</select>
+	`;
 
-		<label>
-			explode: <output id=VToutCadObjectExplode >1</output>
-			<input type=range
-			oninput=VT.setGbxCadObjectExplode(this.value);VToutCadObjectExplode.value=this.value value=1 >
-		</label>
-	</p>`;
 
-	//return htm;
+
+	// const xxx= `
+
+	// <p>
+	// 	Spaces (<span>${ VT.spaceNames.length }</span> visible):
+	// 	<select id=selSpaces oninput=VT.showSpaces(this.selectedOptions);
+	// 	size=${ VT.spaceNames.length < 10 ? VT.spaceNames.length : 10 }
+	// 	style=resize:vertical;width:100%; multiple>
+	// 		${ VT.spaceNames.map(( name, index) => `<option value=${index} >${name}</option>`) }
+	// 	</select>
+	// </p>
+
+	// <p>
+	// 	Storeys (<span>${ VT.storeyNames.length }</span> visible):
+	// 	<select id=selStoreys oninput=VT.showStoreys(this.selectedOptions);
+	// 	size=${ VT.storeyNames.length < 10 ? VT.storeyNames.length : 10 } style=resize:vertical;width:100%; multiple>
+	// 		${ VT.storeyNames.map(( name, index) => `<option value=${index} >${name}</option>`) }
+	// 	</select>
+
+	// 	<label>
+	// 		explode: <output id=VToutExplode >1</output>
+	// 		<input type=range id="VTrngExplode"
+	// 		oninput=VT.setGbxStoreyExplode(this.value);VToutExplode.value=this.value value=1 >
+	// 	</label>
+	// </p>
+
+	// <p>
+	// 	Zones (<span>${ VT.zoneNames.length }</span> visible):
+	// 	<select id=selzones oninput=VT.showZones(this.selectedOptions);
+	// 	size=${ VT.zoneNames.length < 10 ? VT.zoneNames.length : 10 }
+	// 	style=resize:vertical;width:100%; multiple>
+	// 		${ VT.zoneNames.map(( name, index) => `<option value=${index} >${name}</option>`) }}
+	// 	</select>
+	// 	<label>
+	// 		explode: <output id=VToutZoneExplode >1</output>
+	// 		<input type=range id="VTrngZoneExplode"
+	// 		oninput=VT.setGbxZoneExplode(this.value);VToutZoneExplode.value=this.value value=1 >
+	// 	</label>
+	// </p>
+
+	// <p>
+	// 	CAD Objects (<span>${ VT.cadObjects.length }</span> visible):
+	// 	<select id=selzones oninput=VT.showCadObjects(this.selectedOptions);
+	// 		size=${ VT.cadObjects.length < 10 ? VT.cadObjects.length : 10 }
+	// 		style=resize:vertical;width:100%; multiple>
+	// 		${ VT.cadObjects.map(( name, index) => `<option value=${index} >${name}</option>`) }}
+	// 	</select>
+
+	// 	<label>
+	// 		explode: <output id=VToutCadObjectExplode >1</output>
+	// 		<input type=range
+	// 		oninput=VT.setGbxCadObjectExplode(this.value);VToutCadObjectExplode.value=this.value value=1 >
+	// 	</label>
+	// </p>`;
+
+	// //return htm;
 
 	VTdivViewTypes.innerHTML = htm;
+
 };
+
+
+VT.getSurfaceTypes = function () {
+
+	const htm = `
+		<p>
+			Surface Types (<span>${ VT.surfaceTypes.length }</span>):
+			<select id=selTypes oninput=VT.showTypes(this.selectedOptions);
+				size=${ VT.surfaceTypes.length < 10 ? VT.surfaceTypes.length : 10 }
+				style=resize:vertical;width:100%; multiple>
+				${ VT.surfaceTypes.map( ( name, index ) => `<option value=${ index } >${ name }</option>` ) }
+			</select>
+
+			<label>
+				explode: <output id=VToutSurfaceExplode >1</output>
+				<input type=range
+				oninput=VT.setGbxSurfaceExplode(this.value);VToutSurfaceExplode.value=this.value value=1 >
+			</label>
+		</p>`;
+
+	return htm;
+
+
+};
+
+VT.getStoreys = function() {
+
+	const htm = `
+		<p>
+			Storeys (<span>${ VT.storeyNamesArr.length }</span>):
+			<select id=selStoreys oninput=VT.showTypes(this.selectedOptions);
+				size=${ VT.storeyNamesArr.length < 10 ? VT.storeyNamesArr.length : 10 }
+				style=resize:vertical;width:100%; multiple>
+				${ VT.storeyNamesArr.map( ( name, index ) => `<option value=${ index } >${ name }</option>` ) }
+			</select>
+
+			<label>
+				explode: <output id=VToutSurfaceExplode >1</output>
+				<input type=range
+				oninput=VT.setGbxSurfaceExplode(this.value);VToutSurfaceExplode.value=this.value value=1 >
+			</label>
+		</p>`;
+
+	return htm;
+
+
+}
+
+
+VT.getElementSelect = function( title="element", element = [] ) {
+
+	const htm = `
+		<p>
+			${ title } (<span>${ element.length }</span>):
+			<select id=selStoreys oninput=VT.showTypes(this.selectedOptions);
+				size=${ element.length < 10 ? element.length : 10 }
+				style=resize:vertical;width:100%; multiple>
+				${ element.map( ( name, index ) => `<option value=${ index } >${ name }</option>` ) }
+			</select>
+
+			<label>
+				explode: <output id=VToutSurfaceExplode >1</output>
+				<input type=range
+				oninput=VT.setGbxSurfaceExplode(this.value);VToutSurfaceExplode.value=this.value value=1 >
+			</label>
+		</p>`;
+
+	return htm;
+
+
+}
 
 VT.showTypes = function (selectedOptions) {
 

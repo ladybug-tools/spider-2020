@@ -239,12 +239,12 @@ GBX.toggleSpaceTitles = function () {
 		const floors = GBX.meshes.filter( mesh => [ "InteriorFloor", "RaisedFloor", "SlabOnGrade" ].includes( mesh.userData.surfaceType ) );
 		console.log( "floors", floors );
 
-		const spaceIds = floors.map( floor => floor.userData.spaceId )
+		const spaceIds = floors.map( floor => floor.userData.spaceId );
 		console.log( "spaceIds", spaceIds );
-			//.map( id => Array.isArray( id ) ? id[ 0 ][ "@attributes" ].spaceIdRef : id[ "@attributes" ].spaceIdRef );
+		//.map( id => Array.isArray( id ) ? id[ 0 ][ "@attributes" ].spaceIdRef : id[ "@attributes" ].spaceIdRef );
 
 		GBX.texts = floors.map( ( floor, i ) => floor.add( THRU.drawPlacard( spaceIds[ i ], THR.radius / 1000, 0xffffff,
-		floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) ) ) );
+			floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) ) ) );
 
 		// texts = floors.map( ( floor, i ) => floor.add( ... THRU.addDoubleSidedText( { text: spaceIds[ i ],
 		// 	size: 2,
@@ -252,5 +252,5 @@ GBX.toggleSpaceTitles = function () {
 		//THRU.group.add( ... texts )
 
 	}
-	
+
 };

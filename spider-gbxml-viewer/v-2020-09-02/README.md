@@ -14,56 +14,23 @@ GitHub
 
 ## Issues
 
+* 2020-09-02 ~ Sample Files Gallery > view all: ignore .MD and html files
+* 2020-09-02 ~ View menu: Toggle all off
+* 2020-09-02 ~ View menu: id as tooltip and value
 * View menu: add context menus to select boxes
+* 2020-09-02 ~ Data menu: update on raycast
 * Data menu: button to highlight 3D surface
 * Progress indicators would be nice
 * Footer > model icon > surface types: vertical || exposed to Sun etc
+
+
+## 2020-09-02
+
+
+Done
+
 * gbXML parser: fix mis-triangulation
 
-
-## 2020-07-17
-
-Done
-
-* Stop jittering when resizing windows
-* Getting ready for gbXML Webinar on July 16
-
-## 2020-07-14
-
-Done
-
-* THRU.tellTale: add to mesh parent instead of group
-* View menu > show...: reset tell tales
-* Data menu update highlighting as you click items
-* Footer > model icon: add titles
-* navMenu: Add select version
-
-## 2020-07-13
-
-JT Finder
-
-* input type set to search and width to 100%
-
-Done
-
-* Data menu: search into input search
-
-## 2020-07-12
-
-* Fix issues with loading ZIP files
-* Enhance tell tale display
-
-## 2020-07-11 ~ Theo
-
-* JSON Tree View
-    * Add context menu support
-* View icon working better
-    * Nice style
-    * Home view work)
-    * Top/bottom views work as expected
-* Models settings icon
-    * Surface types have different images
-
----
+***
 
 <center><img title="" height="32" width="32" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" ></center>

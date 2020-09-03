@@ -50,7 +50,7 @@ function init () {
 
 	if ( !location.hash ) {
 
-		FOO.requestFile( files[ 5 ] );
+		FOO.requestFile( files[ 7 ] );
 
 	}
 
@@ -190,13 +190,14 @@ THRR.getHtm = function ( intersected ) {
 
 	const id = Array.from( surface.getElementsByTagName( "CADObjectId" ) ).pop();
 
+	THRR.getMeshData( index );
+
 	const htm = `
 	<div>
 		Surface attributes:<br> ${ attributes }
 
 		${ id ? "CAD ID: " + id.textContent + "<br>" : "" }
 
-		<button onclick=THRR.getMeshData(${ index }); >view full surface data</button> &nbsp; right-click: show||hide
 	</div>`;
 
 	// children:<br>${ children }<br>
@@ -228,23 +229,25 @@ THRR.getMeshData = function ( index ) {
 	const zoneMeta = GBX.parseElement( zone );
 
 	const htm = `
-		<b>Surface attributes</b><br>${ surfaceMeta.attributes }
+		<b>Surface attributes</b><br>${ surfaceMeta.attributesHtm }
 		<br>
-		<b>Surface elements</b><br>${ surfaceMeta.children }
+		<b>Surface elements</b><br>${ surfaceMeta.childrenHtm }
 		<br>
-		<b>Space attributes</b><br>${ spaceMeta.attributes }
+		<b>Space attributes</b><br>${ spaceMeta.attributesHtm }
 		<br>
-		<b>Space elements</b><br>${ spaceMeta.children }
+		<b>Space elements</b><br>${ spaceMeta.childrenHtm }
 		<br>
-		<b>Storey attributes</b><br>${ storeyMeta.attributes }
+		<b>Storey attributes</b><br>${ storeyMeta.attributesHtm }
 		<br>
-		<b>Storey elements</b><br>${ storeyMeta.children }
+		<b>Storey elements</b><br>${ storeyMeta.childrenHtm }
 		<br>
-		<b>Zone attributes</b><br>${ zoneMeta.attributes }
+		<b>Zone attributes</b><br>${ zoneMeta.attributesHtm }
 		<br>
-		<b>Zone elements</b><br>${ zoneMeta.children }
+		<b>Zone elements</b><br>${ zoneMeta.childrenHtm }
 		<br>
 	`;
+
+	THRRdivSurfaceData.scrollIntoView();
 
 	THRRdivSurfaceData.innerHTML = htm;
 

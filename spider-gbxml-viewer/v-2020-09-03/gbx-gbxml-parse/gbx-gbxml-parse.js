@@ -43,7 +43,7 @@ GBX.init = function () {
 
 	THR.group.add( ...GBX.meshes );
 
-	console.log( '', performance.now() - FOO.timeStart );
+	console.log( "gbx init", performance.now() - FOO.timeStart );
 
 	//showPaintTimings();
 
@@ -366,17 +366,22 @@ GBX.setSurfacesMetadata = function () {
 GBX.parseElement = function( string ) {
 
 	const parser = new DOMParser();
-	const elementXml = parser.parseFromString( string, "text/xml" );
-	const element = elementXml.firstChild;
+	// const elementXml = parser.parseFromString( string, "text/xml" );
+	// const element = elementXml.firstChild;
 
-	const attributes = Array.from( element.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "" );
+	const element = parser.parseFromString( string, "application/xml" ).documentElement;
+
+	const attributes = element.attributes;
+	const children = element.children;
+
+	const attributesHtm = Array.from( element.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "" );
 
 	//console.log( "attributes", attributes );
 
-	const children = Array.from( element.children )
+	const childrenHtm = Array.from( element.children )
 		.filter( child => ["Opening","PlanarGeometry","RectangularGeometry","ShellGeometry","SpaceBoundary"].includes( child.tagName ) === false )
 		.map( child => `${ child.tagName }: ${ child.textContent }<br> ` ).join( "" );
 
-	return { attributes, children };
+	return { attributes, attributesHtm, children, childrenHtm };
 
 }

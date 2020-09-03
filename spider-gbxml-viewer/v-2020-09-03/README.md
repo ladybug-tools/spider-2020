@@ -14,13 +14,10 @@ GitHub
 
 ## Issues
 
-* 2020-09-03 ~ View menu: add global attributes
-* 2020-09-02 ~ View menu: handles zones nicely
-* 2020-09-02 ~ Sample Files Gallery > view all: ignore .MD and html files
+* 2020-09-02 ~ View menu: handle two space surfaces nicely
 * 2020-09-02 ~ View menu: Toggle all off
 * 2020-09-02 ~ View menu: id as tooltip and value
 * View menu: add context menus to select boxes
-* 2020-09-02 ~ Data menu: update on raycast
 * Data menu: button to highlight 3D surface
 * Progress indicators would be nice
 * Footer > model icon > surface types: vertical || exposed to Sun etc
@@ -28,10 +25,13 @@ GitHub
 
 ## 2020-09-03
 
+* Data menu: add scroll into view
+* 2020-09-03 ~ View menu: add global attributes
+* 2020-09-02 ~ Sample Files Gallery > view all: ignore .MD and html files
 * Sample files gallery
   * runs until you stop it
-  * * Press any key to stop it
-
+  * Press any key to stop it
+* 2020-09-02 ~ Data menu: update on raycast
 
 ## 2020-09-02
 

@@ -151,8 +151,8 @@ THRR.getHtm = function ( intersected ) {
 	faceC = intersected.face.c;
 
 
-	objGeo = intersected.object.geometry.vertices ? intersected.object.geometry :
-		 new THREE.Geometry().fromBufferGeometry( intersected.object.geometry );
+	const objGeo = intersected.object.geometry.vertices ? intersected.object.geometry :
+	new THREE.Geometry().fromBufferGeometry( intersected.object.geometry );
 	let vertexA = objGeo.vertices[ faceA ];
 
 	tellTale.position.copy( vertexA );

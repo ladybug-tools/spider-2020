@@ -1,13 +1,13 @@
 
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer/";
 
-const version = "v-2020-08-21";
+const version = "v-2020-09-03";
 
 const description = document.head.querySelector( "[ name=description ]" ).content;
 
 //const urlDefault = "README.md";
 
-function init() {
+function init () {
 
 	aGithub.href = source;
 
@@ -42,7 +42,7 @@ function init() {
 
 	JTV.init();
 
-	HRT.init()
+	HRT.init();
 
 };
 
@@ -54,7 +54,7 @@ FOO.onLoadFile = function () {
 
 	const jsonArr = FOO.string;
 
-	let x = 0 ;
+	let x = 0;
 	const half = jsonArr.length / 24;
 
 	const dataPoints = jsonArr.map( ( item, index ) => {
@@ -66,12 +66,12 @@ FOO.onLoadFile = function () {
 		const geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
 		const material = new THREE.MeshNormalMaterial();
 		const mesh = new THREE.Mesh( geometry, material );
-		mesh.position.set( ( x - half ) * 3, item.month * 5 , item.surface_inside_face_temperature );
-		mesh.scale.z = ( item.surface_outside_face_temperature - item.surface_inside_face_temperature)
+		mesh.position.set( ( x - half ) * 3, item.month * 5, item.surface_inside_face_temperature );
+		mesh.scale.z = ( item.surface_outside_face_temperature - item.surface_inside_face_temperature );
 
 		return mesh;
 
-	} )
+	} );
 
 	THR.group.add( ...dataPoints );
 
@@ -81,7 +81,7 @@ FOO.onLoadFile = function () {
 
 	THRR.updateScene();
 
-	THR.camera.position.set( -100, -100, 100)
+	THR.camera.position.set( -100, -100, 100 );
 
 	if ( window.divPopUp ) {
 
@@ -126,7 +126,7 @@ THRR.getHtm = function () {
 
 const MNU = {};
 
-MNU.toggleDarkMode = function( button ) {
+MNU.toggleDarkMode = function ( button ) {
 
 	if ( butDark.innerHTML === "dark" ) {
 
@@ -134,25 +134,25 @@ MNU.toggleDarkMode = function( button ) {
 		document.body.style.color = "#aaa";
 		navMenu.style.backgroundColor = "#555";
 
-		THR.scene.background = new THREE.Color(0x222222);
+		THR.scene.background = new THREE.Color( 0x222222 );
 		THR.scene.fog.far = 999999;
 
 		//const summaries = document.querySelectorAll(".summary-secondary");
 		//console.log( "", summaries );
 
-		Array.from( document.querySelectorAll("a") )
-		.forEach( a => a.style.color = "#ccc" );
+		Array.from( document.querySelectorAll( "a" ) )
+			.forEach( a => a.style.color = "#ccc" );
 
-		Array.from( document.querySelectorAll("input,select,option") )
-		.forEach( iso => iso.style.backgroundColor = "#bbb" );
+		Array.from( document.querySelectorAll( "input,select,option" ) )
+			.forEach( iso => iso.style.backgroundColor = "#bbb" );
 
-		document.documentElement.style.setProperty("--color-2-background", "#888");
-		Array.from( document.querySelectorAll(".summary-primary") )
-		.forEach( sum => sum.style.backgroundColor = "#888" );
+		document.documentElement.style.setProperty( "--color-2-background", "#888" );
+		Array.from( document.querySelectorAll( ".summary-primary" ) )
+			.forEach( sum => sum.style.backgroundColor = "#888" );
 
-		document.documentElement.style.setProperty("--color-3-background", "#bbb");
-		Array.from( document.querySelectorAll(".summary-secondary") )
-		.forEach( sum => sum.style.backgroundColor = "#bbb" );
+		document.documentElement.style.setProperty( "--color-3-background", "#bbb" );
+		Array.from( document.querySelectorAll( ".summary-secondary" ) )
+			.forEach( sum => sum.style.backgroundColor = "#bbb" );
 
 
 		divPopUp.style.backgroundColor = "#333";
@@ -167,10 +167,10 @@ MNU.toggleDarkMode = function( button ) {
 	document.body.style.color = "teal";
 	navMenu.style.backgroundColor = "#fafffa";
 
-	THR.scene.background = new THREE.Color(0xcce0ff);
+	THR.scene.background = new THREE.Color( 0xcce0ff );
 	THR.scene.fog.far = THR.radius * 8;
 
-	const summaries = document.querySelectorAll(".summary-primary");
+	const summaries = document.querySelectorAll( ".summary-primary" );
 	Array.from( summaries ).forEach( sum => sum.style.backgroundColor = "#eee" );
 
 	divPopUp.style.backgroundColor = "#eee";

@@ -23,7 +23,7 @@ VT.init = function () {
 
 	</details>
 
-	<div id=VTdivSurfaceTypes>${ VT.getElementSelect( GBX.surfaceTypes, "surfaceType", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link1A8" target = "_blank" >Surface</a> Types') }</div>
+	<div id=VTdivSurfaceTypes>${ VT.getElementSelect( GBX.surfaceTypes, "surfaceType", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link1A8" target = "_blank" >Surface</a> Types' ) }</div>
 
 	<div id=VTdivSpaces>${ VT.getElementSelect( GBX.spaceNames, "spaceName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link19D" target="_blank">Spaces</a>' ) }</div>
 
@@ -31,7 +31,7 @@ VT.init = function () {
 
 	<div id=VTdivZones>${ VT.getElementSelect( GBX.zoneNames, "zoneName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link1D3" target="_blank">Zones</a>' ) }</div>
 
-	<div id=VTdivCadObjects>${ VT.getElementSelect( GBX.CADObjects, "cadObject", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link3D" target="_blank">CAD Object</a>') }</div>
+	<div id=VTdivCadObjects>${ VT.getElementSelect( GBX.CADObjects, "cadObject", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link3D" target="_blank">CAD Object</a>' ) }</div>
 
 	`;
 
@@ -40,32 +40,18 @@ VT.init = function () {
 };
 
 
-VT.getXmlGlobal = function() {
+VT.getXmlGlobal = function () {
 
-
-	timeStart = performance.now();
+	VT.timeStart = performance.now();
 
 	//xml = GBX.parseElement( GBX.string );
 
-
 	const parser = new DOMParser();
-	// const elementXml = parser.parseFromString( string, "text/xml" );
-	// const element = elementXml.firstChild;
-
 	const xml = parser.parseFromString( GBX.string, "application/xml" ).documentElement;
 
 	const attributes = xml.attributes;
 	//console.log( "attributes", attributes );
 	const attributesHtm = Array.from( xml.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "" );
-
-	//const children = xml.children;
-
-	//console.log( "childen", children );
-
-
-	//locationXml = xml.getElementsByTagName( "Location" );
-
-	//console.log( "LocationXml", LocationXml.children, LocationXml );
 
 	const locationXml = xml.getElementsByTagName( 'Location' )[ 0 ];
 	const buildingXml = xml.getElementsByTagName( 'Building' )[ 0 ];
@@ -96,7 +82,7 @@ VT.getXmlGlobal = function() {
 	//console.log( "ccc", locationXml, buildingXml, latitude, longitude );
 
 
-	console.log( "tim", performance.now() - timeStart );
+	console.log( "time", performance.now() - VT.timeStart );
 
 	const htm = `
 
@@ -242,7 +228,6 @@ VT.setGbxSurfaceExplode = function ( value, dataType = "" ) {
 			.forEach( surface => surface.position.z = i * value / 5 );
 
 	} );
-
 
 };
 

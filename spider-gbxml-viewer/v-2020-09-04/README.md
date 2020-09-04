@@ -22,6 +22,12 @@ GitHub
 * Progress indicators would be nice
 * Footer > model icon > surface types: vertical || exposed to Sun etc
 
+## 2020-09-04
+
+* Titles are now space names and size is smaller
+* Titles toggle visibility as expected
+* Fixed no popup three.js r120 issues
+* Set Revit sample as default
 
 ## 2020-09-03
 

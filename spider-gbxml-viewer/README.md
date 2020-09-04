@@ -1,4 +1,4 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www/ladybug.tools/spider-2020/spider-gbxml-viewer/readme.html "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/readme.html "View file as a web page." ) </span>
 
 <div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer/"
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
@@ -14,7 +14,7 @@ _Spider gbXML Viewer in a resizable window. One finger to rotate. Two to zoom._
 ### Full Screen: [Spider gbXML Viewer]( https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/ )
 
 * Latest stable version
-* Objective 1: All the features and more of previous versions - with simpler, faster more intuitive user experience 
+* Objective 1: All the features and more of previous versions - with simpler, faster more intuitive user experience
 
 After Objective 1 is complete
 
@@ -109,16 +109,16 @@ gbXML Viewer is a collection of modular experiments for viewing, examining and v
 
 ## Features
 
-### File menu 
+### File menu
 
 File sources
     * Open gbXML files using your operating system dialog box
     * Open gbXML files using a [RESTful API]( https://en.wikipedia.org/wiki/Representational_state_transfer ) - [REST API Tutorial]( https://restfulapi.net/ )
 
 File menu types
-    * Open both .XML and .GBXML files ( the latter is required by the [Autodesk Viewer]( https://viewer.autodesk.com/designviews )) 
+    * Open both .XML and .GBXML files ( the latter is required by the [Autodesk Viewer]( https://viewer.autodesk.com/designviews ))
     * Handle both 8-bit and 16-bit data
-    * Open gbXML files inside compressed .ZIP files - asynchronously (first file only) 
+    * Open gbXML files inside compressed .ZIP files - asynchronously (first file only)
 
 File menu reports
     * Provide feedback on the name of the opened file, its size, the length of time it took to load and more
@@ -151,7 +151,7 @@ _Following are a work-in-progress_
 * Reasonably fast and produces nice-looking output
 * Complete gbXML data for entire file
 * All data accessible with just a few clicks
-* Search the entire contents using a text string 
+* Search the entire contents using a text string
 
 ### Quick access icons
 

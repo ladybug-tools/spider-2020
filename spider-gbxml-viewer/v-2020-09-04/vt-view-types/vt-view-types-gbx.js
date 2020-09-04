@@ -52,7 +52,7 @@ VT.getXmlGlobal = function() {
 	// const elementXml = parser.parseFromString( string, "text/xml" );
 	// const element = elementXml.firstChild;
 
-	xml = parser.parseFromString( GBX.string, "application/xml" ).documentElement;
+	const xml = parser.parseFromString( GBX.string, "application/xml" ).documentElement;
 
 	const attributes = xml.attributes;
 	//console.log( "attributes", attributes );

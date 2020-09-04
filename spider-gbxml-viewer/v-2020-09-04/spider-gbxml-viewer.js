@@ -195,7 +195,7 @@ THRR.getHtm = function ( intersected ) {
 
 	const htm = `
 	<div>
-		Surface attributes:<br> ${ attributes }
+		Surface ${ index } attributes:<br> ${ attributes }
 
 		${ id ? "CAD ID: " + id.textContent + "<br>" : "" }
 

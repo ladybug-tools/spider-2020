@@ -17,7 +17,6 @@ GitHub
 * 2020-09-04 ~ select surface type in suitable colors
 * 2020-09-02 ~ View menu: handle two space surfaces nicely
 * 2020-09-02 ~ View menu: Toggle all off
-* 2020-09-02 ~ View menu: id as tooltip and value
 * View menu: add context menus to select boxes
 * Data menu: button to highlight 3D surface
 * Progress indicators would be nice
@@ -25,6 +24,7 @@ GitHub
 
 ## 2020-09-04
 
+* 2020-09-02 ~ View menu: id as tooltip and value
 * Titles are now space names and size is smaller
 * Titles toggle visibility as expected
 * Fixed no popup three.js r120 issues

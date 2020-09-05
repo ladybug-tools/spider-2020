@@ -51,7 +51,7 @@ function init () {
 
 	if ( !location.hash ) {
 
-		FOO.requestFile( files[ 14 ] );
+		FOO.requestFile( files[ 7 ] );
 
 	}
 
@@ -213,6 +213,8 @@ THRR.getMeshData = function ( index ) {
 	detData.open = true;
 
 	GBX.setSurfacesMetadata();
+
+	//if ( !GBX.surfaceTypes ) { GBX.setSurfacesMetadata(); }
 
 	const surface = GBX.surfaces[ index ];
 	const mesh = GBX.meshes[ index ];

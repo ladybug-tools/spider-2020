@@ -25,14 +25,12 @@ GBX.opacity = 0.85;
 
 GBX.triangle = new THREE.Triangle(); // used by GBX.getPlane
 GBX.referenceObject = new THREE.Object3D();
-
+GBX.parser = new DOMParser();
 
 
 
 
 GBX.init = function () {
-
-	const timeStart = performance.now();
 
 	GBX.string = FOO.string.replace( /[\t\n\r]/gm, "" );
 
@@ -43,12 +41,19 @@ GBX.init = function () {
 
 	THR.group.add( ...GBX.meshes );
 
+	//GBX.doit();
+
 	console.log( "gbx init", performance.now() - FOO.timeStart );
 
 	//showPaintTimings();
 
 };
 
+GBX.doit = function() {
+
+	GBX.xml = GBX.parser.parseFromString( GBX.string, "application/xml" ).documentElement;
+
+}
 
 function showPaintTimings () {
 
@@ -240,22 +245,15 @@ GBX.toggleSpaceTitles = function () {
 		//console.log( "floors", floors );
 
 		const spaceNames = floors.map( floor => floor.userData.spaceName );
-		console.log( "spaceNames", spaceNames );
+		//console.log( "spaceNames", spaceNames );
 		//.map( id => Array.isArray( id ) ? id[ 0 ][ "@attributes" ].spaceIdRef : id[ "@attributes" ].spaceIdRef );
 
 		GBX.texts = floors.map( ( floor, i ) => floor.add( THRU.drawPlacard( spaceNames[ i ], THR.radius / 2000, 0xffffff,
 			floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) ) ) );
 
-		// texts = floors.map( ( floor, i ) => floor.add( ... THRU.addDoubleSidedText( { text: spaceIds[ i ],
-		// 	size: 2,
-		// 	position: floor.geometry.boundingSphere.center.add( new THREE.Vector3( 0, 0, 2 ) ) } ) ) );
-		//THRU.group.add( ... texts )
-
 		return;
 
 	}
-
-
 
 	GBX.texts.forEach( child => child.visible = !child.visible );
 
@@ -264,7 +262,9 @@ GBX.toggleSpaceTitles = function () {
 
 GBX.setSurfacesMetadata = function () {
 
-	//console.time();
+	const timeStart = performance.now();
+
+	//GBX.xml = GBX.parser.parseFromString( GBX.string, "application/xml" ).documentElement;
 
 	const typesArr = GBX.surfaces.map( surface => surface.match( /surfaceType="(.*?)"/ )[ 1 ] );
 	GBX.surfaceTypes = [ ... new Set( typesArr ) ];
@@ -278,12 +278,12 @@ GBX.setSurfacesMetadata = function () {
 	GBX.spaceIds = GBX.spaces.map( space => space.match( / id="(.*?)"/i )[ 1 ] );
 	//console.log( "spaceIds", GBX.spaceIds );
 
-
 	GBX.storeys = GBX.string.match( /<BuildingStorey(.*?)<\/BuildingStorey>/gi );
 	GBX.storeys = Array.isArray( GBX.storeys ) ? GBX.storeys : [];
 	//console.log( 'GBX.storeys', GBX.storeys );
 
 	GBX.storeyNames = GBX.storeys.map( storey => storey.match( /<Name>(.*?)<\/Name>/i )[ 1 ] );
+	GBX.storeyIds = GBX.storeys.map( storey => storey.match( / id="(.*?)"/i )[ 1 ] );
 	//console.log( "storeyNames", GBX.storeyNames );
 
 
@@ -292,6 +292,7 @@ GBX.setSurfacesMetadata = function () {
 	GBX.zones = Array.isArray( GBX.zones ) ? GBX.zones : [];
 	//console.log( 'GBX.zones', GBX.zones );
 
+	GBX.zoneIds = GBX.zones.map( zone => zone.match( /id="(.*?)"/i )[ 1 ] );
 	GBX.zoneNames = GBX.zones.map( zone => zone.match( /<Name>(.*?)<\/Name>/i )[ 1 ] );
 	//console.log( "zoneNames", GBX.zoneNames );
 
@@ -303,27 +304,6 @@ GBX.setSurfacesMetadata = function () {
 	GBX.CADObjects = [ ... new Set( GBX.CADObjectIds ) ];
 	//console.log( "GBX.CADObjects", GBX.CADObjects );
 
-	// GBX.spaces = GBX.spaces.map( space => {
-
-	// 	const id = space.match( / id="(.*?)"/ )[ 1 ];
-	// 	const name = space.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
-	// 	const cadObjectId = space.match( /<CADObjectId>(.*?)<\/CADObjectId>/i )[ 1 ];
-
-	// 	const storeyId = space.match( / buildingStoreyIdRef="(.*?)"/i )[ 1 ];
-	// 	//console.log( "storeyId", storeyId );
-
-	// 	const storey = GBX.storeys.find( storey => storey.includes( storeyId ) );
-	// 	//console.log( "storey", storey );
-	// 	const storeyName = storey.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
-	// 	//console.log( "sname", storeyName );
-	// 	const zoneId = space.match( / zoneIdRef="(.*?)"/i )[ 1 ];
-
-	// 	return { id, cadObjectId, name, storeyId, storeyName, zoneId };
-
-	// } );
-	//console.log( "spaces", GBX.spaces );
-
-	//console.timeLog();
 
 	GBX.meshes.forEach( ( mesh, index ) => {
 
@@ -363,10 +343,9 @@ GBX.setSurfacesMetadata = function () {
 		mesh.userData.storeyName = storeyName;
 
 	} );
-
 	//console.log( "data", GBX.meshes[ 9 ].userData );
 
-	//console.timeEnd();
+	console.log( performance.now() - timeStart );
 
 };
 
@@ -374,17 +353,12 @@ GBX.setSurfacesMetadata = function () {
 GBX.parseElement = function( string ) {
 
 	const parser = new DOMParser();
-	// const elementXml = parser.parseFromString( string, "text/xml" );
-	// const element = elementXml.firstChild;
-
 	const element = parser.parseFromString( string, "application/xml" ).documentElement;
 
 	const attributes = element.attributes;
 	const children = element.children;
 
 	const attributesHtm = Array.from( element.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "" );
-
-	//console.log( "attributes", attributes );
 
 	const childrenHtm = Array.from( element.children )
 		.filter( child => ["Opening","PlanarGeometry","RectangularGeometry","ShellGeometry","SpaceBoundary"].includes( child.tagName ) === false )

@@ -3,7 +3,7 @@ const VT = {};
 
 VT.init = function () {
 
-	GBX.setSurfacesMetadata();
+	GBX.setSurfacesMetadata()
 
 	THR.group.children.forEach( surface => surface.userData.positionStart = surface.position.clone() );
 
@@ -23,15 +23,15 @@ VT.init = function () {
 
 	</details>
 
-	<div id=VTdivSurfaceTypes>${ VT.getElementSelect( GBX.surfaceTypes, "surfaceType", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link1A8" target = "_blank" >Surface</a> Types' ) }</div>
+	<div id=VTdivSurfaceTypes>${ VT.getElementSelect( GBX.surfaceTypes, [], "surfaceType", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link1A8" target = "_blank" >Surface</a> Types' ) }</div>
 
-	<div id=VTdivSpaces>${ VT.getElementSelect( GBX.spaceNames, "spaceName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link19D" target="_blank">Spaces</a>' ) }</div>
+	<div id=VTdivSpaces>${ VT.getElementSelect( GBX.spaceNames, GBX.spaceIds, "spaceName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link19D" target="_blank">Spaces</a>' ) }</div>
 
-	<div id=VTdivStoreys>${ VT.getElementSelect( GBX.storeyNames, "storeyName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link35" target="_blank">Storeys</a>' ) }</div>
+	<div id=VTdivStoreys>${ VT.getElementSelect( GBX.storeyNames, GBX.storeyIds, "storeyName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link35" target="_blank">Storeys</a>' ) }</div>
 
-	<div id=VTdivZones>${ VT.getElementSelect( GBX.zoneNames, "zoneName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link1D3" target="_blank">Zones</a>' ) }</div>
+	<div id=VTdivZones>${ VT.getElementSelect( GBX.zoneNames, GBX.zoneIds, "zoneName", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link1D3" target="_blank">Zones</a>' ) }</div>
 
-	<div id=VTdivCadObjects>${ VT.getElementSelect( GBX.CADObjects, "cadObject", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link3D" target="_blank">CAD Object</a>' ) }</div>
+	<div id=VTdivCadObjects>${ VT.getElementSelect( GBX.CADObjects, [], "cadObject", '<a href="https://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html#Link3D" target="_blank">CAD Object</a>' ) }</div>
 
 	`;
 
@@ -168,15 +168,15 @@ VT.getAttributesHtml = function ( obj ) {
 
 
 
-VT.getElementSelect = function ( element = [], dataType = "surfaceType", title = "element" ) {
+VT.getElementSelect = function ( elements = [], ids = [], dataType = "surfaceType", title = "elements" ) {
 
 	const htm = `
 		<p>
-			${ title } (<span>${ element.length }</span>):
+			${ title } (<span>${ elements.length }</span>):
 			<select id=VTsel${ dataType }  oninput=VT.showTypes(this.selectedOptions,"${ dataType }");
-				size=${ element.length < 10 ? element.length : 10 }
+				size=${ elements.length < 10 ? elements.length : 10 }
 				style=resize:vertical;width:100%; multiple>
-				${ element.map( ( name, index ) => `<option value=${ index } >${ name }</option>` ) }
+				${ elements.map( ( name, index ) => `<option value=${ ids[ index ] } title="${ ids[ index ] }" >${ name }</option>` ) }
 			</select>
 
 			<label>

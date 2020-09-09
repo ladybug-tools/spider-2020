@@ -1,7 +1,7 @@
 
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer";
 
-const version = "v-2020-09-04";
+const version = "v-2020-09-09";
 
 const description = `
 Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser
@@ -167,7 +167,6 @@ THRR.getHtm = function ( intersected ) {
 	const vertexA = objGeo.vertices[ faceA ];
 	//console.log( "vertexA", vertexA );
 
-
 	//THRU.addTellTale().position.copy( vertexA );
 
 	const verticesFace = [ vertexA, objGeo.vertices[ faceB ], objGeo.vertices[ faceC ], vertexA ];
@@ -207,6 +206,8 @@ THRR.getHtm = function ( intersected ) {
 
 };
 
+
+
 THRR.getMeshData = function ( index ) {
 
 	detNavMenu.open = true;
@@ -230,6 +231,8 @@ THRR.getMeshData = function ( index ) {
 
 	const zone = GBX.zones.find( zone => zone.includes( mesh.userData.zoneId ) );
 	const zoneMeta = GBX.parseElement( zone );
+
+	//console.log( "zm", zoneMeta );
 
 	const htm = `
 		<b>Surface attributes</b><br>${ surfaceMeta.attributesHtm }

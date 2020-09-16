@@ -46,7 +46,7 @@
 				<h2>
 
 
-					<a id=aGithub 
+					<a id=aGithub
 						href="https://github.com/ladybug-tools/spider-2020/" target="_top"
 						title="Source code on GitHub">
 						<img src="./assets/icons/octicon.svg">
@@ -102,7 +102,8 @@
 				</div>
 
 			</details>
-			<!-- 
+
+			<!--
 			<details class=detNavMenu id=detView ontoggle="">
 
 				<summary class="sumPrimary gmd-1" title="View selected model aspects" >view menu</summary>
@@ -125,21 +126,21 @@
 
 					<p>
 						<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
-					</p>	
-					
+					</p>
+
 					<div id=JTHdivJsonTreeHelper ></div>
-					
+
 					<div id=JTFdivJsonTreeFinder ></div>
-					
+
 					<div id=JTEdivJsonTreeEdit ></div>
-					
+
 					<div id=JTVdivJsonTreeView ></div>
-					
+
 					<hr>
-					
+
 				</div>
 
-			</details> 
+			</details>
 -->
 
 			<hr>
@@ -179,6 +180,9 @@
 
 		divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
 
+			GRV.urlApi = "https://api.github.com/repos/ladybug-tools/spider-2020/git/trees/master?recursive=1";
+			GRV.urlSource = "https://github.com/ladybug-tools/spider-2020/tree/master/";
+			GRV.urlViewer = "https://www.ladybug.tools/spider-2020/";
 
 		init();
 

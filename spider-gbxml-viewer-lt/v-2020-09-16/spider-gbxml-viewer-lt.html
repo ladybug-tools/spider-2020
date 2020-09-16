@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+
+	<title>Spider gbXML Viewer</title>
+
+	<link rel="stylesheet" href="../../lib/style/style-2020-08-11.css">
+
+	<style>
+		:root {
+			--main-hue: 130;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+
+		body {
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div id=FOOdivLog style=position:absolute; hidden>to be reset</div>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r120/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r120/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r120/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/jszip@3.5.0/dist/jszip.min.js"></script>
+
+
+	<!-- core -->
+
+	<script src="../../lib/thr-three/thr-threejs-2020-08-02.js"></script>
+	<!-- <script src="../../lib/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+		<script src="../../lib/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-07-11.js"></script> -->
+	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+	<!--
+		<script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+		<script src="../../lib/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script> -->
+
+	<script src="../../spider-gbxml-viewer/v-2020-09-16/gbx-gbxml-parse/gbx-gbxml-parse.js"></script>
+
+
+	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
+	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
+	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+
+	<script src="spider-gbxml-viewer-lt.js"></script>
+
+</body>
+
+<script>
+	init();
+</script>
+</html>

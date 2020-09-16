@@ -14,6 +14,7 @@ GitHub
 
 ## Issues
 
+* 2020-09-10 ~ Add save file dialog
 * 2020-09-04 ~ select surface type in suitable colors
 * 2020-09-02 ~ View menu: handle two space surfaces nicely
 * 2020-09-02 ~ View menu: Toggle all off

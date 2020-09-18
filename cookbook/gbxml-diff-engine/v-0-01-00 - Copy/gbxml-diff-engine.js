@@ -1,9 +1,9 @@
 
 let GDE = {};
 
-GDE.urlFile1 = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+// GDE.urlFile1 = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
 
-GDE.urlFile2 = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-fixed.xml";
+// GDE.urlFile2 = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-fixed.xml";
 
 
 
@@ -47,6 +47,9 @@ GDE.requestFile = function( url ) {
 
 GDE.callback = function( xhr ) {
 
+
+	//console.log( "xhr", xhr.target.response );
+
 	GDE.files.push( xhr.target.response );
 
 	if ( GDE.files.length === 2 ) {
@@ -61,8 +64,8 @@ GDE.callback = function( xhr ) {
 GDE.findDiffs = function() {
 
 
-	const f1 = iframe1.contentWindow.GBX.text
-	const f2 = iframe2.contentWindow.GBX.text
+	const f1 = GDE.files[ 0 ]
+	const f2 = GDE.files[ 1 ]
 
 	const surfaces1 = f1.match( /<Surface(.*?)<\/Surface/gis );
 	const surfaces2 = f2.match( /<Surface(.*?)<\/Surface/gis );
@@ -140,7 +143,7 @@ GDE.findDiffs = function() {
 	GDE.surfacesDiffIndexes1 = indexes1;
 	GDE.surfacesDiffIndexes2 = indexes2;
 
-	GDE.highlightDiffs();
+	//GDE.highlightDiffs();
 
 };
 

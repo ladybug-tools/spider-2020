@@ -7,7 +7,7 @@
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-08-29" >
 <meta name = "version" content = "0.01.0" >
-<title></title>
+<title>gbXML Diff Engine</title>
 <style>
 
 	* { box-sizing: border-box; }
@@ -31,7 +31,7 @@
 		position: absolute; top: 0; width: var( --mnu-width ); }
 	*/
 
-	.iframeContainer { border: 1px solid #888; display: inline-block; height:30rem; overflow:auto; /* needed */ resize: both; width: 40vw;}
+	.iframeContainer { border: 1px solid #888; display: inline-block; height:25rem; overflow:auto; /* needed */ resize: both; width: 40vw;}
 
 	iframe { height: 80%; width:100%; }
 </style>
@@ -41,7 +41,7 @@
 
 	<nav id="navMenu" >
 
-		<div id="divTitle" ></div>
+		<h1><a href="" >gbXML Diff Engine</a></h1>
 
 
 	</nav>
@@ -65,7 +65,7 @@
 		</div>
 
 		<p>
-			Click once in each window, then: <button id=but onclick=GDE.findDiffs();>find differences</button>
+			Click once in each window, then: <button id=but onclick=GDE.setData();>find differences</button>
 		</p>
 
 		<div id="divContents" ></div>
@@ -82,15 +82,25 @@ init();
 
 function init() {
 
-	divTitle.innerHTML = getTitle();
+	vwr = "../../../spider-gbxml-viewer-lt/index.html#";
 
-	vwr = "../../../spider-gbxml-viewer-lt/index.html";
-	src1 = "#../../../spider/gbxml-sample-files/bristol-clifton-downs-broken.xml";
-	src2 = "#../../../spider/gbxml-sample-files/bristol-clifton-downs-fixed.xml";
+	src1 = "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/bimport/01_Multiple+layers+space.gbxml";
+
+	src2 = "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/bimport/01_Multiple+layers+energy+model.gbxml";
+
+
+GDE.urlFile1 = src1;
+
+GDE.urlFile2 = src2;
 
 	iframe1.src = vwr + src1;
 
 	iframe2.src = vwr + src2;
+
+	GDE.urlFile1 = src1; //"https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+
+	GDE.urlFile2 = src2; //"https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-fixed.xml";
+
 
 	p1.innerHTML = src1.split( "/" ).pop();
 	p2.innerHTML = src2.split( "/" ).pop();
@@ -100,36 +110,7 @@ function init() {
 
 
 
-function setIt() {
 
-	divContents.innerHTML += `<p>${ ( performance.now() ) } - Howdy! </p>`;
-
-}
-
-
-
-function getTitle() {
-
-	document.title = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
-	const version = document.head.querySelector( "[ name=version ]" ).content;
-
-	const htm =
-	`
-		<h2>
-			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
-				<img src=${ urlSourceCodeIcon } height=18 style=opacity:0.5; >
-			</a>
-			<a href="" title="Click to reload this page" >${ document.title } ${ version }</a>
-		</h2>
-
-		<p>
-			${ document.head.querySelector( "[ name=description ]" ).content }
-		</p>
-	`;
-
-	return htm;
-
-}
 
 </script>
 </body>

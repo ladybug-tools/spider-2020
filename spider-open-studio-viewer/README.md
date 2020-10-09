@@ -11,11 +11,18 @@ value='You are now in a GitHub web page view - Click this button to view this re
 _Spider Open Studio Viewer_
 @@@-->
 
+<mark>Deprecated code! For better results use the newer [Spider IDF/OSM Viewer]( https://www.ladybug.tools/spider-2020/spider-idf-viewer/v ) </mark>
+
+
 ### Full Screen: [Spider Open Studio Viewer]( https://www.ladybug.tools/spider-2020/spider-open-studio-viewer/ )
 
 
 <details open >
 <summary>Concept</summary>
+
+The code here is from 2015 and apparently was the inspiration for the OSM file Viewer the OpenStudio app from NREL.
+
+There are some interesting features in this code not yet replicated in the new code.
 
 
 </details>
@@ -40,6 +47,10 @@ _Spider Open Studio Viewer_
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-10-09
+
+* Add deprecated notice
 
 ### 2020-05-29
 

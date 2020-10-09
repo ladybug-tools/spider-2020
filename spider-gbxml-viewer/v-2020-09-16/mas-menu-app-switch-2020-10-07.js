@@ -43,7 +43,7 @@ MAS.arrApps = [
 		title: "Mission: run a series of basic checks on gbXML files to identify, report and help you fix any issues."
 	},
 	{
-		text: "Spider gbXML Viewer v-2020-07-XX pre-release", url: "https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/",
+		text: "Spider gbXML Viewer v-2020-xx-xx pre-release", url: "https://www.ladybug.tools/spider-2020/spider-gbxml-viewer/",
 		title: "Latest development release - still under development - may have issues"
 	},
 	{

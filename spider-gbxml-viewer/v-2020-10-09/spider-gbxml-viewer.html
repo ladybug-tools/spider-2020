@@ -308,7 +308,7 @@
 
 	<!-- menus -->
 
-	<script src="../../lib/gbxml/mas-menu-app-switch-2020-10-09.js"></script>
+	<script src="../../lib/mas/mas-menu-app-switch-2020-10-09.js"></script>
 
 	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
 	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
@@ -325,6 +325,8 @@
 
 		init(); // see script spider-gbxml-viewer.js
 
+		MASdivMenuAppSwitch.innerHTML = MAS.getAppSwitch();
+		
 		if ( window.innerWidth < 640 || window.innerHeight < 500 ) {
 
 		} else {

@@ -36,8 +36,6 @@ function init () {
 
 	divDescription.innerHTML = description;
 
-	MASdivMenuAppSwitch.innerHTML = MAS.getAppSwitch();
-
 	THR.init();
 
 	THR.animate();

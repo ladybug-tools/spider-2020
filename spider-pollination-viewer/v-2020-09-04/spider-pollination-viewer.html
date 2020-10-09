@@ -60,6 +60,8 @@
 	<script src="pollination/phj-pollination-honeybee-json-2020-06-26.js"></script>
 
 	<!-- menus -->
+	<script src="../../lib/mas/mas-menu-app-switch-2020-10-09.js"></script>
+
 	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
 	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
 	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
@@ -76,6 +78,8 @@
 		<nav id="navMenu" class="gmd-2">
 
 			<header>
+
+				<div id="MASdivMenuAppSwitch"></div>
 
 				<h2>
 
@@ -315,6 +319,8 @@
 	<script>
 
 		init(); // see script-pollination-viewer.js
+
+		MASdivMenuAppSwitch.innerHTML = MAS.getAppSwitch();
 
 		if ( window.innerWidth < 640 || window.innerHeight < 500 ) {
 

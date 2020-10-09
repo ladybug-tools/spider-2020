@@ -15,18 +15,20 @@
 </head>
 
 <body>
-	
+
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/controls/OrbitControls.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r117/examples/js/utils/BufferGeometryUtils.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
-	
+
+	<script src="../../lib/mas/mas-menu-app-switch-2020-10-09.js"></script>
+
 	<script src="three/thr-threejs-aec-2020-06-03.js"></script>
 	<script src="three/ray-raycaster-sam-2020-05-27.js"></script>
 	<script src="three/hrt-heart-2020-05-27.js"></script>
-	
-<!-- 
+
+<!--
 	<script src="file-open/for-file-open-radiance-2020-05-29.js"></script> -->
 
 	<script src="file-open/fo-file-open-2020-06-03.js"></script>
@@ -45,6 +47,8 @@
 		<summary id=sumNavMenu class="sumPrimary gmd-1">show || hide menu</summary>
 
 		<nav id="navMenu" class="gmd-2">
+
+			<div id="MASdivMenuAppSwitch"></div>
 
 			<header id="hdrTitle">
 
@@ -96,18 +100,18 @@
 
 				<summary class="sumPrimary gmd-1" title="View selected surfaces" >view menu</summary>
 
-				
+
 
 			</details>
 
 			<details id=detData  >
 
 				<summary class="sumPrimary gmd-1" title="Browse the deta in the JSON file" >data menu</summary>
-				
+
 				<div id=GXDdivData ></div>
 					<p>
 						<i>We need to decide what data should appear here = and how best to format it. Work-in-progress.</i>
-					</p>	
+					</p>
 
 				<div id=divPopUpData> </div>
 
@@ -119,8 +123,8 @@
 
 			<br>
 
-			<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" 
-				src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico"> 
+			<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24"
+				src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">
 			</center>
 
 		</nav>
@@ -144,7 +148,7 @@
 			</div>
 			<button onclick="THR.controls.reset();" title="reset the view" class="ftrButton"><img height=32 width=32 src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
 		</div>
-	
+
 		<div class=divSetView >
 			<button onclick="THR.controls.autoRotate=!THR.controls.autoRotate" title="toggle the rotation" class=ftrButton>&circlearrowright;</button>
 			<div class="divSetViewButtons" >
@@ -160,11 +164,11 @@
 		</div>
 
 		<button onclick="onclick=alert( 'What do you need to see here?' );" title="Show all surfaces" class=ftrButton>&sdotb;</button>
-	
+
 		<button onclick="THR.setStats();" title="View frames per second and number of draw calls. Used for testing performance" class=ftrButton>fps</button>
 
 	</footer>
-	
+
 
 
 	<script src="spider-radiance-viewer.js"></script>
@@ -173,6 +177,8 @@
 
 		init(); // see script-radiance-viewer.js
 
+		MASdivMenuAppSwitch.innerHTML = MAS.getAppSwitch();
+		
 		if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
 
 			//toggleNavMenu();

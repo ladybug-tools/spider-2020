@@ -1,6 +1,6 @@
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-idf-viewer/";
 
-const version = "v-2020-06-20";
+const version = "v-2020-10-09";
 
 const description = document.head.querySelector( "[ name=description ]" ).content;
 

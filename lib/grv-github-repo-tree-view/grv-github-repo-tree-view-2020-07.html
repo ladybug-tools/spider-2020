@@ -5,7 +5,7 @@
 <meta name = "viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
 <meta name = "description" content = "2020 home page providing access to all the current files hosted using GitHub Pages." >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content="2020-07-11">
+	<meta name="version" content="2020-08-11">
 
 <link rel="stylesheet" href="../../lib/style/style-2020-07-13.css">
 
@@ -21,15 +21,16 @@
 <title></title>
 
 </head>
+
 <body>
 
-    <script src="../../lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-07-12.js"></script>
+	<script src="../../lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-08-11.js"></script>
 
 	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-07.js"></script>
 	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
 	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
 
-	<details id=detNavMenu >
+	<details id=detNavMenu>
 
 		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
 
@@ -39,34 +40,34 @@
 
 				<h2>
 
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/lib/grv-github-repo-tree-view/" target="_top" title="Source code on GitHub">
+					<a id=aGithub href="https://github.com/theo-armour/2020/tree/master/lib/grv-github-repo-tree-view/" target="_top" title="Source code on GitHub">
 						<img src="../../lib/assets/icons/octicon.svg">
 					</a>
 
 					<a id=aTitle href="" title="Click to reload this page">
 						GRV GitHub Repo Tree View
 					</a>
-					
+
 					<span class="info">
-						<img class=infoImg  src="../../lib/assets/icons/noun_Information_585560.svg"> 
+						<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
 						<span id="divDescription" class="infoTooltip gmd-5">
 
-					</span></span>
+						</span></span>
 
 				</h2>
 
 			</header>
 
-			<div id=divNavLog ></div>
+			<div id=divNavLog></div>
 
-			<details id=detFile >
+			<details id=detFile>
 
 				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
 
 				<div id=FRdivMenuFileReader></div>
 
 				<p>
-					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept="*">
 				</p>
 		
 				<div id=FOOdivLog >to be reset</div>
@@ -178,7 +179,7 @@ function init() {
 
 	onHashChange();
 
-	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+			if ( window.innerWidth < 640 || window.innerHeight < 500 ) {
 
 	} else {
 

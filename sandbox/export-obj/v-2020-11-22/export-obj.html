@@ -21,12 +21,25 @@
 			overflow: hidden;
 		}
 
-</style>
+		.mnu { position: absolute; left: 1rem; top: 1rem;}
+		
+	</style>
 </head>
 
 <body>
+
+	<div class=mnu>
+
+		<a href="">export obj</a>
+
+		<button onclick=exportObj()>export obj</button>
+
+	</div>
+
 	<script src="https://cdn.rawgit.com/mrdoob/three.js/r122/build/three.min.js"></script>
 	<script src="https://cdn.rawgit.com/mrdoob/three.js/r122/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/r122/examples/js/exporters/OBJExporter.js"></script>
 
 	<script>
 
@@ -68,7 +81,15 @@
 
 
 
+	function exportObj() {
 
+		const exporter = new THREE.OBJExporter();
+		const result = exporter.parse( scene );
+		console.log( "", result );
+		//floatingDiv.style.display = 'block';
+		//floatingDiv.innerHTML = result.split( '\n' ).join( '<br />' );
+
+	}
 		function onWindowResize() {
 
 			camera.aspect = window.innerWidth / window.innerHeight;

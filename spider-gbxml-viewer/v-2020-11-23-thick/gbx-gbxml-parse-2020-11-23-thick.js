@@ -147,11 +147,15 @@ GBX.getSurfaceMesh = function ( arr, index, holes ) {
 
 		} );
 
-		geometry = GBX.getBufferGeometryShape( points, pointsHoles );
+		
+		geometryObj = GBX.getBufferGeometryShape( points, pointsHoles );
+		//console.log( "geo", geometry );
+		g2 = geometryObj.geometry.clone().translate( geometryObj.normal.x, geometryObj.normal.y, geometryObj.normal.z );
 
-		console.log( "geo", geometry );
-
+		geometry = THREE.BufferGeometryUtils.mergeBufferGeometries( [ geometryObj.geometry, g2 ] );
 	}
+
+
 
 	const surfaceType = surface.match( 'surfaceType="(.*?)"' )[ 1 ];
 	const color = new THREE.Color( GBX.colors[ surfaceType ] );
@@ -214,9 +218,8 @@ GBX.getBufferGeometryShape = function ( points, holes = [] ) {
 	geometry.lookAt( normal );
 	geometry.computeVertexNormals();
 
-	
 
-	return geometry;
+	return { geometry, normal };
 
 };
 

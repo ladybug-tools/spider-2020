@@ -27,6 +27,7 @@ GitHub
 ## 2020-11-23 thick
 
 * 14:19 ~ first commit of working sandbox
+* 14:41 ~ screen shot with cloned surfaces created
 
 
 ## 2020-09-09

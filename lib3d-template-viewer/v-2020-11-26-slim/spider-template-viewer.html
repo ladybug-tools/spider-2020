@@ -9,7 +9,7 @@
 		content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 
-	<title>Spider gbXML Viewer</title>
+	<title>Lib Template Viewer</title>
 
 	<link rel="stylesheet" href="../../lib/style/style-2020-08-11.css">
 
@@ -38,24 +38,19 @@
 
 			<header>
 
-				<div id="MASdivMenuAppSwitch"></div>
-
 				<h2>
-
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-gbxml-viewer"
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer"
 						target="_top" title="Source code on GitHub">
 						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a href="" title="Click to reload this page">
-						Spider gbXML Viewer
+						Lib Template Viewer
 						<span id=spnVersion></span>
 					</a>
 					&nbsp;
-
 					<span class="info">
-						<img class=infoImg
-							src="https://ladybug.tools/spider-2020/assets/icons/noun_Information_585560.svg">
+						<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
 						<span id="divDescription" class="infoTooltip gmd-5">
 						</span></span>
 
@@ -65,82 +60,14 @@
 
 			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
 
-			<details id=detFile>
-
-				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
-
-				<div id=FRdivMenuFileReader></div>
-
-				<p>
-					<input type=file id=FRinpFile onchange=FR.readFile(this); accept="*">
-				</p>
-
-				<div id=FOOdivLog>to be reset</div>
-
-				<div id=FOZdivFileOpenZip></div>
-
-				<div id=divLog></div>
-
-			</details>
-
-			<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles()>
-
-				<summary class="summary-primary gmd-1" title="View selected items">sample files gallery</summary>
-
-				<div class=divNavResize>
-
-					<p>Sample files you can load, view and experiment with:</p>
-
-					<p><a href="https://ladybug.tools/spider-2020/cookbook/gbxml-gallery" target="_blank">BIM Port test cases gallery</a></p>
-
-					<p><a href="https://ladybug.tools/spider-2020/spider-gbxml-viewer-lt/gallery-gbxml-files.html"
-							target="_blank">Sample files in single page</a></p>
-
-					<div id=GFFdivGithubFoldersFiles></div>
-
-					<div id=GFFdivFileInfo></div>
-
-					<br>
-
-				</div>
-
-			</details>
-
-			<details class=detNavMenu id=detView ontoggle=VT.init();>
-
-				<summary class="summary-primary gmd-1" title="View selected model aspects">view menu</summary>
-
-				<div class=divNavResize>
-
-					<div id=VTdivViewTypes></div>
-
-					<div id=VTdivAttributes></div>
-
-				</div>
-
-			</details>
-
-			<details class=detNavMenu id=detData ontoggle="">
-
-				<summary class="summary-primary gmd-1" title="Browse the data in the file">data menu</summary>
-
-				<div class=divNavResize>
-
-					<div id=THRRdivSurfaceData></div>
-
-					<hr>
-
-				</div>
-
-			</details>
-
 			<br>
 
+			<hr>
 
 			<center>
 				<a href="javascript:navMenu.scrollTo(0,0);">
 					<img style=color:teal; title="Your AEC 3D viewer happy place!" height="24" width="24"
-						src="../../lib/assets/icons/noun_buildings_1825113.svg">
+						src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">
 				</a>
 			</center>
 
@@ -269,63 +196,55 @@
 
 			</div>
 		</div>
-
 	</footer>
 
 	<!-- end -->
 
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r120/build/three.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r120/examples/js/controls/OrbitControls.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r120/examples/js/utils/BufferGeometryUtils.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/utils/BufferGeometryUtils.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/jszip@3.5.0/dist/jszip.min.js"></script>
 
-	<!--
 	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.28.0"></script>
 	<script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.28.0"></script>
 	<script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.28.0/dist/textmesh-standalone.umd.min.js"></script>
-	-->
 
 
 	<!-- core -->
-	<script src="../../lib/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script src="../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
 
-	<script src="../../lib/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
-	<script src="../../lib/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
-	<script src="../../lib/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+	<script src="../../lib3d/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+	<script src="../../lib3d/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
 
-	<script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
-	<script src="../../lib/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
+	<!--
 
-	<script src="../../lib/gbxml/gbx-gbxml-parse-2020-10-09.js"></script>
+		<script src="../../lib/jtv-json-tree-view/jtv-json-tree-view-2020-07-28.js"></script>
 
-<!--
-	<script src="../../lib/ftj-file-type-to-json/xtj-xml-to-json-2020-07-13.js"></script>
-	<script src="../../lib/jtv-json-tree-view/jtv-json-tree-view-gbx-2020-07-13.js"></script>
-	<script src="../../lib/jtv-json-tree-view/jth-json-tree-helper-2020-07-07.js"></script>
-	<script src="../../lib/jtv-json-tree-view/jtf-json-tree-finder-2020-07-13.js"></script>
--->
+		<script src="../../lib/jtv-json-tree-view/jtf-json-tree-finder-2020-07-13.js"></script>
+		<script src="../../lib/jtv-json-tree-view/jth-json-tree-helper-2020-07-07.js"></script>
 
+	-->
 	<!-- menus -->
-
-	<script src="../../lib/mas/mas-menu-app-switch-2020-10-09.js"></script>
-
 	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
 	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
 	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+<!--
 
-	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-09-16.js"></script>
+	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-09-03.js"></script>
 
-	<script src="./vt-view-types/vt-view-types-gbx.js"></script>
+	<script src="../../lib3d/vt-view-types/vt-view-types-2020-06-26.js"></script>
+-->
 
 
-	<script src="spider-gbxml-viewer.js"></script>
+	<script src="spider-template-viewer.js"></script>
 
 	<script>
 
-		init(); // see script spider-gbxml-viewer.js
-
-		MASdivMenuAppSwitch.innerHTML = MAS.getAppSwitch();
+		init(); // see script-template-viewer.js
 
 		if ( window.innerWidth < 640 || window.innerHeight < 500 ) {
 

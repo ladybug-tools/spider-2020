@@ -96,6 +96,8 @@ FOO.onLoadFile = function () {
 
 function exportObj () {
 
+	divPopUp.innerHTML = "processing...";
+
 	const script = document.head.appendChild( document.createElement( "script" ) );
 
 	script.onload = () => {
@@ -105,6 +107,7 @@ function exportObj () {
 		extension = "obj";
 		//console.log( "obj result", result );
 		txtArea.value = result;
+		divPopUp.innerHTML = `Translation complete. Click "Save text to file" button.`;
 
 	};
 
@@ -116,6 +119,8 @@ function exportObj () {
 
 function exportStl () {
 
+	divPopUp.innerHTML = "processing...";
+
 	const script = document.head.appendChild( document.createElement( "script" ) );
 
 	script.onload = () => {
@@ -125,6 +130,7 @@ function exportStl () {
 		extension = "stl";
 		//console.log( "obj result", result );
 		txtArea.value = result;
+		divPopUp.innerHTML = `Translation complete. Click "Save text to file" button.`;
 
 	};
 
@@ -135,6 +141,8 @@ function exportStl () {
 
 function exportGltf () {
 
+	divPopUp.innerHTML = "processing...";
+
 	const script = document.head.appendChild( document.createElement( "script" ) );
 
 	script.onload = () => {
@@ -142,11 +150,11 @@ function exportGltf () {
 		const exporter = new THREE.GLTFExporter();
 		const result = exporter.parse( THR.group, ( result ) => {
 			output = JSON.stringify( result, null, 2 );
+			//console.log( "result", output );
 			txtArea.value = output;
-			console.log( "result", output );
+			divPopUp.innerHTML = `Translation complete. Click "Save text to file" button.`;
 		} );
 		extension = "gltf";
-		//console.log( "obj result", result );
 
 	};
 

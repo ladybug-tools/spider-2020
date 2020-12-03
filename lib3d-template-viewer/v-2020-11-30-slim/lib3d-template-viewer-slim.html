@@ -3,16 +3,16 @@
 
 <head>
 
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
 	<meta name="description"
 		content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
-
-	<title>gbXML Exporter</title>
+	<meta name="version" content="2020-11-30">
+	<title>Lib 3D Template Viewer Slim</title>
 
 	<!-- Copyright 2020 Theo Armour. MIT license -->
-	<link rel="stylesheet" href="../../../lib/style/style-2020-11-29.css">
+	<link rel="stylesheet" href="../../lib/style/style-2020-11-29.css">
 
 	<style>
 		:root {
@@ -36,22 +36,22 @@
 		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
 
 		<nav id="navMenu" class="gmd-2">
-
 			<header>
 
 				<h2>
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer"
+					<a id=aGithub
+						href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer"
 						target="_top" title="Source code on GitHub">
 						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a href="" title="Click to reload this page">
-						gbXML Exporter
+						Lib3D Template Viewer
 						<span id=spnVersion></span>
 					</a>
 					&nbsp;
 					<span class="info">
-						<img class=infoImg src="../../../lib/assets/icons/noun_Information_585560.svg">
+						<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
 						<span id="divDescription" class="infoTooltip gmd-5">
 						</span>
 					</span>
@@ -62,80 +62,9 @@
 
 			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
 
-			<details id=detFile>
+			<br>
 
-				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
-
-				<div id=FRdivMenuFileReader></div>
-
-				<p>
-					<input type=file id=FRinpFile onchange=FR.readFile(this); accept="*">
-				</p>
-
-				<div id=FOOdivLog>to be reset</div>
-
-				<div id=FOZdivFileOpenZip></div>
-
-				<div id=divLog></div>
-
-			</details>
-
-			<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles()>
-
-				<summary class="summary-primary gmd-1" title="View selected items">gbxml sample files gallery</summary>
-
-				<div class=divNavResize>
-
-					<p>Sample files you can load, view and experiment with:</p>
-
-					<div id=GFFdivGithubFoldersFiles></div>
-
-					<div id=GFFdivFileInfo></div>
-
-					<br>
-
-				</div>
-
-			</details>
-
-			<details>
-
-				<summary class="summary-primary gmd-1" title="View selected items">gbXML exporters</summary>
-
-				<div class=divNavResize>
-
-					<p>
-
-
-						<button onclick=exportObj()>create OBJ</button>
-
-						<button onclick=exportStl()>create STL</button>
-
-						<button onclick=exportGltf()>create glTF</button>
-					</p>
-
-					<textarea id=txtArea rows=10 style=width:100%;
-					placeholder="translation will appear here..."></textarea>
-
-					<button onclick=saveFile();>save text to file</button>
-
-					<h3>
-
-
-						Online Viewers
-					</h3>
-
-					<a href="https://3dviewer.net/" target="_blank">Online 3D Viewer</a><br>
-
-					<a href="https://gltf-viewer.donmccurdy.com/" target="_blank">glTF Viewer</a><br>
-
-					<a href="https://playcanvas.com/viewer" target="_blank">playcanvas</a><br>
-
-					<br>
-					
-				</div>
-
-			</details>
+			<div id=divStats ></div>
 
 			<hr>
 
@@ -281,42 +210,41 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/jszip@3.5.0/dist/jszip.min.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.28.0"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.28.0"></script>
 	<script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.28.0"></script>
-	<script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.28.0/dist/textmesh-standalone.umd.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.28.0/dist/textmesh-standalone.umd.min.js"></script> -->
 
 
 	<!-- core -->
-	<script src="../../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
-	<script src="../../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
-	<script src="../../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
-	<script src="../../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+	<script src="../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script src="../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
 
-	<script src="../../../lib3d/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
-	<script src="../../../lib3d/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
-
-	<script src="../../../lib/gbxml/gbx-gbxml-parse-2020-10-09.js"></script>
+	<script src="../../lib3d/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+	<script src="../../lib3d/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
 
 	<!--
-
 		<script src="../../lib/jtv-json-tree-view/jtv-json-tree-view-2020-07-28.js"></script>
 
 		<script src="../../lib/jtv-json-tree-view/jtf-json-tree-finder-2020-07-13.js"></script>
 		<script src="../../lib/jtv-json-tree-view/jth-json-tree-helper-2020-07-07.js"></script>
-
 	-->
 	<!-- menus -->
-	<script src="../../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
-	<script src="../../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
-	<script src="../../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
-	<script src="../../../lib/gff-github-folder-files/gff-github-folder-files-2020-09-03.js"></script>
+	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
+	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
+	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+<!--
 
-	<!--
+	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-09-03.js"></script>
+
 	<script src="../../lib3d/vt-view-types/vt-view-types-2020-06-26.js"></script>
 -->
 
+	<script src="../../lib3d/map/v-2020-11-30/map-world.js"></script>
 
-	<script src="exporter.js"></script>
+
+	<script src="lib3d-template-viewer-slim.js"></script>
 
 	<script>
 

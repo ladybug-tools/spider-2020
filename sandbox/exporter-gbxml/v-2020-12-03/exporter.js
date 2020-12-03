@@ -1,7 +1,7 @@
 
 const source = "https://github.com/theo-armour/2020/tree/master/lib-template-viewer/";
 
-const version = "v-2020-11-26 slim";
+const version = "2020-12-03";
 
 //const description = document.head.querySelector( "[ name=description ]" ).content;
 

@@ -3,20 +3,20 @@
 
 <head>
 
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
 	<meta name="description"
 		content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
-
-	<title>gbXML Exporter</title>
+	<meta name="version" content="2020-11-29">
+	<title>Lib 3D Template Viewer</title>
 
 	<!-- Copyright 2020 Theo Armour. MIT license -->
-	<link rel="stylesheet" href="../../../lib/style/style-2020-11-29.css">
+	<link rel="stylesheet" href="../../lib/style/style-2020-11-29.css">
 
 	<style>
 		:root {
-			--main-hue: 130;
+			--main-hue: 60;
 			/* 0 to 360 0=red 120=green 240=blue */
 		}
 
@@ -40,18 +40,19 @@
 			<header>
 
 				<h2>
-					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer"
+					<a id=aGithub 
+						href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer"
 						target="_top" title="Source code on GitHub">
 						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
 					</a>
 
 					<a href="" title="Click to reload this page">
-						gbXML Exporter
+						Lib3D Template Viewer
 						<span id=spnVersion></span>
 					</a>
 					&nbsp;
 					<span class="info">
-						<img class=infoImg src="../../../lib/assets/icons/noun_Information_585560.svg">
+						<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
 						<span id="divDescription" class="infoTooltip gmd-5">
 						</span>
 					</span>
@@ -98,46 +99,61 @@
 
 			</details>
 
-			<details>
 
-				<summary class="summary-primary gmd-1" title="View selected items">gbXML exporters</summary>
+			<details ontoggle=GGFFdivGithubFoldersFiles.innerHTML=GGFF.getMenuGithubFoldersFiles()>
+
+				<summary class="summary-primary gmd-1" title="View selected items">gltf sample files gallery</summary>
 
 				<div class=divNavResize>
 
-					<p>
+					<p>Sample files you can load, view and experiment with:</p>
 
+					<div id=GGFFdivGithubFoldersFiles></div>
 
-						<button onclick=exportObj()>create OBJ</button>
-
-						<button onclick=exportStl()>create STL</button>
-
-						<button onclick=exportGltf()>create glTF</button>
-					</p>
-
-					<textarea id=txtArea rows=10 style=width:100%;
-					placeholder="translation will appear here..."></textarea>
-
-					<button onclick=saveFile();>save text to file</button>
-
-					<h3>
-
-
-						Online Viewers
-					</h3>
-
-					<a href="https://3dviewer.net/" target="_blank">Online 3D Viewer</a><br>
-
-					<a href="https://gltf-viewer.donmccurdy.com/" target="_blank">glTF Viewer</a><br>
-
-					<a href="https://playcanvas.com/viewer" target="_blank">playcanvas</a><br>
+					<div id=GGFFdivFileInfo></div>
 
 					<br>
-					
+
 				</div>
 
 			</details>
 
-			<hr>
+			<!-- <details class=detNavMenu id=detView ontoggle=JTV.setMessage();>
+
+				<summary class="summary-primary gmd-1" title="View selected model aspects" >view menu</summary>
+
+					<div class=divNavResize >
+
+					<div id=VTdivViewTypes ></div>
+
+					<div id=VTdivAttributes></div>
+
+				</div>
+
+			</details> -->
+
+			<details class=detNavMenu id=detData ontoggle=JTV.setMessage();>
+
+				<summary class="summary-primary gmd-1" title="Browse the data in the file">data menu</summary>
+
+				<div class=divNavResize>
+
+					<div id=JTHdivJsonTreeHelper></div>
+
+					<div id=JTFdivJsonTreeFinder></div>
+
+					<div id=JTEdivJsonTreeEdit></div>
+
+					<div id=JTVdivJsonTreeView></div>
+
+					<hr>
+
+				</div>
+
+			</details>
+
+			<br>
+
 
 			<center>
 				<a href="javascript:navMenu.scrollTo(0,0);">
@@ -287,36 +303,37 @@
 
 
 	<!-- core -->
-	<script src="../../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
-	<script src="../../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
-	<script src="../../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
-	<script src="../../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+	<script src="../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script src="../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
 
-	<script src="../../../lib3d/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
-	<script src="../../../lib3d/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
-
-	<script src="../../../lib/gbxml/gbx-gbxml-parse-2020-10-09.js"></script>
+	<script src="../../lib3d/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+	<script src="../../lib3d/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
 
 	<!--
-
 		<script src="../../lib/jtv-json-tree-view/jtv-json-tree-view-2020-07-28.js"></script>
 
 		<script src="../../lib/jtv-json-tree-view/jtf-json-tree-finder-2020-07-13.js"></script>
 		<script src="../../lib/jtv-json-tree-view/jth-json-tree-helper-2020-07-07.js"></script>
-
 	-->
 	<!-- menus -->
-	<script src="../../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
-	<script src="../../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
-	<script src="../../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
-	<script src="../../../lib/gff-github-folder-files/gff-github-folder-files-2020-09-03.js"></script>
+	<script src="../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
+	<script src="../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
+	<script src="../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+
+
+	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-09-16.js"></script>
+
+	<script src="../../lib/ggff-gltf-github-folder-files/ggff-gltf-github-folder-files-2020-11-28.js"></script>
+	<script src="../../lib/ggff-gltf-github-folder-files/gfo-gltf-file-open.js"></script>
 
 	<!--
 	<script src="../../lib3d/vt-view-types/vt-view-types-2020-06-26.js"></script>
 -->
 
 
-	<script src="exporter.js"></script>
+	<script src="lib3d-template-viewer.js"></script>
 
 	<script>
 

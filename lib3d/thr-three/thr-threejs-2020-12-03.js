@@ -113,6 +113,7 @@ THR.updateScene = function ( group = THR.group ) {
 THR.zoomObjectBoundingSphere = function ( obj = THR.group ) {
 	//console.log( "obj", obj );
 
+	obj = obj.children.length ? obj : THR.scene.children[ 7 ];
 	THR.center = new THREE.Vector3( 0, 0, 0 );
 	THR.radius = 50;
 	THR.bottom = 0;
@@ -174,11 +175,15 @@ THR.zoomObjectBoundingSphere = function ( obj = THR.group ) {
 	//window.dispatchEvent(event);
 };
 
-THR.zoomToFitObject = function ( object = THR.group, fitOffset = 1 ) {
+THR.zoomToFitObject = function ( obj = THR.group, fitOffset = 1 ) {
 
+	object = obj
+	object = object.children.length != 0 ? object : THR.scene.children[ 7 ];
+	console.log( "object", object );
 	const box = new THREE.Box3().setFromObject( object );
 	const size = box.getSize( new THREE.Vector3() );
 	const center = box.getCenter( new THREE.Vector3() );
+	console.log( "box", box );
 
 	const maxSize = Math.max( size.x, size.y, size.z );
 	const fitHeightDistance = maxSize / ( 2 * Math.atan( ( Math.PI * THR.camera.fov ) / 360 ) );

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<meta name=description content="Basic HTML template">
+	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+	<meta name="date" content="2020-12-17">
+	<title></title>
+	<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2020/lib/style/style-2020-11-29.css">
+	<style>
+		/* Copyright 2020 Theo Armour. MIT License */
+
+		body {
+			font: 100% monospace;
+			margin: 0;
+			overflow: hidden;
+		}
+
+		h1 {
+			position: absolute;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1><a href="" id=aTitle></a></h1>
+
+	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear
+		here </div>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+
+	<script src="rad-to-three.js"></script>
+	<script src="rad-converter.js"></script>
+	<script src="pop-up.js"></script>
+
+	<script>
+
+
+		init();
+
+		function init() {
+
+			THR.init();
+			THR.animate();
+
+			THR.addLights();
+			THR.addGround();
+
+			THR.group = THR.setSceneNew();
+
+			//THRU.addMeshes( 100 );
+
+
+			RAD.json = { 'surfaces': [], 'materials': [], 'other': [] };
+
+			const urlRadDefault = "https://www.ladybug.tools/spider-2020/spider-radiance-viewer/DaylightingJSONTestBuilding.rad";
+
+			requestFile( urlRadDefault, RAD.addDataFile );
+
+
+		}
+
+
+
+
+
+
+		function requestFile( url = "https://example.com", callback = onLoad ) {
+
+			const urlCORS = "https://cors-anywhere.herokuapp.com/";
+
+			xhr = new XMLHttpRequest();
+			xhr.open( "GET", url, true );
+			xhr.responseType = "text";
+			xhr.onerror = ( xhr ) => console.log( "error:", xhr );
+			//xhr.onprogress = ( xhr ) => console.log( "bytes loaded:", xhr.loaded );
+			xhr.onload = ( xhr ) => callback( xhr.target.response );
+			xhr.send( null );
+
+		}
+
+	</script>
+</body>
+
+</html>

@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
-	<meta name=description content="Basic HTML template">
-	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
-	<meta name="date" content="2020-12-14">
+	<meta name=description content="Real-time 3D in your browser with menu sliding">
+	<meta name=keywords content="Ladybug Toools,Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+	<meta name="date" content="2018-01-18">
 	<title></title>
 	<style>
 		/* Copyright 2020 Theo Armour. MIT License */
@@ -28,6 +28,9 @@
 
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r122/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r122/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="glo-globe.js"></script>
+
 
 	<script>
 
@@ -62,10 +65,20 @@
 			axesHelper = new THREE.AxesHelper( 50 );
 			scene.add( axesHelper );
 
-			geometry = new THREE.BoxGeometry( 50, 50, 50 );
-			material = new THREE.MeshNormalMaterial();
-			mesh = new THREE.Mesh( geometry, material );
-			scene.add( mesh );
+			// geometry = new THREE.BoxGeometry( 50, 50, 50 );
+			// material = new THREE.MeshNormalMaterial();
+			// mesh = new THREE.Mesh( geometry, material );
+			// scene.add( mesh );
+
+			scene.add( new THREE.AmbientLight( 0xaaaaaa ) );
+
+			const pointLight = new THREE.PointLight( 0xffffff, 1 );
+			pointLight.position.copy( camera.position );
+			camera.add( pointLight );
+
+			//GLO.initGlobeWithBitmap();
+
+			GLO.setGlobeElevation3D();
 
 		}
 

@@ -16,20 +16,13 @@ GJS.initGeoJson = function () {
 	GJS.groupGeoJson = new THREE.Group();
 	GJS.groupGeoJson.name = "geoJson";
 
-	const pathGeoJson = "https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/";
-
 	//const urlGeoJson = "../../assets/naturalearth/gz_2010_us_050_00_20m.json";
-	const urlGeoJson = "./gz_2010_us_050_00_20m.json";
-
 	//const urlGeoJson = "../../opendata/us-county-boundaries-ca.geojson";
 	//const urlGeoJson = "./json/ca-cbsa.json";
 
+	const urlGeoJson = "../cb_2019_us_county_20m.geojson";
 
 	GJS.requestFile( urlGeoJson, GJS.onLoadGeoJson );
-
-	//const urlJsonRegions = "ne_50m_admin_1_states_provinces_lines.geojson";
-
-	//GJS.requestFile( urlJsonRegions, GJS.onLoadGeoJson );
 
 	scene.add( GJS.groupGeoJson );
 
@@ -39,7 +32,7 @@ GJS.initGeoJson = function () {
 
 
 
-GJS.onLoadGeoJson = function ( string ) {
+GJS.bbbbbonLoadGeoJson = function ( string ) {
 
 	const json = string
 
@@ -74,43 +67,52 @@ GJS.onLoadGeoJson = function ( string ) {
 
 
 
-GJS.onLoadGeoJsonCbsa = function ( string ) {
+GJS.onLoadGeoJson = function ( string ) {
+	// Much may be simplified here
 
-	geoJson = string;
+	const json = string;
 
-	console.log( "geoJson", geoJson.records );
+	const geometries = json.features.map( feature => feature.geometry );
+	//console.log( "geometries", geometries );
 
-	//let geometries = json.features.map( feature => feature.geometry );
+	const points = [];
 
-	let geometries = geoJson.records.map( record => record.fields.geo_shape );
-	console.log( "geometries", geometries );
+	geometries.forEach( geometry => {
 
-	let points = geometries.flatMap( geometry => {
+		if ( geometry?.type === "Polygon" ) {
 
-		if ( [ "MultiPolygon", "Polygon", "MultiLineString" ].includes( geometry.type ) ) {
+			polygon = geometry.coordinates[ 0 ];
 
-			return [ ... geometry.coordinates ];
+			vertices = polygon.map( pair => GJS.latLonToXYZ( 50, pair[ 1 ], pair[ 0 ] ) )
 
-		} else if ( geometry.type === "LineString" ) {
+			points.push( vertices );
 
-			return [ geometry.coordinates ];
+
+		} else if ( geometry?.type === "MultiPolygon" ) {
+
+			geometry.coordinates.forEach( polygons => {
+
+				polygons.forEach( polygon => {
+
+					vertices = polygon.map( pair => GJS.latLonToXYZ( 50, pair[ 1 ], pair[ 0 ] ) );
+
+					points.push( vertices );
+
+				} );
+
+			} );
 
 		}
 
 	} );
-	console.log( "points", points );
+	//console.log( "points", points );
 
-	//const vertices = points.map( pairs => pairs.map( pair => GJS.latLonToXYZ( 50, pair[ 1 ], pair[ 0 ] ) ) );
-	//console.log( "vertices", vertices );
-
-
-	const vertices = points.map( pairs => pairs.map( pair => new THREE.Vector3( pair[ 0 ], pair[ 1 ], 0 )  ) );
-
-	const line = GJS.addLineSegments( vertices );
+	const line = GJS.addLineSegments( points );
 
 	GJS.groupGeoJson.add( line );
 
 };
+
 
 GJS.addLineSegments = function ( segments ) {
 
@@ -136,9 +138,6 @@ GJS.addLineSegments = function ( segments ) {
 	return new THREE.LineSegments( geometry, material );
 
 };
-
-
-
 
 
 GJS.latLonToXYZ = function( radius = 50, lat = 0, lon = 0 ) {

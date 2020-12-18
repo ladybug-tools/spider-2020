@@ -225,7 +225,7 @@ pre {
 }
 .infoImg {
 	opacity: 0.5;
-	width: 16px;
+	width: 1rem;
 }
 .infoTooltip {
 	border: 1px double #888;
@@ -365,7 +365,7 @@ pre {
 	background-color: var(--color-1-background);
 	border: 0 solid red;
 	border-radius: 2ch;
-	padding: 1ch;
+	padding: 0 1ch;
 }
 #detNavMenu {
 	background-color: var(--color-2-background);

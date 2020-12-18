@@ -4,13 +4,13 @@
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
 
-# [Lib Read Me]( https://theo-armour.github.io/2020/lib/readme.html )
+# [pushMe-pullYou Lib Read Me]( ./readme.html )
 
 <!--@@@
-<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://theo-armour.github.io/2020/ height=100% width=100% ></iframe></div>
-_Lib_
+<div style=height:300px;overflow:hidden;width:100%;resize:both; ><iframe src=https://pushme-pullyou.github.io/tootoo-2020/ height=100% width=100% ></iframe></div>
+_https://pushme-pullyou.github.io/tootoo-2020/_
 
-### Full Screen: [Lib]( https://theo-armour.github.io/2020/lib/ )
+### Full Screen: [tootoo 2020]( https://pushme-pullyou.github.io/tootoo-2020// )
 @@@-->
 
 
@@ -30,8 +30,6 @@ Why not a single lib for all users and repos?
 * Makes it difficult for new users
 * Discourages simplicity, individuality and customization
 
-
-
 ## To Do / Wish List
 
 
@@ -40,15 +38,41 @@ Why not a single lib for all users and repos?
 
 ## Links of Interest
 
+* https://github.com/pushme-pullyou/templates-01/tree/master/html-hamburger-plus << latest
+* https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/
+
+Web
+
+* https://github.com/dohliam/dropin-minimal-css
+* https://www.w3schools.com/w3css/
+    * https://www.w3schools.com/w3css/w3css_colors.asp
+    * https://www.w3schools.com/lib/w3-theme-red.css
+* https://bootswatch.com/
+
+Switching themes
+
+* https://github.com/Mohammad-Farmaan/Dark-Mode-For-Web
+
 
 ## Change Log
 
+### 2020-12-17
+
+* Sync this file
+
+
+### 2020-11-11
+
+* Many updates
+
+### 2020-09-18
+
+* First commit
 
 ### 2020-11-07
 
 * First update
 
-
 ***
 
-<center title="hello! Click me to go up to the top" ><a href=javascript:window.scrollTo(0,0); > ❦ </a></center>
+<center><a href=javascript:window.scrollTo(0,0); class=aDingbat title="Scroll to top" > ❧ </a></center>

@@ -18,8 +18,13 @@ GJS.initGeoJson = function () {
 
 	const pathGeoJson = "https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/";
 
-	//const urlGeoJson = "../../assets/naturalearth/gz_2010_us_050_00_20m.json";
-	const urlGeoJson = "./gz_2010_us_050_00_20m.json";
+
+	// https://data.sfgov.org/COVID-19/COVID-19-Cases-by-Geography-and-Date/d2ef-idww
+	// API > geoJson
+	//const urlGeoJson = "https://data.sfgov.org/resource/d2ef-idww.geojson";
+	const urlGeoJson = "../c-19.geojson";
+
+	//const urlGeoJson = "./gz_2010_us_050_00_20m.json";
 
 	//const urlGeoJson = "../../opendata/us-county-boundaries-ca.geojson";
 	//const urlGeoJson = "./json/ca-cbsa.json";
@@ -41,30 +46,34 @@ GJS.initGeoJson = function () {
 
 GJS.onLoadGeoJson = function ( string ) {
 
+	console.log( "string", string );
 	const json = string
 
-	let geometries = json.features.map( feature => feature.geometry );
-	//console.log( "geometries", geometries );
+	let geometries = json.features.filter( feature => feature.geometry ).map( feature => feature.geometry )
+	console.log( "geometries", geometries );
 
 	let points = geometries.flatMap( geometry => {
 
-		if ( [ "MultiPolygon", "Polygon", "MultiLineString" ].includes( geometry.type ) ) {
+		if ( geometry && [ "MultiPolygon", "Polygon", "MultiLineString" ].includes( geometry.type ) ) {
 
-			return [ ... geometry.coordinates ];
+			return [ ... geometry.coordinates ][ 0 ];
 
-		} else if ( geometry.type === "LineString" ) {
+		} else if ( geometry && geometry.type === "LineString" ) {
 
 			return [ geometry.coordinates ];
 
+		} else {
+
+			return [];
 		}
 
 	} );
-	//console.log( "points", points );
+	console.log( "points", points );
 
-	const vertices = points.map( pairs => pairs.map( pair => GJS.latLonToXYZ( 50, pair[ 1 ], pair[ 0 ] ) ) );
-	//console.log( "vertices", vertices );
+	//const vertices = points.map( pairs => pairs.flatMap( pair => GJS.latLonToXYZ( 50, pair[ 1 ], pair[ 0 ] ) ) );
 
-	//const vertices = points.map( pairs => pairs.map( pair => new THREE.Vector3( pair[ 0 ], pair[ 1 ], 0 )  ) );
+	const vertices = points.map( pairs => pairs.map( pair => new THREE.Vector3( pair[ 0 ]+ 122.44, pair[ 1 ] - 37.77, 0 )  ) );
+	console.log( "vertices", vertices );
 
 	const line = GJS.addLineSegments( vertices );
 

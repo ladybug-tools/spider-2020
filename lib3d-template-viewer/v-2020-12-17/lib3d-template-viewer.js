@@ -26,9 +26,9 @@ function init () {
 
 	THR.group = THR.setSceneNew();
 
-	//THRU.addMeshes(100);
+	THRU.addMeshes(100);
 
-	//THRR.updateScene();
+	THRR.updateScene();
 
 	// FOO.init();
 

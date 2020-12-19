@@ -194,15 +194,17 @@ RAD.setThreeJsWindowUpdate = function( json, target = undefined ) {
 	RAD.meshes.add( triangles );
 	THR.scene.add( RAD.meshes, RAD.edges );
 
+	THRR.updateScene( RAD.meshes.children );
+
 	//THRU.zoomObjectBoundingSphere( RAD.meshes );
 
 	//target.innerHTML = POP.getPopUpHtml();
 
- 	if ( RAD.divPopUpData ) {
+ 	// if ( RAD.divPopUpData ) {
 
-		setTimeout(() => { RAD.divPopUpData.innerHTML = POP.getPopUpHtml(); }, 600 );
+	// 	setTimeout(() => { RAD.divPopUpData.innerHTML = POP.getPopUpHtml(); }, 600 );
 
-	}
+	// }
 
 };
 

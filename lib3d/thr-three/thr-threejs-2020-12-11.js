@@ -219,8 +219,8 @@ THR.zoomToFitObject = function ( obj = THR.group, fitOffset = 1 ) {
 THR.setAllVisible = function () {
 
 	//THRU.tellTaleReset();
-
 	THR.group.children.forEach( mesh => ( mesh.visible = true ) );
+
 };
 
 //////////
@@ -265,7 +265,7 @@ THR.addLights = function () {
 	THR.lightDirectional = lightDirectional;
 };
 
-THR.addGround = function ( position = new THREE.Vector3( 0, 0, 0 ) ) {
+THR.addGround = function ( position = new THREE.Vector3( 0, 0, -0.02 ) ) {
 	const geometry = new THREE.PlaneBufferGeometry( 5000, 5000 );
 	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( position.x, position.y, position.z ) );
 	const material = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, side: 0 } );

@@ -27,23 +27,23 @@
 
 	<h1><a href="" id=aTitle></a></h1>
 
-	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear
+	<div id="divPopUp" class="gmd-2" style=max-width:30%;>When you touch a surface,<br>the rotation will stop<br>and its
+		details will appear
 		here </div>
 
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
 
-	<script src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thr-three/thr-threejs-2020-12-11.js"></script>
 	<script
 		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
-	<script
-		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="thrr-three-raycaster-mousedown-2020-12-19.js"></script>
 	<script
 		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
 
 	<script src="rad-to-three.js"></script>
 	<script src="rad-converter.js"></script>
-	<script src="pop-up.js"></script>
+	<!-- <script src="pop-up.js"></script> -->
 
 	<script>
 
@@ -71,13 +71,12 @@
 
 			const urlRadDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider-rad-resources@master/rad-sample-files/mostapha-sample-files/honeybee_005.opq.rad";
 
+			//const urlRadDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider-rad-resources@master/rad-sample-files/mostapha-sample-files/honeybee_005.opq.rad";
+
 			requestFile( urlRadDefault, RAD.addDataFile );
 
 
 		}
-
-
-
 
 
 
@@ -94,6 +93,66 @@
 			xhr.send( null );
 
 		}
+
+
+
+
+		//POP.getIntersectedDataHtml = function ( intersected, intersects ) {
+
+		THRR.getHtm = function ( intersected ) {
+			console.log( "intersected", intersected );
+
+			const triangleParent = RAD.triangleParent[ intersected.faceIndex ];
+			//console.log( 'triangleParent', triangleParent );
+
+			const surface = intersected.object.userData.name ? intersected.object.userData : triangleParent;
+			console.log( 'surface', surface );
+
+			const surfaceText = JSON.stringify( surface, null, 2 ).slice( 2, -2 ).replace( /"/g, '' )
+				.replace( /(\D),/g, '$1<br>' ).replace( /vertices:/, '<br>vertices:<br>' );
+
+			let materialText;
+
+			if ( RAD.json.materials.length > 0 ) {
+
+				const materialJson = RAD.json.materials.find( item => item.name === triangleParent.modifier );
+
+				materialText = materialJson ?
+					JSON.stringify( materialJson, null, 2 ).slice( 2, -2 ).replace( /"/g, '' ).replace( /(\D),/g, '$1<br>' )
+					:
+					"";
+
+			} else {
+
+				//col = intersected.object.geometry.attributes.color.array;
+
+				materialText =
+					`
+			name: ${ RAD.colors[ triangleParent.modifier ] }<br>
+			`;
+			//color :r ${ col[ 0 ].toFixed( 3 ) } g: ${ col[ 1 ].toFixed( 3 ) } b: ${ col[ 2 ].toFixed( 3 ) }
+
+			}
+
+
+			htm =
+				`
+		<div><b>Geometry</b></div>
+		${ surfaceText }
+		<div><b>Material</b></div>
+		${ materialText }
+		<div><b>Three.js</b></div>
+		<div>
+		name: ${ intersected.object.name }<br>
+		type: ${ intersected.object.geometry.type }<br>
+		index: ${ intersected.faceIndex }<br>
+		point x: ${ intersected.point.x.toFixed( 2 ) } y: ${ intersected.point.y.toFixed( 2 ) } z: ${ intersected.point.z.toFixed( 2 ) }<br>
+	</div>	`;
+
+			return htm;
+
+		};
+
 
 	</script>
 </body>

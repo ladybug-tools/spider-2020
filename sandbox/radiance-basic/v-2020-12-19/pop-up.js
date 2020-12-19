@@ -38,9 +38,7 @@ POP.getPopUpHtml = function () {
 
 		<div id = "divPopUpDataXXX" >
 
-			<p>
-				Item data appears here when the pointer is over a data point
-			</p>
+			<p>Item data appears here when the pointer is over a data point</p>
 
 			<p>Axis RGB = XYZ directions</p>
 
@@ -182,7 +180,7 @@ POP.getIntersectedVertexGeometry = function () {
 
 POP.getIntersectedDataHtml = function ( intersected, intersects ) {
 
-	const triangleParent = RAD.triangleParent[ POP.faceIndex ];
+	const triangleParent = RAD.triangleParent[intersected.faceIndex ];
 	//console.log( 'triangleParent', triangleParent );
 
 	const surface = POP.intersected.userData.name ? POP.intersected.userData : triangleParent;
@@ -215,17 +213,17 @@ POP.getIntersectedDataHtml = function ( intersected, intersects ) {
 
 	htm =
 		`
-		<h3>Geometry</h3>
+		<div><b>Geometry</b></div>
 		${ surfaceText }
-		<h3>Material</h3>
+		<div><b>Material</b></div>
 		${ materialText }
-		<h3>Three.js</h3>
+		<div><b>Three.js</b></div>
+		<div>
 		name: ${ POP.intersected.name }<br>
 		type: ${ POP.intersected.geometry.type }<br>
 		index: ${ POP.faceIndex }<br>
 		point x: ${ POP.intersects[ 0 ].point.x.toFixed( 2 ) } y: ${ POP.intersects[ 0 ].point.y.toFixed( 2 ) } z: ${ POP.intersects[ 0 ].point.z.toFixed( 2 ) }<br>
-
-	`;
+	</div>	`;
 
 	return htm;
 

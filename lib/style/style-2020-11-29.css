@@ -161,7 +161,7 @@ pre {
 	margin: 0 auto;
 	width: 40rem;
 }
-.divResize {
+.divResize, .divNavResize {
 	border-right: 1px solid teal;
 	overflow: auto;
 	resize: vertical;

@@ -50,24 +50,24 @@ THRR.onPointerDown = function ( event ) {
 		//if ( intersected.instanceId ) {
 
 
-		if ( event.button === 2 && THRR.intersected.object.geometry.vertices ) {
+		// if ( event.button === 2 && THRR.intersected.object.geometry.vertices ) {
 
-			vertices = THRR.intersected.object.geometry.vertices;
+		// 	vertices = THRR.intersected.object.geometry.vertices;
 
-			//console.log( "intersected", vertices );
+		// 	console.log( "intersected", vertices );
 
-			THRR.intersected.object.visible = !THRR.intersected.object.visible;
+		// 	//THRR.intersected.object.visible = !THRR.intersected.object.visible;
 
-			THRU.addLine( THRR.intersected.object, vertices );
+		// 	//THRU.addLine( THRR.intersected.object, vertices );
 
-			texts = vertices.map( ( vtx, i ) => THRU.drawPlacard( "" + i, THR.radius / 2000, 0xffffff, vtx.x, vtx.y, vtx.z ) );
+		// 	//texts = vertices.map( ( vtx, i ) => THRU.drawPlacard( "" + i, THR.radius / 2000, 0xffffff, vtx.x, vtx.y, vtx.z ) );
 
-			THRR.intersected.object.add( ...texts );
-			//THRR.intersected.);
+		// 	//THRR.intersected.object.add( ...texts );
+		// 	//THRR.intersected.);
 
-			return;
+		// 	return;
 
-		}
+		// }
 
 		divPopUp.hidden = false;
 		divPopUp.style.left = event.clientX + 0 + "px";

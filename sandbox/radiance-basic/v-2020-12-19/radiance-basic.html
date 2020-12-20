@@ -65,11 +65,11 @@
 
 			RAD.json = { 'surfaces': [], 'materials': [], 'other': [] };
 
-			//const urlRadDefault = "https://www.ladybug.tools/spider-2020/spider-radiance-viewer/DaylightingJSONTestBuilding.rad";
+			const urlRadDefault = "https://www.ladybug.tools/spider-2020/spider-radiance-viewer/DaylightingJSONTestBuilding.rad";
 
 			//const urlRadDefault = "https://www.ladybug.tools/spider-2020/spider-radiance-viewer/radiance-animation-test-case.rad";
 
-			const urlRadDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider-rad-resources@master/rad-sample-files/mostapha-sample-files/honeybee_005.opq.rad";
+			//const urlRadDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider-rad-resources@master/rad-sample-files/mostapha-sample-files/honeybee_005.opq.rad";
 
 			//const urlRadDefault = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider-rad-resources@master/rad-sample-files/mostapha-sample-files/honeybee_005.opq.rad";
 
@@ -96,17 +96,14 @@
 
 
 
-
-		//POP.getIntersectedDataHtml = function ( intersected, intersects ) {
-
 		THRR.getHtm = function ( intersected ) {
-			console.log( "intersected", intersected );
+			//console.log( "intersected", intersected );
 
 			const triangleParent = RAD.triangleParent[ intersected.faceIndex ];
 			//console.log( 'triangleParent', triangleParent );
 
 			const surface = intersected.object.userData.name ? intersected.object.userData : triangleParent;
-			console.log( 'surface', surface );
+			//console.log( 'surface', surface );
 
 			const surfaceText = JSON.stringify( surface, null, 2 ).slice( 2, -2 ).replace( /"/g, '' )
 				.replace( /(\D),/g, '$1<br>' ).replace( /vertices:/, '<br>vertices:<br>' );

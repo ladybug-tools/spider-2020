@@ -13,7 +13,7 @@ RAD.converterObjectToJson = function( rad_text ) {
 
 	const rep_new_line_re = /\s\s+/g;
 	const data = dd.replace( rep_new_line_re, " " ).trim().split( " " );
-	//console.log( 'data', data  );
+	console.log( 'data', data  );
 
 	const type = data[ 1 ];
 	//console.log( 'type', type );

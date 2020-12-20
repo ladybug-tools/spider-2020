@@ -69,11 +69,11 @@ RAD.addDataFile = function( text ) {
 
 	const json = RAD.radToJson( text );
 
+	//console.log( "json", json );
+
 	json.forEach( result => RAD.json[ result[ 0 ] ].push( result[ 1 ] ) ); // not easy to understand
 
 	RAD.setThreeJsWindowUpdate( RAD.json );
-
-
 
 	return json;
 

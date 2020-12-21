@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<meta name=description content="Basic HTML template">
+	<meta name=keywords content="JavaScript,GitHub,FOSS,STEM">
+	<meta name="date" content="2020-12-20">
+	<title></title>
+
+	<!-- Copyright 2020 Theo Armour. MIT license -->
+
+	<link rel="stylesheet" href="../../lib/style/style-2020-11-29.css">
+
+	<!-- https://github.com/showdownjs/showdown -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+	<style>
+
+				:root {
+			--main-hue: 60;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+		
+		h4 { margin: 0.5rem 0 0 0;}
+
+	</style>
+</head>
+
+<body>
+
+	<div id=divMenu></div>
+
+	<div id=divMenuContent hidden>
+
+
+		<h4>Architecture, Engineering Construction (AEC) </h4>
+
+		<div><a href="#https://www.ladybug.tools/spider/README.md">Spider</a></div>
+
+		<a href="#https://www.ladybug.tools/spider-2020/README.md">Spider 2020</a>
+
+		<h4>Math</b></h4>
+
+		<div><a href="#https://webmath.github.io/algesurf/README.md">algesurf</a></div>
+
+		<div></div>
+
+		<div>
+			<a href="#https://webmath.github.io/algesurf/ray-marching/r3/algesurf-ray-marching-r3.html" >ray marching</a> ~
+<a href="#https://webmath.github.io/algesurf/ray-marching/readme.md" >read me</a>
+		</div>
+	</div>
+
+	<main>
+		<div id=divContentMain class=divContent>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia
+			non numquam eius
+			modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis
+			nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis
+			autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel
+			illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</div>
+	</main>
+
+	<div id="divPopUp" class="gmd-2" hidden></div>
+
+	<script src="../../lib/mnu-menu/v-2020-12-20/mnu-menu.js"></script>
+
+	<script>
+
+		init();
+
+		function init() {
+
+			divMenu.innerHTML = MNU.navMenuHeader + divMenuContent.innerHTML + MNU.navMenuFooter;
+
+			aGithub.href = "https://github.com/pushme-pullyou/too-too-2020/"
+
+			spnTitle.innerHTML = "TooToo";
+
+			spnVersion.innerHTML = document.head.querySelector( "[ name=date ]" ).content;
+
+			spnDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
+
+			aMenuIcon.innerHTML = "❧";
+
+			MNU.init();
+
+
+
+			defaultFile = "../README.md";
+
+			//if ( !location.hash ) { location.hash = defaultFile; }
+
+			window.addEventListener( "hashchange", onHashChange, false );
+
+			onHashChange();
+
+		}
+
+
+
+		function onHashChange() {
+
+			const fileName = location.hash ? location.hash.slice( 1 ) : defaultFile;
+			const title = fileName.split( "/" ).pop();
+			const extension = title.toLowerCase().split( '.' ).pop();
+			const url = fileName
+
+			document.title = title;
+
+			if ( extension === "md" ) {
+
+				showdown.setFlavor( "github" );
+
+				const options = { excludeTrailingPunctuationFromURLs: true, ghMention: true, parseImgDimensions: true, simplifiedAutoLink: true, simpleLineBreaks: true, emoji: true, openLinksInNewWindow: true };
+
+				const xhr = new XMLHttpRequest();
+				xhr.open( "get", url, true );
+				xhr.onload = () => {
+					const txt = xhr.responseText.replace( /\<!--@@@/, "" ).replace( /\@@@-->/, "" );
+					divContentMain.innerHTML = new showdown.Converter( options ).makeHtml( txt );
+					window.scrollTo( 0, 0 );
+				};
+				xhr.send( null );
+
+				return;
+
+			}
+
+			if ( [ "gif", "jpg", "png", "svg" ].includes( extension ) ) {
+
+				divContentMain.innerHTML = `<a href=${ url } title="Open this image in a new window" target="_blank" ><img src="${ url }" style=max-width:100% ></a>`;
+
+				return;
+
+			}
+
+			divContentMain.innerHTML = `<iframe src="${ url }" height=${ window.innerHeight } width=100% ></iframe>`;
+
+		}
+	</script>
+
+</body>
+
+</html>

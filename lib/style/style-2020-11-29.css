@@ -157,7 +157,7 @@ pre {
 }
 
 .divContent {
-	border: 0 solid red;
+	border: 0px solid red;
 	margin: 0 auto;
 	width: 40rem;
 }

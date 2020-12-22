@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="TooToo 2020 uses the GitHub API to provide access to all the current files hosted with GitHub Pages.">
+	<meta name="keywords" content="JavaScript,Markdown,GitHub,FOSS">
+	<meta name="version" content="2020-11-29">
+	<title></title>
+
+	<!-- Copyright 2020 Theo Armour. MIT license -->
+	<link rel="stylesheet" href="./lib/style/style-2020-11-29.css">
+
+	<!-- https://github.com/showdownjs/showdown -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+
+	<style>
+		:root {
+			--main-hue: 120;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+	</style>
+
+
+
+</head>
+
+<body>
+
+
+
+	<details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<header id="hdrTitle">
+
+				<h2>
+
+					<a id=aGithub
+						href="https://github.com/ladybug-tools/spider-2020/" target="_top"
+						target="_top" title="Source code on GitHub">
+						<img src="./lib/icons/octicon.svg">
+					</a>
+
+					<a id=aTitle href="" title="Click to reload this page">
+						Spider 2020
+						<span id=spnVersion></span>
+					</a>
+
+					<span class="info">
+						<img class=infoImg src="./lib/icons/noun_Information_585560.svg">
+						<span id="divDescription" class="infoTooltip gmd-5">
+
+						</span>
+					</span>
+
+				</h2>
+
+			</header>
+
+			<div id=divNavLog></div>
+
+			<details id=detFile>
+
+				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
+
+				<div id=FRdivMenuFileReader></div>
+
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept="*">
+				</p>
+
+				<div id=FOOdivLog>to be reset</div>
+
+				<div id=FOZdivFileOpenZip></div>
+
+				<div id=divLog></div>
+
+			</details>
+
+			<details open>
+				<!-- 'open' triggers a run on load -->
+
+				<summary class="summary-primary gmd-1" title="View selected items">repository files
+
+					<span class="info">
+						<img class=infoImg src="./lib/icons/noun_Information_585560.svg">
+						<span id="spnGRV" class="infoTooltip gmd-5">
+							test <button onclick=GRV.test()>view all files in this repository</button>
+						</span></span>
+				</summary>
+
+				<div class=divNavResize>
+
+					<p>Files you can load, view and experiment with:</p>
+
+					<div id=GRVdivGitHubRepoTreeView></div>
+
+					<br>
+
+				</div>
+
+			</details>
+
+			<hr>
+
+			<footer>
+
+				<div title="Go to top of menu" style=text-align:center;>
+					<a class=aDingbat href=javascript:sumNavMenu.scrollIntoView();>
+						❦
+					</a>
+				</div>
+
+			</footer>
+
+		</nav>
+
+	</details>
+
+
+	<main>
+
+		<div id="divContentMain"></div>
+
+	</main>
+
+	<div id="divPopUp" class="gmd-2">Welcome! </div>
+
+	<script src="./lib/grv-github-repo-tree-view/grv-github-repo-tree-view-2020-11-16.js"></script>
+
+	<script src="./lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
+	<script src="./lib/fo-file-open/foz-file-open-zip-2020-07-07.js"></script>
+	<script src="./lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+
+	<script>
+
+		divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content +
+			"<br><br>Update: " + document.head.querySelector( "[ name=version ]" ).content
+
+		init();
+
+		function init() {
+
+			divPopUp.hidden = true;
+
+			if ( window.innerWidth < 640 || window.innerHeight < 500 ) {
+
+			} else {
+
+				detNavMenu.open = true;
+
+			}
+
+			// if running on server, keeps address bar pointed to latest dev
+
+			//if ( !location.hash && location.protocol === "https:" ) {
+			if ( location.protocol === "https:" ) {
+
+				window.history.pushState( "", "", "./" + location.hash );
+
+				GRV.urlViewer = "";
+				GRV.ignoreFolders = [ "archive", "drafts", "images", "js", "lib", "src", "templates" ];
+
+			} else {
+
+				if ( location.href.includes( "pushme" ) ) {
+
+					GRV.urlViewer = "https://www.ladybug.tools/spider-2020/";
+
+				} else {
+
+					GRV.urlViewer = "";
+
+				}
+				GRV.ignoreFolders = [];
+
+			}
+
+
+			GRV.urlApi = "https://api.github.com/repos/ladybug-tools/spider-2020/git/trees/master?recursive=1";
+
+			GRV.urlSource = "https://github.com/ladybug-tools/spider-2020/";
+
+
+			GRV.iconOctoCat = `<img width=14 src="${ GRV.urlViewer }lib/icons/octicon.svg">`;
+
+			GRV.link = `<img width=14 src="${ GRV.urlViewer }lib/icons/icon-link-external.svg">`;
+
+			//GRV.getFiles = GRV.getFilesSimple;
+
+			GRV.init();
+
+			const defaultFile = "README.md";
+
+			//if ( !location.hash ) { location.hash = defaultFile; }
+
+			window.addEventListener( "hashchange", onHashChange, false );
+
+			onHashChange();
+
+		}
+
+
+
+		function onHashChange() {
+
+			const fileName = location.hash ? location.hash.slice( 1 ) : GRV.defaultFile;
+			const title = fileName.split( "/" ).pop();
+			const extension = title.toLowerCase().split( '.' ).pop();
+			const url = GRV.urlViewer + fileName
+
+			document.title = title;
+
+			if ( extension === "md" ) {
+
+				showdown.setFlavor( "github" );
+
+				const options = { excludeTrailingPunctuationFromURLs: true, ghMention: true, parseImgDimensions: true, simplifiedAutoLink: true, simpleLineBreaks: true, emoji: true, openLinksInNewWindow: true };
+
+				const xhr = new XMLHttpRequest();
+				xhr.open( "get", url, true );
+				xhr.onload = () => {
+					const txt = xhr.responseText.replace( /\<!--@@@/, "" ).replace( /\@@@-->/, "" );
+					divContentMain.innerHTML = new showdown.Converter( options ).makeHtml( txt );
+					window.scrollTo( 0, 0 );
+				};
+				xhr.send( null );
+
+				return;
+
+			}
+
+			if ( [ "gif", "jpg", "png", "svg" ].includes( extension ) ) {
+
+				divContentMain.innerHTML = `<a href=${ url } title="Open this image in a new window" target="_blank" ><img src="${ url }" style=max-width:100% ></a>`;
+
+				return;
+
+			}
+
+			divContentMain.innerHTML = `<iframe src="${ url }" height=${ window.innerHeight } width=100% ></iframe>`;
+
+		}
+
+	</script>
+</body>
+
+</html>

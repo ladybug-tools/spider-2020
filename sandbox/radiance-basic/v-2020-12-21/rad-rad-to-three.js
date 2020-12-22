@@ -3,8 +3,8 @@ const RAD = {};
 // https://github.com/ladybug-tools/3d-models
 
 RAD.urlDefault = "https://www.ladybug.tools/3d-models/rad-sample-files/various-sources/DaylightingJSONTestBuilding.rad";
-RAD.urlDefault = "https://www.ladybug.tools/spider-2020/spider-radiance-viewer/radiance-animation-test-case.rad";
-RAD.urlDefault = "https://www.ladybug.tools/3d-models/rad-sample-files/mostapha-sample-files/honeybee_005.opq.rad";
+//RAD.urlDefault = "https://www.ladybug.tools/spider-2020/spider-radiance-viewer/radiance-animation-test-case.rad";
+//RAD.urlDefault = "https://www.ladybug.tools/3d-models/rad-sample-files/mostapha-sample-files/honeybee_005.opq.rad";
 
 
 RAD.colors = {
@@ -48,7 +48,9 @@ RAD.colors = {
 
 RAD.init = function () {
 
-	RAD.requestFile( );
+	url = location.hash ? location.hash.slice( 1 ) : RAD.urlDefault;
+
+	RAD.requestFile( url );
 
 };
 
@@ -73,6 +75,10 @@ RAD.requestFile = function ( url = RAD.urlDefault, callback = RAD.onLoad ) {
 RAD.onLoad = function ( response ) {
 	//console.log( "response", response );
 
+	THR.scene.remove( THR.group );
+
+	THR.group = THR.setSceneNew();
+
 	RAD.text = response.replace( /\t/g, " " );
 	lines = RAD.text.split( /\r\n|\n/ );
 
@@ -94,8 +100,7 @@ RAD.onLoad = function ( response ) {
 
 		}
 	} );
-
-	console.log( "items", items );
+	//console.log( "items", items );
 
 	geometries = items.filter( line => !line[ 0 ].startsWith( "void" ) )
 
@@ -128,6 +133,8 @@ RAD.onLoad = function ( response ) {
 		THR.group.add( mesh );
 
 	} );
+
+	THRR.updateScene();
 
 };
 
@@ -198,7 +205,6 @@ VMX.getTempVertices = function ( vertices, type ) {
 
 
 
-
 VMX.getNormal = function ( points, start = 0 ) {
 	//console.log( 'points', points, start );
 
@@ -213,6 +219,11 @@ VMX.getNormal = function ( points, start = 0 ) {
 	return VMX.triangle.getNormal( new THREE.Vector3() );
 
 };
+
+
+
+//////////
+
 
 
 //////////

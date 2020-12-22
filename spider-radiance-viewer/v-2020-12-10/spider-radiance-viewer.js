@@ -52,7 +52,7 @@ GFF.items = [
 
 ];
 
-GFF.extension = ".rad"
+GFF.extension = ".rad";
 
 
 function init() {

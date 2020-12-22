@@ -11,17 +11,28 @@
 	<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2020/lib/style/style-2020-11-29.css">
 	<style>
 		/* Copyright 2020 Theo Armour. MIT License */
-
-
-
 	</style>
 </head>
 
 <body>
 
-	<div id=divMenu></div>
+	<details id=detNavMenu class="gmd-4">
 
-	<div id=divMenuContent></div>
+		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<div id=MNUdivHeader></div>
+
+			<div id=divMenuContent></div>
+
+			<div id=GFFdivDetails ></div>
+
+			<div id=MNUdivFooter></div>
+
+		</nav>
+
+	</details>
 
 	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear
 		here </div>
@@ -39,20 +50,21 @@
 	<script
 		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
 
+	<script src="../../../lib/gff-github-folder-files/gff-github-folder-files-2020-12-21.js"></script>
+
 	<script src="rad-rad-to-three.js"></script>
+
 	<script>
 
 		init();
 
 		function init() {
 
-			//aTitle.innerHTML = document.title = location.href.split( "/" ).pop();
-
-			divMenu.innerHTML = MNU.navMenuHeader + divMenuContent.innerHTML + MNU.navMenuFooter;
+			MNU.init();
 
 			aGithub.href = "https://www.ladybug.tools/spider-2020/sandbox/"
 
-			spnTitle.innerHTML = "Spider RAD Basic";
+			spnTitle.innerHTML = "Spider RAD Viewer Basic";
 
 			spnVersion.innerHTML = document.head.querySelector( "[ name=date ]" ).content;
 
@@ -60,7 +72,8 @@
 
 			aMenuIcon.innerHTML = "❧";
 
-			MNU.init();
+			GFF.init();
+			GFF.source = "../../../lib/gff-github-folder-files/gff-rad.js";
 
 			THR.init();
 			THR.animate();
@@ -68,11 +81,13 @@
 			THR.addLights();
 			THR.addGround();
 
-			THR.group = THR.setSceneNew();
+			//THR.group = THR.setSceneNew();
 
 			//THRU.addMeshes( 100 );
 
-			THRR.updateScene();
+			//THRR.updateScene();
+
+			window.addEventListener( "hashchange", RAD.init, false );
 
 			RAD.init();
 

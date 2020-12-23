@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<meta name=description content="Basic -online.org RAD file Viewer Basic ">
+	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+	<meta name="date" content="2020-12-22">
+	<title></title>
+	<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2020/lib/style/style-2020-11-29.css">
+	<style>
+		/* Copyright 2020 Theo Armour. MIT License */
+	</style>
+</head>
+
+<body>
+
+	<details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<div id=MNUdivHeader></div>
+
+			<div id=divMenuContent></div>
+
+			<div id=FOdivFileMenu ></div>
+
+
+
+
+			<div id=GFFdivDetails></div>
+
+			<div id=MNUdivFooter></div>
+
+		</nav>
+
+	</details>
+
+	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear
+		here </div>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="../../../lib/mnu-menu/v-2020-12-20/mnu-menu.js"></script>
+
+	<script src="../../../lib/fo-file-open/foo-file-open-object-2020-12-22.js"></script>
+	<script src="../../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
+	<script src="../../../lib/fo-file-open/fr-file-reader-2020-12-22.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thr-three/thr-threejs-2020-12-11.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2020/lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+
+	<script src="../../../lib/gff-github-folder-files/gff-github-folder-files-2020-12-21.js"></script>
+
+	<script src="rad-rad-to-three.js"></script>
+
+	<script>
+
+		init();
+
+		function init() {
+
+			MNU.init();
+
+			aGithub.href = "https://www.ladybug.tools/spider-2020/sandbox/"
+
+			spnTitle.innerHTML = "Spider RAD Viewer Basic";
+
+			spnVersion.innerHTML = document.head.querySelector( "[ name=date ]" ).content;
+
+			spnDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
+
+			aMenuIcon.innerHTML = "❧";
+
+			FOO.init();
+
+
+
+			GFF.init();
+			GFF.source = "../../../lib/gff-github-folder-files/gff-rad.js";
+
+			THR.init();
+			THR.animate();
+
+			THR.addLights();
+			THR.addGround();
+
+			//THR.group = THR.setSceneNew();
+
+			//THRU.addMeshes( 100 );
+
+			//THRR.updateScene();
+
+			//window.addEventListener( "hashchange", RAD.init, false );
+
+			RAD.init();
+
+
+		}
+
+	</script>
+
+</body>
+
+</html>

@@ -1,11 +1,11 @@
+// copyright 2020 Theo Armour. MIT license.
 
-/* global timeStart, scene */
 
 const GLO = {
 	globe: undefined,
 	size: 50,
-	url: "https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnatural-earth-4096-2048-col.jpg?v=1588126762356",
-	urlHeightmap: "https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fbathymetry_bw_composite_2k.png?v=1588983848664"
+	url: "../../../lib3d/assets/bitmaps/natural-earth-4096-2048-col.jpg",
+	urlHeightmap: "../../../lib3d/assets/bitmaps/bathymetry_bw_composite_2k.png"
 
 };
 
@@ -13,7 +13,7 @@ const GLO = {
 
 GLO.initGlobeWithBitmap = function () {
 
-	timeStart = performance.now();
+	GLO.timeStart = performance.now();
 
 	scene.remove( GLO.globe );
 
@@ -28,17 +28,21 @@ GLO.initGlobeWithBitmap = function () {
 
 	GLO.globe = new THREE.Mesh( geometry, material );
 	GLO.globe.matrixAutoUpdate = false;
-	GLO.globe.name = "globeFlat";
+	GLO.globe.name = "globeBitmap";
 
 	scene.add( GLO.globe );
 
-	//console.log( "msGlo", performance.now() - timeStart );
+	GLO.timeEnd = performance.now();
+
+	//console.log( "msGlo", GLO.timeEnd - GLO.timeStart );
 
 };
 
 
 
 GLO.setGlobeElevation3D = function ( value = 50 ) {
+
+	GLO.timeStart = performance.now();
 
 	const scale = + value / 5;
 
@@ -60,17 +64,19 @@ GLO.setGlobeElevation3D = function ( value = 50 ) {
 
 	GLO.globe = new THREE.Mesh( geometry, material );
 	GLO.globe.matrixAutoUpdate = false;
-	GLO.globe.name = "globe3d";
+	GLO.globe.name = "globeElevation";
 
 
-	geometrySea = new THREE.SphereBufferGeometry( GLO.size + 5.5, 25, 25 );
-	materialSea = new THREE.MeshNormalMaterial( { opacity: 0.7, transparent: true } );
-	globeSea = new THREE.Mesh( geometrySea, materialSea );
+	const geometrySea = new THREE.SphereBufferGeometry( GLO.size + 5.5, 25, 25 );
+	const materialSea = new THREE.MeshNormalMaterial( { opacity: 0.7, transparent: true } );
+	const globeSea = new THREE.Mesh( geometrySea, materialSea );
 	GLO.globe.add( globeSea );
 
 	scene.add( GLO.globe );
 
+	GLO.timeEnd = performance.now();
 
+	//console.log( "msGlo", GLO.timeEnd - GLO.timeStart );
 
 	// } else {
 

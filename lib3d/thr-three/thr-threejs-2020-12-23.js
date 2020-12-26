@@ -17,6 +17,8 @@ THR.radius = 50;
 
 THR.init = function () {
 
+	THR.timeStart = performance.now();
+
 	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
 	camera.position.set( -100, -100, 100 );
 	camera.up.set( 0, 0, 1 );
@@ -86,7 +88,7 @@ THR.onStart = function () {
 };
 
 
-THR.setSceneNew = function ( group ) {
+THR.getGroupNew = function ( group ) {
 
 	THR.scene.remove( group );
 
@@ -99,7 +101,7 @@ THR.setSceneNew = function ( group ) {
 };
 
 
-THR.updateScene = function ( group = THR.group ) {
+THR.xxxxxupdateScene = function ( group = THR.group ) {
 	//console.log( "group", THR.group  );
 
 	if ( !THR.group.children.length ) {
@@ -305,13 +307,13 @@ THR.setStats = function () {
 
 	//detFile.open = true;
 	if ( !window.divLog ) {
-		divLog = detFile.body.appendChild( document.createElement( "div" ) );
+		divLog = navMenu.appendChild( document.createElement( "div" ) );
 	}
 	divLog.innerHTML = `
 <p>
-Three.js renderer statistics<br>
-Draw calls: ${ render.calls }<br>
-Triangles: ${ render.triangles.toLocaleString() }<br>
+	Three.js renderer statistics<br>
+	Draw calls: ${ render.calls }<br>
+	Triangles: ${ render.triangles.toLocaleString() }<br>
 </p>`;
 };
 
@@ -329,6 +331,6 @@ THR.onWindowResize = function () {
 
 THR.animate = function () {
 	requestAnimationFrame( THR.animate );
-	renderer.render( THR.scene, THR.camera );
+	THR.renderer.render( THR.scene, THR.camera );
 	THR.controls.update();
 };

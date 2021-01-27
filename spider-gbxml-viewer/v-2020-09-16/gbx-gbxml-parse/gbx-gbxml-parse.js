@@ -32,6 +32,8 @@ GBX.parser = new DOMParser();
 
 GBX.init = function () {
 
+
+	
 	GBX.string = FOO.string.replace( /[\t\n\r]/gm, "" );
 
 	GBX.surfaces = GBX.string.match( /<Surface(.*?)<\/surface>/gi );

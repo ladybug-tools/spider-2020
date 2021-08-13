@@ -1,6 +1,6 @@
 const source = "https://github.com/ladybug-tools/spider-2020/tree/master/spider-pollination-viewer/";
 
-const version = "v-2020-09-04";
+const version = "v-2021-08-12";
 
 const description = document.head.querySelector( "[ name=description ]" ).content;
 
@@ -23,9 +23,9 @@ GFF.urlViewer = "../../spider-pollination-viewer/index.html";
 GFF.items = [
 	{
 		"user": "ladybug-tools",
-		"repo": "/honeybee-schema",
+		"repo": "/honeybee_schema",
 		"pathRepo": "samples/model/",
-		"title": "Honeybee JSON sample files",
+		"title": "Honeybee sample files",
 		"subTitle":
 			`Files from the
 		<a href="https://github.com/ladybug-tools/honeybee-schema" target="_blank">Honeybee sample files</a>
@@ -112,9 +112,9 @@ JTV.onLoad = function () {
 
 	const details = JTVdivJsonTree.querySelectorAll( "details" );
 
-	//details[ 0 ].open = true;
+	details[ 0 ].open = true;
 
-	//details[ 1 ].open = true;
+	details[ 1 ].open = true;
 
 	//JTE.onLoad();
 

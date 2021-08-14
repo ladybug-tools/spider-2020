@@ -48,9 +48,9 @@ PP.onLoadJson = function () {
 
 	PHJ.vertices = [];
 
-	PHJ.geometryShade = new THREE.BufferGeometry();
+	PHJ.geometryShade = new THREE.Geometry();
 
-	PHJ.geometryFaces = new THREE.BufferGeometry();
+	PHJ.geometryFaces = new THREE.Geometry();
 
 	if ( ["Model", "Building", "Story", "Room2D", "ContextShade"].includes(json.type)) {
 
@@ -117,12 +117,12 @@ PP.onLoadJson = function () {
 
 	if ( PDJ.group.children.length > 1 ) {
 
-		//THR.zoomObjectBoundingSphere(PDJ.group);
+		THR.zoomObjectBoundingSphere(PDJ.group);
 		THR.group.children.push( ... PDJ.group.children );
 
 	} else {
 
-		//THR.zoomObjectBoundingSphere(THR.group);
+		THR.zoomObjectBoundingSphere(THR.group);
 
 	}
 
